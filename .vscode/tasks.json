@@ -9,12 +9,14 @@
             "command": "c++",
             "args": [
                 "-I",
-                "~/InstalledPrograms/boost_1_67_0",
-                "-std=c++1z",
+                "/usr/local/Cellar/boost/1.67.0_1/",
+                "-L",
+                "/usr/local/lib",
+                "-lgmp",
+                "-lboost_regex-mt",
                 "src/example.cpp",
                 "-o",
-                "out/scc",
-                "~/InstalledPrograms/boost_1_67_0/stage/lib/libboost_regex.a"
+                "out/scc"
             ],
             "group": {
                 "kind": "build",
@@ -26,11 +28,101 @@
         },
         {
             "label": "test",
-            "type" : "shell",
+            "type": "shell",
             "command": "./out/scc",
             "args": [
                 "<",
                 "input/jayne.txt"
+            ]
+        },
+        {
+            "label": "prototype",
+            "type": "shell",
+            "command": "./out/test",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "graph",
+            "type": "shell",
+            "command": "./out/graph",
+            "args": [
+                "./input/dfs.dot"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "prototype-build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I",
+                "/usr/local/Cellar/boost/1.67.0_1/",
+                "-L",
+                "/usr/local/lib",
+                "-lgmp",
+                "-lboost_graph-mt",
+                "-lboost_regex-mt",
+                "src/test.cpp",
+                "-o",
+                "out/test"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Project-build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I",
+                "/usr/local/Cellar/boost/1.67.0_1/",
+                "-L",
+                "/usr/local/lib",
+                "-lgmp",
+                "-lboost_graph-mt",
+                "-lboost_regex-mt",
+                "src/*.cpp",
+                "-o",
+                "out/Project"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "graph-build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I",
+                "/usr/local/Cellar/boost/1.67.0_1/",
+                "-L",
+                "/usr/local/lib",
+                "-lgmp",
+                "-lboost_graph-mt",
+                "-lboost_regex-mt",
+                "src/graph.cpp",
+                "-o",
+                "out/graph"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Project",
+            "type": "shell",
+            "command": "./out/Project",
+            "args": [
+                "./input/dfs.dot"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         }
     ]
