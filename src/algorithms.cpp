@@ -53,5 +53,28 @@ void Algorithms::DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter){
     }
 }
 
+void Algorithms::ApplySCC(SCC_Graph &g){
+    v_p visited = get(&PVertexProperties::num, g);
+    typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex;
+    typedef boost::graph_traits<SCC_Graph>::vertex_iterator v_i, v_e ;
+    for(boost::tie(v_i,v_e) = vertices(g); v_i != v_e; v_i++){
+        Vertex v = *v_i ;
+        if(visited[v_i] == 666){
+            StrongConnect(g,v);
+        }
+    }
+}
+
+void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v, int &Counter){
+    v_p visited = get(&PVertexProperties::num,g);
+    v_p lowPt = get(&PVertexProperties::lowPt,g);
+    v_p LowVine = get(&PVertexProperties::lowVine,g);
+    Counter++;
+    visited[v] = lowPt[v] = LowVine[v] = Counter;
+    
+
+    
+}
+
 
 
