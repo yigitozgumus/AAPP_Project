@@ -24,7 +24,7 @@
 using namespace std;
 using namespace boost;
 
-void Algorithms::ApplyDFS(SCC_Graph &g){
+void Algorithms::Tarjan::ApplyDFS(SCC_Graph &g){
     typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex;
     Vertex theFirst = *(vertices(g).first);
     int Counter = 0;
@@ -33,7 +33,7 @@ void Algorithms::ApplyDFS(SCC_Graph &g){
     
 }
 
-void Algorithms::DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter){
+void Algorithms::Tarjan::DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter){
     v_p visited = get(&PVertexProperties::num, g);
     v_p id = get(&PVertexProperties::index, g);
     e_p arch_type = get(&EdgeProperties::name, g);
@@ -55,43 +55,46 @@ void Algorithms::DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter){
     }
 }
 
-void Algorithms::ApplySCC(SCC_Graph &g){
+void Algorithms::Tarjan::ApplySCC(SCC_Graph &g){
     v_p visited = get(&PVertexProperties::num, g);
     typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex;
-    typedef boost::graph_traits<SCC_Graph>::vertex_iterator v_i, v_e ;
-    std::stack<Vertex> Points;
-    for(boost::tie(v_i,v_e) = vertices(g); v_i != v_e; v_i++){
-        Vertex v = *v_i ;
-        if(visited[v_i] == 666){
-            StrongConnect(g,v);
+    typedef boost::graph_traits<SCC_Graph>::vertex_iterator vertex_iter ;
+    std::pair<vertex_iter, vertex_iter> vp;
+    std::deque<Vertex> Points;
+    int Counter = 0;
+    for(vp = vertices(g); vp.first != vp.second; vp.first++){
+        Vertex v = *vp.first ;
+        if(visited[v] == 666){
+            StrongConnect(g,v,Points,Counter);
         }
     }
 }
 
-void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex &Points, int &Counter){
+void Algorithms::Tarjan::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex> &Points, int &Counter){
     v_p visited = get(&PVertexProperties::num,g);
     v_p lowPt = get(&PVertexProperties::lowPt,g);
-    v_p LowVine = get(&PVertexProperties::lowVine,g);
+    v_p lowVine = get(&PVertexProperties::lowVine,g);
+    e_p arch_type = get(&EdgeProperties::name, g);
     Counter++;
-    visited[v] = lowPt[v] = LowVine[v] = Counter;
+    visited[v] = lowPt[v] = lowVine[v] = Counter;
     Points.push_back(v);
      typedef boost::graph_traits<SCC_Graph>::edge_descriptor Edge;
     boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
-    for(boost::tie(out_i,out_end)= out_edges(v,g); out_i != out_end: ++out_i){
+    for(boost::tie(out_i,out_end)= out_edges(v,g); out_i != out_end;++out_i){
         Edge e = *out_i;
         Vertex w = target(e,g);
         if(visited[w] == 666){
             arch_type[e] = "tree"; // like in tarjan's algorithm
             StrongConnect(g,w,Points,Counter);
             lowPt[v] = std::min(lowPt[v],lowPt[w]);
-            LowVine[v] = std::min(lowVine[v],lowVine[w]);
-        }else if(){// TODO Ancestor problem
+            lowVine[v] = std::min(lowVine[v],lowVine[w]);
+        }else if(true){// TODO Ancestor problem
             arch_type[e] = "frond";
-            lowPt[v] = std::min(lowPt(v),visited(w);
-        }else if(num[w] <num[v]){
+            lowPt[v] = std::min(lowPt(v),visited(w));
+        }else if(visited[w] <visited[v]){
             arch_type[e] = "vine";
             if (std::find(Points.begin(),Points.end(),w) != Points.end()){
-                lowVine[v] = std::min(lowVine[v],visited[w];
+                lowVine[v] = std::min(lowVine[v],visited[w]);
             }
         }
     }if(lowPt[v] ==visited[v] && lowVine[v] == visited[v]){

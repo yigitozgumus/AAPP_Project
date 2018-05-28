@@ -14,3 +14,9 @@
   typedef boost::property_map<SCC_Graph, std::size_t PVertexProperties::*>::type marked;
   typedef property_map<SCC_Graph, std::size_t PVertexProperties::*>::type v_p;
   typedef property_map<SCC_Graph,std::string EdgeProperties::*>::type e_p;
+  typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS, 
+                                    boost::no_property, boost::no_property>
+            StronglyConnected;
+  typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
+                                    boost::no_property, boost::no_property>
+            biconnectivity;

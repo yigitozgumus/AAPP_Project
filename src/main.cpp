@@ -24,8 +24,8 @@ int main(int, char *argv[])
     std::string filename = argv[1];
     std::ifstream infile(filename);
     GraphComponent test(filename);
-    Algorithms a;
-    a.ApplyDFS(test.theGraph);
+    Algorithms::Tarjan t;
+    t.ApplyDFS(test.theGraph);
     //test.ApplyDFS();
     test.print_graph_file();
     return 0;

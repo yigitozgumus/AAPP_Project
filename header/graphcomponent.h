@@ -48,12 +48,7 @@ class GraphComponent{
         typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
                                     VertexProperty, EdgeProperties>
             inputGraph;
-        typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS, 
-                                    boost::no_property, boost::no_property>
-            StronglyConnected;
-        typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-                                    boost::no_property, boost::no_property>
-            biconnectivity;
+        
         typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
                                     PVertexProperties, EdgeProperties>
             SCC_Graph;
