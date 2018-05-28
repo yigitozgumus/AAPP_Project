@@ -6,7 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <iterator>
-#include <stack>
+#include <deque>
+#include <algorithm>
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -67,13 +68,13 @@ void Algorithms::ApplySCC(SCC_Graph &g){
     }
 }
 
-void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v,std::stack<Vertex &Points, int &Counter){
+void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex &Points, int &Counter){
     v_p visited = get(&PVertexProperties::num,g);
     v_p lowPt = get(&PVertexProperties::lowPt,g);
     v_p LowVine = get(&PVertexProperties::lowVine,g);
     Counter++;
     visited[v] = lowPt[v] = LowVine[v] = Counter;
-    Points.push(v);
+    Points.push_back(v);
      typedef boost::graph_traits<SCC_Graph>::edge_descriptor Edge;
     boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
     for(boost::tie(out_i,out_end)= out_edges(v,g); out_i != out_end: ++out_i){
@@ -82,7 +83,15 @@ void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v,std::stack<Vertex &Points,
         if(visited[w] == 666){
             arch_type[e] = "tree"; // like in tarjan's algorithm
             StrongConnect(g,w,Points,Counter);
-            lowPt[v]
+            lowPt[v] = std::min(lowPt[v],lowPt[w]);
+            LowVine[v] = std::min(lowVine[v],lowVine[w]);
+        }else if(){
+
+        }else if(num[w] <num[v]){
+            arch_type[e] = "vine";
+            if (std::find(Points.begin(),Points.end(),w) != Points.end()){
+                
+            }
         }
     }    
 

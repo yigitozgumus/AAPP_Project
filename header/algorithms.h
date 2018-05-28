@@ -44,7 +44,7 @@ class Algorithms{
     void DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter);
     
     void ApplySCC(SCC_Graph &g);
-    void StrongConnect(SCC_Graph &g,Vertex &v,std::stack<Vertex> &Points, int &Counter);
+    void StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex> &Points, int &Counter);
 
 };
 
