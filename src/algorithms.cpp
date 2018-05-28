@@ -85,15 +85,20 @@ void Algorithms::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex &Points,
             StrongConnect(g,w,Points,Counter);
             lowPt[v] = std::min(lowPt[v],lowPt[w]);
             LowVine[v] = std::min(lowVine[v],lowVine[w]);
-        }else if(){
-
+        }else if(){// TODO Ancestor problem
+            arch_type[e] = "frond";
+            lowPt[v] = std::min(lowPt(v),visited(w);
         }else if(num[w] <num[v]){
             arch_type[e] = "vine";
             if (std::find(Points.begin(),Points.end(),w) != Points.end()){
-                
+                lowVine[v] = std::min(lowVine[v],visited[w];
             }
         }
-    }    
+    }if(lowPt[v] ==visited[v] && lowVine[v] == visited[v]){
+        //TODO implementation
+    
+    }
+    
 
     
 }
