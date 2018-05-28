@@ -70,6 +70,33 @@ void Algorithms::Tarjan::ApplySCC(SCC_Graph &g){
     }
 }
 
+bool Algorithms::Tarjan::isReachable(SCC_Graph &g, Vertex &source, Vertex &Target){
+    typedef graph_traits<SCC_Graph>::vertices_size_type size_type;
+    size_type n_vertices;
+    n_vertices = num_vertices(g);
+    v_p id = get(&PVertexProperties::index, g);
+    std::vector<bool> Visited(n_vertices,false);
+    std::deque<Vertex> Checks;
+    Visited[id[source]] = true;
+    Checks.push_back(source);
+    while(!Checks.empty()){
+        Vertex v = Checks.front(); Checks.pop_front();
+        boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
+        for (boost::tie(out_i, out_end) = out_edges(v, g); out_i != out_end; ++out_i){
+            Vertex w = target(*out_i,g);
+            if(id[w] == id[Target]){
+                return true;
+            }else if(!Visited[id[w]]){
+                Visited[id[w]] = true;
+                Checks.push_back(w);
+            }
+
+        }
+    }
+    return false;
+
+}
+
 void Algorithms::Tarjan::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex> &Points, int &Counter){
     v_p visited = get(&PVertexProperties::num,g);
     v_p lowPt = get(&PVertexProperties::lowPt,g);
@@ -88,7 +115,7 @@ void Algorithms::Tarjan::StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex>
             StrongConnect(g,w,Points,Counter);
             lowPt[v] = std::min(lowPt[v],lowPt[w]);
             lowVine[v] = std::min(lowVine[v],lowVine[w]);
-        }else if(true){// TODO Ancestor problem
+        }else if(isReachable(g,w,v)){// TODO Ancestor problem
             arch_type[e] = "frond";
             lowPt[v] = std::min(lowPt(v),visited(w));
         }else if(visited[w] <visited[v]){

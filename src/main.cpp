@@ -28,5 +28,9 @@ int main(int, char *argv[])
     t.ApplyDFS(test.theGraph);
     //test.ApplyDFS();
     test.print_graph_file();
+
+    Vertex v = vertex(0,test.theGraph);
+    Vertex w = vertex(7,test.theGraph);
+    std::cout << t.isReachable(test.theGraph,v,w) << std::endl;
     return 0;
 }

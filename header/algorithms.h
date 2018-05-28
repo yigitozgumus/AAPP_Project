@@ -23,10 +23,10 @@ using namespace boost;
 class Algorithms{
 
     public:
-    Algorithms(){};
+    Algorithms() = default;;
     class Tarjan{
         public:
-        Tarjan(){};
+        Tarjan() = default;;
         void ApplyDFS(SCC_Graph &g);
         void DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter);
 
@@ -34,6 +34,7 @@ class Algorithms{
         void Biconnect(SCC_Graph &g, Vertex &v, int &Counter);
     
         void ApplySCC(SCC_Graph &g);
+        bool isReachable(SCC_Graph &g, Vertex &source, Vertex &target);
         void StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex> &Points, int &Counter);
     };
 

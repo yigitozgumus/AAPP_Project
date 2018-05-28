@@ -49,7 +49,7 @@ void GraphComponent::print_graph_file(){
     graph_traits<SCC_Graph>::out_edge_iterator ei, edge_end;
     for (boost::tie(i, end) = vertices(theGraph); i != end; ++i)
     {
-        std::cout << id[*i] << " " << nums[*i];
+        std::cout << id[*i] << " ";
         for (boost::tie(ei, edge_end) = out_edges(*i, theGraph); ei != edge_end; ++ei)
             std::cout << " --" << name[*ei] << "--> " << id[target(*ei, theGraph)] << "  ";
         std::cout << std::endl;
