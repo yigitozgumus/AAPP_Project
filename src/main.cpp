@@ -15,7 +15,7 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-#include "./../header/graphcomponent.h"
+#include "./../header/algorithms.h"
 
 using namespace boost;
 
@@ -24,6 +24,9 @@ int main(int, char *argv[])
     std::string filename = argv[1];
     std::ifstream infile(filename);
     GraphComponent test(filename);
-
+    Algorithms a;
+    a.ApplyDFS(test.theGraph);
+    //test.ApplyDFS();
+    test.print_graph_file();
     return 0;
 }

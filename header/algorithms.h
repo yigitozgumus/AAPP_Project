@@ -1,3 +1,4 @@
+#include "./../header/graphcomponent.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -15,32 +16,12 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
+
+using namespace std;
 using namespace boost;
 
-namespace UtilityStructs{
-    struct PVertexProperties
-    {
-        std::size_t index;
-        boost::default_color_type color;
-       // std::string label;
-        std::size_t num;
-        std::size_t lowPt;
-        std::size_t lowVine;
-    };
-    struct EdgeProperties
-    {
-        EdgeProperties(const std::string &n) : name(n) {}
-        std::string name;
-    };
-    struct VertexProperty
-    {
-        std::size_t index;
-        
-    };
-}
+class Algorithms{
 
-class GraphComponent{
-  
     private:
         typedef UtilityStructs::VertexProperty VertexProperty;
         typedef UtilityStructs::EdgeProperties EdgeProperties;
@@ -56,19 +37,14 @@ class GraphComponent{
         typedef boost::property_map<SCC_Graph, std::size_t PVertexProperties::*>::type marked;
         typedef property_map<SCC_Graph, std::size_t PVertexProperties::*>::type v_p;
         typedef property_map<SCC_Graph,std::string EdgeProperties::*>::type e_p;
-        
+
     public:
-        SCC_Graph theGraph;
+    Algorithms(){};
+    void ApplyDFS(SCC_Graph &g);
+    void DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter);
+    
+    void ApplySCC(SCC_Graph &g);
+    void StrongConnect(SCC_Graph &g);
 
-        GraphComponent(std::string filename){
-        std::ifstream infile(filename);
-        read_graph_file(infile, theGraph);
-        std::cout <<"\n" << "The graph has been imported from the file: " 
-        << filename << "\n" << std::endl;
-        print_graph_file();
-        }
-
-        void print_graph_file();
-        void read_graph_file(std::istream &in, SCC_Graph &g);
-        
 };
+
