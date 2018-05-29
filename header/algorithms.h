@@ -20,22 +20,29 @@
 using namespace std;
 using namespace boost;
 
-class Algorithms{
+class Algorithms {
 
-    public:
+public:
     Algorithms() = default;;
-    class Tarjan{
-        public:
+
+    class Tarjan {
+    public:
         Tarjan() = default;;
+
         void ApplyDFS(SCC_Graph &g);
-        void DepthFirstSearch(SCC_Graph &g, Vertex &v,int &Counter);
+
+        void DepthFirstSearch(SCC_Graph &g, Vertex &v, int &Counter);
 
         void ApplyBiconnectivity(SCC_Graph &g);
+
         void Biconnect(SCC_Graph &g, Vertex &v, int &Counter);
-    
+
         void ApplySCC(SCC_Graph &g);
+
         bool isReachable(SCC_Graph &g, Vertex &source, Vertex &target);
-        void StrongConnect(SCC_Graph &g,Vertex &v,std::deque<Vertex> &Points, int &Counter);
+
+        void StrongConnect(SCC_Graph &g, Vertex &v, std::vector<StronglyConnected> &sccs, std::vector<Vertex> &Points,
+                           int &Counter);
     };
 
 };

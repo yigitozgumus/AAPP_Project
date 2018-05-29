@@ -25,12 +25,14 @@ int main(int, char *argv[])
     std::ifstream infile(filename);
     GraphComponent test(filename);
     Algorithms::Tarjan t;
-    t.ApplyDFS(test.theGraph);
+    //t.ApplyDFS(test.theGraph);
+    t.ApplySCC(test.theGraph);
     //test.ApplyDFS();
     test.print_graph_file();
 
     Vertex v = vertex(0,test.theGraph);
     Vertex w = vertex(7,test.theGraph);
     std::cout << t.isReachable(test.theGraph,v,w) << std::endl;
+
     return 0;
 }

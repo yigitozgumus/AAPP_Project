@@ -12,12 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ab6a3b1-a98a-43ff-8d57-9ce5536da3e6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/temp.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/header/algorithms.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/algorithms.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Project" beforeDir="false" afterPath="$PROJECT_DIR$/out/Project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/graphcomponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/graphcomponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/typedef.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/typedef.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphcomponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphcomponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
@@ -46,8 +44,26 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state relative-caret-position="180">
+              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphcomponent.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/header/graphcomponent.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphcomponent.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphcomponent.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -55,8 +71,8 @@
       <file leaf-file-name="algorithms.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithms.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+            <state relative-caret-position="318">
+              <caret line="147" column="5" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
               <folding>
                 <element signature="e#40#59#0" expanded="true" />
                 <element signature="e#200#227#0" expanded="true" />
@@ -65,11 +81,38 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="dfs.dot" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/dfs.dot">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjacency_list.hpp" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="2464" selection-start-line="2464" selection-end-line="2464" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="algorithms.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/header/algorithms.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+            <state relative-caret-position="322">
+              <caret line="43" column="101" selection-start-line="43" selection-start-column="101" selection-end-line="43" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typedef.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/header/typedef.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -102,11 +145,15 @@
         <option value="$PROJECT_DIR$/input/dfs-example.dot" />
         <option value="$PROJECT_DIR$/input/dfs.txt" />
         <option value="$PROJECT_DIR$/src/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/input/dfs.dot" />
         <option value="$PROJECT_DIR$/src/graph.cpp" />
-        <option value="$PROJECT_DIR$/header/algorithms.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/header/graphcomponent.h" />
+        <option value="$PROJECT_DIR$/src/graphcomponent.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/header/typedef.h" />
+        <option value="$PROJECT_DIR$/header/algorithms.h" />
+        <option value="$PROJECT_DIR$/input/dfs.dot" />
+        <option value="$PROJECT_DIR$/src/algorithms.cpp" />
       </list>
     </option>
   </component>
@@ -119,8 +166,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="763" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="22" />
     <option name="width" value="917" />
     <option name="height" value="1028" />
@@ -160,6 +206,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="reformat&#9;ACTION&#9;ReformatCode" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CMake" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -210,32 +257,40 @@
       <workItem from="1527534461326" duration="91000" />
       <workItem from="1527534575945" duration="152000" />
       <workItem from="1527534749105" duration="124000" />
-      <workItem from="1527534896110" duration="677000" />
+      <workItem from="1527534896110" duration="7907000" />
     </task>
+    <task id="LOCAL-00001" summary="IsSearchable implemented, Clion Project Files">
+      <created>1527538390123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1527538390123</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10468000" />
+    <option name="totallyTimeSpent" value="17698000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="763" y="22" width="917" height="1028" extended-state="0" />
+    <frame x="0" y="22" width="1680" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.23325893" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.23267028" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32819384" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.32048458" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32268724" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32878152" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32819384" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="1" sideWeight="0.50163937" side_tool="true" visible="true" weight="0.23267028" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39915967" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39867842" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32878152" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32878152" />
@@ -247,10 +302,40 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="IsSearchable implemented, Clion Project Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="IsSearchable implemented, Clion Project Files" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/algorithms.cpp</url>
+          <line>109</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/algorithms.cpp</url>
+          <line>116</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/algorithms.cpp</url>
+          <line>124</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="18" />
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>lowPt.m_tag</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -427,27 +512,6 @@
     <entry file="file://$PROJECT_DIR$/src/CMakeLists.txt" />
     <entry file="file://$PROJECT_DIR$/src/test.cpp" />
     <entry file="file://$PROJECT_DIR$/src/graph.cpp" />
-    <entry file="file://$PROJECT_DIR$/input/dfs.dot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="1613" selection-start-line="1613" selection-end-line="1613" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/header/algorithms.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -455,17 +519,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/header/typedef.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header/graphcomponent.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphcomponent.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header/algorithms.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="43" column="101" selection-start-line="43" selection-start-column="101" selection-end-line="43" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="2464" selection-start-line="2464" selection-end-line="2464" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/dfs.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithms.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+        <state relative-caret-position="318">
+          <caret line="147" column="5" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
           <folding>
             <element signature="e#40#59#0" expanded="true" />
             <element signature="e#200#227#0" expanded="true" />

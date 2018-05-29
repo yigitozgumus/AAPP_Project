@@ -11,8 +11,7 @@
 
 using namespace boost;
 
-void GraphComponent::read_graph_file(std::istream &in, SCC_Graph &g)
-{
+void GraphComponent::read_graph_file(std::istream &in, SCC_Graph &g) {
     typedef graph_traits<SCC_Graph>::vertex_descriptor Vertex;
     typedef graph_traits<SCC_Graph>::vertices_size_type size_type;
     size_type n_vertices;
@@ -29,32 +28,31 @@ void GraphComponent::read_graph_file(std::istream &in, SCC_Graph &g)
             break;
     //initialize the nums for the DFS
     v_p nums = get(&PVertexProperties::num, g);
-    boost::graph_traits<SCC_Graph>::vertex_iterator vi,vend;
-    for (boost::tie(vi,vend) = vertices(g); vi != vend; ++vi)
-    nums[*vi] = 666;
+    boost::graph_traits<SCC_Graph>::vertex_iterator vi, vend;
+    for (boost::tie(vi, vend) = vertices(g); vi != vend; ++vi)
+        nums[*vi] = 666;
 
 
 }
 
-void GraphComponent::print_graph_file(){
+void GraphComponent::print_graph_file() {
     v_p id = get(&PVertexProperties::index, theGraph);
     v_p nums = get(&PVertexProperties::num, theGraph);
     property_map<SCC_Graph, std::string EdgeProperties::*>::type
-        name = get(&EdgeProperties::name, theGraph);
+            name = get(&EdgeProperties::name, theGraph);
     boost::graph_traits<SCC_Graph>::vertex_iterator vi, viend;
     int vnum = 0;
     for (boost::tie(vi, viend) = vertices(theGraph); vi != viend; ++vi)
         id[*vi] = vnum++;
     graph_traits<SCC_Graph>::vertex_iterator i, end;
     graph_traits<SCC_Graph>::out_edge_iterator ei, edge_end;
-    for (boost::tie(i, end) = vertices(theGraph); i != end; ++i)
-    {
+    for (boost::tie(i, end) = vertices(theGraph); i != end; ++i) {
         std::cout << id[*i] << " ";
         for (boost::tie(ei, edge_end) = out_edges(*i, theGraph); ei != edge_end; ++ei)
             std::cout << " --" << name[*ei] << "--> " << id[target(*ei, theGraph)] << "  ";
         std::cout << std::endl;
     }
-   // print_edges(theGraph, id);
+    // print_edges(theGraph, id);
 }
 
 
