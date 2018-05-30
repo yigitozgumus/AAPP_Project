@@ -1,4 +1,4 @@
-#include "../header/algorithms.h"
+#include "./../header/algorithms.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -21,19 +21,21 @@
 
 using namespace std;
 using namespace boost;
-
+//======================================================================================================================
+//                                                      TARJAN
+//======================================================================================================================
 void Algorithms::Tarjan::ApplyDFS(SCC_Graph &g) {
     typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex;
-    Vertex theFirst = *(vertices(g).first);
+    Vertex_t theFirst = *(vertices(g).first);
     int Counter = 0;
     std::cout << "Discovery Order is: " << std::endl;
     DepthFirstSearch(g, theFirst, Counter);
 
 }
 
-void Algorithms::Tarjan::DepthFirstSearch(SCC_Graph &g, Vertex &v, int &Counter) {
-    v_p visited = get(&PVertexProperties::num, g);
-    v_p id = get(&PVertexProperties::index, g);
+void Algorithms::Tarjan::DepthFirstSearch(SCC_Graph &g, Vertex_t &v, int &Counter) {
+    v_p visited = get(&TVertexProperties::num, g);
+    v_p id = get(&TVertexProperties::index, g);
     e_p arch_type = get(&EdgeProperties::name, g);
     Counter++;
     visited[v] = static_cast<unsigned long>(Counter);
@@ -42,7 +44,7 @@ void Algorithms::Tarjan::DepthFirstSearch(SCC_Graph &g, Vertex &v, int &Counter)
     boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
     for (boost::tie(out_i, out_end) = out_edges(v, g); out_i != out_end; ++out_i) {
         Edge e = *out_i;
-        Vertex w = target(e, g);
+        Vertex_t w = target(e, g);
         if (visited[w] == 666) {
             arch_type[e] = "forward";
             //std::cout << "Node(" <<id[w] << ") --> " << visited[w] << std::endl;
@@ -53,21 +55,21 @@ void Algorithms::Tarjan::DepthFirstSearch(SCC_Graph &g, Vertex &v, int &Counter)
     }
 }
 
-bool Algorithms::Tarjan::isReachable(SCC_Graph &g, Vertex &source, Vertex &Target) {
+bool Algorithms::Tarjan::isReachable(SCC_Graph &g, Vertex_t &source, Vertex_t &Target) {
     typedef graph_traits<SCC_Graph>::vertices_size_type size_type;
     size_type n_vertices;
     n_vertices = num_vertices(g);
-    v_p id = get(&PVertexProperties::index, g);
+    v_p id = get(&TVertexProperties::index, g);
     std::vector<bool> Visited(n_vertices, false);
-    std::deque<Vertex> Checks;
+    std::deque<Vertex_t> Checks;
     Visited[id[source]] = true;
     Checks.push_back(source);
     while (!Checks.empty()) {
-        Vertex v = Checks.front();
+        Vertex_t v = Checks.front();
         Checks.pop_front();
         boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
         for (boost::tie(out_i, out_end) = out_edges(v, g); out_i != out_end; ++out_i) {
-            Vertex w = target(*out_i, g);
+            Vertex_t w = target(*out_i, g);
             if (id[w] == id[Target]) {
                 return true;
             } else if (!Visited[id[w]]) {
@@ -82,73 +84,80 @@ bool Algorithms::Tarjan::isReachable(SCC_Graph &g, Vertex &source, Vertex &Targe
 
 }
 
+
 void Algorithms::Tarjan::ApplySCC(SCC_Graph &g) {
-    v_p visited = get(&PVertexProperties::num, g);
-    typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex;
+    v_p visited = get(&TVertexProperties::num, g);
+    typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex_t;
     typedef boost::graph_traits<SCC_Graph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-    std::vector<Vertex> Points;
+    std::vector<Vertex_t> Points;
     int Counter = 0;
     std::vector<StronglyConnected> strongs;
 
     for (vp = vertices(g); vp.first != vp.second; vp.first++) {
-        Vertex v = *vp.first;
+        Vertex_t v = *vp.first;
         if (visited[v] == 666) {
             StrongConnect(g, v, strongs,Points, Counter);
         }
     }
 }
 
-void Algorithms::Tarjan::StrongConnect(SCC_Graph &g, Vertex &v, std::vector<StronglyConnected> &sccs,
-                                       std::vector<Vertex> &Points, int &Counter) {
-    v_p visited = get(&PVertexProperties::num, g);
-    v_p lowPt = get(&PVertexProperties::lowPt, g);
-    v_p lowVine = get(&PVertexProperties::lowVine, g);
+void Algorithms::Tarjan::StrongConnect(SCC_Graph &g, Vertex_t &v, std::vector<StronglyConnected> &sccs,
+                                       std::vector<Vertex_t> &Points, int &Counter) {
+    v_p visited = get(&TVertexProperties::num, g);
+    v_p lowPt = get(&TVertexProperties::lowPt, g);
+    v_p lowVine = get(&TVertexProperties::lowVine, g);
     e_p arch_type = get(&EdgeProperties::name, g);
-    v_p id = get(&PVertexProperties::index,g);
+    v_p id = get(&TVertexProperties::index,g);
     Counter++;
     visited[v]= Counter;
     lowPt[v]= Counter;
     lowVine[v] = Counter;
-    std::cout<< visited[v] << " " << lowPt[v] << " " << lowVine[v] << std::endl;
+   // std::cout<< visited[v] << " " << lowPt[v] << " " << lowVine[v] << std::endl;
     Points.push_back(v);
     typedef boost::graph_traits<SCC_Graph>::edge_descriptor Edge;
     boost::graph_traits<SCC_Graph>::out_edge_iterator out_i, out_end;
     for (boost::tie(out_i, out_end) = out_edges(v, g); out_i != out_end; ++out_i) {
         Edge e = *out_i;
-        Vertex w = target(e, g);
+        Vertex_t w = target(e, g);
         if (visited[w] == 666) {
             arch_type[e] = "tree"; // like in tarjan's algorithm
             StrongConnect(g, w,sccs,Points, Counter);
             lowPt[v] = lowPt[v]< lowPt[w]?lowPt[v]:lowPt[w];
             lowVine[v] = lowVine[v]< lowVine[w]?lowVine[v]:lowVine[w];
-        } else if (isReachable(g, w, v)) {// TODO Ancestor problem
-            arch_type[e] = "frond";
-            lowPt[v] = lowPt[v]< visited[w]?lowPt[v]:visited[w];
-        } else if (visited[w] < visited[v]) {
-            arch_type[e] = "vine";
-            if (std::find(Points.begin(), Points.end(), w) != Points.end()) {
-                lowVine[v] = lowVine[v]< visited[w]?lowVine[v]:visited[w];
+        } else if (!isReachable(g, w, v)) {
+            if (visited[w] < visited[v]) {
+                arch_type[e] = "vine";
+                if (std::find(Points.begin(), Points.end(), w) != Points.end()) {
+                    lowVine[v] = lowVine[v] < visited[w] ? lowVine[v] : visited[w];
+                }
             }
+        } else {// TODO Ancestor problem
+            arch_type[e] = "frond";
+            lowPt[v] = lowPt[v] < visited[w] ? lowPt[v] : visited[w];
         }
 
     }
     if (lowPt[v] == visited[v] && lowVine[v] == visited[v]) {
         StronglyConnected newComp;
-        std::cout << "Strongly connected component with root: " << " ";
-        //   boost::add_vertex(v,newComp);
+        v_p id_t = get(&TVertexProperties::index,newComp);
+        std::cout <<"Strongly connected Component is: ";
         while(!Points.empty() && visited[Points.back()] >= visited[v]){
-            Vertex x = Points.back();
+            Vertex_t x = Points.back();
+            Vertex_t temp = boost::add_vertex(newComp);
+            id_t[temp] = id[x];
             Points.pop_back();
-            std::cout << id[x] << " ";
-            //     boost::add_vertex(x,newComp);
+            std::cout << id[x]+1 << " ";
         }
-        std::cout<<std::endl;
-        // sccs.push_back(newComp);
+        std::cout << std::endl;
+        //Create a Vector of Vertex Vectors
+        //pass it to the ApplySCC function
+        //Create and Visualize Graphs there
     }
+
 }
 
-void Algorithms::Tarjan::Biconnect(SCC_Graph &g, Vertex &v, int &Counter) {
+void Algorithms::Tarjan::Biconnect(SCC_Graph &g, Vertex_t &v, int &Counter) {
 
 }
 
@@ -157,4 +166,68 @@ void Algorithms::Tarjan::ApplyBiconnectivity(SCC_Graph &g) {
 }
 
 
+void Algorithms::Nuutila::ApplySCC_Original(Nuutila_Graph &g) {
+    v_p_n visited = get(&NVertexProperties::visited, g);
+    v_p_n self = get(&NVertexProperties::index, g);
+    typedef boost::graph_traits<Nuutila_Graph>::vertex_descriptor Vertex_n;
+    typedef boost::graph_traits<Nuutila_Graph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    std::deque<Vertex_n> Points;
+    int Counter = 0;
+    std::vector<StronglyConnected> strongs;
 
+    for (vp = vertices(g); vp.first != vp.second; vp.first++) {
+        Vertex_n v = *vp.first;
+        if (visited[v] == 666) {
+            Visit(g, v, strongs,Points, Counter);
+        }
+    }
+    std::pair<vertex_iter, vertex_iter> vp_inner;
+    for(vp = vertices(g); vp.first != vp.second; vp.first++){
+        Vertex_n v = *vp.first;
+        if((self[v]) == visited[v]){
+            std::cout << "Strongly connected component : "  << " ";
+            for(vp_inner =vertices(g); vp_inner.first != vp_inner.second; vp_inner.first++){
+                    Vertex_n w = *vp_inner.first;
+                    if((self[v]) == visited[w]){
+                        std::cout << self[w] +1 << " ";
+                    }
+            }
+            std::cout << std::endl;
+        }
+    }
+}
+
+void Algorithms::Nuutila::Visit(Nuutila_Graph &g, Vertex_n &v, std::vector<StronglyConnected> &sccs, std::deque<Vertex_n> &Points,int &Counter) {
+    v_p_n root = get(&NVertexProperties::visited, g);
+    v_p_nb inComponent = get(&NVertexProperties::isComponent, g);
+    v_p_n self = get(&NVertexProperties::index,g);
+    v_p_n num = get(&NVertexProperties::num, g);
+    typedef boost::graph_traits<Nuutila_Graph>::vertex_descriptor Vertex_n;
+    num[v] =  Counter ;
+    root[v] = self[v] ;
+    inComponent[v] = false;
+    Points.push_front(v);
+    typedef boost::graph_traits<Nuutila_Graph>::edge_descriptor Edge;
+    boost::graph_traits<Nuutila_Graph>::out_edge_iterator out_i, out_end;
+    for(boost::tie(out_i,out_end) = out_edges(v,g); out_i != out_end; ++out_i){
+        Edge e = *out_i;
+        Vertex_n w = target(e,g);
+        if(root[w] == 666){
+            Visit(g,w,sccs,Points,Counter);
+        }
+        if(! inComponent[w]){
+            root[v] = num[v] < num[w] ? root[v] : root[w];
+        }
+    }
+    if(root[v] == (self[v] )){
+        Vertex_n w = Points.front();
+        while(self[w] != self[v]){
+            inComponent[w] = true;
+            Points.pop_front();
+            w = Points.front();
+        }
+        inComponent[w] =true;
+        Points.pop_front();
+    }
+}

@@ -25,14 +25,16 @@ int main(int, char *argv[])
     std::ifstream infile(filename);
     GraphComponent test(filename);
     Algorithms::Tarjan t;
+    Algorithms::Nuutila n;
     //t.ApplyDFS(test.theGraph);
-    t.ApplySCC(test.theGraph);
+ //   t.ApplySCC(test.theGraph);
+    n.ApplySCC_Original(test.NGraph);
     //test.ApplyDFS();
-    test.print_graph_file();
-
-    Vertex v = vertex(0,test.theGraph);
-    Vertex w = vertex(7,test.theGraph);
-    std::cout << t.isReachable(test.theGraph,v,w) << std::endl;
+    //test.print_graph_file();
+    test.print_graph_file_nuutila();
+  //  Vertex_t v = vertex(0,test.theGraph);
+   // Vertex_t w = vertex(7,test.theGraph);
+   // std::cout << t.isReachable(test.theGraph,v,w) << std::endl;
 
     return 0;
 }

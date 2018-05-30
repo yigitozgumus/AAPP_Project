@@ -31,18 +31,28 @@ public:
 
         void ApplyDFS(SCC_Graph &g);
 
-        void DepthFirstSearch(SCC_Graph &g, Vertex &v, int &Counter);
+        void DepthFirstSearch(SCC_Graph &g, Vertex_t &v, int &Counter);
 
         void ApplyBiconnectivity(SCC_Graph &g);
 
-        void Biconnect(SCC_Graph &g, Vertex &v, int &Counter);
+        void Biconnect(SCC_Graph &g, Vertex_t &v, int &Counter);
 
         void ApplySCC(SCC_Graph &g);
 
-        bool isReachable(SCC_Graph &g, Vertex &source, Vertex &target);
+        bool isReachable(SCC_Graph &g, Vertex_t &source, Vertex_t &target);
 
-        void StrongConnect(SCC_Graph &g, Vertex &v, std::vector<StronglyConnected> &sccs, std::vector<Vertex> &Points,
-                           int &Counter);
+        void
+        StrongConnect(SCC_Graph &g, Vertex_t &v, std::vector<StronglyConnected> &sccs, std::vector<Vertex_t> &Points,
+                      int &Counter);
+    };
+
+    class Nuutila {
+    public:
+        Nuutila() = default;
+
+        void ApplySCC_Original(Nuutila_Graph &g);
+
+        void Visit(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::deque<Vertex_n> &Points,int &Counter);
     };
 
 };
