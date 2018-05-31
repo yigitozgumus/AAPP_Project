@@ -80,14 +80,13 @@ public:
         read_graph_file_tarjan(infile_t, theGraph);
         std::ifstream infile_n(filename);
         read_graph_file_nuutila(infile_n,NGraph);
-        std::cout << "\n" << "The graph has been imported from the file: "
-                  << filename << "\n" << std::endl;
-        print_graph_file();
-        std::cout << "\n"
-                  << "The graph has been imported from the file: "
-                  << filename << "\n"
+        std::cout << "The graph has been imported from the file: "
+                  << filename << std::endl;
+        //print_graph_file();
+        std::cout << "The graph has been imported from the file: "
+                  << filename
                   << std::endl;
-        print_graph_file_nuutila();
+       // print_graph_file_nuutila();
     }
 
     void print_graph_file();

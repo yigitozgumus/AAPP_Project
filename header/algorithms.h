@@ -52,7 +52,15 @@ public:
 
         void ApplySCC_Original(Nuutila_Graph &g);
 
-        void Visit(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::deque<Vertex_n> &Points,int &Counter);
+        void Visit(Nuutila_Graph &g, Vertex_n &v,std::vector<bool> &sccs, std::stack<Vertex_n> &Points,int &Counter);
+
+        void ApplySCC_v1(Nuutila_Graph &g);
+
+        void ApplySCC_v2(Nuutila_Graph &g);
+
+        void Visit_v1(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points,int &Counter);
+
+        void Visit_v2(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points,int &Counter);
     };
 
 };

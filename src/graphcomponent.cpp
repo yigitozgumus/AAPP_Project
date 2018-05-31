@@ -57,11 +57,11 @@ void GraphComponent::read_graph_file_nuutila(std::istream &in, Nuutila_Graph &g)
         else
             break;
     boost::graph_traits<Nuutila_Graph>::vertex_iterator vi, viend;
-    int vnum = 0;
+    int vnum = 1;
     for (boost::tie(vi, viend) = vertices(NGraph); vi != viend; ++vi)
         id[*vi] = vnum++;
     //initialize the nums for the DFS
-    v_p_n nums = get(&NVertexProperties::visited, g);
+    v_p_n nums = get(&NVertexProperties::num, g);
     for (boost::tie(vi, viend) = vertices(g); vi != viend; ++vi)
         nums[*vi] = 666;
 
@@ -88,18 +88,16 @@ void GraphComponent::print_graph_file_nuutila() {
     v_p_n id = get(&NVertexProperties::index, NGraph);
     property_map<Nuutila_Graph, std::string EdgeProperties::*>::type
             name = get(&EdgeProperties::name, NGraph);
+    v_p_n num = get(&NVertexProperties::num, NGraph);
     v_p_n root = get(&NVertexProperties::visited, NGraph);
     v_p_nb inComponent = get(&NVertexProperties::isComponent, NGraph);
     boost::graph_traits<Nuutila_Graph>::vertex_iterator vi, viend;
-    int vnum = 0;
-    for (boost::tie(vi, viend) = vertices(NGraph); vi != viend; ++vi)
-        id[*vi] = vnum++;
     graph_traits<Nuutila_Graph>::vertex_iterator i, end;
     graph_traits<Nuutila_Graph>::out_edge_iterator ei, edge_end;
     for (boost::tie(i, end) = vertices(NGraph); i != end; ++i) {
-        std::cout << id[*i]+1 << " " << "(" << root[*i] << "," <<inComponent[*i] << ")";
+        std::cout << id[*i] << " " << "(" << root[*i] <<"," << num[*i]<< "," <<inComponent[*i] << ")";
         for (boost::tie(ei, edge_end) = out_edges(*i, NGraph); ei != edge_end; ++ei)
-            std::cout << " --" << name[*ei] << "--> " << id[target(*ei, NGraph)]+1 << "  ";
+            std::cout << " --" << name[*ei] << "--> " << id[target(*ei, NGraph)] << "  ";
         std::cout << std::endl;
     }
     // print_edges(theGraph, id);
