@@ -60,7 +60,7 @@ public:
 
         void Visit_v1(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points,int &Counter);
 
-        void Visit_v2(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points,int &Counter);
+        void Visit_v2(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::vector<Vertex_n> &Points,int &Counter);
     };
 
 };

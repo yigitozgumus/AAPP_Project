@@ -280,14 +280,15 @@ void Algorithms::Nuutila::ApplySCC_v2(Nuutila_Graph &g){
     typedef boost::graph_traits<Nuutila_Graph>::vertex_descriptor Vertex_n;
     typedef boost::graph_traits<Nuutila_Graph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-    std::stack<Vertex_n> Points;
+    std::vector<Vertex_n> Points;
+    Vertex_n v ;
+    Points.push_back(v);
     int Counter = 0;
     std::vector<StronglyConnected> strongs;
-
     for (vp = vertices(g); vp.first != vp.second; vp.first++) {
         Vertex_n v = *vp.first;
         if (num[v] == 666) {
-            Visit_v1(g, v, strongs,Points, Counter);
+            Visit_v2(g, v, strongs,Points, Counter);
         }
     }
 }
@@ -336,6 +337,48 @@ void Algorithms::Nuutila::ApplySCC_v2(Nuutila_Graph &g){
      }
  }
 
- void Algorithms::Nuutila::Visit_v2(Nuutila_Graph &g, Vertex_n &v, std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points, int &Counter){
-
+ void Algorithms::Nuutila::Visit_v2(Nuutila_Graph &g, Vertex_n &v, std::vector<StronglyConnected> &sccs, std::vector<Vertex_n> &Points, int &Counter){
+     v_p_n root = get(&NVertexProperties::visited, g);
+     v_p_nb inComponent = get(&NVertexProperties::isComponent, g);
+     v_p_n self = get(&NVertexProperties::index, g);
+     v_p_n num = get(&NVertexProperties::num, g);
+     typedef boost::graph_traits<Nuutila_Graph>::vertex_descriptor Vertex_n;
+     Counter++;
+     num[v] = Counter;
+     root[v] = self[v];
+     inComponent[v] = false;
+     typedef boost::graph_traits<Nuutila_Graph>::edge_descriptor Edge;
+     boost::graph_traits<Nuutila_Graph>::out_edge_iterator hoho,haha;
+     for (boost::tie(hoho,haha) = out_edges(v,g); hoho != haha; ++hoho){
+         Edge e = *hoho;
+         Vertex_n w = target(e, g);
+         if (num[w] == 666){
+             Visit_v2(g, w, sccs, Points, Counter);
+         }
+         if (!inComponent[vertex(root[w],g)]){
+             if (root[v] > root[w] || num[v] > num[w]) {
+                 root[v] = root[w];
+             }
+         }
+     }
+     if(root[v] == self[v]){
+         Vertex_n w = Points.back();
+         if(num[w] >= num[v]){
+            while(num[w] >= num[v]){
+                inComponent[w] = true;
+                Points.pop_back();
+                w = Points.back();
+                if (Points.size() == 1)
+                {
+                    break;
+                }
+            }
+         }else{
+             inComponent[v] = true;
+         }
+     }
+     else if (std::find(Points.begin(), Points.end(), vertex(root[v],g)) == Points.end()){
+         Points.push_back(v);
+     }
+     // if root[v] == v part will be implemented
 }
