@@ -213,7 +213,7 @@ void Algorithms::Nuutila::Visit(Nuutila_Graph &g, Vertex_n &v, std::vector<bool>
     root[v] = self[v];
     inComponent[v] = false;
     Points.push(v);
-    sccs[self[v]-1] = true;
+    sccs[self[v]] = true;
     typedef boost::graph_traits<Nuutila_Graph>::edge_descriptor Edge;
     boost::graph_traits<Nuutila_Graph>::out_edge_iterator o_i,o_o;
     for (boost::tie(o_i,o_o) = out_edges(v,g); o_i != o_o; ++o_i){
@@ -291,6 +291,26 @@ void Algorithms::Nuutila::ApplySCC_v2(Nuutila_Graph &g){
             Visit_v2(g, v, strongs,Points, Counter);
         }
     }
+    std::cout << "The Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    std::pair<vertex_iter, vertex_iter> vp_inner;
+    for (vp = vertices(g); vp.first != vp.second; vp.first++)
+    {
+        Vertex_n v = *vp.first;
+        if ((self[v]) == visited[v])
+        {
+            std::cout << "Strongly connected component is : "
+                      << " ";
+            for (vp_inner = vertices(g); vp_inner.first != vp_inner.second; vp_inner.first++)
+            {
+                Vertex_n w = *vp_inner.first;
+                if ((self[v]) == visited[w])
+                {
+                    std::cout << self[w] << " ";
+                }
+            }
+            std::cout << std::endl;
+        }
+    }
 }
 
  void Algorithms::Nuutila::Visit_v1(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::stack<Vertex_n> &Points,int &Counter){
@@ -312,15 +332,16 @@ void Algorithms::Nuutila::ApplySCC_v2(Nuutila_Graph &g){
              Visit_v1(g, w, sccs, Points, Counter);
          }
          if (!inComponent[w]){
-             if (root[v] > root[w] || num[v] > num[w]) {
+             if (num[v] > num[w] ) {
                  root[v] = root[w];
              }
          }
     }
      if(root[v] == self[v]){
+         inComponent[v]= true;
         if(!Points.empty()){
              Vertex_n w = Points.top();
-            while(num[w] > num[v] || root[v] != root[w]){
+            while(num[w] > num[v]){
                 Points.pop();
                 inComponent[w] = true;
                 if(Points.empty()){
@@ -356,29 +377,29 @@ void Algorithms::Nuutila::ApplySCC_v2(Nuutila_Graph &g){
              Visit_v2(g, w, sccs, Points, Counter);
          }
          if (!inComponent[vertex(root[w],g)]){
-             if (root[v] > root[w] || num[v] > num[w]) {
+             if (root[v] > root[w] ) {
                  root[v] = root[w];
              }
          }
      }
      if(root[v] == self[v]){
-         Vertex_n w = Points.back();
-         if(num[w] >= num[v]){
-            while(num[w] >= num[v]){
-                inComponent[w] = true;
-                Points.pop_back();
-                w = Points.back();
-                if (Points.size() == 1)
-                {
-                    break;
-                }
-            }
-         }else{
-             inComponent[v] = true;
+         if(Points.size() > 1){
+             Vertex_n w = Points.back();
+                 if(num[w] > num[v] ){
+                     do{
+                         Points.pop_back();
+                         inComponent[w] = true;
+                         w = Points.back();
+                     }while(num[w] > num[v] );
+                 }else {
+                     inComponent[v] = true;
+                 }
          }
+
      }
      else if (std::find(Points.begin(), Points.end(), vertex(root[v],g)) == Points.end()){
-         Points.push_back(v);
+           std::cout << root[v] << " is going in " << std::endl;
+         Points.push_back(vertex(root[v],g));
      }
      // if root[v] == v part will be implemented
 }

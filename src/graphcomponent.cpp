@@ -57,7 +57,7 @@ void GraphComponent::read_graph_file_nuutila(std::istream &in, Nuutila_Graph &g)
         else
             break;
     boost::graph_traits<Nuutila_Graph>::vertex_iterator vi, viend;
-    int vnum = 1;
+    int vnum = 0;
     for (boost::tie(vi, viend) = vertices(NGraph); vi != viend; ++vi)
         id[*vi] = vnum++;
     //initialize the nums for the DFS

@@ -29,8 +29,8 @@ int main(int, char *argv[])
     Algorithms::Nuutila n;
     //t.ApplyDFS(test.theGraph);
     //t.ApplySCC(test.theGraph);
-    //n.ApplySCC_Original(test2.NGraph);
-    //test2.print_graph_file_nuutila();
+    n.ApplySCC_v1(test2.NGraph);
+    test2.print_graph_file_nuutila();
     n.ApplySCC_v2(test.NGraph);
     //test.ApplyDFS();
     //test.print_graph_file();

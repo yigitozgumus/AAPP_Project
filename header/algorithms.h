@@ -63,5 +63,41 @@ public:
         void Visit_v2(Nuutila_Graph &g, Vertex_n &v,std::vector<StronglyConnected> &sccs, std::vector<Vertex_n> &Points,int &Counter);
     };
 
+    class Pearce{
+    public:
+        Pearce() = default;
+
+        void DFS(Pearce_Graph &g,Vertex_p &v);
+
+        void visit(Vertex_p &v);
+
+        void Pea_Find_SCC1(Pearce_Graph &g, Vertex_p &v);
+
+        void visit_scc1(Vertex_p &v);
+
+        void Pea_Find_SCC2(Pearce_Graph &g, Vertex_p &v);
+
+        void visit_scc2(Vertex_p &v);
+
+        void Pea_Find_SCC3(Pearce_Graph &g, Vertex_p &v);
+
+        void visit_scc3(Vertex_p &v);
+
+        void visitLoop();
+
+        void beginvisiting(Vertex_p &v);
+
+        void finishVisiting(Vertex_p &v);
+
+        void beginEdge(Vertex_p &v);
+
+        void finishEdge(Vertex_p &v);
+
+
+
+
+
+    };
+
 };
 

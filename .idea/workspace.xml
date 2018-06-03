@@ -12,11 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ab6a3b1-a98a-43ff-8d57-9ce5536da3e6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/input/dfs2.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/algorithms.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/algorithms.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/graphcomponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/graphcomponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/Project" beforeDir="false" afterPath="$PROJECT_DIR$/out/Project" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphcomponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphcomponent.cpp" afterDir="false" />
@@ -47,8 +44,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+            <state relative-caret-position="465">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -65,17 +62,26 @@
       <file leaf-file-name="graphcomponent.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphcomponent.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state relative-caret-position="401">
+              <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="algorithms.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="algorithms.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithms.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2190">
-              <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
+            <state relative-caret-position="180">
+              <caret line="334" column="32" lean-forward="true" selection-start-line="334" selection-start-column="32" selection-end-line="334" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjacency_list.hpp" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="1592" selection-start-line="1592" selection-end-line="1592" />
             </state>
           </provider>
         </entry>
@@ -107,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="algorithms.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="algorithms.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/header/algorithms.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
+            <state relative-caret-position="476">
+              <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -155,12 +161,12 @@
         <option value="$PROJECT_DIR$/header/typedef.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/input/dfs2.dot" />
-        <option value="$PROJECT_DIR$/header/algorithms.h" />
         <option value="$PROJECT_DIR$/header/graphcomponent.h" />
+        <option value="$PROJECT_DIR$/src/TODO" />
         <option value="$PROJECT_DIR$/src/graphcomponent.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/algorithms.cpp" />
-        <option value="$PROJECT_DIR$/src/TODO" />
+        <option value="$PROJECT_DIR$/header/algorithms.h" />
       </list>
     </option>
   </component>
@@ -173,7 +179,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1680" />
     <option name="height" value="1028" />
@@ -276,7 +282,7 @@
       <workItem from="1527652520107" duration="3157000" />
       <workItem from="1527662570520" duration="5908000" />
       <workItem from="1527698430846" duration="8483000" />
-      <workItem from="1527791085725" duration="9527000" />
+      <workItem from="1527791085725" duration="15815000" />
     </task>
     <task id="LOCAL-00001" summary="IsSearchable implemented, Clion Project Files">
       <created>1527538390123</created>
@@ -306,23 +312,30 @@
       <option name="project" value="LOCAL" />
       <updated>1527705703925</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Nuutila Original SCC and Version 1 is implemented">
+      <created>1527803956802</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1527803956802</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48500000" />
+    <option name="totallyTimeSpent" value="54788000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="22" width="1680" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49344262" visible="true" weight="0.22965641" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49344262" visible="true" weight="0.22965641" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.47268906" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.47246695" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32048458" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32268724" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32819384" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36134455" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36123347" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32929516" />
       <window_info id="Structure" order="1" sideWeight="0.5065574" side_tool="true" weight="0.22965641" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32929516" />
@@ -367,11 +380,19 @@
     <MESSAGE value="IsSearchable implemented, Clion Project Files" />
     <MESSAGE value="ApplySCC is implemented" />
     <MESSAGE value="Nuutela SCC implemented, need debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nuutela SCC implemented, need debugging" />
+    <MESSAGE value="Nuutila Original SCC and Version 1 is implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nuutila Original SCC and Version 1 is implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/algorithms.cpp</url>
+          <line>384</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -618,38 +639,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphcomponent.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="2455" column="9" lean-forward="true" selection-start-line="2455" selection-start-column="9" selection-end-line="2455" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input/dfs2.dot">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/header/algorithms.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -670,10 +663,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphcomponent.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/graph/detail/adjacency_list.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="1592" selection-start-line="1592" selection-end-line="1592" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithms.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2190">
-          <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
+        <state relative-caret-position="180">
+          <caret line="334" column="32" lean-forward="true" selection-start-line="334" selection-start-column="32" selection-end-line="334" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header/algorithms.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
         </state>
       </provider>
     </entry>
