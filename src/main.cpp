@@ -15,26 +15,26 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-#include "./../header/algorithms.h"
+#include "./../header/tarjan.h"
+#include "./../header/nuutila.h"
+#include "./../header/pearce.h"
 
 using namespace boost;
 
 int main(int, char *argv[])
 {
     std::string filename = argv[1];
-    std::ifstream infile(filename);
-    GraphComponent test(filename);
-    GraphComponent test2(filename);
-    Algorithms::Tarjan t;
-    Algorithms::Nuutila n;
+    Tarjan test(filename);
+    test.print_graph();
+    test.ApplyDFS();
+    test.ApplySCC();
+   // test.print_graph_file();
     //t.ApplyDFS(test.theGraph);
     //t.ApplySCC(test.theGraph);
-    n.ApplySCC_v1(test2.NGraph);
-    test2.print_graph_file_nuutila();
-    n.ApplySCC_v2(test.NGraph);
+    
     //test.ApplyDFS();
     //test.print_graph_file();
-   test.print_graph_file_nuutila();
+   
   //  Vertex_t v = vertex(0,test.theGraph);
    // Vertex_t w = vertex(7,test.theGraph);
    // std::cout << t.isReachable(test.theGraph,v,w) << std::endl;

@@ -1,30 +1,36 @@
-#include "./graphcomponent.h"
+//Boost
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graphviz.hpp>
+#include <boost/graph/graph_utility.hpp>
+#include <boost/graph/adjacency_list_io.hpp>
+#include <boost/graph/property_iter_range.hpp>
+#include <boost/graph/copy.hpp>
+#include <boost/property_map/property_map.hpp>
+
+using namespace boost;
+
+namespace UtilityStructs {
+
+    struct EdgeProperty {
+        EdgeProperty(const std::string &n) : name(n) {}
+        std::string name;
+    };
+
+    struct VertexProperty {
+        std::size_t index;
+
+    };
+}
 
 typedef UtilityStructs::VertexProperty VertexProperty;
-typedef UtilityStructs::EdgeProperties EdgeProperties;
-typedef UtilityStructs::TVertexProperties TVertexProperties;
-typedef UtilityStructs::NVertexProperties NVertexProperties;
+typedef UtilityStructs::EdgeProperty EdgeProperty;
+
 typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-        VertexProperty, EdgeProperties>
-        inputGraph;
-typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-        NVertexProperties, EdgeProperties>
-        Nuutila_Graph;
-typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-        TVertexProperties, EdgeProperties>
-        SCC_Graph;
-typedef boost::graph_traits<SCC_Graph>::vertex_descriptor Vertex_t;
-typedef boost::graph_traits<Nuutila_Graph>::vertex_descriptor Vertex_n;
-typedef boost::graph_traits<SCC_Graph>::edge_descriptor Edge;
-typedef boost::property_map<SCC_Graph, std::size_t TVertexProperties::*>::type marked;
-typedef property_map<SCC_Graph, std::size_t TVertexProperties::*>::type v_p;
-typedef property_map<SCC_Graph, std::string EdgeProperties::*>::type e_p;
-typedef property_map<Nuutila_Graph, std::size_t NVertexProperties::*>::type v_p_n;
-typedef property_map<Nuutila_Graph, bool NVertexProperties::*>::type v_p_nb;
-typedef property_map<Nuutila_Graph, std::size_t EdgeProperties::*>::type e_p_n;
-typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-        TVertexProperties, EdgeProperties>
-        StronglyConnected;
-typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-        boost::no_property, boost::no_property>
-        biconnectivity;
+                              VertexProperty, EdgeProperty>
+    theGraph;
+
+typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
+typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
+typedef property_map<theGraph, std::size_t VertexProperty::*>::type v_p;
+typedef property_map<theGraph, std::string EdgeProperty::*>::type e_p;
