@@ -20,24 +20,25 @@
 using namespace std;
 using namespace boost;
 
-class Nuutila : protected GraphComponent
+class Nuutila : public GraphComponent
 {
   public:
     theGraph n;
-    Nuutila() = default;
-    Nuutila(std::string filename){
+    Nuutila(){}; 
+    Nuutila(std::string filename): GraphComponent(filename){
         read_graph_file(filename, n);
     }
+    void print_graph();
 
-    void ApplySCC_Original(theGraph &g);
+    void ApplySCC_Original();
 
-    void Visit(theGraph &g, Vertex_t &v, std::vector<bool> &sccs, std::stack<Vertex_t> &Points, int &Counter);
+    void Visit( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root,std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter);
 
-    void ApplySCC_v1(theGraph &g);
+    void ApplySCC_v1();
 
-    void ApplySCC_v2(theGraph &g);
+    void ApplySCC_v2();
 
-    void Visit_v1(theGraph &g, Vertex_t &v,  std::stack<Vertex_t> &Points, int &Counter);
+    void Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter);
 
-    void Visit_v2(theGraph &g, Vertex_t &v,  std::vector<Vertex_t> &Points, int &Counter);
+    void Visit_v2(Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter);
 };

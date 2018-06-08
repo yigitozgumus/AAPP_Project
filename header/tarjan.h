@@ -1,5 +1,4 @@
-#include "./graphcomponent.h"
-//STL
+#include "./graphcomponent.h" //STL
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,8 +25,6 @@ class Tarjan : public GraphComponent
     Tarjan() {};
     Tarjan(std::string filename): GraphComponent(filename){
         read_graph_file(filename,t);
-     //   std::cout << "The graph is imported" << std::endl;
-       // print_graph_file(t);
     }
 
     void print_graph();
