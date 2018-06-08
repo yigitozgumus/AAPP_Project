@@ -17,7 +17,11 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-void Pearce::DFS(theGraph &g, Vertex_t &v) {
+void Pearce::print_graph(){
+    GraphComponent::print_graph_file(p);
+}
+
+void Pearce::DFS( Vertex_t &v) {
 
 }
 

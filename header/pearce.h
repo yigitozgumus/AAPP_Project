@@ -28,7 +28,9 @@ class Pearce : protected GraphComponent
       read_graph_file(filename,p);
     }
 
-    void DFS(theGraph &g, Vertex_t &v);
+    void print_graph();
+
+    void DFS( Vertex_t &v);
 
     void visit(Vertex_t &v);
 
