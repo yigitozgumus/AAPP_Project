@@ -108,22 +108,22 @@
             Visit_v1( v,Points,root,visited,isComponent, Counter);
         }
     }
-         std::cout << "The Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
-         std::pair<vertex_iter, vertex_iter> vp_inner;
-         for(vp = vertices(n); vp.first != vp.second; vp.first++){
-             Vertex_t v = *vp.first;
-             if((id[v]) == visited[id[v]]){
-                 std::cout << "Strongly connected component is : "  << " ";
-                 for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
-                     Vertex_t w = *vp_inner.first;
-                     if((id[v]) == visited[id[w]]){
-                         std::cout << id[w]  << " ";
-                     }
-                 }
-                 std::cout << std::endl;
-             }
-         }
-      }
+    std::cout << "The Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    std::pair<vertex_iter, vertex_iter> vp_inner;
+    for(vp = vertices(n); vp.first != vp.second; vp.first++){
+        Vertex_t v = *vp.first;
+        if((id[v]) == visited[id[v]]){
+            std::cout << "Strongly connected component is : "  << " ";
+            for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
+                Vertex_t w = *vp_inner.first;
+                if((id[v]) == visited[id[w]]){
+                    std::cout << id[w]  << " ";
+                }
+            }
+            std::cout << std::endl;
+        }
+    }
+}
 
       void Nuutila::ApplySCC_v2(){
 
@@ -209,47 +209,44 @@
 
         void Nuutila::Visit_v2(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter)
         {
-            //      v_p_n root = get(&NVertexProperties::visited, g);
-            //      v_p_nb inComponent = get(&NVertexProperties::isComponent, g);
-            //      v_p_n self = get(&NVertexProperties::index, g);
-            //      v_p_n num = get(&NVertexProperties::num, g);
-            //      typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
-            //      Counter++;
-            //      num[v] = Counter;
-            //      root[v] = self[v];
-            //      inComponent[v] = false;
-            //      typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
-            //      boost::graph_traits<theGraph>::out_edge_iterator hoho,haha;
-            //      for (boost::tie(hoho,haha) = out_edges(v,g); hoho != haha; ++hoho){
-            //          Edge e = *hoho;
-            //          Vertex_t w = target(e, g);
-            //          if (num[w] == 666){
-            //              Visit_v2(g, w, sccs, Points, Counter);
-            //          }
-            //          if (!inComponent[vertex(root[w],g)]){
-            //              if (root[v] > root[w] ) {
-            //                  root[v] = root[w];
-            //              }
-            //          }
-            //      }
-            //      if(root[v] == self[v]){
-            //          if(Points.size() > 1){
-            //              Vertex_t w = Points.back();
-            //                  if(num[w] > num[v] ){
-            //                      do{
-            //                          Points.pop_back();
-            //                          inComponent[w] = true;
-            //                          w = Points.back();
-            //                      }while(num[w] > num[v] );
-            //                  }else {
-            //                      inComponent[v] = true;
-            //                  }
-            //          }
+                  v_p id = get(&VertexProperty::index, n);
+                 typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
+                 Counter++;
+                 visited[id[v]] = Counter++;
+                 root[id[v]] = id[v];
+                 isComponent[id[v]] = false;
+                 typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
+                 boost::graph_traits<theGraph>::out_edge_iterator hoho,haha;
+                 for (boost::tie(hoho,haha) = out_edges(v,n); hoho != haha; ++hoho){
+                     Edge e = *hoho;
+                     Vertex_t w = target(e, n);
+                     if (visited[id[w]] == 666){
+                         Visit_v2( w, Points,root,visited,isComponent, Counter);
+                     }
+                     if (!isComponent[id[vertex(root[id[w]],n)]]){
+                         if (root[id[v]] > root[id[w]] ) {
+                             root[id[v]] = root[id[w]];
+                         }
+                     }
+                 }
+                 if(root[id[v]] == id[v]){
+                     if(Points.size() > 1){
+                         Vertex_t w = Points.back();
+                             if(visited[id[w]] > visited[id[v]] ){
+                                 do{
+                                     Points.pop_back();
+                                     isComponent[id[w]] = true;
+                                     w = Points.back();
+                                 }while(visited[id[w]] > id[v] );
+                             }else {
+                                 isComponent[id[v]] = true;
+                             }
+                     }
 
-            //      }
-            //      else if (std::find(Points.begin(), Points.end(), vertex(root[v],g)) == Points.end()){
-            //            std::cout << root[v] << " is going in " << std::endl;
-            //          Points.push_back(vertex(root[v],g));
-            //      }
-            //      // if root[v] == v part will be implemented
+                 }
+                 else if (std::find(Points.begin(), Points.end(), vertex(root[id[v]],n)) == Points.end()){
+                       std::cout << root[id[v]] << " is going in " << std::endl;
+                     Points.push_back(vertex(root[id[v]],n));
+                 }
+                 // if root[v] == v part will be implemented
              }

@@ -31,6 +31,8 @@ int main(int, char *argv[])
     test.print_graph();
     Nuutila test2(filename);
     test2.ApplySCC_Original();
+    test2.ApplySCC_v1();
+    test2.ApplySCC_v2();
     test2.print_graph();
    // test.print_graph_file();
     //t.ApplyDFS(test.theGraph);
