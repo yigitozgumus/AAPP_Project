@@ -21,20 +21,98 @@ void Pearce::print_graph(){
     GraphComponent::print_graph_file(p);
 }
 
-void Pearce::DFS( Vertex_t &v) {
-
+void Pearce::DFS() {
+    int index = 0;
+    v_p id = get(&VertexProperty::index ,p);
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    int sizeOfGraph = num_vertices(p);
+    std::vector<int> visited(sizeOfGraph,666);
+    for(vp = vertices(p); vp.first != vp.second; vp.first++){
+        Vertex_t v = *vp.first;
+        if(visited[id[v]]){
+            visit(v,visited,index);
+        }
+    }
 }
 
-void Pearce::visit(Vertex_t &v) {
-
+void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
+    v_p id = get(&VertexProperty::index, p);
+    visited[id[v]] = index++;
+    typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
+    boost::graph_traits<theGraph>::out_edge_iterator out_i, out_end;
+    for (boost::tie(out_i, out_end) = out_edges(v, p); out_i != out_end; ++out_i){
+        Edge e = *out_i;
+        Vertex_t w = target(e, p);
+        if (visited[id[w]] == 666){
+            visit(w, visited,index);
+        }
+    }
 }
 
-void Pearce::Pea_Find_SCC1(theGraph &g, Vertex_t &v) {
+void Pearce::Pea_Find_SCC1() {
+    int index = 0;
+    
+    int sizeOfGraph = num_vertices(p);
+    std::vector<bool> root(sizeOfGraph,false);
+    std::vector<bool> visited(sizeOfGraph,666);
+    std::vector<int> rindex (sizeOfGraph,-1);
+    std::vector<bool> inComponent(sizeOfGraph,false);
+    std::vector<Vertex_t> Stack;
+    v_p id = get(&VertexProperty::index, p);
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
 
+    for(vp=vertices(p); vp.first != vp.second; vp.first++){
+        Vertex_t v = *vp.first;
+        if(visited[id[v]]){
+            visit_scc1(v,root,visited,rindex,inComponent,Stack,index);
+        }
+    }
 }
 
-void Pearce::visit_scc1(Vertex_t &v) {
+void Pearce::visit_scc1(Vertex_t &v,
+                        std::vector<bool> &root,
+                        std::vector<bool> &visited,
+                        std::vector<int> &rindex,
+                        std::vector<bool> &inComponent,
+                        std::vector<Vertex_t> &Stack,
+                        int &index){
+    v_p id = get(&VertexProperty::index, p);
+    root[id[v]] = true;
+    visited[id[v]] = true;
+    rindex[id[v]] = index++;
+    inComponent[id[v]] = false;
 
+    typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
+    boost::graph_traits<theGraph>::out_edge_iterator out_i, out_end;
+
+    for (boost::tie(out_i, out_end) = out_edges(v, p); out_i != out_end; ++out_i){
+        Edge e = *out_i;
+        Vertex_t w = target(e, p);
+        if (visited[id[w]] == false){
+            visit_scc1(w,root, visited,rindex,inComponent,Stack, index);
+        }
+        if(! inComponent[id[w]] && (rindex[id[w]] < rindex[id[v]])){
+            rindex[id[v]] = rindex[id[w]]; 
+            root[id[v]] = false;
+        }
+    }
+    if(root[id[v]]){
+        inComponent[id[v]] = true ;
+        if(!Stack.empty()){
+            while(!Stack.empty() && (rindex[id[v]] < rindex[id[Stack.back()]])){
+                Vertex_t w = Stack.back();
+                Stack.pop_back();
+                rindex[id[w]] = 1; //TODO Wat ?
+                inComponent[id[w]] = true
+            }
+            rindex[id[v]] = 1;
+            int a = 1 + 1;
+        }
+    }else{
+        Stack.push_back(v);
+    }
 }
 
 void Pearce::Pea_Find_SCC2(theGraph &g, Vertex_t &v) {

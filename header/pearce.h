@@ -30,19 +30,27 @@ class Pearce : protected GraphComponent
 
     void print_graph();
 
-    void DFS( Vertex_t &v);
+    void DFS();
 
-    void visit(Vertex_t &v);
+    void visit(Vertex_t &v,
+              std::vector<int> &visited,
+              int &index);
 
-    void Pea_Find_SCC1(theGraph &g, Vertex_t &v);
+    void Pea_Find_SCC1();
 
-    void visit_scc1(Vertex_t &v);
+    void visit_scc1(Vertex_t &v,
+                    std::vector<bool> &root,
+                    std::vector<bool> &visited,
+                    std::vector<int> &rindex,
+                    std::vector<bool> &inComponent,
+                    std::vector<Vertex_t> &Stack,
+                    int &index);
 
-    void Pea_Find_SCC2(theGraph &g, Vertex_t &v);
+    void Pea_Find_SCC2();
 
     void visit_scc2(Vertex_t &v);
 
-    void Pea_Find_SCC3(theGraph &g, Vertex_t &v);
+    void Pea_Find_SCC3();
 
     void visit_scc3(Vertex_t &v);
 

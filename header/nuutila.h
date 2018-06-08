@@ -32,13 +32,28 @@ class Nuutila : public GraphComponent
 
     void ApplySCC_Original();
 
-    void Visit( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root,std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter);
+    void Visit( Vertex_t &v,
+                std::vector<Vertex_t> &Points,
+                std::vector<int> &root,
+                std::vector<int> &visited,
+                std::vector<bool> &isComponent,
+                int &Counter);
 
     void ApplySCC_v1();
 
     void ApplySCC_v2();
 
-    void Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter);
+    void Visit_v1(Vertex_t &v,
+                  std::vector<Vertex_t> &Points,
+                  std::vector<int> &root,
+                  std::vector<int> &visited,
+                  std::vector<bool> &isComponent,
+                  int &Counter);
 
-    void Visit_v2(Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter);
+    void Visit_v2(Vertex_t &v,
+                  std::vector<Vertex_t> &Points,
+                  std::vector<int> &root,
+                  std::vector<int> &visited,
+                  std::vector<bool> &isComponent ,
+                  int &Counter);
 };
