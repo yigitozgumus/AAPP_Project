@@ -44,19 +44,36 @@ class Pearce : protected GraphComponent
                     std::vector<int> &rindex,
                     std::vector<bool> &inComponent,
                     std::vector<Vertex_t> &Stack,
-                    int &index);
+                    int &index,
+                    int &c);
 
     void Pea_Find_SCC2();
 
-    void visit_scc2(Vertex_t &v);
+    void visit_scc2(Vertex_t &v,
+                    std::vector<bool> &root,
+                    std::vector<int> &rindex,
+                    std::vector<Vertex_t> &Stack,
+                    int &index,
+                    int &c);
 
     void Pea_Find_SCC3();
 
-    void visit_scc3(Vertex_t &v);
+    void visit_scc3(Vertex_t &v,
+                    std::vector<bool> &root,
+                    std::vector<int> &rindex,
+                    std::vector<Vertex_t> &vStack,
+                    std::vector<int> &iStack,
+                    int &index,
+                    int &c);
 
     void visitLoop();
 
-    void beginvisiting(Vertex_t &v);
+    void beginVisiting(Vertex_t &v,
+                       std::vector<bool> &root,
+                       std::vector<int> &rindex,
+                       std::vector<Vertex_t> &vStack,
+                       std::vector<int> &iStack,
+                       int &index);
 
     void finishVisiting(Vertex_t &v);
 
