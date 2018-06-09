@@ -26,12 +26,19 @@ void Tarjan::print_graph(){
 
 void Tarjan::ApplyDFS() {
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex;
+    v_p id = get(&VertexProperty::index, t);
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
     Vertex_t theFirst = *(vertices(t).first);
     int Counter = 0;
     int SizeOfGraph = num_vertices(t);
     std::vector<int> visited(SizeOfGraph,666);
-    std::cout << "Discovery Order is: " << std::endl;
     DepthFirstSearch( theFirst, Counter, visited);
+    std::cout << "Discovery Order is: " << std::endl;
+     for(vp=vertices(t); vp.first != vp.second; vp.first++){
+        Vertex_t v = *vp.first;
+        std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;
+    }
 
 }
 
@@ -40,7 +47,7 @@ void Tarjan::DepthFirstSearch( Vertex_t &v, int &Counter,std::vector<int> &visit
     e_p arch_type = get(&EdgeProperty::name, t);
     Counter++;
     visited[id[v]] = static_cast<unsigned long>(Counter);
-    std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;
+ //   std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;
     typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
     boost::graph_traits<theGraph>::out_edge_iterator out_i, out_end;
     for (boost::tie(out_i, out_end) = out_edges(v, t); out_i != out_end; ++out_i) {

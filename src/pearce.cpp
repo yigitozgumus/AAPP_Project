@@ -38,6 +38,11 @@ void Pearce::DFS() {
         }
     }
     std::cout << "Pearce DFS implementation exited succesfully" << std::endl;
+    std::cout << "Discovery Order is: " << std::endl;
+    for(vp=vertices(p); vp.first != vp.second; vp.first++){
+        Vertex_t v = *vp.first;
+        std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;
+    }
 }
 
 void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
@@ -52,6 +57,7 @@ void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
             visit(w, visited,index);
         }
     }
+
 }
 
 void Pearce::Pea_Find_SCC1() {

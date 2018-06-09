@@ -38,8 +38,8 @@ public:
     GraphComponent();
     GraphComponent(std::string filename) {
        // read_graph_file(filename, g);
-        std::cout << "The graph has been imported from the file: "
-                  << filename << std::endl;
+    //    std::cout << "The graph has been imported from the file: "
+    //              << filename << std::endl;
         //print_graph_file();
        // print_graph_file_nuutila();
     }
