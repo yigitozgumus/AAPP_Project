@@ -226,6 +226,17 @@ void Pearce::Pea_Find_SCC3() {
         }
     }
     std::cout << "Pearce SCC implementation mark 3 exited succesfully" << std::endl;
+    int min = *min_element(std::begin(rindex), std::end(rindex));
+    for(int i = sizeOfGraph-1; i >= min; i--){
+          std::cout << "Strongly connected component is : "  << " ";
+          for(vp=vertices(p); vp.first != vp.second; vp.first++){
+                 Vertex_t v = *vp.first;
+                if(rindex[id[v]] == i){
+                    std::cout << id[v]+1 <<  " " ;
+                }
+         }
+        std::cout << std::endl;
+    }
     //Process rindex
 
 }
@@ -241,7 +252,6 @@ void Pearce::visit_scc3(Vertex_t &v,
     beginVisiting(v,root,rindex,vStack,iStack,index);
     while(!vStack.empty()){
         visitLoop(root,rindex,vStack,iStack,index,c);
-
     }
 }
 
@@ -251,19 +261,20 @@ void Pearce::visitLoop( std::vector<bool> &root,
                         std::vector<int> &iStack,
                         int &index,
                         int &c) {
-    Vertex_t v = vStack.back();
-    int i = iStack.back();
-
+    Vertex_t v = vStack[0];
+    int i = iStack[0];
+    
     int out_edges = out_degree(v,p);
+    
     while(i <= out_edges){
         if (i > 0){
-            i--;
-            finishEdge(v,i,rindex,root);
+            int k = i-1;
+            finishEdge(v,k,rindex,root);
         }
         if ( i < out_edges && beginEdge(v,i,root,rindex,vStack,iStack,index,c)){
             return;
         }
-        i++;
+        i = i+1;
     }
     finishVisiting(v,root,rindex,vStack,iStack,index,c);
 }
@@ -275,11 +286,12 @@ void Pearce::beginVisiting(Vertex_t &v,
                            std::vector<int> &iStack,
                            int &index){
     
-    vStack.push_back(v);
-    iStack.push_back(0);
+    vStack.insert(vStack.begin(),v);
+    iStack.insert(iStack.begin(),0);
     v_p id = get(&VertexProperty::index, p);
     root[id[v]] = true;
-    rindex[id[v]] = index++;
+    rindex[id[v]] = index;
+    index = index+1;
 }
 
 void Pearce::finishVisiting(Vertex_t &v,
@@ -290,8 +302,8 @@ void Pearce::finishVisiting(Vertex_t &v,
                             int &index,
                             int &c) {
     v_p id = get(&VertexProperty::index, p);
-    vStack.pop_back();
-    iStack.pop_back();
+    vStack.erase(vStack.begin());
+    iStack.erase(iStack.begin());
     if(root[id[v]]){
         index--;
         while(!vStack.empty() && (rindex[id[v]] <= rindex[id[vStack.back()]])){
@@ -301,7 +313,7 @@ void Pearce::finishVisiting(Vertex_t &v,
             index--;
         }
         rindex[id[v]] = c;
-        c--;
+        c = c-1;
     }else{
         vStack.push_back(v);
     }
@@ -325,8 +337,8 @@ bool Pearce::beginEdge(Vertex_t &v,
     Edge e = *out_i;
     Vertex_t w = target(e, p);
     if(rindex[id[w]] == 0){
-        iStack.pop_back();
-        iStack.push_back(k+1);
+        iStack.erase(iStack.begin());
+        iStack.insert(iStack.begin(),k+1);
         beginVisiting(w,root,rindex,vStack,iStack,index);
         return true;
     }else{
