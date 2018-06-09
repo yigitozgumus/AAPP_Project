@@ -24,7 +24,7 @@ class Pearce : protected GraphComponent
   public:
     theGraph p;
     Pearce() = default;
-    Pearce(std::string filename){
+    Pearce(std::string filename) : GraphComponent(filename){
       read_graph_file(filename,p);
     }
 
@@ -39,7 +39,6 @@ class Pearce : protected GraphComponent
     void Pea_Find_SCC1();
 
     void visit_scc1(Vertex_t &v,
-                    std::vector<bool> &root,
                     std::vector<bool> &visited,
                     std::vector<int> &rindex,
                     std::vector<bool> &inComponent,
@@ -50,7 +49,6 @@ class Pearce : protected GraphComponent
     void Pea_Find_SCC2();
 
     void visit_scc2(Vertex_t &v,
-                    std::vector<bool> &root,
                     std::vector<int> &rindex,
                     std::vector<Vertex_t> &Stack,
                     int &index,
@@ -66,7 +64,12 @@ class Pearce : protected GraphComponent
                     int &index,
                     int &c);
 
-    void visitLoop();
+    void visitLoop(std::vector<bool> &root,
+                  std::vector<int> &rindex,
+                  std::vector<Vertex_t> &vStack,
+                  std::vector<int> &iStack,
+                  int &index,
+                  int &c);
 
     void beginVisiting(Vertex_t &v,
                        std::vector<bool> &root,
@@ -75,9 +78,25 @@ class Pearce : protected GraphComponent
                        std::vector<int> &iStack,
                        int &index);
 
-    void finishVisiting(Vertex_t &v);
+    void finishVisiting(Vertex_t &v,
+                        std::vector<bool> &root,
+                        std::vector<int> &rindex,
+                        std::vector<Vertex_t> &vStack,
+                        std::vector<int> &iStack,
+                        int &index,
+                        int &c);
 
-    void beginEdge(Vertex_t &v);
+    bool beginEdge(Vertex_t &v,
+                  int &k,
+                  std::vector<bool> &root,
+                  std::vector<int> &rindex,
+                  std::vector<Vertex_t> &vStack,
+                  std::vector<int> &iStack,
+                  int &index,
+                  int &c);
 
-    void finishEdge(Vertex_t &v);
+    void finishEdge(Vertex_t &v,
+                    int &k,
+                    std::vector<int> &rindex,
+                    std::vector<bool> &root);
 };

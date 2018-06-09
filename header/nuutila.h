@@ -20,7 +20,7 @@
 using namespace std;
 using namespace boost;
 
-class Nuutila : public GraphComponent
+class Nuutila : protected GraphComponent
 {
   public:
     theGraph n;

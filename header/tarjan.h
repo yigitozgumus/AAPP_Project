@@ -18,7 +18,7 @@
 using namespace std;
 using namespace boost;
 
-class Tarjan : public GraphComponent
+class Tarjan : protected GraphComponent
 {
   public:
     theGraph t;
