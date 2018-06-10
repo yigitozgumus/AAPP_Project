@@ -34,6 +34,7 @@ void Tarjan::ApplyDFS() {
     int SizeOfGraph = num_vertices(t);
     std::vector<int> visited(SizeOfGraph,666);
     DepthFirstSearch( theFirst, Counter, visited);
+    std::cout << "\nTarjan Depth First Search Exited Successfully." << std::endl;
     std::cout << "Discovery Order is: " << std::endl;
      for(vp=vertices(t); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
@@ -103,7 +104,7 @@ void Tarjan::ApplySCC() {
     std::vector<int> visited(SizeOfGraph,666);
     std::vector<int> lowPt(SizeOfGraph,666);
     std::vector<int> lowVine(SizeOfGraph,666);
-    std::cout << "Tarjan version of the SCC Algorithm is processing the graph" << std::endl;
+    std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 666) {

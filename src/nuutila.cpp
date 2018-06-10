@@ -38,7 +38,7 @@
              Visit(v,Points,root,visited,isComponent,Counter);
          }
      }
-     std::cout << "The Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
+     std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
      std::pair<vertex_iter, vertex_iter> vp_inner;
      for(vp = vertices(n); vp.first != vp.second; vp.first++){
          Vertex_t v = *vp.first;
@@ -63,7 +63,7 @@
      root[id[v]] = id[v];
    //  isComponent[id[v]] = false;
      Points.push_back(v);
-     std::cout << id[v]+1 << " is going in " << std::endl;
+//     std::cout << id[v]+1 << " is going in " << std::endl;
      typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
      boost::graph_traits<theGraph>::out_edge_iterator o_i,o_o;
      for (boost::tie(o_i,o_o) = out_edges(v,n); o_i != o_o; ++o_i){
@@ -73,8 +73,8 @@
              Visit(w,Points,root,visited,isComponent,Counter);
          }
          if (!isComponent[id[w]]) {
-             if ( visited[id[v]] > visited[id[w]] || root[id[v]] > root[id[w]]) {
-                 std::cout << root[id[v]] << " changes with " << root[id[w]] << std::endl;
+             if ( visited[root[id[v]]] > visited[root[id[w]]] ) {
+ //                std::cout << root[id[v]] << " changes with " << root[id[w]] << std::endl;
                   root[id[v]] = root[id[w]];
              }
          }
@@ -84,7 +84,7 @@
          do{
              w = Points.back();
             Points.pop_back();
-            std::cout << id[w]+1 << " is going out with root:" << root[id[w]]+1 << std::endl;
+//            std::cout << id[w]+1 << " is going out with root:" << root[id[w]]+1 << std::endl;
             isComponent[id[w]] = true;
              
          }while(id[v] != root[id[w]]);
@@ -110,7 +110,7 @@
             Visit_v1( v,Points,root,visited,isComponent, Counter);
         }
     }
-    std::cout << "The Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
     std::pair<vertex_iter, vertex_iter> vp_inner;
     for(vp = vertices(n); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
@@ -149,7 +149,7 @@
                  Visit_v2( v,Points,root,visited,isComponent, Counter);
              }
          }
-          std::cout << "The Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+          std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
           std::pair<vertex_iter, vertex_iter> vp_inner;
           for (vp = vertices(n); vp.first != vp.second; vp.first++){
               Vertex_t v = *vp.first;
@@ -184,26 +184,28 @@
                     Visit_v1(w,Points,root,visited,isComponent, Counter);
                 }
                 if (!isComponent[id[w]]){
-                    //TODO
-                    if (visited[id[v]] > visited[id[w]] /*|| root[id[v]] > root[id[w]]*/) {
+                    if (visited[root[id[v]]] > visited[root[id[w]]] ) {
                         root[id[v]] = root[id[w]];
                     }
                 }
            }
            if(root[id[v]] == id[v]){
-            //    isComponent[id[v]]= true;
-            //    std::cout << Points.size() << std::endl;
-            //    if(!Points.empty()){
-            //        Vertex_t w = Points.back();
-            //        while(visited[id[w]] > visited[id[v]]){
-            //           std::cout << id[w] << " hiammina" << std::endl;
-            //           Points.pop_back();
-            //           isComponent[id[w]] = true;
-            //           w = Points.back();
-                      
-            //       }
-
-            //   }
+               isComponent[id[v]]= true;
+            //   std::cout << Points.size() << std::endl;
+               if(!Points.empty()){
+                   Vertex_t w = Points.back();
+                   while(visited[id[w]] > visited[id[v]]){
+  //                    std::cout << id[w] << " hiammina" << std::endl;
+                      Points.pop_back();
+                      isComponent[id[w]] = true;
+                      if (Points.empty()){
+                          break;
+                      }
+                      else{
+                          w = Points.back();
+                      }
+                  }
+              }
            }else{
              //  std::cout << id[v] << " is going in " << std::endl;
                Points.push_back(v);
@@ -227,29 +229,28 @@
                          Visit_v2( w, Points,root,visited,isComponent, Counter);
                      }
                      if (!isComponent[root[id[w]]]){
-                         if (visited[id[v]] > visited[id[w]] ) {
+                         if (visited[root[id[v]]] > visited[root[id[w]]] ) {
                              root[id[v]] = root[id[w]];
                          }
                      }
                  }
                  if(root[id[v]] == id[v]){
-                    //  if(Points.size() > 1){
-                    //      Vertex_t w = Points.back();
-                    //          if(visited[id[w]] > visited[id[v]] ){
-                    //              do{
-                    //                  Points.pop_back();
-                    //                  isComponent[id[w]] = true;
-                    //                  w = Points.back();
-                    //              }while(visited[id[w]] > id[v] );
-                    //          }else {
-                    //              isComponent[id[v]] = true;
-                    //          }
-                    //  }
+                     if(Points.size() > 1){
+                         Vertex_t w = Points.back();
+                             if(visited[id[w]] > visited[id[v]] ){
+                                 do{
+                                     Points.pop_back();
+                                     isComponent[id[w]] = true;
+                                     w = Points.back();
+                                 }while(visited[id[w]] > id[v] );
+                             }else {
+                                 isComponent[id[v]] = true;
+                             }
+                     }
 
                  }
                  else if (std::find(Points.begin(), Points.end(), vertex(root[id[v]],n)) == Points.end()){
-                       std::cout << root[id[v]] << " is going in " << std::endl;
+                  //     std::cout << root[id[v]] << " is going in " << std::endl;
                      Points.push_back(vertex(root[id[v]],n));
                  }
-                 // if root[v] == v part will be implemented
              }

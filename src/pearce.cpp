@@ -37,7 +37,7 @@ void Pearce::DFS() {
             visit(v,visited,index);
         }
     }
-    std::cout << "Pearce DFS implementation exited succesfully" << std::endl;
+    std::cout << "\nPearce DFS implementation exited succesfully" << std::endl;
     std::cout << "Discovery Order is: " << std::endl;
     for(vp=vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
@@ -78,7 +78,7 @@ void Pearce::Pea_Find_SCC1() {
             visit_scc1(v,visited,rindex,inComponent,Stack,index,c);
         }
     }
-    std::cout << "Pearce SCC implementation mark 1 exited succesfully" << std::endl;
+    std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
     int max = *max_element(std::begin(rindex), std::end(rindex));
     for(int i = 0; i <= max; i++){
           std::cout << "Strongly connected component is : "  << " ";
@@ -155,7 +155,7 @@ void Pearce::Pea_Find_SCC2() {
             visit_scc2(v,rindex, Stack, index, c);
         }
     }
-    std::cout << "Pearce SCC implementation mark 2 exited succesfully" << std::endl;
+    std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
     int min = *min_element(std::begin(rindex), std::end(rindex));
     for(int i = sizeOfGraph-1; i >= min; i--){
           std::cout << "Strongly connected component is : "  << " ";
@@ -231,7 +231,7 @@ void Pearce::Pea_Find_SCC3() {
             visit_scc3(v, root,rindex,vStack,iStack,index,c);
         }
     }
-    std::cout << "Pearce SCC implementation mark 3 exited succesfully" << std::endl;
+    std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
     int min = *min_element(std::begin(rindex), std::end(rindex));
     for(int i = sizeOfGraph-1; i >= min; i--){
           std::cout << "Strongly connected component is : "  << " ";
