@@ -258,6 +258,87 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/nuutila.o: src/nuutila.cpp.o
+
+.PHONY : src/nuutila.o
+
+# target to build an object file
+src/nuutila.cpp.o:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/nuutila.cpp.o
+.PHONY : src/nuutila.cpp.o
+
+src/nuutila.i: src/nuutila.cpp.i
+
+.PHONY : src/nuutila.i
+
+# target to preprocess a source file
+src/nuutila.cpp.i:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/nuutila.cpp.i
+.PHONY : src/nuutila.cpp.i
+
+src/nuutila.s: src/nuutila.cpp.s
+
+.PHONY : src/nuutila.s
+
+# target to generate assembly for a file
+src/nuutila.cpp.s:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/nuutila.cpp.s
+.PHONY : src/nuutila.cpp.s
+
+src/pearce.o: src/pearce.cpp.o
+
+.PHONY : src/pearce.o
+
+# target to build an object file
+src/pearce.cpp.o:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/pearce.cpp.o
+.PHONY : src/pearce.cpp.o
+
+src/pearce.i: src/pearce.cpp.i
+
+.PHONY : src/pearce.i
+
+# target to preprocess a source file
+src/pearce.cpp.i:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/pearce.cpp.i
+.PHONY : src/pearce.cpp.i
+
+src/pearce.s: src/pearce.cpp.s
+
+.PHONY : src/pearce.s
+
+# target to generate assembly for a file
+src/pearce.cpp.s:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/pearce.cpp.s
+.PHONY : src/pearce.cpp.s
+
+src/tarjan.o: src/tarjan.cpp.o
+
+.PHONY : src/tarjan.o
+
+# target to build an object file
+src/tarjan.cpp.o:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/tarjan.cpp.o
+.PHONY : src/tarjan.cpp.o
+
+src/tarjan.i: src/tarjan.cpp.i
+
+.PHONY : src/tarjan.i
+
+# target to preprocess a source file
+src/tarjan.cpp.i:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/tarjan.cpp.i
+.PHONY : src/tarjan.cpp.i
+
+src/tarjan.s: src/tarjan.cpp.s
+
+.PHONY : src/tarjan.s
+
+# target to generate assembly for a file
+src/tarjan.cpp.s:
+	$(MAKE) -f CMakeFiles/SCC.dir/build.make CMakeFiles/SCC.dir/src/tarjan.cpp.s
+.PHONY : src/tarjan.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -282,6 +363,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/nuutila.o"
+	@echo "... src/nuutila.i"
+	@echo "... src/nuutila.s"
+	@echo "... src/pearce.o"
+	@echo "... src/pearce.i"
+	@echo "... src/pearce.s"
+	@echo "... src/tarjan.o"
+	@echo "... src/tarjan.i"
+	@echo "... src/tarjan.s"
 .PHONY : help
 
 

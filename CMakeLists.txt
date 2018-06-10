@@ -9,6 +9,12 @@ add_executable(SCC
         header/algorithms.h
         header/graphcomponent.h
         header/typedef.h
+        header/tarjan.h
+        header/nuutila.h
+        header/pearce.h
+        src/tarjan.cpp
+        src/pearce.cpp
+        src/nuutila.cpp
         src/algorithms.cpp
         src/analyzer.cpp
         src/experiment.cpp
