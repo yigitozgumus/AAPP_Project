@@ -28,6 +28,11 @@ class Nuutila : protected GraphComponent
     Nuutila(std::string filename): GraphComponent(filename){
         read_graph_file(filename, n);
     }
+
+    void solve(std::vector<std::string> methods, int graphNum);
+    
+    void print_sccs(std::vector<int> &root);
+
     void print_graph();
 
     void ApplySCC_Original();

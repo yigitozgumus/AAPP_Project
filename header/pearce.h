@@ -28,6 +28,8 @@ class Pearce : protected GraphComponent
       read_graph_file(filename,p);
     }
 
+    void solve(std::vector<std::string> methods, int graphNum);
+
     void print_graph();
 
     void DFS();
