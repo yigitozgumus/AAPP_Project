@@ -20,6 +20,26 @@
  void Nuutila::print_graph(){
     GraphComponent::print_graph_file(n);
  }
+
+ void Nuutila::print_sccs(std::vector<int> &root){
+     v_p id = get(&VertexProperty::index,n);
+     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+     std::pair<vertex_iter, vertex_iter> vp;
+     std::pair<vertex_iter, vertex_iter> vp_inner;
+     for(vp = vertices(n); vp.first != vp.second; vp.first++){
+         Vertex_t v = *vp.first;
+         if(id[v] == root[id[v]]){
+             std::cout << "Strongly connected component is : "  << " ";
+             for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
+                     Vertex_t w = *vp_inner.first;
+                     if(id[v] == root[id[w]]){
+                         std::cout << id[w] +1 << " ";
+                     }
+             }
+             std::cout << std::endl;
+         }
+     }
+ }
  void Nuutila::ApplySCC_Original() {
     
      v_p id = get(&VertexProperty::index,n);
@@ -39,20 +59,7 @@
          }
      }
      std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
-     std::pair<vertex_iter, vertex_iter> vp_inner;
-     for(vp = vertices(n); vp.first != vp.second; vp.first++){
-         Vertex_t v = *vp.first;
-         if(id[v] == root[id[v]]){
-             std::cout << "Strongly connected component is : "  << " ";
-             for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
-                     Vertex_t w = *vp_inner.first;
-                     if(id[v] == root[id[w]]){
-                         std::cout << id[w] +1 << " ";
-                     }
-             }
-             std::cout << std::endl;
-         }
-     }
+     print_sccs(root);
  }
 
  void Nuutila::Visit( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter) {
@@ -111,20 +118,7 @@
         }
     }
     std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
-    std::pair<vertex_iter, vertex_iter> vp_inner;
-    for(vp = vertices(n); vp.first != vp.second; vp.first++){
-        Vertex_t v = *vp.first;
-        if((id[v]) == root[id[v]]){
-            std::cout << "Strongly connected component is : "  << " ";
-            for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
-                Vertex_t w = *vp_inner.first;
-                if((id[v]) == root[id[w]]){
-                    std::cout << id[w]+1  << " ";
-                }
-            }
-            std::cout << std::endl;
-        }
-    }
+    print_sccs(root);
 }
 
       void Nuutila::ApplySCC_v2(){
@@ -150,21 +144,7 @@
              }
          }
           std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
-          std::pair<vertex_iter, vertex_iter> vp_inner;
-          for (vp = vertices(n); vp.first != vp.second; vp.first++){
-              Vertex_t v = *vp.first;
-              if ((id[v]) == root[id[v]]){
-                  std::cout << "Strongly connected component is : "
-                            << " ";
-                  for (vp_inner = vertices(n); vp_inner.first != vp_inner.second; vp_inner.first++){
-                      Vertex_t w = *vp_inner.first;
-                      if ((id[v]) == root[id[w]]){
-                          std::cout << id[w]+1 << " ";
-                      }
-                  }
-                  std::cout << std::endl;
-              }
-          }
+          print_sccs(root);
       }
 
         void Nuutila::Visit_v1( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter){

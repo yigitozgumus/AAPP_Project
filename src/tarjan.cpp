@@ -33,7 +33,7 @@ void Tarjan::ApplyDFS() {
     int Counter = 0;
     int SizeOfGraph = num_vertices(t);
     std::vector<int> visited(SizeOfGraph,666);
-    DepthFirstSearch( theFirst, Counter, visited);
+    DepthFirstSearch(theFirst, Counter, visited);
     std::cout << "\nTarjan Depth First Search Exited Successfully." << std::endl;
     std::cout << "Discovery Order is: " << std::endl;
      for(vp=vertices(t); vp.first != vp.second; vp.first++){
@@ -45,7 +45,7 @@ void Tarjan::ApplyDFS() {
 
 void Tarjan::DepthFirstSearch( Vertex_t &v, int &Counter,std::vector<int> &visited) {
     v_p id = get(&VertexProperty::index, t);
-    e_p arch_type = get(&EdgeProperty::name, t);
+    e_p arch_type =get(&EdgeProperty::name, t);
     Counter++;
     visited[id[v]] = static_cast<unsigned long>(Counter);
  //   std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;
@@ -91,6 +91,10 @@ bool Tarjan::isReachable(Vertex_t &source, Vertex_t &Target) {
     }
     return false;
 
+}
+
+void Tarjan::print_sccs(std::vector<int> &rindex){
+    
 }
 
 void Tarjan::ApplySCC() {
