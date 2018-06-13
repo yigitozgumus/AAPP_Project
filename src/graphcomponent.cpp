@@ -54,7 +54,7 @@ void GraphComponent::print_graph_file(theGraph &graph) {
     for (boost::tie(i, end) = vertices(graph); i != end; ++i) {
         std::cout << id[*i]+1 << " ";
         for (boost::tie(ei, edge_end) = out_edges(*i, graph); ei != edge_end; ++ei)
-            std::cout << " --" << name[*ei] << "--> " << id[target(*ei, graph)]+1 << "  ";
+            std::cout << " -" << name[*ei] << "-> " << id[target(*ei, graph)]+1 << "  ";
         std::cout << std::endl;
     }
     // print_edges(theGraph, id);

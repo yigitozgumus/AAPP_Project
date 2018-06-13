@@ -60,7 +60,7 @@ void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
 
 }
 
-void Pearce::Pea_Find_SCC1() {
+std::vector<int> Pearce::Pea_Find_SCC1() {
     int index = 0;
     int c= 0;
     int sizeOfGraph = num_vertices(p);
@@ -91,6 +91,7 @@ void Pearce::Pea_Find_SCC1() {
         std::cout << std::endl;
     }
     //process rindex
+    return rindex;
 }
 
 void Pearce::visit_scc1(Vertex_t &v,
@@ -139,7 +140,8 @@ void Pearce::visit_scc1(Vertex_t &v,
     }
 }
 
-void Pearce::Pea_Find_SCC2() {
+std::vector<int> Pearce::Pea_Find_SCC2()
+{
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
@@ -168,6 +170,7 @@ void Pearce::Pea_Find_SCC2() {
         std::cout << std::endl;
     }
     //Process rindex
+    return rindex;
 }
 
 void Pearce::visit_scc2(Vertex_t &v,
@@ -212,7 +215,7 @@ void Pearce::visit_scc2(Vertex_t &v,
     }
 }
 
-void Pearce::Pea_Find_SCC3() {
+std::vector<int> Pearce::Pea_Find_SCC3() {
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
@@ -244,6 +247,7 @@ void Pearce::Pea_Find_SCC3() {
         std::cout << std::endl;
     }
     //Process rindex
+    return rindex;
 
 }
 
