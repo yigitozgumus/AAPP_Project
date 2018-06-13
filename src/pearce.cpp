@@ -24,6 +24,43 @@ void Pearce::print_graph(){
     GraphComponent::print_graph_file(p);
 }
 
+void Pearce::print_result_max(std::vector<int> &rindex){
+    int sizeOfGraph = num_vertices(p);
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    v_p id = get(&VertexProperty::index ,p);
+    int max = *max_element(std::begin(rindex), std::end(rindex));
+    for(int i = 0; i <= max; i++){
+          std::cout << "Strongly connected component is : "  << " ";
+          for(vp=vertices(p); vp.first != vp.second; vp.first++){
+                 Vertex_t v = *vp.first;
+                if(rindex[id[v]] == i){
+                    std::cout << id[v]+1 <<  " " ;
+                }
+         }
+        std::cout << std::endl;
+    }
+
+}
+
+void Pearce::print_result_min(std::vector<int> &rindex){
+    int sizeOfGraph = num_vertices(p); 
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    v_p id = get(&VertexProperty::index ,p);
+     int min = *min_element(std::begin(rindex), std::end(rindex));
+    for(int i = sizeOfGraph-1; i >= min; i--){
+          std::cout << "Strongly connected component is : "  << " ";
+          for(vp=vertices(p); vp.first != vp.second; vp.first++){
+                 Vertex_t v = *vp.first;
+                if(rindex[id[v]] == i){
+                    std::cout << id[v]+1 <<  " " ;
+                }
+         }
+        std::cout << std::endl;
+    }
+
+}
 void Pearce::DFS() {
     int index = 0;
     v_p id = get(&VertexProperty::index ,p);
@@ -79,17 +116,7 @@ std::vector<int> Pearce::Pea_Find_SCC1() {
         }
     }
     std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
-    int max = *max_element(std::begin(rindex), std::end(rindex));
-    for(int i = 0; i <= max; i++){
-          std::cout << "Strongly connected component is : "  << " ";
-          for(vp=vertices(p); vp.first != vp.second; vp.first++){
-                 Vertex_t v = *vp.first;
-                if(rindex[id[v]] == i){
-                    std::cout << id[v]+1 <<  " " ;
-                }
-         }
-        std::cout << std::endl;
-    }
+    print_result_max(rindex);
     //process rindex
     return rindex;
 }
@@ -158,17 +185,7 @@ std::vector<int> Pearce::Pea_Find_SCC2()
         }
     }
     std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
-    int min = *min_element(std::begin(rindex), std::end(rindex));
-    for(int i = sizeOfGraph-1; i >= min; i--){
-          std::cout << "Strongly connected component is : "  << " ";
-          for(vp=vertices(p); vp.first != vp.second; vp.first++){
-                 Vertex_t v = *vp.first;
-                if(rindex[id[v]] == i){
-                    std::cout << id[v]+1 <<  " " ;
-                }
-         }
-        std::cout << std::endl;
-    }
+    print_result_min(rindex);
     //Process rindex
     return rindex;
 }
@@ -235,17 +252,8 @@ std::vector<int> Pearce::Pea_Find_SCC3() {
         }
     }
     std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
-    int min = *min_element(std::begin(rindex), std::end(rindex));
-    for(int i = sizeOfGraph-1; i >= min; i--){
-          std::cout << "Strongly connected component is : "  << " ";
-          for(vp=vertices(p); vp.first != vp.second; vp.first++){
-                 Vertex_t v = *vp.first;
-                if(rindex[id[v]] == i){
-                    std::cout << id[v]+1 <<  " " ;
-                }
-         }
-        std::cout << std::endl;
-    }
+    print_result_min(rindex);    
+   
     //Process rindex
     return rindex;
 

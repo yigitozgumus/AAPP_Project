@@ -32,6 +32,9 @@ class Pearce : protected GraphComponent
 
     void print_graph();
 
+    void print_result_max(std::vector<int> &rindex);
+    void print_result_min(std::vector<int> &rindex);
+
     void DFS();
 
     void visit(Vertex_t &v,
