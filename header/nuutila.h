@@ -29,6 +29,7 @@ class Nuutila : protected GraphComponent
         read_graph_file(filename, n);
     }
 
+
     void solve(std::vector<std::string> methods, int graphNum);
     
     void print_sccs(std::vector<int> &root);
@@ -56,7 +57,7 @@ class Nuutila : protected GraphComponent
                   int &Counter);
 
     void Visit_v2(Vertex_t &v,
-                  std::vector<Vertex_t> &Points,
+                  std::vector<int> &Points,
                   std::vector<int> &root,
                   std::vector<int> &visited,
                   std::vector<bool> &isComponent ,
