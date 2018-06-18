@@ -26,6 +26,7 @@ def generate_folders():
     ecp_v2 = np.array([edge_percentage_list * len(node_capacity_list)]).flatten()
     print(ecp_v2)
     current_directory = os.getcwd() + "/input"
+    print(current_directory)
     final_directory_list = []
     #generate the first level of folders 
     print("Seperate directories for the node classes will be created")
@@ -35,11 +36,11 @@ def generate_folders():
         #print(final_directory)
         pathlib.Path(final_directory).mkdir( exist_ok=True)
         #generate the second level of folders
-    
-        for cdir in edge_percentage_list:
-            percentage_folder = os.path.join(final_directory, cdir)
-            final_directory_list.append(percentage_folder)
-            pathlib.Path(percentage_folder).mkdir(exist_ok=True)
+        final_directory_list.extend([final_directory] * len(edge_percentage_list))
+        # for cdir in edge_percentage_list:
+        #     percentage_folder = os.path.join(final_directory, cdir)
+        #     final_directory_list.append(percentage_folder)
+        #     pathlib.Path(percentage_folder).mkdir(exist_ok=True)
     #print(final_directory_list)
     results = zip(final_directory_list,ncp_v2,ecp_v2)
     return results
@@ -60,9 +61,9 @@ def generate_graphs(data_pack,graph_num):
            # print(edge_list)
             #generate the graph
             for x in range(len(node_list)):
-                graph = nx.gnp_random_graph(node_list[x],edge_list[x],directed=True)
+                graph = nx.gnp_random_graph(node_list[x],edge_list[x],directed=True,seed=666)
                 #graph = nx.empty_graph(node)
-                name = n_r +"_" + e_p + "_" + str(counter) + ".graph"
+                name = n_r +"|" + e_p + "|" + str(counter) + ".graph"
                 counter+=1
                 write_graph(graph,node_list[x],name)
                 
@@ -76,7 +77,7 @@ def write_graph(graph,node,name):
     
 def main():
     dir_results = generate_folders()
-    generate_graphs(dir_results,1)
+    generate_graphs(dir_results,5)
 
 
 
