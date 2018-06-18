@@ -18,6 +18,7 @@
 #include "./../header/tarjan.h"
 #include "./../header/nuutila.h"
 #include "./../header/pearce.h"
+#include "./../header/analyzer.h"
 
 using namespace boost;
 
@@ -30,23 +31,27 @@ using namespace boost;
 int main(int, char *argv[])
 {
 
-      std::string filename = argv[1];
-      Tarjan test(filename);
-    // // test.print_graph();
-      //test.ApplyDFS();
-      test.ApplySCC();
-    // // test.print_graph();
-      Nuutila test2(filename);
-      test2.ApplySCC_Original();
-      test2.ApplySCC_v1();
-      test2.ApplySCC_v2();
-    // // test2.print_graph();
-     Pearce test3(filename);
-     //test3.DFS();
-       test3.Pea_Find_SCC1();
-       test3.Pea_Find_SCC2();
-       test3.Pea_Find_SCC3();
-    
+    //   std::string filename = argv[1];
+    //   Tarjan test(filename);
+    // // // test.print_graph();
+    //   //test.ApplyDFS();
+    //   test.ApplySCC();
+    // // // test.print_graph();
+    //   Nuutila test2(filename);
+    //   test2.ApplySCC_Original();
+    //   test2.ApplySCC_v1();
+    //   test2.ApplySCC_v2();
+    // // // test2.print_graph();
+    //  Pearce test3(filename);
+    //  //test3.DFS();
+    //    test3.Pea_Find_SCC1();
+    //    test3.Pea_Find_SCC2();
+    //    test3.Pea_Find_SCC3();
+    std::string dirname = "/Users/yigitozgumus/Code/Workspace/ClionProjects/SCC/input";
+    Analyzer a(dirname);
+    // std::vector<std::string> test = a.getInputList(dirname);
+    // for (auto str : test)
+    //     std::cout << str << std::endl;
    // test.print_graph_file();
     //t.ApplyDFS(test.theGraph);
     //t.ApplySCC(test.theGraph);

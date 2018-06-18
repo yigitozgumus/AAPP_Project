@@ -33,15 +33,15 @@ void Pearce::print_result_max(std::vector<int> &rindex){
     int max = *max_element(std::begin(rindex), std::end(rindex));
     for(int i = 0; i <= max; i++){
          int count_component = 0;
-          //std::cout << "Strongly connected component is : "  << " ";
+          std::cout << "Strongly connected component is : "  << " ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
                     count_component++;
-                    //std::cout << id[v]+1 <<  " " ;
+                    std::cout << id[v]+1 <<  " " ;
                 }
          }
-        //std::cout << std::endl;
+        std::cout << std::endl;
         std::cout << "Number of elements in the component is: " << count_component << std::endl;
     }
 
@@ -54,18 +54,19 @@ void Pearce::print_result_min(std::vector<int> &rindex){
     v_p id = get(&VertexProperty::index ,p);
      int min = *min_element(std::begin(rindex), std::end(rindex));
     for(int i = sizeOfGraph-1; i >= min; i--){
-        int count_component = 0;
-          //std::cout << "Strongly connected component is : "  << " ";
+         int count_component = 0;
+          std::cout << "Strongly connected component is : "  << " ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
-                  //  std::cout << id[v]+1 <<  " " ;
+                    std::cout << id[v]+1 <<  " " ;
                     count_component++;
                 }
          }
-        //std::cout << std::endl;
+        std::cout << std::endl;
         std::cout << "Number of elements in the component is: " << count_component << std::endl;
     }
+
 }
 void Pearce::DFS() {
     int index = 0;
