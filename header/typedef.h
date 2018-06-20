@@ -1,3 +1,6 @@
+#ifndef TYPEDEF_H
+#define TYPEDEF_H
+
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -34,3 +37,5 @@ typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
 typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
 typedef property_map<theGraph, std::size_t VertexProperty::*>::type v_p;
 typedef property_map<theGraph, std::string EdgeProperty::*>::type e_p;
+
+#endif

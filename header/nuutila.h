@@ -1,3 +1,5 @@
+#ifndef NUUTILA_H
+#define NUUTILA_H
 
 #include "./graphcomponent.h"
 //STL
@@ -24,12 +26,13 @@ class Nuutila : protected GraphComponent
 {
   public:
     theGraph n;
+    std::vector<theGraph> experiment;
     Nuutila(){}; 
     Nuutila(std::string filename): GraphComponent(filename){
         read_graph_file(filename, n);
     }
 
-
+    //TODO
     void solve(std::vector<std::string> methods, int graphNum);
     
     void print_sccs(std::vector<int> &root);
@@ -63,3 +66,5 @@ class Nuutila : protected GraphComponent
                   std::vector<bool> &isComponent ,
                   int &Counter);
 };
+
+#endif

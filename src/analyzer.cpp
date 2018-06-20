@@ -26,22 +26,18 @@ namespace filesys = boost::filesystem;
 #endif
  
 
-
-
 std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 
 	std::vector<std::string> inputGraphs;
 	try {
-		
 		if (filesys::exists(dirPath) && filesys::is_directory(dirPath)){
 			filesys::recursive_directory_iterator iter(dirPath);
  			filesys::recursive_directory_iterator end;
  
 			// Iterate till end
 			while (iter != end){
-					inputGraphs.push_back(iter->path().string());
-				}
- 
+				inputGraphs.push_back(iter->path().string());
+				
 				error_code ec;
 				// Increment the iterator to point to next entry in recursive iteration
 				iter.increment(ec);
@@ -49,10 +45,11 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 					std::cerr << "Error While Accessing : " << iter->path().string() << " :: " << ec.message() << '\n';
 				}
 			}
+
 		}
-	}
-	catch (std::system_error & e){
+	}catch (std::system_error & e){
 		std::cerr << "Exception :: " << e.what();
 	}
 	return inputGraphs;
 	}
+

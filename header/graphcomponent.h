@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GRAPHCOMPONENT_H
+#define GRAPHCOMPONENT_H
 #include "typedef.h"
 //STL
 #include <iostream>
@@ -48,3 +49,6 @@ public:
     void read_graph_file(std::string filename, theGraph &g);
 
 };
+
+
+#endif

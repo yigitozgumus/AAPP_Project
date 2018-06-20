@@ -1,3 +1,6 @@
+#ifndef PEARCE_H
+#define PEARCE_H
+
 #include "./graphcomponent.h"
 //STL
 #include <iostream>
@@ -23,11 +26,12 @@ class Pearce : protected GraphComponent
 { 
   public:
     theGraph p;
+    std::vector<theGraph> experiment;
     Pearce() = default;
     Pearce(std::string filename) : GraphComponent(filename){
       read_graph_file(filename,p);
     }
-
+    //TODO
     void solve(std::vector<std::string> methods, int graphNum);
 
     void print_graph();
@@ -105,3 +109,5 @@ class Pearce : protected GraphComponent
                     std::vector<int> &rindex,
                     std::vector<bool> &root);
 };
+
+#endif

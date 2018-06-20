@@ -1,4 +1,5 @@
 #include "./../header/pearce.h"
+#include "./../header/analyzer.h"
 
 //STL
 #include <iostream>
@@ -115,17 +116,18 @@ std::vector<int> Pearce::Pea_Find_SCC1() {
     v_p id = get(&VertexProperty::index, p);
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-
+    //Create the Timer object
+    //TODO
+    Timer t;
     for(vp=vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if(!visited[id[v]]){
             visit_scc1(v,visited,rindex,inComponent,Stack,index,c);
         }
     }
-    std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
-    print_result_max(rindex);
-    //process rindex
-    return rindex;
+   // std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
+   // print_result_max(rindex);
+    return rindex; //TODO this will be a new structure
 }
 
 void Pearce::visit_scc1(Vertex_t &v,
@@ -184,17 +186,17 @@ std::vector<int> Pearce::Pea_Find_SCC2()
     v_p id = get(&VertexProperty::index, p);
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-
+    //Create the Timer object
+    //TODO
     for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
             visit_scc2(v,rindex, Stack, index, c);
         }
     }
-    std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
-    print_result_min(rindex);
-    //Process rindex
-    return rindex;
+    // std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
+    //print_result_min(rindex);
+    return rindex; //TODO this will be a new structure
 }
 
 void Pearce::visit_scc2(Vertex_t &v,
@@ -251,18 +253,17 @@ std::vector<int> Pearce::Pea_Find_SCC3() {
 
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-
+    //Create the Timer Object 
+    //TODO
     for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
             visit_scc3(v, root,rindex,vStack,iStack,index,c);
         }
     }
-    std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
-    print_result_min(rindex);    
-   
-    //Process rindex
-    return rindex;
+   // std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
+   // print_result_min(rindex);    
+    return rindex; //TODO this will be a new structure
 
 }
 
@@ -273,7 +274,6 @@ void Pearce::visit_scc3(Vertex_t &v,
                         std::vector<int> &iStack,
                         int &index,
                         int &c) {
-
     beginVisiting(v,root,rindex,vStack,iStack,index);
     while(!vStack.empty()){
         visitLoop(root,rindex,vStack,iStack,index,c);

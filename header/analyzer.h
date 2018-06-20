@@ -1,3 +1,6 @@
+#ifndef ANALYZER_H
+#define ANALYZER_H
+
 /**
  * This class will test the algorithms with different settings to create a basis for analysis
  * and a comparison baseline
@@ -5,6 +8,7 @@
  */
 
 #include "./graphcomponent.h"
+#include "./visualize.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -26,6 +30,7 @@
 
 
 class Analyzer{
+
 	public:
 		std::vector<std::string> graphList;
 		Analyzer(){};
@@ -33,9 +38,22 @@ class Analyzer{
 			graphList = getInputList(dirname);
 			for (auto str : graphList)
 				std::cout << str << std::endl;
-			std::cout << " I am created" << std::endl;
+			std::cout << "All the graph files are imported" << std::endl;
 		}
 
     	std::vector<std::string> getInputList(std::string &dirPath);
+    	void benchmark_comparison();
+    	
 
 };
+
+class Timer{
+	public:
+		Timer(){};
+
+		void stop(){
+
+		}
+};
+
+#endif

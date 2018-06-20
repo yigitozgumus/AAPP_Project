@@ -19,6 +19,7 @@
 #include "./../header/nuutila.h"
 #include "./../header/pearce.h"
 #include "./../header/analyzer.h"
+#include "./../header/visualize.h"
 
 using namespace boost;
 
@@ -27,26 +28,27 @@ using namespace boost;
 #include <memory>
  
 
-
 int main(int, char *argv[])
-{
-
-    //   std::string filename = argv[1];
-    //   Tarjan test(filename);
-    // // // test.print_graph();
-    //   //test.ApplyDFS();
-    //   test.ApplySCC();
-    // // // test.print_graph();
-    //   Nuutila test2(filename);
-    //   test2.ApplySCC_Original();
-    //   test2.ApplySCC_v1();
-    //   test2.ApplySCC_v2();
-    // // // test2.print_graph();
-    //  Pearce test3(filename);
-    //  //test3.DFS();
-    //    test3.Pea_Find_SCC1();
-    //    test3.Pea_Find_SCC2();
-    //    test3.Pea_Find_SCC3();
+{   
+    Visualize v;
+    v.printProgramEntry(120);
+    // std::string result = "start";
+    // std::system("clear");
+    // std::string programEntry = std::string(100,'=') + 
+    //         "\n=" +  
+    //         std::string(23,' ') + 
+    //         "Advanced Algorithms and Parallel Programming Project" + 
+    //         std::string(23,' ') + 
+    //         "=\n" + 
+    //         std::string(100,'=') + 
+    //         "\n\n";
+    // std::cout << programEntry;
+    // while(result != "q"){
+    //   std::system("clear");
+    //   std::cout << programEntry;
+    //   std::cout << "Please enter a function: ";
+    //   std::cin >> result;
+    // }
     std::string dirname = "/Users/yigitozgumus/Code/Workspace/ClionProjects/SCC/input";
     Analyzer a(dirname);
     // std::vector<std::string> test = a.getInputList(dirname);

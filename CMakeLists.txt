@@ -17,11 +17,13 @@ header/typedef.h
 header/tarjan.h
 header/nuutila.h
 header/pearce.h
+header/analyzer.h
+header/visualize.h
+src/visualize.cpp
 src/tarjan.cpp
 src/pearce.cpp
 src/nuutila.cpp
 src/analyzer.cpp
-src/experiment.cpp
 src/graphcomponent.cpp
 src/main.cpp)
 target_link_libraries(Project ${Boost_LIBRARIES})

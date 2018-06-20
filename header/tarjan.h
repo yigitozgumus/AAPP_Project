@@ -1,3 +1,6 @@
+#ifndef TARJAN_H
+#define TARJAN_H
+
 #include "./graphcomponent.h" //STL
 #include <iostream>
 #include <vector>
@@ -22,10 +25,13 @@ class Tarjan : protected GraphComponent
 {
   public:
     theGraph t;
+    std::vector<theGraph> experiment;
     Tarjan() {};
     Tarjan(std::string filename): GraphComponent(filename){
         read_graph_file(filename,t);
     }
+    //TODO
+    void solve(int graphNum);
 
     void print_graph();
 
@@ -46,3 +52,5 @@ class Tarjan : protected GraphComponent
     void StrongConnect( Vertex_t &v, std::vector<Vertex_t> &Points,
                   int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine);
 };
+
+#endif

@@ -26,6 +26,7 @@ def generate_folders():
     ecp_v2 = np.array([edge_percentage_list * len(node_capacity_list)]).flatten()
     print(ecp_v2)
     current_directory = os.getcwd() + "/input"
+    pathlib.Path(current_directory).mkdir( exist_ok=True)
     print(current_directory)
     final_directory_list = []
     #generate the first level of folders 
