@@ -51,3 +51,7 @@ void Visualize::printProgramEntry(int width){
 			  << centered(width-2,"Advanced Algorithms and Parallel Programming Project") << "=\n"
 			  << std::string(width,'=') + "\n";
 }
+
+void Visualize::printLine(int width,std::string &message){
+	std::cout << "|" << setw(width-2) << left << message << "|\n";
+}

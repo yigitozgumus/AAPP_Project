@@ -1,6 +1,6 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
-
+#define PROGRAM_WIDTH 120
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>

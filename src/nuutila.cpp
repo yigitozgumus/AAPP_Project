@@ -63,13 +63,20 @@
      std::vector<bool>isComponent(sizeOfGraph,false);
      std::vector<int>visited(sizeOfGraph,999999);
      std::vector<int>root(sizeOfGraph,666);
-     for (vp = vertices(n); vp.first != vp.second; vp.first++) {
+     //Timer
+     std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
+     {
+        Timer timer;
+        for (vp = vertices(n); vp.first != vp.second; vp.first++) {
          Vertex_t v = *vp.first;
          if (visited[id[v]]== 999999) {
              Visit(v,Points,root,visited,isComponent,Counter);
          }
      }
-     std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
+     float ms = timer.stop();
+     }
+     
+     
      print_sccs(root);
  }
 
@@ -121,13 +128,18 @@
      std::vector<bool> isComponent(sizeOfGraph, false);
      std::vector<int> visited(sizeOfGraph, 999999);
      std::vector<int> root(sizeOfGraph, -1);
-    for (vp = vertices(n); vp.first != vp.second; vp.first++) {
+     std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    {
+        Timer timer;
+        for (vp = vertices(n); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 999999) {
             Visit_v1( v,Points,root,visited,isComponent, Counter);
         }
+        }
+       float ms = timer.stop();
     }
-    std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    
     print_sccs(root);
 }
 
@@ -146,13 +158,18 @@
         std::vector<int>visited(sizeOfGraph+1,999999);
         std::vector<int>root(sizeOfGraph,-1);
         visited[0] = -999;
-         for (vp = vertices(n); vp.first != vp.second; vp.first++) {
+        std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+        {
+            Timer timer;
+            for (vp = vertices(n); vp.first != vp.second; vp.first++) {
              Vertex_t v = *vp.first;
              if (visited[id[v]+1] == 999999) {
                  Visit_v2( v,Points,root,visited,isComponent, Counter);
              }
          }
-          std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+         float ms = timer.stop();
+        }
+          
           print_sccs(root);
       }
 

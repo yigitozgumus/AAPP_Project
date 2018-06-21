@@ -1,4 +1,5 @@
 #include "./../header/analyzer.h"
+#include "./../header/tarjan.h"
 
 //STL
  #include <iostream>
@@ -36,7 +37,9 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
  
 			// Iterate till end
 			while (iter != end){
-				inputGraphs.push_back(iter->path().string());
+				if(!filesys::is_directory(iter->path().string())){
+					inputGraphs.push_back(iter->path().string());
+				}
 				
 				error_code ec;
 				// Increment the iterator to point to next entry in recursive iteration
@@ -53,3 +56,11 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 	return inputGraphs;
 	}
 
+void Analyzer::benchmark_comparison(){
+
+	for (auto str : graphList){
+		Tarjan t(str);
+		t.ApplySCC();
+	}
+		
+}

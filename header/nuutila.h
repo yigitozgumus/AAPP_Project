@@ -2,6 +2,7 @@
 #define NUUTILA_H
 
 #include "./graphcomponent.h"
+#include "./analyzer.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -19,7 +20,7 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-using namespace std;
+
 using namespace boost;
 
 class Nuutila : protected GraphComponent

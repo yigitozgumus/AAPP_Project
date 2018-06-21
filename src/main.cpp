@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iterator>
 
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graphviz.hpp>
@@ -14,6 +15,7 @@
 #include <boost/graph/property_iter_range.hpp>
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
+#include <boost/filesystem.hpp>
 
 #include "./../header/tarjan.h"
 #include "./../header/nuutila.h"
@@ -30,31 +32,31 @@ using namespace boost;
 
 int main(int, char *argv[])
 {   
-    Visualize v;
-    v.printProgramEntry(120);
+    // Visualize v;
     // std::string result = "start";
-    // std::system("clear");
-    // std::string programEntry = std::string(100,'=') + 
-    //         "\n=" +  
-    //         std::string(23,' ') + 
-    //         "Advanced Algorithms and Parallel Programming Project" + 
-    //         std::string(23,' ') + 
-    //         "=\n" + 
-    //         std::string(100,'=') + 
-    //         "\n\n";
-    // std::cout << programEntry;
-    // while(result != "q"){
-    //   std::system("clear");
-    //   std::cout << programEntry;
-    //   std::cout << "Please enter a function: ";
-    //   std::cin >> result;
-    // }
-    std::string dirname = "/Users/yigitozgumus/Code/Workspace/ClionProjects/SCC/input";
-    Analyzer a(dirname);
-    // std::vector<std::string> test = a.getInputList(dirname);
-    // for (auto str : test)
-    //     std::cout << str << std::endl;
-   // test.print_graph_file();
+    // boost::filesystem::path full_path(boost::filesystem::current_path());
+    // std::string inputDirectory = full_path.string() + "/" + argv[1];
+    //  while(result != "q"){
+    //    v.printProgramEntry(PROGRAM_WIDTH);
+    // //  v.printTableBanner(PROGRAM_WIDTH);
+    //    std::string s = "Please enter a function: ";
+    //    v.printLine(PROGRAM_WIDTH,s);
+    //    std::cin >> result;
+    //  }
+    //  Analyzer a(inputDirectory);
+    // a.benchmark_comparison();
+
+    std::string filename = argv[1];
+    Tarjan t(filename);
+    Nuutila n(filename);
+    Pearce p(filename);
+    t.ApplySCC();
+    n.ApplySCC_Original();
+    n.ApplySCC_v1();
+    n.ApplySCC_v2();
+    p.Pea_Find_SCC1();
+    p.Pea_Find_SCC2();
+    p.Pea_Find_SCC3();
     //t.ApplyDFS(test.theGraph);
     //t.ApplySCC(test.theGraph);
     

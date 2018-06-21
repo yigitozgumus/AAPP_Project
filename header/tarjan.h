@@ -1,7 +1,9 @@
 #ifndef TARJAN_H
 #define TARJAN_H
 
-#include "./graphcomponent.h" //STL
+#include "./graphcomponent.h" 
+#include "./analyzer.h"
+//STL
 #include <iostream>
 #include <vector>
 #include <string>
@@ -18,7 +20,7 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-using namespace std;
+
 using namespace boost;
 
 class Tarjan : protected GraphComponent
@@ -26,6 +28,7 @@ class Tarjan : protected GraphComponent
   public:
     theGraph t;
     std::vector<theGraph> experiment;
+    
     Tarjan() {};
     Tarjan(std::string filename): GraphComponent(filename){
         read_graph_file(filename,t);

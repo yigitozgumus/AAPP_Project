@@ -14,7 +14,7 @@ class Visualize{
 		void printProgramEntry(int width);
     	void printTableBanner(int width);
     	void printTableSeperator(int width);
-    	
+    	void printLine(int width,std::string &message);
 };
 
 #endif

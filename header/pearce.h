@@ -2,6 +2,7 @@
 #define PEARCE_H
 
 #include "./graphcomponent.h"
+#include "./analyzer.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -19,7 +20,7 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-using namespace std;
+
 using namespace boost;
 
 class Pearce : protected GraphComponent
@@ -31,6 +32,7 @@ class Pearce : protected GraphComponent
     Pearce(std::string filename) : GraphComponent(filename){
       read_graph_file(filename,p);
     }
+
     //TODO
     void solve(std::vector<std::string> methods, int graphNum);
 

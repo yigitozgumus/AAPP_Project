@@ -16,6 +16,8 @@
 #include <fstream>
 #include <sstream>
 #include <iterator>
+#include <chrono>
+#include <thread>
 //Boost
 #include <boost/config.hpp>
 #include <boost/filesystem.hpp>
@@ -33,12 +35,12 @@ class Analyzer{
 
 	public:
 		std::vector<std::string> graphList;
+		Visualize v;
 		Analyzer(){};
 		Analyzer(std::string &dirname){
 			graphList = getInputList(dirname);
-			for (auto str : graphList)
-				std::cout << str << std::endl;
-			std::cout << "All the graph files are imported" << std::endl;
+			std::string message = "All the graph files are imported";
+			v.printLine(PROGRAM_WIDTH,message);
 		}
 
     	std::vector<std::string> getInputList(std::string &dirPath);
@@ -49,11 +51,27 @@ class Analyzer{
 
 class Timer{
 	public:
-		Timer(){};
-
-		void stop(){
-
+		std::chrono::time_point<std::chrono::steady_clock> start;
+		std::chrono::duration<float> duration;
+		std::chrono::time_point<std::chrono::steady_clock> finish;
+		
+		Timer(){
+			start = std::chrono::high_resolution_clock::now();
 		}
+		float stop(){
+			finish = std::chrono::high_resolution_clock::now();
+			duration = finish-start;
+			float ms = duration.count() * 1000.0f;
+			std::cout << "Timer took " << ms << " ms" << std::endl;
+			return ms;
+		}
+		~Timer(){
+			finish = std::chrono::high_resolution_clock::now();
+			duration = finish-start;
+			float ms = duration.count() * 1000.0f;
+			std::cout << "Timer took " << ms << " ms" << std::endl; 
+		}
+		
 };
 
 #endif

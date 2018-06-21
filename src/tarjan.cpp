@@ -17,7 +17,6 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-using namespace std;
 using namespace boost;
 
 void Tarjan::print_graph(){
@@ -109,12 +108,18 @@ void Tarjan::ApplySCC() {
     std::vector<int> lowPt(SizeOfGraph,666);
     std::vector<int> lowVine(SizeOfGraph,666);
     std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
+    //TIMER
+    {
+        Timer timer;
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 666) {
             StrongConnect(v,Points, Counter,visited,lowPt,lowVine);
         }
     }
+    float ms = timer.stop();
+    }
+    //TIMER end
 
 }
 
