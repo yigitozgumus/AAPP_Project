@@ -96,7 +96,8 @@ void Tarjan::print_sccs(std::vector<int> &rindex){
     
 }
 
-void Tarjan::ApplySCC() {
+UtilityStructs::StorageItems Tarjan::ApplySCC() {
+    float ms_duration;
     v_p id = get(&VertexProperty::index, t);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
@@ -117,9 +118,20 @@ void Tarjan::ApplySCC() {
             StrongConnect(v,Points, Counter,visited,lowPt,lowVine);
         }
     }
-    float ms = timer.stop();
+    ms_duration = timer.stop();
     }
     //TIMER end
+    //Storage info collection
+    size_t total_bytes;
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(lowPt[0]) * lowPt.size();
+    total_bytes += sizeof(lowVine[0]) * lowVine.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(t);
+    s.edgeCount = num_edges(t);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
 }
 
 void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine) {

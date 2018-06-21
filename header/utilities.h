@@ -25,6 +25,13 @@ namespace UtilityStructs {
 
     };
 
+    struct StorageItems{
+    	std::size_t total_bytes;
+    	float duration;
+    	int vertexCount;
+    	int edgeCount;
+    };
+
     class Timer{
 	public:
 		std::chrono::time_point<std::chrono::steady_clock> start;

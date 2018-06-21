@@ -105,7 +105,8 @@ void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
 
 }
 
-std::vector<int> Pearce::Pea_Find_SCC1() {
+UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
+    float ms_duration;
     int index = 0;
     int c= 0;
     int sizeOfGraph = num_vertices(p);
@@ -118,7 +119,6 @@ std::vector<int> Pearce::Pea_Find_SCC1() {
     std::pair<vertex_iter, vertex_iter> vp;
     std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
     //Create the Timer object
-    //TODO
     {
         UtilityStructs::Timer timer;
     for(vp=vertices(p); vp.first != vp.second; vp.first++){
@@ -127,11 +127,20 @@ std::vector<int> Pearce::Pea_Find_SCC1() {
             visit_scc1(v,visited,rindex,inComponent,Stack,index,c);
         }
     }
-    float ms = timer.stop();
+    ms_duration = timer.stop();
     }
-    
-    print_result_max(rindex);
-    return rindex; //TODO this will be a new structure
+    //Storage info collection
+    //print_result_max(rindex);
+    size_t total_bytes;
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(rindex[0]) * rindex.size();
+    total_bytes += sizeof(rindex[0]) * inComponent.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(p);
+    s.edgeCount = num_edges(p);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
 }
 
 void Pearce::visit_scc1(Vertex_t &v,
@@ -180,8 +189,8 @@ void Pearce::visit_scc1(Vertex_t &v,
     }
 }
 
-std::vector<int> Pearce::Pea_Find_SCC2()
-{
+UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
+    float ms_duration;
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
@@ -201,11 +210,19 @@ std::vector<int> Pearce::Pea_Find_SCC2()
             visit_scc2(v,rindex, Stack, index, c);
         }
     }
-    float ms = timer.stop();
+    ms_duration = timer.stop();
     }
-     
-    print_result_min(rindex);
-    return rindex; //TODO this will be a new structure
+    //Storage info collection
+    //print_result_min(rindex);
+    size_t total_bytes;
+    total_bytes += sizeof(c);
+    total_bytes += sizeof(rindex[0]) * rindex.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(p);
+    s.edgeCount = num_edges(p);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
 }
 
 void Pearce::visit_scc2(Vertex_t &v,
@@ -250,7 +267,8 @@ void Pearce::visit_scc2(Vertex_t &v,
     }
 }
 
-std::vector<int> Pearce::Pea_Find_SCC3() {
+UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
+    float ms_duration;
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
@@ -273,11 +291,21 @@ std::vector<int> Pearce::Pea_Find_SCC3() {
             visit_scc3(v, root,rindex,vStack,iStack,index,c);
         }
     }
-        float ms = timer.stop();
+        ms_duration = timer.stop();
     }
-
-    print_result_min(rindex);    
-    return rindex; //TODO this will be a new structure
+    //print_result_min(rindex);  
+    //Storage info collection
+    size_t total_bytes;
+    total_bytes += sizeof(root[0]) * root.size();
+    total_bytes += sizeof(rindex[0]) * rindex.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(p);
+    s.edgeCount = num_edges(p);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
+      
+    
 
 }
 

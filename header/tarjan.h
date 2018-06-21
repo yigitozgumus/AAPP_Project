@@ -28,7 +28,7 @@ class Tarjan : protected GraphComponent
   public:
     theGraph t;
     std::vector<theGraph> experiment;
-    
+
     Tarjan() {};
     Tarjan(std::string filename): GraphComponent(filename){
         read_graph_file(filename,t);
@@ -48,7 +48,7 @@ class Tarjan : protected GraphComponent
 
     void Biconnect(theGraph &g, Vertex_t &v, int &Counter);
 
-    void ApplySCC();
+    UtilityStructs::StorageItems ApplySCC();
 
     bool isReachable( Vertex_t &source, Vertex_t &target);
 

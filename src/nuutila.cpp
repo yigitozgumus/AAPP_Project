@@ -52,7 +52,7 @@
              
  }
  void Nuutila::ApplySCC_Original() {
-    
+     float ms_duration;
      v_p id = get(&VertexProperty::index,n);
      typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
      typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
@@ -73,7 +73,7 @@
              Visit(v,Points,root,visited,isComponent,Counter);
          }
      }
-     float ms = timer.stop();
+     ms_duration = timer.stop();
      }
      
      
@@ -117,7 +117,7 @@
  }
 
  void Nuutila::ApplySCC_v1(){
-     
+     float ms_duration;
      v_p id= get(&VertexProperty::index, n);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
      typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
@@ -137,16 +137,15 @@
             Visit_v1( v,Points,root,visited,isComponent, Counter);
         }
         }
-       float ms = timer.stop();
+       ms_duration = timer.stop();
     }
-    
+    //Storage info collection
     print_sccs(root);
 }
 
       void Nuutila::ApplySCC_v2(){
-
+        float ms_duration;
         v_p id = get(&VertexProperty::index, n);
-
         typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
         typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
         std::pair<vertex_iter, vertex_iter> vp;
@@ -167,7 +166,8 @@
                  Visit_v2( v,Points,root,visited,isComponent, Counter);
              }
          }
-         float ms = timer.stop();
+         ms_duration = timer.stop();
+         //Storage info collection
         }
           
           print_sccs(root);

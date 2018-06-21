@@ -47,7 +47,7 @@ class Pearce : protected GraphComponent
               std::vector<int> &visited,
               int &index);
 
-    std::vector<int> Pea_Find_SCC1();
+    UtilityStructs::StorageItems Pea_Find_SCC1();
 
     void visit_scc1(Vertex_t &v,
                     std::vector<bool> &visited,
@@ -57,7 +57,7 @@ class Pearce : protected GraphComponent
                     int &index,
                     int &c);
 
-    std::vector<int> Pea_Find_SCC2();
+    UtilityStructs::StorageItems Pea_Find_SCC2();
 
     void visit_scc2(Vertex_t &v,
                     std::vector<int> &rindex,
@@ -65,7 +65,7 @@ class Pearce : protected GraphComponent
                     int &index,
                     int &c);
 
-    std::vector<int> Pea_Find_SCC3();
+    UtilityStructs::StorageItems Pea_Find_SCC3();
 
     void visit_scc3(Vertex_t &v,
                     std::vector<bool> &root,
