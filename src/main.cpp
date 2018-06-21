@@ -29,6 +29,9 @@ using namespace boost;
 #include <cstring>
 #include <memory>
  
+ void initialChoice(std::string &c); // Run Experiments, look at graphs, generate graphs for experiment,
+ void executeExperiments(std::string &c);
+ void generateGraphs();
 
 int main(int, char *argv[])
 {   
@@ -36,17 +39,19 @@ int main(int, char *argv[])
     std::string result = "start";
     boost::filesystem::path full_path(boost::filesystem::current_path());
     std::string inputDirectory = full_path.string() + "/" + argv[1];
-     while(result != "q"){
+    // while(result != "q"){
        v.printProgramEntry(PROGRAM_WIDTH);
     //  v.printTableBanner(PROGRAM_WIDTH);
-       std::string s = "Please enter a key to start the analysis: ";
-       v.printLine(PROGRAM_WIDTH,s);
-       std::cin >> result;
-     }
+      // std::string s = "Please enter a key to start the analysis: ";
+      // v.printLine(PROGRAM_WIDTH,s);
+       //std::cin >> result;
+    // }
      float ms ;
      UtilityStructs::Timer t;
      Analyzer a(inputDirectory);
-    a.benchmark_comparison();
+     bool choice = true;
+     std::string directory_name = argv[1];
+    a.benchmark_comparison(choice,true,directory_name);
     ms = t.stop();
     std::cout << "Estimated time is: " << ms/1000 << " seconds" << std::endl;
     return 0;

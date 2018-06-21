@@ -10,6 +10,7 @@
  #include <fstream>
  #include <sstream>
  #include <iterator>
+#include <fstream>
  //Boost
  #include <boost/config.hpp>
  #include <boost/graph/strong_components.hpp>
@@ -27,7 +28,18 @@ namespace filesys = boost::filesystem;
 #ifndef USING_BOOST
 #define USING_BOOST
 #endif
- 
+
+std::string Analyzer::currentDateTime() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+    // for more information about date/time format
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+    return buf;
+} 
 
 std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 
@@ -58,9 +70,22 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 	return inputGraphs;
 	}
 
-void Analyzer::benchmark_comparison(){
+void Analyzer::benchmark_comparison(bool &write_to_file,bool isCsv, std::string &inputDirectory){
 		Visualize v;
-		v.printTableBanner(PROGRAM_WIDTH);
+		boost::filesystem::path full_path(boost::filesystem::current_path());
+		std::string dateTime = currentDateTime();
+		std::string file_location_csv = full_path.string() + "/data/experiment_" + dateTime +".csv";
+        std::string file_location = full_path.string() + "/logs/experiment-" + dateTime +".log";
+        std::ofstream logFile;
+		logFile.open(file_location,std::ios::app);
+		logFile << "This log is created with the " + inputDirectory + " directory" << std::endl;
+		logFile.close();
+		if(write_to_file){
+			v.writeTableBanner(PROGRAM_WIDTH,file_location);
+		}else{
+			v.printTableBanner(PROGRAM_WIDTH);
+		}
+		
 		UtilityStructs::StorageItems r_t;
 		
 	for (std::vector<std::string>::iterator it = graphList.begin(); it != graphList.end(); it++){
@@ -85,8 +110,15 @@ void Analyzer::benchmark_comparison(){
 		results.push_back(r_t);
 		r_t = p.Pea_Find_SCC3();
 		results.push_back(r_t);
+		if(write_to_file){
+			if(isCsv){
+				v.writeExperimentRow_CSV(PROGRAM_WIDTH,id,vertex,edges,results,file_location_csv);
+			}
+			v.writeExperimentRow(PROGRAM_WIDTH,id,vertex,edges,results,file_location);
+		}else{
+			v.printExperimentRow(PROGRAM_WIDTH,id,vertex,edges,results);
+		}
 		
-		v.printExperimentRow(PROGRAM_WIDTH,id,vertex,edges,results);
 	}
 		
 }

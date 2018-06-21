@@ -26,7 +26,7 @@ def generate_folders():
     edge_percentage_list = ["0_10","10_25","25_50","50_75","75_100"]
     ecp_v2 = np.array([edge_percentage_list * len(node_capacity_list)]).flatten()
     print(ecp_v2)
-    current_directory = os.getcwd() + "/input"
+    current_directory = os.getcwd() + "/input_v2"
     pathlib.Path(current_directory).mkdir( exist_ok=True)
     print(current_directory)
     final_directory_list = []
@@ -80,7 +80,7 @@ def write_graph(graph,node,name):
     
 def main():
     dir_results = generate_folders()
-    generate_graphs(dir_results,30)
+    generate_graphs(dir_results,10)
 
 
 

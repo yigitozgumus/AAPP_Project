@@ -11,6 +11,8 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
+#include <time.h>
+
 using namespace boost;
 
 namespace UtilityStructs {
@@ -55,7 +57,10 @@ namespace UtilityStructs {
 		}
 		
 };
+
+
 }
+
 
 typedef UtilityStructs::VertexProperty VertexProperty;
 typedef UtilityStructs::EdgeProperty EdgeProperty;

@@ -18,6 +18,7 @@
 #include <iterator>
 #include <chrono>
 #include <thread>
+#include <time.h>
 //Boost
 #include <boost/config.hpp>
 #include <boost/filesystem.hpp>
@@ -45,11 +46,12 @@ class Analyzer{
 		}
 
     	std::vector<std::string> getInputList(std::string &dirPath);
+    	std::string currentDateTime();
     	void solve_with_all();
     	void solve_with_tarjan();
     	void solve_with_nuutila();
     	void solve_with_pearce();
-    	void benchmark_comparison();
+    	void benchmark_comparison(bool &write_to_file,bool isCsv,std::string &inputDirectory);
     	
 
 };
