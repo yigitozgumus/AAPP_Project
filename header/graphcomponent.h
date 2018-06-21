@@ -1,6 +1,6 @@
 #ifndef GRAPHCOMPONENT_H
 #define GRAPHCOMPONENT_H
-#include "typedef.h"
+#include "utilities.h"
 //STL
 #include <iostream>
 #include <vector>

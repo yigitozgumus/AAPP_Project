@@ -110,7 +110,7 @@ void Tarjan::ApplySCC() {
     std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
     //TIMER
     {
-        Timer timer;
+        UtilityStructs::Timer timer;
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 666) {
@@ -120,7 +120,6 @@ void Tarjan::ApplySCC() {
     float ms = timer.stop();
     }
     //TIMER end
-
 }
 
 void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine) {

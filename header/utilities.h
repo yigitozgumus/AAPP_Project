@@ -24,6 +24,31 @@ namespace UtilityStructs {
         std::size_t index;
 
     };
+
+    class Timer{
+	public:
+		std::chrono::time_point<std::chrono::steady_clock> start;
+		std::chrono::duration<float> duration;
+		std::chrono::time_point<std::chrono::steady_clock> finish;
+		
+		Timer(){
+			start = std::chrono::high_resolution_clock::now();
+		}
+		float stop(){
+			finish = std::chrono::high_resolution_clock::now();
+			duration = finish-start;
+			float ms = duration.count() * 1000.0f;
+			std::cout << "Timer took " << ms << " ms" << std::endl;
+			return ms;
+		}
+		~Timer(){
+			finish = std::chrono::high_resolution_clock::now();
+			duration = finish-start;
+			float ms = duration.count() * 1000.000f;
+			std::cout << "Timer took (at the point of Object Destruction) " << ms << " ms" << std::endl; 
+		}
+		
+};
 }
 
 typedef UtilityStructs::VertexProperty VertexProperty;
@@ -37,5 +62,6 @@ typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
 typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
 typedef property_map<theGraph, std::size_t VertexProperty::*>::type v_p;
 typedef property_map<theGraph, std::string EdgeProperty::*>::type e_p;
+
 
 #endif

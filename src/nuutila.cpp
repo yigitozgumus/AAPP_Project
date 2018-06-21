@@ -66,7 +66,7 @@
      //Timer
      std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
      {
-        Timer timer;
+        UtilityStructs::Timer timer;
         for (vp = vertices(n); vp.first != vp.second; vp.first++) {
          Vertex_t v = *vp.first;
          if (visited[id[v]]== 999999) {
@@ -130,7 +130,7 @@
      std::vector<int> root(sizeOfGraph, -1);
      std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
     {
-        Timer timer;
+        UtilityStructs::Timer timer;
         for (vp = vertices(n); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 999999) {
@@ -160,7 +160,7 @@
         visited[0] = -999;
         std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
         {
-            Timer timer;
+            UtilityStructs::Timer timer;
             for (vp = vertices(n); vp.first != vp.second; vp.first++) {
              Vertex_t v = *vp.first;
              if (visited[id[v]+1] == 999999) {

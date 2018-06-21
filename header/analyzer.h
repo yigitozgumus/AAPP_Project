@@ -68,8 +68,8 @@ class Timer{
 		~Timer(){
 			finish = std::chrono::high_resolution_clock::now();
 			duration = finish-start;
-			float ms = duration.count() * 1000.0f;
-			std::cout << "Timer took " << ms << " ms" << std::endl; 
+			float ms = duration.count() * 1000.000f;
+			std::cout << "Timer took (at the point of Object Destruction) " << ms << " ms" << std::endl; 
 		}
 		
 };

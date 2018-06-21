@@ -120,7 +120,7 @@ std::vector<int> Pearce::Pea_Find_SCC1() {
     //Create the Timer object
     //TODO
     {
-        Timer timer;
+        UtilityStructs::Timer timer;
     for(vp=vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if(!visited[id[v]]){
@@ -194,7 +194,7 @@ std::vector<int> Pearce::Pea_Find_SCC2()
     //TODO
     std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
     {
-        Timer timer;
+        UtilityStructs::Timer timer;
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
@@ -266,7 +266,7 @@ std::vector<int> Pearce::Pea_Find_SCC3() {
     //TODO
     std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
     {
-        Timer timer;
+        UtilityStructs::Timer timer;
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
