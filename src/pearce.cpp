@@ -117,7 +117,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     v_p id = get(&VertexProperty::index, p);
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
-    std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
+//    std::cout << "\nPearce SCC implementation mark 1 exited succesfully" << std::endl;
     //Create the Timer object
     {
         UtilityStructs::Timer timer;
@@ -131,7 +131,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     }
     //Storage info collection
     //print_result_max(rindex);
-    size_t total_bytes;
+    size_t total_bytes = 0;
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
     total_bytes += sizeof(rindex[0]) * inComponent.size();
@@ -201,7 +201,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
     std::pair<vertex_iter, vertex_iter> vp;
     //Create the Timer object
     //TODO
-    std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
+//    std::cout << "\nPearce SCC implementation mark 2 exited succesfully" << std::endl;
     {
         UtilityStructs::Timer timer;
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
@@ -214,7 +214,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
     }
     //Storage info collection
     //print_result_min(rindex);
-    size_t total_bytes;
+    size_t total_bytes = 0;
     total_bytes += sizeof(c);
     total_bytes += sizeof(rindex[0]) * rindex.size();
     UtilityStructs::StorageItems s;
@@ -282,7 +282,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     std::pair<vertex_iter, vertex_iter> vp;
     //Create the Timer Object 
     //TODO
-    std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
+ //   std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
     {
         UtilityStructs::Timer timer;
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
@@ -295,7 +295,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     }
     //print_result_min(rindex);  
     //Storage info collection
-    size_t total_bytes;
+    size_t total_bytes= 0;
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
     UtilityStructs::StorageItems s;

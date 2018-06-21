@@ -40,7 +40,7 @@ class Nuutila : protected GraphComponent
 
     void print_graph();
 
-    void ApplySCC_Original();
+    UtilityStructs::StorageItems ApplySCC_Original();
 
     void Visit( Vertex_t &v,
                 std::vector<Vertex_t> &Points,
@@ -49,9 +49,9 @@ class Nuutila : protected GraphComponent
                 std::vector<bool> &isComponent,
                 int &Counter);
 
-    void ApplySCC_v1();
+    UtilityStructs::StorageItems ApplySCC_v1();
 
-    void ApplySCC_v2();
+    UtilityStructs::StorageItems ApplySCC_v2();
 
     void Visit_v1(Vertex_t &v,
                   std::vector<Vertex_t> &Points,

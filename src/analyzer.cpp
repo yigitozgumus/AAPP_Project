@@ -1,5 +1,7 @@
 #include "./../header/analyzer.h"
 #include "./../header/tarjan.h"
+#include "./../header/nuutila.h"
+#include "./../header/pearce.h"
 
 //STL
  #include <iostream>
@@ -39,8 +41,8 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 			while (iter != end){
 				if(!filesys::is_directory(iter->path().string())){
 					inputGraphs.push_back(iter->path().string());
-				}
-				
+				}				
+						
 				error_code ec;
 				// Increment the iterator to point to next entry in recursive iteration
 				iter.increment(ec);
@@ -57,10 +59,34 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath){
 	}
 
 void Analyzer::benchmark_comparison(){
-
-	for (auto str : graphList){
-		Tarjan t(str);
-		t.ApplySCC();
+		Visualize v;
+		v.printTableBanner(PROGRAM_WIDTH);
+		UtilityStructs::StorageItems r_t;
+		
+	for (std::vector<std::string>::iterator it = graphList.begin(); it != graphList.end(); it++){
+	std::vector<UtilityStructs::StorageItems> results;	
+		Tarjan t(*it);
+		r_t = t.ApplySCC();
+		int vertex = r_t.vertexCount;
+		int edges = r_t.edgeCount;
+		int id = it - graphList.begin();
+		results.push_back(r_t);
+		Nuutila n(*it);
+		r_t = n.ApplySCC_Original();
+		results.push_back(r_t);
+		r_t = n.ApplySCC_v1();
+		results.push_back(r_t);
+		r_t = n.ApplySCC_v2();
+		results.push_back(r_t);
+		Pearce p(*it);
+		r_t = p.Pea_Find_SCC1();
+		results.push_back(r_t);
+		r_t = p.Pea_Find_SCC2();
+		results.push_back(r_t);
+		r_t = p.Pea_Find_SCC3();
+		results.push_back(r_t);
+		
+		v.printExperimentRow(PROGRAM_WIDTH,id,vertex,edges,results);
 	}
 		
 }

@@ -39,39 +39,20 @@ class Analyzer{
 		Analyzer(){};
 		Analyzer(std::string &dirname){
 			graphList = getInputList(dirname);
+			v.printTableSeperator(PROGRAM_WIDTH);
 			std::string message = "All the graph files are imported";
 			v.printLine(PROGRAM_WIDTH,message);
 		}
 
     	std::vector<std::string> getInputList(std::string &dirPath);
+    	void solve_with_all();
+    	void solve_with_tarjan();
+    	void solve_with_nuutila();
+    	void solve_with_pearce();
     	void benchmark_comparison();
     	
 
 };
 
-class Timer{
-	public:
-		std::chrono::time_point<std::chrono::steady_clock> start;
-		std::chrono::duration<float> duration;
-		std::chrono::time_point<std::chrono::steady_clock> finish;
-		
-		Timer(){
-			start = std::chrono::high_resolution_clock::now();
-		}
-		float stop(){
-			finish = std::chrono::high_resolution_clock::now();
-			duration = finish-start;
-			float ms = duration.count() * 1000.0f;
-			std::cout << "Timer took " << ms << " ms" << std::endl;
-			return ms;
-		}
-		~Timer(){
-			finish = std::chrono::high_resolution_clock::now();
-			duration = finish-start;
-			float ms = duration.count() * 1000.000f;
-			std::cout << "Timer took (at the point of Object Destruction) " << ms << " ms" << std::endl; 
-		}
-		
-};
 
 #endif

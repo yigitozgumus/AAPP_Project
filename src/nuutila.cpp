@@ -41,7 +41,7 @@
                    //      std::cout << id[w] +1 << " ";
                      }
              }
-             std::cout << "Number of elements in the component is: " << count_component << std::endl;
+     //        std::cout << "Number of elements in the component is: " << count_component << std::endl;
           //   std::cout << std::endl;
          }
      }
@@ -51,7 +51,7 @@
      // }
              
  }
- void Nuutila::ApplySCC_Original() {
+ UtilityStructs::StorageItems Nuutila::ApplySCC_Original() {
      float ms_duration;
      v_p id = get(&VertexProperty::index,n);
      typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
@@ -64,7 +64,7 @@
      std::vector<int>visited(sizeOfGraph,999999);
      std::vector<int>root(sizeOfGraph,666);
      //Timer
-     std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
+  //   std::cout << "\nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;
      {
         UtilityStructs::Timer timer;
         for (vp = vertices(n); vp.first != vp.second; vp.first++) {
@@ -75,9 +75,18 @@
      }
      ms_duration = timer.stop();
      }
+    size_t total_bytes = 0;
+    total_bytes += sizeof(root[0]) * root.size();
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(n);
+    s.edgeCount = num_edges(n);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
      
-     
-     print_sccs(root);
+     //print_sccs(root);
  }
 
  void Nuutila::Visit( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter) {
@@ -116,7 +125,7 @@
      }
  }
 
- void Nuutila::ApplySCC_v1(){
+ UtilityStructs::StorageItems Nuutila::ApplySCC_v1(){
      float ms_duration;
      v_p id= get(&VertexProperty::index, n);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
@@ -128,7 +137,7 @@
      std::vector<bool> isComponent(sizeOfGraph, false);
      std::vector<int> visited(sizeOfGraph, 999999);
      std::vector<int> root(sizeOfGraph, -1);
-     std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+ //    std::cout << "\nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph" << std::endl;
     {
         UtilityStructs::Timer timer;
         for (vp = vertices(n); vp.first != vp.second; vp.first++) {
@@ -140,38 +149,58 @@
        ms_duration = timer.stop();
     }
     //Storage info collection
-    print_sccs(root);
+     size_t total_bytes = 0;
+    total_bytes += sizeof(root[0]) * root.size();
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(n);
+    s.edgeCount = num_edges(n);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
+    //print_sccs(root);
 }
 
-      void Nuutila::ApplySCC_v2(){
-        float ms_duration;
-        v_p id = get(&VertexProperty::index, n);
-        typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
-        typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
-        std::pair<vertex_iter, vertex_iter> vp;
-        std::vector<int> Points;
-        Points.push_back(0);
-        int Counter = 0;
-        int sizeOfGraph = num_vertices(n);
-        std::vector<bool>isComponent(sizeOfGraph+1,false);
-        std::vector<int>visited(sizeOfGraph+1,999999);
-        std::vector<int>root(sizeOfGraph,-1);
-        visited[0] = -999;
-        std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
-        {
-            UtilityStructs::Timer timer;
-            for (vp = vertices(n); vp.first != vp.second; vp.first++) {
-             Vertex_t v = *vp.first;
-             if (visited[id[v]+1] == 999999) {
-                 Visit_v2( v,Points,root,visited,isComponent, Counter);
-             }
+  UtilityStructs::StorageItems Nuutila::ApplySCC_v2(){
+    float ms_duration;
+    v_p id = get(&VertexProperty::index, n);
+    typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    std::vector<int> Points;
+    Points.push_back(0);
+    int Counter = 0;
+    int sizeOfGraph = num_vertices(n);
+    std::vector<bool>isComponent(sizeOfGraph+1,false);
+    std::vector<int>visited(sizeOfGraph+1,999999);
+    std::vector<int>root(sizeOfGraph,-1);
+    visited[0] = -999;
+ //   std::cout << "\nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph" << std::endl;
+    {
+        UtilityStructs::Timer timer;
+        for (vp = vertices(n); vp.first != vp.second; vp.first++) {
+         Vertex_t v = *vp.first;
+         if (visited[id[v]+1] == 999999) {
+             Visit_v2( v,Points,root,visited,isComponent, Counter);
          }
-         ms_duration = timer.stop();
-         //Storage info collection
-        }
-          
-          print_sccs(root);
-      }
+     }
+     ms_duration = timer.stop();
+     //Storage info collection
+    }
+     size_t total_bytes = 0;
+    total_bytes += sizeof(root[0]) * root.size();
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(n);
+    s.edgeCount = num_edges(n);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    return s;
+      
+      // print_sccs(root);
+  }
 
         void Nuutila::Visit_v1( Vertex_t &v, std::vector<Vertex_t> &Points,std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent ,int &Counter){
       

@@ -1,6 +1,6 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
-#define PROGRAM_WIDTH 120
+#define PROGRAM_WIDTH 200
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -45,14 +45,13 @@ namespace UtilityStructs {
 			finish = std::chrono::high_resolution_clock::now();
 			duration = finish-start;
 			float ms = duration.count() * 1000.0f;
-			std::cout << "Timer took " << ms << " ms" << std::endl;
+			
 			return ms;
 		}
 		~Timer(){
 			finish = std::chrono::high_resolution_clock::now();
 			duration = finish-start;
 			float ms = duration.count() * 1000.000f;
-			std::cout << "Timer took (at the point of Object Destruction) " << ms << " ms" << std::endl; 
 		}
 		
 };

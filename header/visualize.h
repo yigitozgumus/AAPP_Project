@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <cstdlib>
 
+#include "./utilities.h"
+
 
 class Visualize{
 	public:
@@ -15,6 +17,7 @@ class Visualize{
     	void printTableBanner(int width);
     	void printTableSeperator(int width);
     	void printLine(int width,std::string &message);
+    	void printExperimentRow(int width,int &id,int &vertex,int &edge,std::vector<UtilityStructs::StorageItems> &rowInfo);
 };
 
 #endif

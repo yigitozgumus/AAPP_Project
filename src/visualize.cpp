@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
+#include <sstream>
 
 using namespace std;
 
@@ -17,7 +18,32 @@ std::string Visualize::centered(int width, const std::string& str) {
     return string(pad1, ' ') + str + string(pad2, ' ');
 }
 
+void Visualize::printExperimentRow(int width,
+								   int &id,
+								   int &vertex,
+								   int &edge,
+								   std::vector<UtilityStructs::StorageItems> &rowInfo){
+	int cell = (width - 18) / 17;
+	int remainder = (width-18) % 17;
+	std::stringstream buffer;
+	buffer << "|"
+			  << setw(cell) << left << id << "|"
+			  << setw(cell) << left << vertex << "|"
+			  << setw(cell) << left << edge << "|" ;
+	for(std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end()-1; it++){
+		buffer << setw(cell) << left << (*it).duration << "|"
+				  << setw(cell) << left << (float)(*it).total_bytes/1024 << "|";
+	}
+	buffer << setw(cell) << left << rowInfo[6].duration << "|"
+			  << setw(cell) << left << (float)rowInfo[6].total_bytes /2014
+			  << std::string(remainder,' ') + "|\n|"
+			  << std::string(width-2,'-') + "|"  ;
+	std::cout << buffer.str() << std::endl;
+	
+}
+
 void Visualize::printTableBanner(int width){
+	std::system("clear");
 	int cell = (width-18) /17 ; 
 	int remainder = (width-18) % 17 ;
 	std::cout << std::string(width,'-') + "\n|"
@@ -40,7 +66,8 @@ void Visualize::printTableBanner(int width){
 			  << setw(cell) << left << "P_1 S" << "|"
 			  << setw(cell) << left << "P_2 T" << "|"
 			  << setw(cell) << left << "P_2 S" 
-			  << std::string(remainder,' ') << "|\n";
+			  << std::string(remainder,' ') << "|\n"
+			  << std::string(width,'-')  << std::endl;
 }
 void Visualize::printTableSeperator(int width){
 	std::cout << std::string(width,'-') + "\n";

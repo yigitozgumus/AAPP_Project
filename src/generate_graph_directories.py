@@ -18,6 +18,7 @@ def working_directory(directory):
 def generate_folders():
     
     node_capacity_list = ["5_50","50_100","100_500", "500_1000"]
+    #node_capacity_list = ["5_50"]
     number_edge_percentage = 5
     ncp_v2 = np.array([[x] * number_edge_percentage for x in node_capacity_list])
     ncp_v2 = ncp_v2.flatten()
@@ -34,6 +35,7 @@ def generate_folders():
     print("Sub directories with different percentage of edge creations will be created")
     for ddir in node_capacity_list:
         final_directory = os.path.join(current_directory, ddir)
+        #final_directory = current_directory
         #print(final_directory)
         pathlib.Path(final_directory).mkdir( exist_ok=True)
         #generate the second level of folders
@@ -78,7 +80,7 @@ def write_graph(graph,node,name):
     
 def main():
     dir_results = generate_folders()
-    generate_graphs(dir_results,5)
+    generate_graphs(dir_results,30)
 
 
 

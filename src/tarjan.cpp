@@ -108,7 +108,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     std::vector<int> visited(SizeOfGraph,666);
     std::vector<int> lowPt(SizeOfGraph,666);
     std::vector<int> lowVine(SizeOfGraph,666);
-    std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
+   // std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
     //TIMER
     {
         UtilityStructs::Timer timer;
@@ -168,13 +168,13 @@ void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Coun
     }
     if (lowPt[id[v]] == visited[id[v]] && lowVine[id[v]] == visited[id[v]]) {
 
-        std::cout <<"Strongly connected Component is: ";
+     //   std::cout <<"Strongly connected Component is: ";
         while(!Points.empty() && visited[id[Points.back()]] >= visited[id[v]]){
             Vertex_t x = Points.back();
             Points.pop_back();
-            std::cout << id[x]+1 << " ";
+        //    std::cout << id[x]+1 << " ";
         }
-        std::cout << std::endl;
+       // std::cout << std::endl;
         //Create a Vector of Vertex Vectors
         //pass it to the ApplySCC function
         //Create and Visualize Graphs there
