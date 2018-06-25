@@ -13,12 +13,14 @@ if(Boost_FOUND)
 include_directories(${Boost_INCLUDE_DIRS})
 add_executable(Project
 header/graphcomponent.h
-header/typedef.h
+header/utilities.h
 header/tarjan.h
 header/nuutila.h
 header/pearce.h
 header/analyzer.h
 header/visualize.h
+header/application.h
+src/application.cpp
 src/visualize.cpp
 src/tarjan.cpp
 src/pearce.cpp
