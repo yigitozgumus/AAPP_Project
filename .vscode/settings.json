@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "*.lex": "lex",
-        "algorithm": "cpp",
-        "__locale": "cpp"
-    },
-    "C_Cpp.intelliSenseEngineFallback": "Enabled"
-}
