@@ -77,25 +77,28 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath)
 	return inputGraphs;
 }
 
-void Analyzer::benchmark_comparison(bool &write_to_file, bool isCsv, std::string &inputDirectory)
+void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string &inputDirectory)
 {
 	Visualize v;
 	boost::filesystem::path full_path(boost::filesystem::current_path());
 	std::string dateTime = currentDateTime();
-	std::string file_location_csv = full_path.string() + "/data/experiment_" + dateTime + ".csv";
-	std::string file_location = full_path.string() + "/logs/experiment-" + dateTime + ".log";
-	std::ofstream logFile;
-	logFile.open(file_location, std::ios::app);
-	logFile << "This log is created with the " + inputDirectory + " directory" << std::endl;
-	logFile.close();
+	std::string file_location_csv ;
+	std::string file_location ;
+	if(write_to_file){
+		file_location = full_path.string() + "/logs/experiment-" + dateTime + ".log";
+		std::ofstream logFile;
+		logFile.open(file_location, std::ios::app);
+		logFile << "This log is created with the " + inputDirectory + " directory" << std::endl;
+		logFile.close();
+		if(isCsv){
+			file_location_csv = full_path.string() + "/data/experiment_" + dateTime + ".csv";
+		}
+	}
 	if (write_to_file)
 	{
-		v.writeTableBanner(PROGRAM_WIDTH, file_location);
+		v.writeTableBanner( file_location);
 	}
-	else
-	{
-		v.printTableBanner(PROGRAM_WIDTH);
-	}
+	v.printTableBanner();
 
 	UtilityStructs::StorageItems r_t;
 
@@ -126,13 +129,12 @@ void Analyzer::benchmark_comparison(bool &write_to_file, bool isCsv, std::string
 		{
 			if (isCsv)
 			{
-				v.writeExperimentRow_CSV(PROGRAM_WIDTH, id, vertex, edges, results, file_location_csv);
+				v.writeExperimentRow_CSV( id, vertex, edges, results, file_location_csv);
 			}
-			v.writeExperimentRow(PROGRAM_WIDTH, id, vertex, edges, results, file_location);
+			v.writeExperimentRow( id, vertex, edges, results, file_location);
 		}
-		else
-		{
-			v.printExperimentRow(PROGRAM_WIDTH, id, vertex, edges, results);
-		}
+		
+		v.printExperimentRow( id, vertex, edges, results);
+		
 	}
 }

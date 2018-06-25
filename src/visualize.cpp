@@ -23,8 +23,7 @@ std::string Visualize::centered(int width, const std::string &str)
 	return string(pad1, ' ') + str + string(pad2, ' ');
 }
 
-void Visualize::printExperimentRow(int width,
-								   int id,
+void Visualize::printExperimentRow(int id,
 								   int vertex,
 								   int edge,
 								   std::vector<UtilityStructs::StorageItems> rowInfo)
@@ -47,8 +46,7 @@ void Visualize::printExperimentRow(int width,
 		   << std::string(width - 2, '-') + "|";
 	std::cout << buffer.str() << std::endl;
 }
-void Visualize::writeExperimentRow(int width,
-								   int id,
+void Visualize::writeExperimentRow(int id,
 								   int vertex,
 								   int edge,
 								   std::vector<UtilityStructs::StorageItems> rowInfo,
@@ -75,8 +73,7 @@ void Visualize::writeExperimentRow(int width,
 	logFile << buffer.str();
 	logFile.close();
 }
-void Visualize::writeExperimentRow_CSV(int width,
-									   int id,
+void Visualize::writeExperimentRow_CSV(int id,
 									   int vertex,
 									   int edge,
 									   std::vector<UtilityStructs::StorageItems> rowInfo,
@@ -99,7 +96,7 @@ void Visualize::writeExperimentRow_CSV(int width,
 	logFile.close();
 }
 
-void Visualize::writeTableBanner(int width, std::string filename)
+void Visualize::writeTableBanner( std::string filename)
 {
 	std::system("clear");
 	int cell = (width - 18) / 17;
@@ -150,7 +147,7 @@ void Visualize::writeTableBanner(int width, std::string filename)
 	logFile.close();
 }
 
-void Visualize::printTableBanner(int width)
+void Visualize::printTableBanner()
 {
 	std::system("clear");
 	int cell = (width - 18) / 17;
@@ -196,11 +193,11 @@ void Visualize::printTableBanner(int width)
 			  << std::string(width, '-') << std::endl;
 }
 
-void Visualize::printTableSeperator(int width)
+void Visualize::printTableSeperator()
 {
 	std::cout << std::string(width, '-') + "\n";
 }
-void Visualize::printProgramEntry(int width)
+void Visualize::printProgramEntry()
 {
 	std::system("clear");
 	std::cout << std::string(width, '=') + "\n="
@@ -208,7 +205,7 @@ void Visualize::printProgramEntry(int width)
 			  << std::string(width, '=') + "\n";
 }
 
-void Visualize::printLine(int width, std::string message)
+void Visualize::printLine( std::string message)
 {
 	std::cout << "|" << setw(width - 2) << left << message << "|\n";
 }

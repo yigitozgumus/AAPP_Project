@@ -13,5 +13,6 @@ class Application{
     void welcomeScreen();
     void generateGraph();
     void runExperiment();
+    void visualizeGraph();
 };
 #endif // !

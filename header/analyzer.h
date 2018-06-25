@@ -40,9 +40,9 @@ class Analyzer{
 		Analyzer(){};
 		Analyzer(std::string &dirname){
 			graphList = getInputList(dirname);
-			v.printTableSeperator(PROGRAM_WIDTH);
-			std::string message = "All the graph files are imported";
-			v.printLine(PROGRAM_WIDTH,message);
+			//v.printTableSeperator();
+			//std::string message = "All the graph files are imported";
+			//v.printLine(message);
 		}
 
     	std::vector<std::string> getInputList(std::string &dirPath);
@@ -51,7 +51,7 @@ class Analyzer{
     	void solve_with_tarjan();
     	void solve_with_nuutila();
     	void solve_with_pearce();
-    	void benchmark_comparison(bool &write_to_file,bool isCsv,std::string &inputDirectory);
+    	void benchmark_comparison(bool write_to_file,bool isCsv,std::string &inputDirectory);
     	
 
 };
