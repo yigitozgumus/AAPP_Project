@@ -20,6 +20,7 @@ class Visualize{
 		void printProgramEntry();
     	void printTableBanner();
     	void printTableSeperator();
+		void printProgramBottom();
     	void printLine(std::string message);
     	void printExperimentRow(int id,int vertex,int edge,std::vector<UtilityStructs::StorageItems> rowInfo);
     	void writeProgramEntry(std::string filename);

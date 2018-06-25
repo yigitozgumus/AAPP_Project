@@ -197,6 +197,10 @@ void Visualize::printTableSeperator()
 {
 	std::cout << std::string(width, '-') + "\n";
 }
+void Visualize::printProgramBottom()
+{	
+	std::cout << "|"<< std::string(width-2, '-') << "|" << "\n";
+}
 void Visualize::printProgramEntry()
 {
 	std::system("clear");

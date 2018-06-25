@@ -137,4 +137,10 @@ void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string 
 		v.printExperimentRow( id, vertex, edges, results);
 		
 	}
+	if(isCsv){
+		v.printLine("The CSV file is saved into " + file_location_csv);
+	}
+	if(write_to_file){
+		v.printLine("The Log file is saved into " + file_location);
+	}
 }
