@@ -15,64 +15,67 @@
 
 using namespace boost;
 
-namespace UtilityStructs {
+namespace UtilityStructs
+{
 
-    struct EdgeProperty {
-        EdgeProperty(const std::string &n) : name(n) {}
-        std::string name;
-    };
-
-    struct VertexProperty {
-        std::size_t index;
-
-    };
-
-    struct StorageItems{
-    	std::size_t total_bytes;
-    	float duration;
-    	int vertexCount;
-    	int edgeCount;
-    };
-
-    class Timer{
-	public:
-		std::chrono::time_point<std::chrono::steady_clock> start;
-		std::chrono::duration<float> duration;
-		std::chrono::time_point<std::chrono::steady_clock> finish;
-		
-		Timer(){
-			start = std::chrono::high_resolution_clock::now();
-		}
-		float stop(){
-			finish = std::chrono::high_resolution_clock::now();
-			duration = finish-start;
-			float ms = duration.count() * 1000.0f;
-			
-			return ms;
-		}
-		~Timer(){
-			finish = std::chrono::high_resolution_clock::now();
-			duration = finish-start;
-			float ms = duration.count() * 1000.000f;
-		}
-		
+struct EdgeProperty
+{
+	EdgeProperty(const std::string &n) : name(n) {}
+	std::string name;
 };
 
+struct VertexProperty
+{
+	std::size_t index;
+};
 
-}
+struct StorageItems
+{
+	std::size_t total_bytes;
+	float duration;
+	int vertexCount;
+	int edgeCount;
+};
 
+class Timer
+{
+  public:
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::duration<float> duration;
+	std::chrono::time_point<std::chrono::steady_clock> finish;
+
+	Timer()
+	{
+		start = std::chrono::high_resolution_clock::now();
+	}
+	float stop()
+	{
+		finish = std::chrono::high_resolution_clock::now();
+		duration = finish - start;
+		float ms = duration.count() * 1000.0f;
+
+		return ms;
+	}
+	~Timer()
+	{
+		finish = std::chrono::high_resolution_clock::now();
+		duration = finish - start;
+		float ms = duration.count() * 1000.000f;
+	}
+};
+
+} // namespace UtilityStructs
 
 typedef UtilityStructs::VertexProperty VertexProperty;
 typedef UtilityStructs::EdgeProperty EdgeProperty;
 
 typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
-                              VertexProperty, EdgeProperty>
-    theGraph;
+							  VertexProperty, EdgeProperty>
+	theGraph;
 
 typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
 typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
 typedef property_map<theGraph, std::size_t VertexProperty::*>::type v_p;
 typedef property_map<theGraph, std::string EdgeProperty::*>::type e_p;
-
 
 #endif

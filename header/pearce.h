@@ -20,85 +20,54 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-
 using namespace boost;
 
 class Pearce : protected GraphComponent
-{ 
-  public:
-    theGraph p;
-    std::vector<theGraph> experiment;
-    Pearce() = default;
-    Pearce(std::string filename) : GraphComponent(filename){
-      read_graph_file(filename,p);
-    }
+{
+public:
+  theGraph p;
+  std::vector<theGraph> experiment;
+  Pearce() = default;
+  Pearce(std::string filename) : GraphComponent(filename)
+  {
+    read_graph_file(filename, p);
+  }
 
-    //TODO
-    void solve(std::vector<std::string> methods, int graphNum);
+  //TODO
+  void solve(std::vector<std::string> methods, int graphNum);
 
-    void print_graph();
+  void print_graph();
 
-    void print_result_max(std::vector<int> &rindex);
-    void print_result_min(std::vector<int> &rindex);
+  void print_result_max(std::vector<int> &rindex);
+  void print_result_min(std::vector<int> &rindex);
 
-    void DFS();
+  void DFS();
 
-    void visit(Vertex_t &v,
-              std::vector<int> &visited,
-              int &index);
+  void visit(Vertex_t &v,
+             std::vector<int> &visited,
+             int &index);
 
-    UtilityStructs::StorageItems Pea_Find_SCC1();
+  UtilityStructs::StorageItems Pea_Find_SCC1();
 
-    void visit_scc1(Vertex_t &v,
-                    std::vector<bool> &visited,
-                    std::vector<int> &rindex,
-                    std::vector<bool> &inComponent,
-                    std::vector<Vertex_t> &Stack,
-                    int &index,
-                    int &c);
-
-    UtilityStructs::StorageItems Pea_Find_SCC2();
-
-    void visit_scc2(Vertex_t &v,
-                    std::vector<int> &rindex,
-                    std::vector<Vertex_t> &Stack,
-                    int &index,
-                    int &c);
-
-    UtilityStructs::StorageItems Pea_Find_SCC3();
-
-    void visit_scc3(Vertex_t &v,
-                    std::vector<bool> &root,
-                    std::vector<int> &rindex,
-                    std::vector<Vertex_t> &vStack,
-                    std::vector<int> &iStack,
-                    int &index,
-                    int &c);
-
-    void visitLoop(std::vector<bool> &root,
+  void visit_scc1(Vertex_t &v,
+                  std::vector<bool> &visited,
                   std::vector<int> &rindex,
-                  std::vector<Vertex_t> &vStack,
-                  std::vector<int> &iStack,
+                  std::vector<bool> &inComponent,
+                  std::vector<Vertex_t> &Stack,
                   int &index,
                   int &c);
 
-    void beginVisiting(Vertex_t &v,
-                       std::vector<bool> &root,
-                       std::vector<int> &rindex,
-                       std::vector<Vertex_t> &vStack,
-                       std::vector<int> &iStack,
-                       int &index);
+  UtilityStructs::StorageItems Pea_Find_SCC2();
 
-    void finishVisiting(Vertex_t &v,
-                        std::vector<bool> &root,
-                        std::vector<int> &rindex,
-                        std::vector<Vertex_t> &vStack,
-                        std::vector<int> &iStack,
-                        int &index,
-                        int &c);
+  void visit_scc2(Vertex_t &v,
+                  std::vector<int> &rindex,
+                  std::vector<Vertex_t> &Stack,
+                  int &index,
+                  int &c);
 
-    bool beginEdge(Vertex_t &v,
-                  int &k,
+  UtilityStructs::StorageItems Pea_Find_SCC3();
+
+  void visit_scc3(Vertex_t &v,
                   std::vector<bool> &root,
                   std::vector<int> &rindex,
                   std::vector<Vertex_t> &vStack,
@@ -106,10 +75,41 @@ class Pearce : protected GraphComponent
                   int &index,
                   int &c);
 
-    void finishEdge(Vertex_t &v,
-                    int &k,
-                    std::vector<int> &rindex,
-                    std::vector<bool> &root);
+  void visitLoop(std::vector<bool> &root,
+                 std::vector<int> &rindex,
+                 std::vector<Vertex_t> &vStack,
+                 std::vector<int> &iStack,
+                 int &index,
+                 int &c);
+
+  void beginVisiting(Vertex_t &v,
+                     std::vector<bool> &root,
+                     std::vector<int> &rindex,
+                     std::vector<Vertex_t> &vStack,
+                     std::vector<int> &iStack,
+                     int &index);
+
+  void finishVisiting(Vertex_t &v,
+                      std::vector<bool> &root,
+                      std::vector<int> &rindex,
+                      std::vector<Vertex_t> &vStack,
+                      std::vector<int> &iStack,
+                      int &index,
+                      int &c);
+
+  bool beginEdge(Vertex_t &v,
+                 int &k,
+                 std::vector<bool> &root,
+                 std::vector<int> &rindex,
+                 std::vector<Vertex_t> &vStack,
+                 std::vector<int> &iStack,
+                 int &index,
+                 int &c);
+
+  void finishEdge(Vertex_t &v,
+                  int &k,
+                  std::vector<int> &rindex,
+                  std::vector<bool> &root);
 };
 
 #endif

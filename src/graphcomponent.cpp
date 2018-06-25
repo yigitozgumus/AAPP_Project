@@ -19,7 +19,8 @@
 
 using namespace boost;
 
-void GraphComponent::read_graph_file(std::string filename, theGraph &g) {
+void GraphComponent::read_graph_file(std::string filename, theGraph &g)
+{
     std::ifstream infile(filename);
     v_p id = get(&VertexProperty::index, g);
     typedef graph_traits<theGraph>::vertex_descriptor Vertex;
@@ -43,24 +44,20 @@ void GraphComponent::read_graph_file(std::string filename, theGraph &g) {
         id[*vi] = vnum++;
 }
 
-
-void GraphComponent::print_graph_file(theGraph &graph) {
+void GraphComponent::print_graph_file(theGraph &graph)
+{
     v_p id = get(&VertexProperty::index, graph);
 
     property_map<theGraph, std::string EdgeProperty::*>::type
-            name = get(&EdgeProperty::name, graph);
+        name = get(&EdgeProperty::name, graph);
     graph_traits<theGraph>::vertex_iterator i, end;
     graph_traits<theGraph>::out_edge_iterator ei, edge_end;
-    for (boost::tie(i, end) = vertices(graph); i != end; ++i) {
-        std::cout << id[*i]+1 << " ";
+    for (boost::tie(i, end) = vertices(graph); i != end; ++i)
+    {
+        std::cout << id[*i] + 1 << " ";
         for (boost::tie(ei, edge_end) = out_edges(*i, graph); ei != edge_end; ++ei)
-            std::cout << " -" << name[*ei] << "-> " << id[target(*ei, graph)]+1 << "  ";
+            std::cout << " -" << name[*ei] << "-> " << id[target(*ei, graph)] + 1 << "  ";
         std::cout << std::endl;
     }
     // print_edges(theGraph, id);
 }
-
-
-
-
-
