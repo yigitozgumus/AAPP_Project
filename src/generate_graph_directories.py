@@ -43,9 +43,11 @@ def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=
 
 def generate_folders(foldername,index):
     
-    n_c_list = ["5_50","50_100","100_500", "500_1000"]
+    n_c_list = np.array(["5_50","50_100","100_500", "500_1000"])
     if(index != -1):
-        n_c_list = n_c_list[index:index+1]
+        index = np.array(index)
+        index -= 1
+        n_c_list = n_c_list[index ]
     #n_c_list = ["5_50"]
     number_edge_percentage = 5
     ncp_v2 = np.array([[x] * number_edge_percentage for x in n_c_list])
@@ -117,14 +119,13 @@ def main():
                                         with different edge creation probabilities.')
     parser.add_argument("graph_count", metavar ='G', help="Number of graphs for each edge creation interval")
     parser.add_argument("folder", metavar='F', help="The Target Location of the Graph files")
-    parser.add_argument("--single", metavar="S", help="Single node class Graph creation for fast testing between \n 5_50, 50_100 , 100_500 ,  500_1000")
+    parser.add_argument("--single", metavar="S", type=int, nargs='+', help="Single node class Graph creation for fast testing between \n 5_50, 50_100 , 100_500 ,  500_1000")
     args = parser.parse_args()
     graph_count = args.graph_count
     relative_folder = args.folder
     index = -1;
     if(args.single):
-        index = int(args.single)
-    
+        index = list(args.single )
     dir_results = generate_folders(relative_folder,index)
     generate_graphs(dir_results,int(graph_count))
 
