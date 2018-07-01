@@ -47,7 +47,8 @@ class Nuutila : protected GraphComponent
                 std::vector<int> &root,
                 std::vector<int> &visited,
                 std::vector<bool> &isComponent,
-                int &Counter);
+                int &Counter,
+                int &stackCount);
 
     UtilityStructs::StorageItems ApplySCC_v1();
 
@@ -58,14 +59,16 @@ class Nuutila : protected GraphComponent
                   std::vector<int> &root,
                   std::vector<int> &visited,
                   std::vector<bool> &isComponent,
-                  int &Counter);
+                  int &Counter,
+                  int &stackCount);
 
     void Visit_v2(Vertex_t &v,
                   std::vector<int> &Points,
                   std::vector<int> &root,
                   std::vector<int> &visited,
                   std::vector<bool> &isComponent ,
-                  int &Counter);
+                  int &Counter,
+                  int &stackCount);
 };
 
 #endif

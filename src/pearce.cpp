@@ -109,6 +109,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     float ms_duration;
     int index = 0;
     int c= 0;
+    int stackCount = 0;
     int sizeOfGraph = num_vertices(p);
     std::vector<bool> visited(sizeOfGraph,false);
     std::vector<int> rindex (sizeOfGraph,0);
@@ -124,7 +125,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     for(vp=vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if(!visited[id[v]]){
-            visit_scc1(v,visited,rindex,inComponent,Stack,index,c);
+            visit_scc1(v,visited,rindex,inComponent,Stack,index,c,stackCount);
         }
     }
     ms_duration = timer.stop();
@@ -135,6 +136,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
     total_bytes += sizeof(rindex[0]) * inComponent.size();
+    total_bytes += sizeof(Stack[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(p);
     s.edgeCount = num_edges(p);
@@ -149,7 +151,8 @@ void Pearce::visit_scc1(Vertex_t &v,
                         std::vector<bool> &inComponent,
                         std::vector<Vertex_t> &Stack,
                         int &index,
-                        int &c){
+                        int &c,
+                        int &stackCount){
 
     v_p id = get(&VertexProperty::index, p);
     bool root= true;
@@ -164,7 +167,7 @@ void Pearce::visit_scc1(Vertex_t &v,
         Edge e = *out_i;
         Vertex_t w = target(e, p);
         if (visited[id[w]] == false){
-            visit_scc1(w, visited,rindex,inComponent,Stack, index,c);
+            visit_scc1(w, visited,rindex,inComponent,Stack, index,c,stackCount);
         }
         if(! inComponent[id[w]] && (rindex[id[w]] < rindex[id[v]])){
             rindex[id[v]] = rindex[id[w]]; 
@@ -186,6 +189,7 @@ void Pearce::visit_scc1(Vertex_t &v,
         c = c+1;
     }else{
         Stack.push_back(v);
+        stackCount++;
     }
 }
 
@@ -194,6 +198,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
+    int stackCount = 0;
     std::vector<int> rindex(sizeOfGraph, 0);
     std::vector<Vertex_t> Stack;
     v_p id = get(&VertexProperty::index, p);
@@ -207,9 +212,9 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
-            visit_scc2(v,rindex, Stack, index, c);
+            visit_scc2(v,rindex, Stack, index, c,stackCount);
         }
-    }
+        }
     ms_duration = timer.stop();
     }
     //Storage info collection
@@ -217,6 +222,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
     size_t total_bytes = 0;
     total_bytes += sizeof(c);
     total_bytes += sizeof(rindex[0]) * rindex.size();
+    total_bytes += sizeof(Stack[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(p);
     s.edgeCount = num_edges(p);
@@ -229,7 +235,8 @@ void Pearce::visit_scc2(Vertex_t &v,
                         std::vector<int> &rindex,
                         std::vector<Vertex_t> &Stack,
                         int &index,
-                        int &c) {
+                        int &c,
+                        int &stackCount) {
 
     v_p id = get(&VertexProperty::index, p);
     bool  root = true;
@@ -242,7 +249,7 @@ void Pearce::visit_scc2(Vertex_t &v,
         Edge e = *out_i;
         Vertex_t w = target(e, p);
         if (rindex[id[w]] == 0){
-            visit_scc2(w, rindex, Stack, index, c);
+            visit_scc2(w, rindex, Stack, index, c,stackCount);
         }
         if(rindex[id[w]] < rindex[id[v]]){
             rindex[id[v]] = rindex[id[w]] ;
@@ -264,6 +271,7 @@ void Pearce::visit_scc2(Vertex_t &v,
         c=c-1;
     }else{
         Stack.push_back(v);
+        stackCount++;
     }
 }
 
@@ -272,6 +280,8 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     int index = 1;
     int sizeOfGraph = num_vertices(p);
     int c = sizeOfGraph -1;
+    int stackCount_i = 0;
+    int stackCount_v = 0;
     std::vector<bool> root(sizeOfGraph,false);
     std::vector<int> rindex(sizeOfGraph,0);
     std::vector<Vertex_t> vStack;
@@ -298,6 +308,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     size_t total_bytes= 0;
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
+
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(p);
     s.edgeCount = num_edges(p);

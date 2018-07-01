@@ -53,7 +53,7 @@ class Tarjan : protected GraphComponent
     bool isReachable( Vertex_t &source, Vertex_t &target);
 
     void StrongConnect( Vertex_t &v, std::vector<Vertex_t> &Points,
-                  int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine);
+                  int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine,int &stackCount);
 };
 
 #endif

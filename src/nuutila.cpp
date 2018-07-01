@@ -35,26 +35,16 @@ void Nuutila::print_sccs(std::vector<int> &root)
         if (id[v] == root[id[v]])
         {
             int count_component = 0;
-            //      std::cout << id[v] <<" root " << std::endl;
-            //     std::cout << "Strongly connected component is : "  << " ";
-
             for (vp_inner = vertices(n); vp_inner.first != vp_inner.second; ++vp_inner.first)
             {
                 Vertex_t w = *vp_inner.first;
                 if (root[id[w]] == id[v])
                 {
                     count_component++;
-                    //      std::cout << id[w] +1 << " ";
                 }
             }
-            //        std::cout << "Number of elements in the component is: " << count_component << std::endl;
-            //   std::cout << std::endl;
         }
     }
-    // for(vp_inner =vertices(n); vp_inner.first != vp_inner.second; ++vp_inner.first){
-    //                 Vertex_t w = *vp_inner.first;
-    //                     std::cout << root[id[w]] +1 << " ";
-    // }
 }
 UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
 {
@@ -65,6 +55,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
     std::pair<vertex_iter, vertex_iter> vp;
     std::vector<Vertex_t> Points;
     int Counter = 0;
+    int stackCount = 0;
     int sizeOfGraph = num_vertices(n);
     std::vector<bool> isComponent(sizeOfGraph, false);
     std::vector<int> visited(sizeOfGraph, 999999);
@@ -78,7 +69,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
             Vertex_t v = *vp.first;
             if (visited[id[v]] == 999999)
             {
-                Visit(v, Points, root, visited, isComponent, Counter);
+                Visit(v, Points, root, visited, isComponent, Counter,stackCount);
             }
         }
         ms_duration = timer.stop();
@@ -87,6 +78,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    total_bytes += sizeof(Points[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(n);
     s.edgeCount = num_edges(n);
@@ -97,7 +89,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
     //print_sccs(root);
 }
 
-void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter)
+void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter,int &stackCount)
 {
     v_p id = get(&VertexProperty::index, n);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
@@ -106,6 +98,7 @@ void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int>
     root[id[v]] = id[v];
     isComponent[id[v]] = false;
     Points.push_back(v);
+    stackCount++;
     typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
     boost::graph_traits<theGraph>::out_edge_iterator o_i, o_o;
     for (boost::tie(o_i, o_o) = out_edges(v, n); o_i != o_o; ++o_i)
@@ -114,7 +107,7 @@ void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int>
         Vertex_t w = target(e, n);
         if (visited[id[w]] == 999999)
         {
-            Visit(w, Points, root, visited, isComponent, Counter);
+            Visit(w, Points, root, visited, isComponent, Counter,stackCount);
         }
         if (!isComponent[id[w]])
         {
@@ -134,8 +127,6 @@ void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int>
             isComponent[id[w]] = true;
 
         } while (v != w);
-        // Points.pop_back();
-        // isComponent[id[w]] = true;
     }
 }
 
@@ -148,6 +139,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v1()
     std::pair<vertex_iter, vertex_iter> vp;
     std::vector<Vertex_t> Points;
     int Counter = 0;
+    int stackCount = 0;
     int sizeOfGraph = num_vertices(n);
     std::vector<bool> isComponent(sizeOfGraph, false);
     std::vector<int> visited(sizeOfGraph, 999999);
@@ -160,7 +152,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v1()
             Vertex_t v = *vp.first;
             if (visited[id[v]] == 999999)
             {
-                Visit_v1(v, Points, root, visited, isComponent, Counter);
+                Visit_v1(v, Points, root, visited, isComponent, Counter,stackCount);
             }
         }
         ms_duration = timer.stop();
@@ -170,6 +162,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v1()
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    total_bytes += sizeof(Points[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(n);
     s.edgeCount = num_edges(n);
@@ -189,6 +182,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
     std::vector<int> Points;
     Points.push_back(0);
     int Counter = 0;
+    int stackCount = 0;
     int sizeOfGraph = num_vertices(n);
     std::vector<bool> isComponent(sizeOfGraph + 1, false);
     std::vector<int> visited(sizeOfGraph + 1, 999999);
@@ -202,7 +196,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
             Vertex_t v = *vp.first;
             if (visited[id[v] + 1] == 999999)
             {
-                Visit_v2(v, Points, root, visited, isComponent, Counter);
+                Visit_v2(v, Points, root, visited, isComponent, Counter,stackCount);
             }
         }
         ms_duration = timer.stop();
@@ -212,6 +206,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(isComponent[0]) * isComponent.size();
+    total_bytes += sizeof(Points[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(n);
     s.edgeCount = num_edges(n);
@@ -222,7 +217,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
     // print_sccs(root);
 }
 
-void Nuutila::Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter)
+void Nuutila::Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter,int &stackCount)
 {
 
     v_p id = get(&VertexProperty::index, n);
@@ -239,7 +234,7 @@ void Nuutila::Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<i
         Vertex_t w = target(e, n);
         if (visited[id[w]] == 999999)
         {
-            Visit_v1(w, Points, root, visited, isComponent, Counter);
+            Visit_v1(w, Points, root, visited, isComponent, Counter,stackCount);
         }
         if (!isComponent[id[w]])
         {
@@ -277,10 +272,11 @@ void Nuutila::Visit_v1(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<i
     else
     {
         Points.push_back(v);
+        stackCount++;
     }
 }
 
-void Nuutila::Visit_v2(Vertex_t &v, std::vector<int> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter)
+void Nuutila::Visit_v2(Vertex_t &v, std::vector<int> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter,int &stackCount)
 {
     v_p id = get(&VertexProperty::index, n);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
@@ -296,7 +292,7 @@ void Nuutila::Visit_v2(Vertex_t &v, std::vector<int> &Points, std::vector<int> &
         Vertex_t w = target(e, n);
         if (visited[id[w] + 1] == 999999)
         {
-            Visit_v2(w, Points, root, visited, isComponent, Counter);
+            Visit_v2(w, Points, root, visited, isComponent, Counter,stackCount);
         }
         if (!isComponent[root[id[w]] + 1])
         {
@@ -325,7 +321,7 @@ void Nuutila::Visit_v2(Vertex_t &v, std::vector<int> &Points, std::vector<int> &
     }
     else if (std::find(Points.begin(), Points.end(), root[id[v]]) == Points.end())
     {
-        //     std::cout << root[id[v]] << " is going in " << std::endl;
         Points.push_back(root[id[v]]);
+        stackCount++;
     }
 }

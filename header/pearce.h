@@ -55,7 +55,8 @@ public:
                   std::vector<bool> &inComponent,
                   std::vector<Vertex_t> &Stack,
                   int &index,
-                  int &c);
+                  int &c,
+                  int &stackCount);
 
   UtilityStructs::StorageItems Pea_Find_SCC2();
 
@@ -63,7 +64,8 @@ public:
                   std::vector<int> &rindex,
                   std::vector<Vertex_t> &Stack,
                   int &index,
-                  int &c);
+                  int &c,
+                  int &stackCount);
 
   UtilityStructs::StorageItems Pea_Find_SCC3();
 

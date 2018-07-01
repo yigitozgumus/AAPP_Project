@@ -108,6 +108,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     std::vector<int> visited(SizeOfGraph,666);
     std::vector<int> lowPt(SizeOfGraph,666);
     std::vector<int> lowVine(SizeOfGraph,666);
+    int stackCount = 0;
    // std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
     //TIMER
     {
@@ -115,7 +116,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 666) {
-            StrongConnect(v,Points, Counter,visited,lowPt,lowVine);
+            StrongConnect(v,Points, Counter,visited,lowPt,lowVine,stackCount);
         }
     }
     ms_duration = timer.stop();
@@ -126,6 +127,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(lowPt[0]) * lowPt.size();
     total_bytes += sizeof(lowVine[0]) * lowVine.size();
+    total_bytes +=sizeof(Points[0]) * stackCount;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(t);
     s.edgeCount = num_edges(t);
@@ -134,7 +136,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     return s;
 }
 
-void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine) {
+void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine,int &stackCount) {
     e_p arch_type = get(&EdgeProperty::name, t);
     v_p id = get(&VertexProperty::index,t);
 
@@ -144,6 +146,7 @@ void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Coun
     lowVine[id[v]] = Counter;
    // std::cout<< visited[v] << " " << lowPt[v] << " " << lowVine[v] << std::endl;
     Points.push_back(v);
+    stackCount++;
     typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
     boost::graph_traits<theGraph>::out_edge_iterator out_i, out_end;
     for (boost::tie(out_i, out_end) = out_edges(v, t); out_i != out_end; ++out_i) {
@@ -151,7 +154,7 @@ void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Coun
         Vertex_t w = target(e, t);
         if (visited[id[w]] == 666) {
             arch_type[e] = "tree"; // like in tarjan's algorithm
-            StrongConnect(w,Points, Counter,visited,lowPt,lowVine);
+            StrongConnect(w,Points, Counter,visited,lowPt,lowVine,stackCount);
             lowPt[id[v]] = lowPt[id[v]]< lowPt[id[w]]?lowPt[id[v]]:lowPt[id[w]];
             lowVine[id[v]] = lowVine[id[v]]< lowVine[id[w]]?lowVine[id[v]]:lowVine[id[w]];
         } else if (!isReachable( w, v)) {
