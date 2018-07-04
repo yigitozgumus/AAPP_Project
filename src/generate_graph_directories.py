@@ -60,9 +60,8 @@ def generate_folders(foldername,index,node_selection):
          print(1, "-) {}".format(int(n_c_list[0]),))
     else:
         for i in range(len(n_c_list)):
-            if(node_selection != -1):
-                nodes = n_c_list[i].split("_")
-                print(i+1, "-) {} - {}".format(int(nodes[0]), int(nodes[1])))
+            nodes = n_c_list[i].split("_")
+            print(i+1, "-) {} - {}".format(int(nodes[0]), int(nodes[1])))
     e_p_list = ["0_10","10_25","25_50","50_75","75_100"]
     ecp_v2 = np.array([e_p_list * len(n_c_list)]).flatten()
     print("\nEdge Creation Percentages are:")
@@ -129,8 +128,10 @@ def main():
                                         with different edge creation probabilities.')
     parser.add_argument("graph_count", metavar ='G', help="Number of graphs for each edge creation interval")
     parser.add_argument("folder", metavar='F', help="The Target Location of the Graph files")
-    parser.add_argument("--single", metavar="S", type=int, nargs='+', help="Single node class Graph creation for fast testing between \n 5_50, 50_100 , 100_500 ,  500_1000")
-    parser.add_argument("--node",metavar="N",type=int,help="Specific Node selection for Graph Creation. This option takes precedence over the Single node class selection.")
+    parser.add_argument("--single", metavar="S", type=int, nargs='+', help="Single node class Graph creation \
+                                            for fast testing between \n 5_50, 50_100 , 100_500 ,  500_1000")
+    parser.add_argument("--node",metavar="N",type=int,help="Specific Node selection for Graph Creation. This option \
+                                                takes precedence over the Single node class selection.")
     args = parser.parse_args()
     graph_count = args.graph_count
     relative_folder = args.folder
