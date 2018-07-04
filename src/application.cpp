@@ -23,15 +23,21 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/filesystem.hpp>
-
-void Application::mainLoop()
+/**
+ * @brief 
+ * 
+ */
+void Application::run()
 {
     Visualize v;
     std::string result = "start";
     v.printProgramEntry();
     welcomeScreen();
 }
-
+/**
+ * @brief 
+ * 
+ */
 void Application::welcomeScreen()
 {
     Visualize v;
@@ -39,7 +45,7 @@ void Application::welcomeScreen()
     v.printLine( "Please choose the operation you want to perform:");
     v.printLine( " 1-) Generate a Graph set");
     v.printLine( " 2-) Run an Experiment");
-    v.printLine( " 3-) Visualize a Graph");
+    v.printLine( " 3-) Run Debug Mode");
     v.printLine( " 0-) Exit the Application");
     v.printProgramBottom();
     std::cout << "|>> ";
@@ -52,7 +58,8 @@ void Application::welcomeScreen()
     case 2: 
         runExperiment();
         break;
-    case 3: visualizeGraph();
+    case 3:
+        runDebugMode();
         break;
     case 0:
         break;
@@ -60,7 +67,10 @@ void Application::welcomeScreen()
         break;
     }
 }
-
+/**
+ * @brief 
+ * 
+ */
 void Application::generateGraph()
 {
     Visualize v;
@@ -106,12 +116,18 @@ void Application::generateGraph()
         v.printLine("3-) 100-500 Nodes");
         v.printLine("4-) 500-1000 Nodes");
         v.printLine("Please type the required classes with their index seperated by spaces:");
+        v.printLine("Additionally, If you want to create a graph with an exact number of nodes, type the number of nodes with '#' prefix : #56");
         std::cout << "|>>";
         std::string classes = "";
         std::cin.ignore();
         std::getline(std::cin,classes);
         std::string command;
-        command = Program + " " + numOfGraph + " " + dir_name + " --single " + classes ;
+        if(classes.compare(0,1,"#")==0){
+             command = Program + " " + numOfGraph + " " + dir_name + " --node " + classes.substr(1) ;
+        }else{
+             command = Program + " " + numOfGraph + " " + dir_name + " --single " + classes ;
+        }
+        
         std::system(command.c_str());
         v.printLine("Press c to Continue, q to quit");
         std::cout << "|>> ";
@@ -125,7 +141,10 @@ void Application::generateGraph()
         }
     }
 }
-
+/**
+ * @brief 
+ * 
+ */
 void Application::runExperiment(){
     Visualize v;
     std::string dir;
@@ -168,8 +187,21 @@ void Application::runExperiment(){
     }
     
 }
-
-void Application::visualizeGraph(){
+/**
+ * @brief 
+ * 
+ */
+void Application::runDebugMode(){
     Visualize v;
     v.printLine("Will be implemented soon");
+    v.printLine("Press c to Continue, q to quit");
+    std::cout << "|>> ";
+    std::string branch;
+    std::cin >> branch;
+    if(branch == "c"){
+        v.printProgramEntry();
+        welcomeScreen();
+    }else if (branch == "q"){
+        return ;
+    }
 }

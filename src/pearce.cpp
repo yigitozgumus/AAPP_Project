@@ -308,7 +308,6 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     size_t total_bytes= 0;
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
-
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(p);
     s.edgeCount = num_edges(p);

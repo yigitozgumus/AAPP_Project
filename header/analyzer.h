@@ -47,10 +47,10 @@ class Analyzer{
 
     	std::vector<std::string> getInputList(std::string &dirPath);
     	std::string currentDateTime();
-    	void solve_with_all();
-    	void solve_with_tarjan();
-    	void solve_with_nuutila();
-    	void solve_with_pearce();
+    	void solve_with_all(std::string &inputFile);
+    	void solve_with_tarjan(std::string &inputFile);
+    	void solve_with_nuutila(std::string &inputFile);
+    	void solve_with_pearce(std::string &inputFile);
     	void benchmark_comparison(bool write_to_file,bool isCsv,std::string &inputDirectory);
     	
 

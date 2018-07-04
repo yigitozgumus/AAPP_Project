@@ -1,11 +1,9 @@
 
 #include "./../header/application.h"
 
-using namespace boost;
-
 int main(int, char *argv[])
 {
     Application a ;
-    a.mainLoop();
+    a.run();
     return 0;
 }

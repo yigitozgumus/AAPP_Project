@@ -9,10 +9,10 @@
 class Application{
     public:
     Application(){};
-    void mainLoop();
+    void run();
     void welcomeScreen();
     void generateGraph();
     void runExperiment();
-    void visualizeGraph();
+    void runDebugMode();
 };
-#endif // !
+#endif 
