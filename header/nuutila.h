@@ -36,7 +36,7 @@ class Nuutila : protected GraphComponent
     //TODO
     void solve(std::vector<std::string> methods, int graphNum);
     
-    void print_sccs(std::vector<int> &root);
+    void print_sccs(UtilityStructs::StorageItems &s);
 
     void print_graph();
 

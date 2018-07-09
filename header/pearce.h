@@ -38,8 +38,8 @@ public:
 
   void print_graph();
 
-  void print_result_max(std::vector<int> &rindex);
-  void print_result_min(std::vector<int> &rindex);
+  void print_result_max(UtilityStructs::StorageItems &s);
+  void print_result_min(UtilityStructs::StorageItems &s);
 
   void DFS();
 

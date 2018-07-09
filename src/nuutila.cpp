@@ -1,5 +1,5 @@
 #include "./../header/nuutila.h"
-
+#include "./../header/visualize.h"
 //STL
 #include <iostream>
 #include <vector>
@@ -24,8 +24,10 @@ void Nuutila::print_graph()
     GraphComponent::print_graph_file(n);
 }
 
-void Nuutila::print_sccs(std::vector<int> &root)
+void Nuutila::print_sccs(UtilityStructs::StorageItems &s)
 {
+    std::vector<int> root = s.auxilary; 
+    Visualize vis;
     v_p id = get(&VertexProperty::index, n);
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp1;
@@ -35,21 +37,27 @@ void Nuutila::print_sccs(std::vector<int> &root)
         Vertex_t v = *vp1.first;
         if (id[v] == root[id[v]])
         {   
-            std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
-            std::cout << ": ";
+            vis.printLine("");
+            std::stringstream buffer ;
+            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << ": ";
+            
             int count_component = 0;
             for (vp_inner = vertices(n); vp_inner.first != vp_inner.second; ++vp_inner.first)
             {
                 Vertex_t w = *vp_inner.first;
                 if (root[id[w]] == id[v])
                 {
-                    std::cout << id[w]+1 << " " ;
+                    buffer << id[w]+1 << " " ;
                     count_component++;
                 }
             }
-            std::cout << std::endl;
-            std::cout << setw(40) << std::left << "Number of elements in the component is" ;
-            std::cout << ": "<< count_component << std::endl;
+            vis.printLine(buffer.str());
+            std::stringstream buffer2;
+           // vis.printLine("");
+            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << ": "<< count_component ;
+            vis.printLine(buffer2.str());
         }
     }
 }

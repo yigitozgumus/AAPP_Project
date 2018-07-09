@@ -1,5 +1,6 @@
 #include "./../header/pearce.h"
 #include "./../header/analyzer.h"
+#include "./../header/visualize.h"
 
 //STL
 #include <iostream>
@@ -25,7 +26,9 @@ void Pearce::print_graph(){
     GraphComponent::print_graph_file(p);
 }
 
-void Pearce::print_result_max(std::vector<int> &rindex){
+void Pearce::print_result_max(UtilityStructs::StorageItems &s){
+    std::vector<int> rindex = s.auxilary;
+    Visualize vis;
     int sizeOfGraph = num_vertices(p);
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
@@ -34,23 +37,30 @@ void Pearce::print_result_max(std::vector<int> &rindex){
     int max = *max_element(std::begin(rindex), std::end(rindex));
     for(int i = 0; i <= max; i++){
          int count_component = 0;
-          std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
-            std::cout << ": ";
+          vis.printLine("");
+            std::stringstream buffer ;
+            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
                     count_component++;
-                    std::cout << id[v]+1 <<  " " ;
+                    buffer << id[v]+1 <<  " " ;
                 }
          }
-        std::cout << std::endl;
-        std::cout << setw(40) << std::left << "Number of elements in the component is" ;
-        std::cout << ": "<< count_component << std::endl;
+        vis.printLine(buffer.str());
+            std::stringstream buffer2;
+           // vis.printLine("");
+            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << ": "<< count_component ;
+            vis.printLine(buffer2.str());
     }
 
 }
 
-void Pearce::print_result_min(std::vector<int> &rindex){
+void Pearce::print_result_min(UtilityStructs::StorageItems &s){
+    std::vector<int> rindex = s.auxilary;
+    Visualize vis;
     int sizeOfGraph = num_vertices(p); 
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
@@ -58,18 +68,23 @@ void Pearce::print_result_min(std::vector<int> &rindex){
      int min = *min_element(std::begin(rindex), std::end(rindex));
     for(int i = sizeOfGraph-1; i >= min; i--){
          int count_component = 0;
-          std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
-            std::cout << ": ";
+          vis.printLine("");
+            std::stringstream buffer ;
+            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
-                    std::cout << id[v]+1 <<  " " ;
+                    buffer << id[v]+1 <<  " " ;
                     count_component++;
                 }
          }
-        std::cout << std::endl;
-            std::cout << setw(40) << std::left << "Number of elements in the component is" ;
-            std::cout << ": "<< count_component << std::endl;
+        vis.printLine(buffer.str());
+            std::stringstream buffer2;
+           // vis.printLine("");
+            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << ": "<< count_component ;
+            vis.printLine(buffer2.str());
     }
 
 }

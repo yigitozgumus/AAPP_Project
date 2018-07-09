@@ -153,17 +153,17 @@ void Analyzer::solve_with_pearce(std::string &inputFile){
 	v.printLine( "Pearce SCC implementation mark 1 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC1();
-	p.print_result_max(s.auxilary);
+	p.print_result_max(s);
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 2 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC2();
-	p.print_result_min(s.auxilary);
+	p.print_result_min(s);
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 3 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC3();
-	p.print_result_min(s.auxilary);
+	p.print_result_min(s);
 	v.printProgramBottom();
 }
 
@@ -171,21 +171,20 @@ void Analyzer::solve_with_nuutila(std::string &inputFile){
 	Visualize v;
 	Nuutila p(inputFile);
 	UtilityStructs::StorageItems s;
-	v.printProgramEntry();
 	v.printLine( "The Nuutila Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = p.ApplySCC_Original();
-	p.print_sccs(s.auxilary);
+	p.print_sccs(s);
 	v.printProgramBottom();
 	v.printLine("The Nuutila First Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = p.ApplySCC_v1();
-	p.print_sccs(s.auxilary);
+	p.print_sccs(s);
 	v.printProgramBottom();
 	v.printLine("The Nuutila Second Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = p.ApplySCC_v2();
-	p.print_sccs(s.auxilary);
+	p.print_sccs(s);
 	v.printProgramBottom();
 }
 
@@ -193,36 +192,35 @@ void Analyzer::solve_with_all(std::string &inputFile){
 	Visualize v;
 	Pearce p(inputFile);
 	UtilityStructs::StorageItems s;
-	v.printProgramEntry();
 	v.printLine( "Pearce SCC implementation mark 1 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC1();
-	p.print_result_max(s.auxilary);
+	p.print_result_max(s);
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 2 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC2();
-	p.print_result_min(s.auxilary);
+	p.print_result_min(s);
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 3 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC3();
-	p.print_result_min(s.auxilary);
+	p.print_result_min(s);
 	v.printProgramBottom();
 	Nuutila n(inputFile);
 	v.printLine( "The Nuutila Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = n.ApplySCC_Original();
-	n.print_sccs(s.auxilary);
+	n.print_sccs(s);
 	v.printProgramBottom();
 	v.printLine("The Nuutila First Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = n.ApplySCC_v1();
-	n.print_sccs(s.auxilary);
+	n.print_sccs(s);
 	v.printProgramBottom();
 	v.printLine("The Nuutila Second Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = n.ApplySCC_v2();
-	n.print_sccs(s.auxilary);
+	n.print_sccs(s);
 	v.printProgramBottom();
 }
