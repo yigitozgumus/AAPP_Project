@@ -17,6 +17,7 @@
 #include <boost/graph/property_iter_range.hpp>
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
+using namespace std;
 
 void Nuutila::print_graph()
 {
@@ -33,16 +34,22 @@ void Nuutila::print_sccs(std::vector<int> &root)
     {
         Vertex_t v = *vp1.first;
         if (id[v] == root[id[v]])
-        {
+        {   
+            std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
+            std::cout << ": ";
             int count_component = 0;
             for (vp_inner = vertices(n); vp_inner.first != vp_inner.second; ++vp_inner.first)
             {
                 Vertex_t w = *vp_inner.first;
                 if (root[id[w]] == id[v])
                 {
+                    std::cout << id[w]+1 << " " ;
                     count_component++;
                 }
             }
+            std::cout << std::endl;
+            std::cout << setw(40) << std::left << "Number of elements in the component is" ;
+            std::cout << ": "<< count_component << std::endl;
         }
     }
 }
@@ -84,9 +91,10 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_Original()
     s.edgeCount = num_edges(n);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = root;
     return s;
 
-    //print_sccs(root);
+    
 }
 
 void Nuutila::Visit(Vertex_t &v, std::vector<Vertex_t> &Points, std::vector<int> &root, std::vector<int> &visited, std::vector<bool> &isComponent, int &Counter,int &stackCount)
@@ -168,8 +176,8 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v1()
     s.edgeCount = num_edges(n);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = root;
     return s;
-    //print_sccs(root);
 }
 
 UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
@@ -212,6 +220,7 @@ UtilityStructs::StorageItems Nuutila::ApplySCC_v2()
     s.edgeCount = num_edges(n);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = root;
     return s;
 
     // print_sccs(root);
