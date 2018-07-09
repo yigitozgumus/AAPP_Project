@@ -75,21 +75,27 @@ public:
                   std::vector<Vertex_t> &vStack,
                   std::vector<int> &iStack,
                   int &index,
-                  int &c);
+                  int &c,
+                  int &stackCount_i,
+                  int &stackCount_v);
 
   void visitLoop(std::vector<bool> &root,
                  std::vector<int> &rindex,
                  std::vector<Vertex_t> &vStack,
                  std::vector<int> &iStack,
                  int &index,
-                 int &c);
+                 int &c,
+                 int &stackCount_i,
+                 int &stackCount_v);
 
   void beginVisiting(Vertex_t &v,
                      std::vector<bool> &root,
                      std::vector<int> &rindex,
                      std::vector<Vertex_t> &vStack,
                      std::vector<int> &iStack,
-                     int &index);
+                     int &index,
+                     int &stackCount_i,
+                     int &stackCount_v);
 
   void finishVisiting(Vertex_t &v,
                       std::vector<bool> &root,
@@ -97,7 +103,9 @@ public:
                       std::vector<Vertex_t> &vStack,
                       std::vector<int> &iStack,
                       int &index,
-                      int &c);
+                      int &c,
+                      int &stackCount_i,
+                      int &stackCount_v);
 
   bool beginEdge(Vertex_t &v,
                  int &k,
@@ -106,7 +114,9 @@ public:
                  std::vector<Vertex_t> &vStack,
                  std::vector<int> &iStack,
                  int &index,
-                 int &c);
+                 int &c,
+                 int &stackCount_i,
+                 int &stackCount_v);
 
   void finishEdge(Vertex_t &v,
                   int &k,

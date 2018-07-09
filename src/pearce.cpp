@@ -34,7 +34,8 @@ void Pearce::print_result_max(std::vector<int> &rindex){
     int max = *max_element(std::begin(rindex), std::end(rindex));
     for(int i = 0; i <= max; i++){
          int count_component = 0;
-          std::cout << "Strongly connected component is : "  << " ";
+          std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
+            std::cout << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
@@ -43,7 +44,8 @@ void Pearce::print_result_max(std::vector<int> &rindex){
                 }
          }
         std::cout << std::endl;
-        std::cout << "Number of elements in the component is: " << count_component << std::endl;
+        std::cout << setw(40) << std::left << "Number of elements in the component is" ;
+        std::cout << ": "<< count_component << std::endl;
     }
 
 }
@@ -56,7 +58,8 @@ void Pearce::print_result_min(std::vector<int> &rindex){
      int min = *min_element(std::begin(rindex), std::end(rindex));
     for(int i = sizeOfGraph-1; i >= min; i--){
          int count_component = 0;
-          std::cout << "Strongly connected component is : "  << " ";
+          std::cout << setw(41) << std::left << "\nThe Strongly Connected Component is" ;
+            std::cout << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
                 if(rindex[id[v]] == i){
@@ -65,7 +68,8 @@ void Pearce::print_result_min(std::vector<int> &rindex){
                 }
          }
         std::cout << std::endl;
-        std::cout << "Number of elements in the component is: " << count_component << std::endl;
+            std::cout << setw(40) << std::left << "Number of elements in the component is" ;
+            std::cout << ": "<< count_component << std::endl;
     }
 
 }
@@ -142,6 +146,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
     s.edgeCount = num_edges(p);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = rindex;
     return s;
 }
 
@@ -228,6 +233,7 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC2(){
     s.edgeCount = num_edges(p);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = rindex;
     return s;
 }
 
@@ -287,18 +293,15 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     std::vector<Vertex_t> vStack;
     std::vector<int> iStack;
     v_p id = get(&VertexProperty::index,p);
-
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
     std::pair<vertex_iter, vertex_iter> vp;
     //Create the Timer Object 
-    //TODO
- //   std::cout << "\nPearce SCC implementation mark 3 exited succesfully" << std::endl;
     {
         UtilityStructs::Timer timer;
         for (vp = vertices(p); vp.first != vp.second; vp.first++){
         Vertex_t v = *vp.first;
         if (rindex[id[v]] == 0){
-            visit_scc3(v, root,rindex,vStack,iStack,index,c);
+            visit_scc3(v, root,rindex,vStack,iStack,index,c,stackCount_i,stackCount_v);
         }
     }
         ms_duration = timer.stop();
@@ -308,11 +311,14 @@ UtilityStructs::StorageItems Pearce::Pea_Find_SCC3() {
     size_t total_bytes= 0;
     total_bytes += sizeof(root[0]) * root.size();
     total_bytes += sizeof(rindex[0]) * rindex.size();
+    total_bytes += sizeof(iStack[0] )* stackCount_i;
+    total_bytes += sizeof(vStack[0]) * stackCount_v;
     UtilityStructs::StorageItems s;
     s.vertexCount = num_vertices(p);
     s.edgeCount = num_edges(p);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    s.auxilary = rindex;
     return s;
       
     
@@ -325,10 +331,12 @@ void Pearce::visit_scc3(Vertex_t &v,
                         std::vector<Vertex_t> &vStack,
                         std::vector<int> &iStack,
                         int &index,
-                        int &c) {
-    beginVisiting(v,root,rindex,vStack,iStack,index);
+                        int &c,
+                        int &stackCount_i,
+                        int &stackCount_v) {
+    beginVisiting(v,root,rindex,vStack,iStack,index,stackCount_i,stackCount_v);
     while(!vStack.empty()){
-        visitLoop(root,rindex,vStack,iStack,index,c);
+        visitLoop(root,rindex,vStack,iStack,index,c,stackCount_i,stackCount_v);
     }
 }
 
@@ -337,7 +345,9 @@ void Pearce::visitLoop( std::vector<bool> &root,
                         std::vector<Vertex_t> &vStack,
                         std::vector<int> &iStack,
                         int &index,
-                        int &c) {
+                        int &c,
+                        int &stackCount_i,
+                        int &stackCount_v) {
     Vertex_t v = vStack[0];
     int i = iStack[0];
     
@@ -348,12 +358,12 @@ void Pearce::visitLoop( std::vector<bool> &root,
             int k = i-1;
             finishEdge(v,k,rindex,root);
         }
-        if ( i < out_edges && beginEdge(v,i,root,rindex,vStack,iStack,index,c)){
+        if ( i < out_edges && beginEdge(v,i,root,rindex,vStack,iStack,index,c,stackCount_i,stackCount_v)){
             return;
         }
         i = i+1;
     }
-    finishVisiting(v,root,rindex,vStack,iStack,index,c);
+    finishVisiting(v,root,rindex,vStack,iStack,index,c,stackCount_i,stackCount_v);
 }
 
 void Pearce::beginVisiting(Vertex_t &v,
@@ -361,10 +371,14 @@ void Pearce::beginVisiting(Vertex_t &v,
                            std::vector<int> &rindex,
                            std::vector<Vertex_t> &vStack,
                            std::vector<int> &iStack,
-                           int &index){
+                           int &index,
+                           int &stackCount_i,
+                           int &stackCount_v){
     
     vStack.insert(vStack.begin(),v);
     iStack.insert(iStack.begin(),0);
+    stackCount_i ++;
+    stackCount_v ++;
     v_p id = get(&VertexProperty::index, p);
     root[id[v]] = true;
     rindex[id[v]] = index;
@@ -377,7 +391,9 @@ void Pearce::finishVisiting(Vertex_t &v,
                             std::vector<Vertex_t> &vStack,
                             std::vector<int> &iStack,
                             int &index,
-                            int &c) {
+                            int &c,
+                            int &stackCount_i,
+                            int &stackCount_v) {
     v_p id = get(&VertexProperty::index, p);
     vStack.erase(vStack.begin());
     iStack.erase(iStack.begin());
@@ -393,6 +409,7 @@ void Pearce::finishVisiting(Vertex_t &v,
         c = c-1;
     }else{
         vStack.push_back(v);
+        stackCount_v++;
     }
 
 }
@@ -404,7 +421,9 @@ bool Pearce::beginEdge(Vertex_t &v,
                         std::vector<Vertex_t> &vStack,
                         std::vector<int> &iStack,
                         int &index,
-                        int &c) {
+                        int &c,
+                        int &stackCount_i,
+                        int &stackCount_v) {
 
     v_p id = get(&VertexProperty::index, p);
     typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
@@ -416,7 +435,7 @@ bool Pearce::beginEdge(Vertex_t &v,
     if(rindex[id[w]] == 0){
         iStack.erase(iStack.begin());
         iStack.insert(iStack.begin(),k+1);
-        beginVisiting(w,root,rindex,vStack,iStack,index);
+        beginVisiting(w,root,rindex,vStack,iStack,index,stackCount_i,stackCount_v);
         return true;
     }else{
         return false;
