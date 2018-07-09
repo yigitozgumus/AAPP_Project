@@ -1,6 +1,6 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
-#define PROGRAM_WIDTH 200
+#define PROGRAM_WIDTH 180
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -35,6 +35,7 @@ struct StorageItems
 	float duration;
 	int vertexCount;
 	int edgeCount;
+	std::vector<int> auxilary;
 };
 
 class Timer
