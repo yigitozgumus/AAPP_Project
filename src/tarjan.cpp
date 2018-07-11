@@ -18,6 +18,7 @@
 #include <boost/property_map/property_map.hpp>
 
 using namespace boost;
+using namespace std;
 
 void Tarjan::print_graph(){
     GraphComponent::print_graph_file(t);
@@ -96,8 +97,8 @@ void Tarjan::print_sccs(std::vector<int> &rindex){
     
 }
 
-UtilityStructs::StorageItems Tarjan::ApplySCC() {
-    float ms_duration;
+UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
+    float ms_duration = 0;
     v_p id = get(&VertexProperty::index, t);
     typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
     typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
@@ -116,14 +117,14 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
         if (visited[id[v]] == 666) {
-            StrongConnect(v,Points, Counter,visited,lowPt,lowVine,stackCount);
+            StrongConnect(v,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
         }
     }
     ms_duration = timer.stop();
     }
     //TIMER end
     //Storage info collection
-    size_t total_bytes;
+    size_t total_bytes = 0;
     total_bytes += sizeof(visited[0]) * visited.size();
     total_bytes += sizeof(lowPt[0]) * lowPt.size();
     total_bytes += sizeof(lowVine[0]) * lowVine.size();
@@ -133,18 +134,36 @@ UtilityStructs::StorageItems Tarjan::ApplySCC() {
     s.edgeCount = num_edges(t);
     s.duration = ms_duration;
     s.total_bytes = total_bytes;
+    Visualize vis;
+    if(debugMode){
+        vis.printProgramBottom();
+         std::stringstream buffer3;
+        buffer3 << setw(40) << left <<"Completion Time" ;
+        buffer3 << ": " << s.duration << " miliseconds" ;
+        std::stringstream buffer4;
+        buffer4 << setw(40)<< left << "Total Execution Size";
+        buffer4 << ": " << s.total_bytes / 1024.f << " KBs";
+        vis.printLine(buffer3.str());
+        vis.printLine(buffer4.str());
+}
     return s;
 }
 
-void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine,int &stackCount) {
+void Tarjan::StrongConnect(Vertex_t &v, 
+                            std::vector<Vertex_t> &Points, 
+                            int &Counter,
+                            std::vector<int> &visited, 
+                            std::vector<int> &lowPt, 
+                            std::vector<int> &lowVine,
+                            int &stackCount,
+                            bool debugMode) {
     e_p arch_type = get(&EdgeProperty::name, t);
     v_p id = get(&VertexProperty::index,t);
-
+    Visualize vis;
     Counter++;
     visited[id[v]]= Counter;
     lowPt[id[v]]= Counter;
     lowVine[id[v]] = Counter;
-   // std::cout<< visited[v] << " " << lowPt[v] << " " << lowVine[v] << std::endl;
     Points.push_back(v);
     stackCount++;
     typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
@@ -154,7 +173,7 @@ void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Coun
         Vertex_t w = target(e, t);
         if (visited[id[w]] == 666) {
             arch_type[e] = "tree"; // like in tarjan's algorithm
-            StrongConnect(w,Points, Counter,visited,lowPt,lowVine,stackCount);
+            StrongConnect(w,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
             lowPt[id[v]] = lowPt[id[v]]< lowPt[id[w]]?lowPt[id[v]]:lowPt[id[w]];
             lowVine[id[v]] = lowVine[id[v]]< lowVine[id[w]]?lowVine[id[v]]:lowVine[id[w]];
         } else if (!isReachable( w, v)) {
@@ -170,17 +189,27 @@ void Tarjan::StrongConnect(Vertex_t &v, std::vector<Vertex_t> &Points, int &Coun
         }
     }
     if (lowPt[id[v]] == visited[id[v]] && lowVine[id[v]] == visited[id[v]]) {
-
-     //   std::cout <<"Strongly connected Component is: ";
+            int count_component = 0;
+            std::stringstream buffer ;
+            if(debugMode){
+                vis.printLine("");
+                buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+                 buffer << ": ";
+                 count_component++;
+            }
+            
         while(!Points.empty() && visited[id[Points.back()]] >= visited[id[v]]){
             Vertex_t x = Points.back();
             Points.pop_back();
-        //    std::cout << id[x]+1 << " ";
+            buffer << id[x]+1 <<  " " ;
         }
-       // std::cout << std::endl;
-        //Create a Vector of Vertex Vectors
-        //pass it to the ApplySCC function
-        //Create and Visualize Graphs there
+       if(debugMode){
+        vis.printLine(buffer.str());
+        std::stringstream buffer2;
+        buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+        buffer2 << ": "<< count_component ;
+        vis.printLine(buffer2.str());
+       }
     }
 
 }

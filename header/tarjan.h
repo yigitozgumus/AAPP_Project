@@ -48,12 +48,18 @@ class Tarjan : protected GraphComponent
 
     void Biconnect(theGraph &g, Vertex_t &v, int &Counter);
 
-    UtilityStructs::StorageItems ApplySCC();
+    UtilityStructs::StorageItems ApplySCC(bool debugMode);
 
     bool isReachable( Vertex_t &source, Vertex_t &target);
 
-    void StrongConnect( Vertex_t &v, std::vector<Vertex_t> &Points,
-                  int &Counter,std::vector<int> &visited, std::vector<int> &lowPt, std::vector<int> &lowVine,int &stackCount);
+    void StrongConnect( Vertex_t &v, 
+                      std::vector<Vertex_t> &Points,
+                      int &Counter,
+                      std::vector<int> &visited, 
+                      std::vector<int> &lowPt, 
+                      std::vector<int> &lowVine,
+                      int &stackCount,
+                      bool debugMode);
 };
 
 #endif
