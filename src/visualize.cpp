@@ -65,7 +65,7 @@ void Visualize::writeExperimentRow(int id,
 			   << setw(cell) << left << (float)(*it).total_bytes / 1024 << "|";
 	}
 	buffer << setw(cell) << left << rowInfo[6].duration << "|"
-		   << setw(cell) << left << (float)rowInfo[6].total_bytes / 2014
+		   << setw(cell) << left << (float)rowInfo[6].total_bytes / 1024
 		   << std::string(remainder, ' ') + "|\n|"
 		   << std::string(width - 2, '-') + "|\n";
 	ofstream logFile;
