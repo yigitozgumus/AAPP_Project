@@ -54,7 +54,17 @@ void Pearce::print_result_max(UtilityStructs::StorageItems &s){
             buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
             buffer2 << ": "<< count_component ;
             vis.printLine(buffer2.str());
+            
     }
+    vis.printProgramBottom();
+    std::stringstream buffer3;
+            buffer3 << setw(40) << left <<"Completion Time" ;
+            buffer3 << ": " << s.duration << " miliseconds" ;
+            std::stringstream buffer4;
+            buffer4 << setw(40)<< left << "Total Execution Size";
+            buffer4 << ": " << s.total_bytes / 1000.f << " KBs";
+            vis.printLine(buffer3.str());
+            vis.printLine(buffer4.str());
 
 }
 
@@ -85,7 +95,17 @@ void Pearce::print_result_min(UtilityStructs::StorageItems &s){
             buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
             buffer2 << ": "<< count_component ;
             vis.printLine(buffer2.str());
+            
     }
+    vis.printProgramBottom();
+    std::stringstream buffer3;
+            buffer3 << setw(40) << left <<"Completion Time" ;
+            buffer3 << ": " << s.duration << " miliseconds" ;
+            std::stringstream buffer4;
+            buffer4 << setw(40)<< left << "Total Execution Size";
+            buffer4 << ": " << s.total_bytes / 1000.f << " KBs";
+            vis.printLine(buffer3.str());
+            vis.printLine(buffer4.str());
 
 }
 void Pearce::DFS() {
@@ -125,7 +145,7 @@ void Pearce::visit(Vertex_t &v,std::vector<int> &visited,int &index) {
 }
 
 UtilityStructs::StorageItems Pearce::Pea_Find_SCC1() {
-    float ms_duration;
+    float ms_duration =0;
     int index = 0;
     int c= 0;
     int stackCount = 0;
