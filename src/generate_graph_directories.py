@@ -43,7 +43,9 @@ def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=
 
 def generate_folders(foldername,index,node_selection):
     
-    n_c_list = np.array(["5_50","50_100","100_500", "500_1000"])
+    n_c_list = np.array(["5_50","50_100","100_500", "500_1000","1000_5000","5000_20000","20000_100000"])
+    e_p_list = ["0_10", "10_25"]
+   # e_p_list = ["0_10","10_25","25_50","50_75","75_100"]
     if(index != -1):
         index = np.array(index)
         index -= 1
@@ -51,7 +53,7 @@ def generate_folders(foldername,index,node_selection):
     if(node_selection != -1):
         n_c_list = np.array([str(node_selection)])
     #n_c_list = ["5_50"]
-    number_edge_percentage = 5
+    number_edge_percentage = len(e_p_list)
     ncp_v2 = np.array([[x] * number_edge_percentage for x in n_c_list])
     ncp_v2 = ncp_v2.flatten()
     print("\nGraph Creation has begun\n")
@@ -62,7 +64,7 @@ def generate_folders(foldername,index,node_selection):
         for i in range(len(n_c_list)):
             nodes = n_c_list[i].split("_")
             print(i+1, "-) {} - {}".format(int(nodes[0]), int(nodes[1])))
-    e_p_list = ["0_10","10_25","25_50","50_75","75_100"]
+    
     ecp_v2 = np.array([e_p_list * len(n_c_list)]).flatten()
     print("\nEdge Creation Percentages are:")
     for i in range(len(e_p_list)):
