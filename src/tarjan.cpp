@@ -85,17 +85,11 @@ bool Tarjan::isReachable(Vertex_t &source, Vertex_t &Target) {
                 Visited[id[w]] = true;
                 Checks.push_back(w);
             }
-
         }
-
     }
     return false;
-
 }
 
-void Tarjan::print_sccs(std::vector<int> &rindex){
-    
-}
 
 UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
     float ms_duration = 0;
@@ -213,11 +207,3 @@ void Tarjan::StrongConnect(Vertex_t &v,
     }
 
 }
-
-// void Tarjan::Biconnect( Vertex_t &v, int &Counter) {
-
-// }
-
-// void Tarjan::ApplyBiconnectivity() {
-
-// }

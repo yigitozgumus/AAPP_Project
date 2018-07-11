@@ -38,15 +38,9 @@ class Tarjan : protected GraphComponent
 
     void print_graph();
 
-    void print_sccs(std::vector<int> &rindex);
-
     void ApplyDFS();
 
     void DepthFirstSearch(Vertex_t &v, int &Counter,std::vector<int> &visited);
-
-    void ApplyBiconnectivity(theGraph &g);
-
-    void Biconnect(theGraph &g, Vertex_t &v, int &Counter);
 
     UtilityStructs::StorageItems ApplySCC(bool debugMode);
 
