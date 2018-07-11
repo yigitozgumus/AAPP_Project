@@ -106,7 +106,7 @@ void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string 
 	{
 		std::vector<UtilityStructs::StorageItems> results;
 		Tarjan t(*it);
-		r_t = t.ApplySCC();
+		r_t = t.ApplySCC(false);
 		int vertex = r_t.vertexCount;
 		int edges = r_t.edgeCount;
 		int id = it - graphList.begin();
@@ -145,20 +145,34 @@ void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string 
 	}
 }
 
+void Analyzer::solve_with_tarjan(std::string &inputFile){
+	Visualize v;
+	Tarjan t(inputFile);
+	UtilityStructs::StorageItems s;
+	v.printProgramBottom();
+	v.printLine( "Tarjan implementation is processing the graph");
+	v.printProgramBottom();
+	s = t.ApplySCC(true);
+	v.printProgramBottom();
+}
+
 void Analyzer::solve_with_pearce(std::string &inputFile){
 	Visualize v;
 	Pearce p(inputFile);
 	UtilityStructs::StorageItems s;
-	v.printProgramEntry();
 	v.printLine( "Pearce SCC implementation mark 1 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC1();
 	p.print_result_max(s);
 	v.printProgramBottom();
+	std::cout <<std::endl;
+	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 2 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC2();
 	p.print_result_min(s);
+	v.printProgramBottom();
+	std::cout <<std::endl;
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 3 is processing the graph");
 	v.printProgramBottom();
@@ -169,17 +183,22 @@ void Analyzer::solve_with_pearce(std::string &inputFile){
 
 void Analyzer::solve_with_nuutila(std::string &inputFile){
 	Visualize v;
-	Nuutila p(inputFile);
 	UtilityStructs::StorageItems s;
+	Nuutila p(inputFile);
+	v.printProgramBottom();
 	v.printLine( "The Nuutila Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = p.ApplySCC_Original();
 	p.print_sccs(s);
 	v.printProgramBottom();
+	std::cout <<std::endl;
+	v.printProgramBottom();
 	v.printLine("The Nuutila First Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = p.ApplySCC_v1();
 	p.print_sccs(s);
+	v.printProgramBottom();
+	std::cout <<std::endl;
 	v.printProgramBottom();
 	v.printLine("The Nuutila Second Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
@@ -190,17 +209,29 @@ void Analyzer::solve_with_nuutila(std::string &inputFile){
 
 void Analyzer::solve_with_all(std::string &inputFile){
 	Visualize v;
-	Pearce p(inputFile);
+	Tarjan t(inputFile);
 	UtilityStructs::StorageItems s;
+	v.printProgramBottom();
+	v.printLine( "Tarjan implementation is processing the graph");
+	v.printProgramBottom();
+	s = t.ApplySCC(true);
+	v.printProgramBottom();
+	std::cout << std::endl;
+	Pearce p(inputFile);
+	v.printProgramBottom();
 	v.printLine( "Pearce SCC implementation mark 1 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC1();
 	p.print_result_max(s);
 	v.printProgramBottom();
+	std::cout <<std::endl;
+	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 2 is processing the graph");
 	v.printProgramBottom();
 	s = p.Pea_Find_SCC2();
 	p.print_result_min(s);
+	v.printProgramBottom();
+	std::cout <<std::endl;
 	v.printProgramBottom();
 	v.printLine("Pearce SCC implementation mark 3 is processing the graph");
 	v.printProgramBottom();
@@ -208,15 +239,21 @@ void Analyzer::solve_with_all(std::string &inputFile){
 	p.print_result_min(s);
 	v.printProgramBottom();
 	Nuutila n(inputFile);
+	std::cout <<std::endl;
+	v.printProgramBottom();
 	v.printLine( "The Nuutila Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = n.ApplySCC_Original();
 	n.print_sccs(s);
 	v.printProgramBottom();
+	std::cout <<std::endl;
+	v.printProgramBottom();
 	v.printLine("The Nuutila First Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
 	s = n.ApplySCC_v1();
 	n.print_sccs(s);
+	v.printProgramBottom();
+	std::cout <<std::endl;
 	v.printProgramBottom();
 	v.printLine("The Nuutila Second Modified Version of the SCC Algorithms is processing the graph");
 	v.printProgramBottom();
