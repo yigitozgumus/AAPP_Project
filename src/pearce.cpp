@@ -19,7 +19,7 @@
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
 
-using namespace std;
+
 using namespace boost;
 
 void Pearce::print_graph(){
@@ -39,7 +39,7 @@ void Pearce::print_result_max(UtilityStructs::StorageItems &s){
          int count_component = 0;
           vis.printLine("");
             std::stringstream buffer ;
-            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << std::setw(40) << std::left << "The Strongly Connected Component is" ;
             buffer << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
@@ -51,17 +51,17 @@ void Pearce::print_result_max(UtilityStructs::StorageItems &s){
         vis.printLine(buffer.str());
             std::stringstream buffer2;
            // vis.printLine("");
-            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << std::setw(40) << std::left << "Number of elements in the component is" ;
             buffer2 << ": "<< count_component ;
             vis.printLine(buffer2.str());
             
     }
     vis.printProgramBottom();
     std::stringstream buffer3;
-            buffer3 << setw(40) << left <<"Completion Time" ;
+            buffer3 << std::setw(40) << std::left <<"Completion Time" ;
             buffer3 << ": " << s.duration << " miliseconds" ;
             std::stringstream buffer4;
-            buffer4 << setw(40)<< left << "Total Execution Size";
+            buffer4 << std::setw(40)<< std::left << "Total Execution Size";
             buffer4 << ": " << s.total_bytes / 1000.f << " KBs";
             vis.printLine(buffer3.str());
             vis.printLine(buffer4.str());
@@ -80,7 +80,7 @@ void Pearce::print_result_min(UtilityStructs::StorageItems &s){
          int count_component = 0;
           vis.printLine("");
             std::stringstream buffer ;
-            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << std::setw(40) << std::left << "The Strongly Connected Component is" ;
             buffer << ": ";
           for(vp=vertices(p); vp.first != vp.second; vp.first++){
                  Vertex_t v = *vp.first;
@@ -92,17 +92,17 @@ void Pearce::print_result_min(UtilityStructs::StorageItems &s){
         vis.printLine(buffer.str());
             std::stringstream buffer2;
            // vis.printLine("");
-            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << std::setw(40) << std::left << "Number of elements in the component is" ;
             buffer2 << ": "<< count_component ;
             vis.printLine(buffer2.str());
             
     }
     vis.printProgramBottom();
     std::stringstream buffer3;
-            buffer3 << setw(40) << left <<"Completion Time" ;
+            buffer3 << std::setw(40) << std::left <<"Completion Time" ;
             buffer3 << ": " << s.duration << " miliseconds" ;
             std::stringstream buffer4;
-            buffer4 << setw(40)<< left << "Total Execution Size";
+            buffer4 << std::setw(40)<< std::left << "Total Execution Size";
             buffer4 << ": " << s.total_bytes / 1000.f << " KBs";
             vis.printLine(buffer3.str());
             vis.printLine(buffer4.str());

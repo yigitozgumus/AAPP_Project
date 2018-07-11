@@ -17,7 +17,7 @@
 #include <boost/graph/property_iter_range.hpp>
 #include <boost/graph/copy.hpp>
 #include <boost/property_map/property_map.hpp>
-using namespace std;
+
 
 void Nuutila::print_graph()
 {
@@ -39,7 +39,7 @@ void Nuutila::print_sccs(UtilityStructs::StorageItems &s)
         {   
             vis.printLine("");
             std::stringstream buffer ;
-            buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+            buffer << std::setw(40) << std::left << "The Strongly Connected Component is" ;
             buffer << ": ";
             
             int count_component = 0;
@@ -55,17 +55,17 @@ void Nuutila::print_sccs(UtilityStructs::StorageItems &s)
             vis.printLine(buffer.str());
             std::stringstream buffer2;
            // vis.printLine("");
-            buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+            buffer2 << std::setw(40) << std::left << "Number of elements in the component is" ;
             buffer2 << ": "<< count_component ;
             vis.printLine(buffer2.str());
         }
     }
             std::stringstream buffer3;
         vis.printProgramBottom();
-        buffer3 << setw(40) << left <<"Completion Time" ;
+        buffer3 << std::setw(40) << std::left <<"Completion Time" ;
         buffer3 << ": " << s.duration << " miliseconds" ;
         std::stringstream buffer4;
-        buffer4 << setw(40)<< left << "Total Execution Size";
+        buffer4 << std::setw(40)<< std::left << "Total Execution Size";
         buffer4 << ": " << s.total_bytes / 1000.f << " KBs";
         vis.printLine(buffer3.str());
         vis.printLine(buffer4.str());

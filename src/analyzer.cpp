@@ -43,7 +43,6 @@ std::string Analyzer::currentDateTime()
 
 std::vector<std::string> Analyzer::getInputList(std::string &dirPath)
 {
-
 	std::vector<std::string> inputGraphs;
 	try
 	{

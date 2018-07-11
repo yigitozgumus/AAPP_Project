@@ -7,7 +7,6 @@
 #include <sstream>
 #include <fstream>
 
-using namespace std;
 
 std::string Visualize::centered(int width, const std::string &str)
 {
@@ -20,7 +19,7 @@ std::string Visualize::centered(int width, const std::string &str)
 	int diff = width - len;
 	int pad1 = diff / 2;
 	int pad2 = diff - pad1;
-	return string(pad1, ' ') + str + string(pad2, ' ');
+	return std::string(pad1, ' ') + str + std::string(pad2, ' ');
 }
 
 void Visualize::printExperimentRow(int id,
@@ -32,16 +31,16 @@ void Visualize::printExperimentRow(int id,
 	int remainder = (width - 18) % 17;
 	std::stringstream buffer;
 	buffer << "|"
-		   << setw(cell) << left << id << "|"
-		   << setw(cell) << left << vertex << "|"
-		   << setw(cell) << left << edge << "|";
+		   <<std::setw(cell) << std::left << id << "|"
+		   <<std::setw(cell) << std::left << vertex << "|"
+		   <<std::setw(cell) << std::left << edge << "|";
 	for (std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end() - 1; it++)
 	{
-		buffer << setw(cell) << left << (*it).duration << "|"
-			   << setw(cell) << left << (float)(*it).total_bytes / 1024 << "|";
+		buffer <<std::setw(cell) << std::left << (*it).duration << "|"
+			   <<std::setw(cell) << std::left << (float)(*it).total_bytes / 1024 << "|";
 	}
-	buffer << setw(cell) << left << rowInfo[6].duration << "|"
-		   << setw(cell) << left << (float)rowInfo[6].total_bytes / 2014
+	buffer << std::setw(cell) << std::left << rowInfo[6].duration << "|"
+		   << std::setw(cell) << std::left << (float)rowInfo[6].total_bytes / 2014
 		   << std::string(remainder, ' ') + "|\n|"
 		   << std::string(width - 2, '-') + "|";
 	std::cout << buffer.str() << std::endl;
@@ -56,19 +55,19 @@ void Visualize::writeExperimentRow(int id,
 	int remainder = (width - 18) % 17;
 	std::stringstream buffer;
 	buffer << "|"
-		   << setw(cell) << left << id << "|"
-		   << setw(cell) << left << vertex << "|"
-		   << setw(cell) << left << edge << "|";
+		   <<std::setw(cell) << std::left << id << "|"
+		   <<std::setw(cell) << std::left << vertex << "|"
+		   <<std::setw(cell) << std::left << edge << "|";
 	for (std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end() - 1; it++)
 	{
-		buffer << setw(cell) << left << (*it).duration << "|"
-			   << setw(cell) << left << (float)(*it).total_bytes / 1024 << "|";
+		buffer <<std::setw(cell) << std::left << (*it).duration << "|"
+			   <<std::setw(cell) << std::left << (float)(*it).total_bytes / 1024 << "|";
 	}
-	buffer << setw(cell) << left << rowInfo[6].duration << "|"
-		   << setw(cell) << left << (float)rowInfo[6].total_bytes / 1024
+	buffer <<std::setw(cell) << std::left << rowInfo[6].duration << "|"
+		   <<std::setw(cell) << std::left << (float)rowInfo[6].total_bytes / 1024
 		   << std::string(remainder, ' ') + "|\n|"
 		   << std::string(width - 2, '-') + "|\n";
-	ofstream logFile;
+	std::ofstream logFile;
 	logFile.open(filename, std::ios::app);
 	logFile << buffer.str();
 	logFile.close();
@@ -90,7 +89,7 @@ void Visualize::writeExperimentRow_CSV(int id,
 	}
 	buffer << rowInfo[6].duration << ","
 		   << (float)rowInfo[6].total_bytes / 1024 << "\n";
-	ofstream logFile;
+	std::ofstream logFile;
 	logFile.open(filename, std::ios::app);
 	logFile << buffer.str();
 	logFile.close();
@@ -103,45 +102,45 @@ void Visualize::writeTableBanner( std::string filename)
 	int remainder = (width - 18) % 17;
 	std::stringstream buffer;
 	buffer << std::string(width, '-') + "\n|"
-		   << setw(width - 2) << left << "Result Table"
+		   <<std::setw(width - 2) << std::left << "Result Table"
 		   << "|\n"
 		   << std::string(width, '-') + "\n|"
-		   << setw(cell) << left << "id"
+		   <<std::setw(cell) << std::left << "id"
 		   << "|"
-		   << setw(cell) << left << "Vertex"
+		   <<std::setw(cell) << std::left << "Vertex"
 		   << "|"
-		   << setw(cell) << left << "Edge"
+		   <<std::setw(cell) << std::left << "Edge"
 		   << "|"
-		   << setw(cell) << left << "Tj T"
+		   <<std::setw(cell) << std::left << "Tj T"
 		   << "|"
-		   << setw(cell) << left << "Tj S"
+		   <<std::setw(cell) << std::left << "Tj S"
 		   << "|"
-		   << setw(cell) << left << "N_0 T"
+		   <<std::setw(cell) << std::left << "N_0 T"
 		   << "|"
-		   << setw(cell) << left << "N_0 S"
+		   <<std::setw(cell) << std::left << "N_0 S"
 		   << "|"
-		   << setw(cell) << left << "N_1 T"
+		   <<std::setw(cell) << std::left << "N_1 T"
 		   << "|"
-		   << setw(cell) << left << "N_1 S"
+		   <<std::setw(cell) << std::left << "N_1 S"
 		   << "|"
-		   << setw(cell) << left << "N_2 T"
+		   <<std::setw(cell) << std::left << "N_2 T"
 		   << "|"
-		   << setw(cell) << left << "N_2 S"
+		   <<std::setw(cell) << std::left << "N_2 S"
 		   << "|"
-		   << setw(cell) << left << "P_0 T"
+		   <<std::setw(cell) << std::left << "P_0 T"
 		   << "|"
-		   << setw(cell) << left << "P_0 S"
+		   <<std::setw(cell) << std::left << "P_0 S"
 		   << "|"
-		   << setw(cell) << left << "P_1 T"
+		   <<std::setw(cell) << std::left << "P_1 T"
 		   << "|"
-		   << setw(cell) << left << "P_1 S"
+		   <<std::setw(cell) << std::left << "P_1 S"
 		   << "|"
-		   << setw(cell) << left << "P_2 T"
+		   <<std::setw(cell) << std::left << "P_2 T"
 		   << "|"
-		   << setw(cell) << left << "P_2 S"
+		   <<std::setw(cell) << std::left << "P_2 S"
 		   << std::string(remainder, ' ') << "|\n"
 		   << std::string(width, '-') << "\n";
-	ofstream logFile;
+	std::ofstream logFile;
 	logFile.open(filename, std::ios::app);
 	logFile << buffer.str();
 	logFile.close();
@@ -153,42 +152,42 @@ void Visualize::printTableBanner()
 	int cell = (width - 18) / 17;
 	int remainder = (width - 18) % 17;
 	std::cout << std::string(width, '-') + "\n|"
-			  << setw(width - 2) << left << "Result Table"
+			  <<std::setw(width - 2) << std::left << "Result Table"
 			  << "|\n"
 			  << std::string(width, '-') + "\n|"
-			  << setw(cell) << left << "id"
+			  <<std::setw(cell) << std::left << "id"
 			  << "|"
-			  << setw(cell) << left << "Vertex"
+			  <<std::setw(cell) << std::left << "Vertex"
 			  << "|"
-			  << setw(cell) << left << "Edge"
+			  <<std::setw(cell) << std::left << "Edge"
 			  << "|"
-			  << setw(cell) << left << "Tj T"
+			  <<std::setw(cell) << std::left << "Tj T"
 			  << "|"
-			  << setw(cell) << left << "Tj S"
+			  <<std::setw(cell) << std::left << "Tj S"
 			  << "|"
-			  << setw(cell) << left << "N_0 T"
+			  <<std::setw(cell) << std::left << "N_0 T"
 			  << "|"
-			  << setw(cell) << left << "N_0 S"
+			  <<std::setw(cell) << std::left << "N_0 S"
 			  << "|"
-			  << setw(cell) << left << "N_1 T"
+			  <<std::setw(cell) << std::left << "N_1 T"
 			  << "|"
-			  << setw(cell) << left << "N_1 S"
+			  <<std::setw(cell) << std::left << "N_1 S"
 			  << "|"
-			  << setw(cell) << left << "N_2 T"
+			  <<std::setw(cell) << std::left << "N_2 T"
 			  << "|"
-			  << setw(cell) << left << "N_2 S"
+			  <<std::setw(cell) << std::left << "N_2 S"
 			  << "|"
-			  << setw(cell) << left << "P_0 T"
+			  <<std::setw(cell) << std::left << "P_0 T"
 			  << "|"
-			  << setw(cell) << left << "P_0 S"
+			  <<std::setw(cell) << std::left << "P_0 S"
 			  << "|"
-			  << setw(cell) << left << "P_1 T"
+			  <<std::setw(cell) << std::left << "P_1 T"
 			  << "|"
-			  << setw(cell) << left << "P_1 S"
+			  <<std::setw(cell) << std::left << "P_1 S"
 			  << "|"
-			  << setw(cell) << left << "P_2 T"
+			  <<std::setw(cell) << std::left << "P_2 T"
 			  << "|"
-			  << setw(cell) << left << "P_2 S"
+			  <<std::setw(cell) << std::left << "P_2 S"
 			  << std::string(remainder, ' ') << "|\n"
 			  << std::string(width, '-') << std::endl;
 }
@@ -211,5 +210,5 @@ void Visualize::printProgramEntry()
 
 void Visualize::printLine( std::string message)
 {
-	std::cout << "|" << setw(width - 2) << left << message << "|\n";
+	std::cout << "|" <<std::setw(width - 2) << std::left << message << "|\n";
 }

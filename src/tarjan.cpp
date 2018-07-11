@@ -18,7 +18,7 @@
 #include <boost/property_map/property_map.hpp>
 
 using namespace boost;
-using namespace std;
+
 
 void Tarjan::print_graph(){
     GraphComponent::print_graph_file(t);
@@ -132,10 +132,10 @@ UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
     if(debugMode){
         vis.printProgramBottom();
          std::stringstream buffer3;
-        buffer3 << setw(40) << left <<"Completion Time" ;
+        buffer3 << std::setw(40) << std::left <<"Completion Time" ;
         buffer3 << ": " << s.duration << " miliseconds" ;
         std::stringstream buffer4;
-        buffer4 << setw(40)<< left << "Total Execution Size";
+        buffer4 << std::setw(40)<< std::left << "Total Execution Size";
         buffer4 << ": " << s.total_bytes / 1024.f << " KBs";
         vis.printLine(buffer3.str());
         vis.printLine(buffer4.str());
@@ -187,7 +187,7 @@ void Tarjan::StrongConnect(Vertex_t &v,
             std::stringstream buffer ;
             if(debugMode){
                 vis.printLine("");
-                buffer << setw(40) << std::left << "The Strongly Connected Component is" ;
+                buffer << std::setw(40) << std::left << "The Strongly Connected Component is" ;
                  buffer << ": ";
                  count_component++;
             }
@@ -200,7 +200,7 @@ void Tarjan::StrongConnect(Vertex_t &v,
        if(debugMode){
         vis.printLine(buffer.str());
         std::stringstream buffer2;
-        buffer2 << setw(40) << std::left << "Number of elements in the component is" ;
+        buffer2 << std::setw(40) << std::left << "Number of elements in the component is" ;
         buffer2 << ": "<< count_component ;
         vis.printLine(buffer2.str());
        }
