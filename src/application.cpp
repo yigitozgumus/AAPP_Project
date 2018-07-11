@@ -193,7 +193,39 @@ void Application::runExperiment(){
  */
 void Application::runDebugMode(){
     Visualize v;
-    v.printLine("Will be implemented soon");
+    v.printProgramEntry();
+    v.printLine("");
+    v.printLine("Please enter the name (path) of the graph file you want to debug (Relative) ");
+    std::string fl;
+    v.printProgramBottom();
+    std::cout << "|>> ";
+    std::cin >> fl;
+    v.printProgramEntry();
+    v.printLine("");
+    v.printProgramBottom();
+    v.printLine("Which method do you want to use ?");
+    v.printLine("1-) Tarjan's Algorithm");
+    v.printLine("2-) Nuutila's Algorithms");
+    v.printLine("3-) Pearce's Algorithms");
+    v.printLine("4-) All of them");
+    v.printProgramBottom();
+    std::cout << "|>> ";
+    int choice = 1;
+    std::cin >> choice;
+    Analyzer a;
+    if(choice == 1){
+        v.printProgramEntry();
+        a.solve_with_tarjan(fl);
+    }else if(choice == 2){
+        v.printProgramEntry();
+        a.solve_with_nuutila(fl);
+    }else if(choice == 3){
+        v.printProgramEntry();
+        a.solve_with_pearce(fl);
+    }else if(choice == 4){
+        v.printProgramEntry();
+        a.solve_with_all(fl);
+    }
     v.printLine("Press c to Continue, q to quit");
     std::cout << "|>> ";
     std::string branch;
