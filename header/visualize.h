@@ -17,7 +17,7 @@ class Visualize{
 			width = PROGRAM_WIDTH;
 		};
 		std::string centered(int width, const std::string &str);
-		void printProgramEntry();
+		void printProgramEntry(Session &s);
     	void printTableBanner();
     	void printTableSeperator();
 		void printProgramBottom();

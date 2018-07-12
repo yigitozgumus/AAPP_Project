@@ -76,9 +76,10 @@ std::vector<std::string> Analyzer::getInputList(std::string &dirPath)
 	return inputGraphs;
 }
 
-void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string &inputDirectory)
+std::string Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string &inputDirectory)
 {
 	Visualize v;
+	std::string csv_name = "None";
 	boost::filesystem::path full_path(boost::filesystem::current_path());
 	std::string dateTime = currentDateTime();
 	std::string file_location_csv ;
@@ -91,6 +92,7 @@ void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string 
 		logFile.close();
 		if(isCsv){
 			file_location_csv = full_path.string() + "/data/experiment_" + dateTime + ".csv";
+			csv_name = "experiment_" + dateTime + ".csv";
 		}
 	}
 	if (write_to_file)
@@ -142,6 +144,7 @@ void Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::string 
 	if(write_to_file){
 		v.printLine("The Log file is saved into " + file_location);
 	}
+	return csv_name;
 }
 
 void Analyzer::solve_with_tarjan(std::string &inputFile){

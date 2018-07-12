@@ -51,7 +51,7 @@ class Analyzer{
     	void solve_with_tarjan(std::string &inputFile);
     	void solve_with_nuutila(std::string &inputFile);
     	void solve_with_pearce(std::string &inputFile);
-    	void benchmark_comparison(bool write_to_file,bool isCsv,std::string &inputDirectory);
+    	std::string benchmark_comparison(bool write_to_file,bool isCsv,std::string &inputDirectory);
     	
 
 };

@@ -1,6 +1,7 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
 #define PROGRAM_WIDTH 180
+
 //Boost
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -14,6 +15,11 @@
 #include <time.h>
 
 using namespace boost;
+
+struct Session{
+	std::string graph_dir;
+	std::string csv;
+};
 
 namespace UtilityStructs
 {

@@ -27,20 +27,18 @@
  * @brief 
  * 
  */
-void Application::run()
-{
-    Visualize v;
-    std::string result = "start";
-    v.printProgramEntry();
-    welcomeScreen();
+void Application::run(Session &s)
+{  
+    v.printProgramEntry(s);
+    welcomeScreen(s);
 }
 /**
  * @brief 
  * 
  */
-void Application::welcomeScreen()
+void Application::welcomeScreen(Session &s)
 {
-    Visualize v;
+    
     int choice = 0;
     v.printLine( "Please choose the operation you want to perform:");
     v.printLine( " 1-) Generate a Graph set");
@@ -53,13 +51,13 @@ void Application::welcomeScreen()
     switch (choice)
     {
     case 1:
-        generateGraph();
+        generateGraph(s);
         break;
     case 2: 
-        runExperiment();
+        runExperiment(s);
         break;
     case 3:
-        runDebugMode();
+        runDebugMode(s);
         break;
     case 0:
         break;
@@ -71,10 +69,10 @@ void Application::welcomeScreen()
  * @brief 
  * 
  */
-void Application::generateGraph()
+std::string Application::generateGraph(Session &s)
 {
-    Visualize v;
-    v.printProgramEntry();
+    
+    v.printProgramEntry(s);
     v.printLine("");
     std::string Program = "python src/generate_graph_directories.py";
     std::string dir_name;
@@ -84,6 +82,7 @@ void Application::generateGraph()
     v.printLine("Please enter the name of the output folder:");
     std::cout << "|>> ";
     std::cin >> dir_name;
+    s.graph_dir = dir_name;
     v.printLine("Please enter the number of graph instances for each node class:");
     std::cout << "|>> ";
     std::cin >> numOfGraph;
@@ -93,7 +92,7 @@ void Application::generateGraph()
     if(single_class == "n")
     {   
         v.printLine("The output folder is: " + dir_name);
-        v.printLine("The number of graphs per each class is" + numOfGraph);
+        v.printLine("The number of graphs per each class is " + numOfGraph);
         std::string command;
         command = Program + " " + numOfGraph + " " + dir_name;
         std::system(command.c_str());
@@ -102,13 +101,13 @@ void Application::generateGraph()
         std::string branch;
         std::cin >> branch;
         if(branch == "c"){
-            v.printProgramEntry();
-            welcomeScreen();
+            v.printProgramEntry(s);
+            welcomeScreen(s);
         }else if (branch == "q"){
-            return ;
+            return dir_name;
         }
     }else{
-        v.printProgramEntry();
+        v.printProgramEntry(s);
         v.printLine("");
         v.printLine("The Graph Classes are below:");
         v.printLine("1-) 5-50 Nodes");
@@ -134,21 +133,24 @@ void Application::generateGraph()
         std::string branch;
         std::cin >> branch;
         if(branch == "c"){
-            v.printProgramEntry();
-            welcomeScreen();
+            v.printProgramEntry(s);
+            welcomeScreen(s);
         }else if (branch == "q"){
-            return ;
+            return dir_name;
         }
     }
+    return dir_name;
 }
 /**
  * @brief 
  * 
  */
-void Application::runExperiment(){
-    Visualize v;
+std::string Application::runExperiment(Session &s){
+    
     std::string dir;
-    v.printProgramEntry();
+    std::string csv;
+    csv = "None";
+    v.printProgramEntry(s);
     v.printLine("");
     v.printLine("Please enter the name of the graph directory: (Relative)");
     v.printProgramBottom();
@@ -156,9 +158,10 @@ void Application::runExperiment(){
     std::cin >> dir;
     boost::filesystem::path full_path(boost::filesystem::current_path());
     std::string full_p_dir = full_path.string() + "/" + dir;
-    v.printProgramEntry();
+    v.printProgramEntry(s);
     v.printLine("");
     v.printLine("The " + full_p_dir + " directory will be used");
+    v.printLine("");
     v.printLine("Please choose the option you want to execute:");
     v.printLine("1-) Run the Experiment (default option, only terminal table)");
     v.printLine("2-) Run the Experiment, save the result to the logs directory");
@@ -173,34 +176,35 @@ void Application::runExperiment(){
     }else if(choice == 2){
         a.benchmark_comparison(true, false, full_p_dir);
     }else if(choice == 3){
-        a.benchmark_comparison(true, true, full_p_dir);
+      csv =  a.benchmark_comparison(true, true, full_p_dir);
+      s.csv = csv;
     }
     v.printLine("Press c to Continue, q to quit");
     std::cout << "|>> ";
     std::string branch;
     std::cin >> branch;
     if(branch == "c"){
-        v.printProgramEntry();
-        welcomeScreen();
+        v.printProgramEntry(s);
+        welcomeScreen(s);
     }else if (branch == "q"){
-        return ;
+        return csv;
     }
-    
+    return csv;
 }
 /**
  * @brief 
  * 
  */
-void Application::runDebugMode(){
-    Visualize v;
-    v.printProgramEntry();
+void Application::runDebugMode(Session &s){
+    
+    v.printProgramEntry(s);
     v.printLine("");
     v.printLine("Please enter the name (path) of the graph file you want to debug (Relative) ");
     std::string fl;
     v.printProgramBottom();
     std::cout << "|>> ";
     std::cin >> fl;
-    v.printProgramEntry();
+    v.printProgramEntry(s);
     v.printLine("");
     v.printProgramBottom();
     v.printLine("Which method do you want to use ?");
@@ -214,16 +218,16 @@ void Application::runDebugMode(){
     std::cin >> choice;
     Analyzer a;
     if(choice == 1){
-        v.printProgramEntry();
+        v.printProgramEntry(s);
         a.solve_with_tarjan(fl);
     }else if(choice == 2){
-        v.printProgramEntry();
+        v.printProgramEntry(s);
         a.solve_with_nuutila(fl);
     }else if(choice == 3){
-        v.printProgramEntry();
+        v.printProgramEntry(s);
         a.solve_with_pearce(fl);
     }else if(choice == 4){
-        v.printProgramEntry();
+        v.printProgramEntry(s);
         a.solve_with_all(fl);
     }
     v.printLine("Press c to Continue, q to quit");
@@ -231,8 +235,8 @@ void Application::runDebugMode(){
     std::string branch;
     std::cin >> branch;
     if(branch == "c"){
-        v.printProgramEntry();
-        welcomeScreen();
+        v.printProgramEntry(s);
+        welcomeScreen(s);
     }else if (branch == "q"){
         return ;
     }

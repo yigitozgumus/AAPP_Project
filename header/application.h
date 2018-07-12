@@ -8,11 +8,13 @@
 
 class Application{
     public:
-    Application(){};
-    void run();
-    void welcomeScreen();
-    void generateGraph();
-    void runExperiment();
-    void runDebugMode();
+    Visualize v;
+    Application(){
+    };
+    void run(Session &s);
+    void welcomeScreen(Session &s);
+    std::string generateGraph(Session &s);
+    std::string runExperiment(Session &s);
+    void runDebugMode(Session &s);
 };
 #endif 

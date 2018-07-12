@@ -200,12 +200,23 @@ void Visualize::printProgramBottom()
 {	
 	std::cout << "|"<< std::string(width-2, '-') << "|" << "\n";
 }
-void Visualize::printProgramEntry()
+void Visualize::printProgramEntry(Session &s)
 {
 	std::system("clear");
 	std::cout << std::string(width, '=') + "\n="
 			  << centered(width - 2, "Advanced Algorithms and Parallel Programming Project") << "=\n"
 			  << std::string(width, '=') + "\n";
+	std::stringstream buffer_dir;
+	std::stringstream buffer_csv;
+	buffer_dir << std::setw(50) << std::left << "The last graph directory created in this session";
+	buffer_dir << ": " << s.graph_dir ;
+	buffer_csv << std::setw(50) << std::left << "The last experiment ran in this session";
+	buffer_csv << ": " << s.csv;
+	printLine("");
+	printLine(buffer_dir.str());
+	printLine(buffer_csv.str());
+	printLine("");
+
 }
 
 void Visualize::printLine( std::string message)

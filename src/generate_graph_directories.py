@@ -43,8 +43,10 @@ def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=
 
 def generate_folders(foldername,index,node_selection):
     
-    n_c_list = np.array(["5_50","50_100","100_500", "500_1000","1000_5000","5000_20000","20000_100000"])
-    e_p_list = ["0_10", "10_25"]
+    # n_c_list = np.array(["5_50","50_100","100_500", "500_1000","1000_5000"])
+    n_c_list = np.array(
+         ["5_50", "50_100", "100_500", "500_1000"])
+    e_p_list = ["0_10", "10_25","25_50"]
    # e_p_list = ["0_10","10_25","25_50","50_75","75_100"]
     if(index != -1):
         index = np.array(index)
