@@ -44,6 +44,9 @@ void Application::welcomeScreen(Session &s)
     v.printLine( " 1-) Generate a Graph set");
     v.printLine( " 2-) Run an Experiment");
     v.printLine( " 3-) Run Debug Mode");
+    if(s.csv != "None"){
+        v.printLine(" 4-) Analyze the Last Experiment");
+    }
     v.printLine( " 0-) Exit the Application");
     v.printProgramBottom();
     std::cout << "|>> ";
@@ -59,11 +62,33 @@ void Application::welcomeScreen(Session &s)
     case 3:
         runDebugMode(s);
         break;
+    case 4:
+        analyzeExperiment(s);
+        break;
     case 0:
         break;
     default:
         break;
     }
+}
+
+void Application::analyzeExperiment(Session &s){
+    v.printProgramEntry(s);
+    v.printLine("");
+    std::string Program = "python analysis.py";
+    std::string filename = s.csv;
+    Program += (" " + filename);
+    std::system(Program.c_str());
+    v.printLine("Press c to Continue, q to quit");
+        std::cout << "|>> ";
+        std::string branch;
+        std::cin >> branch;
+        if(branch == "c"){
+            v.printProgramEntry(s);
+            welcomeScreen(s);
+        }else if (branch == "q"){
+            return;
+        }
 }
 /**
  * @brief 

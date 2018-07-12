@@ -16,5 +16,6 @@ class Application{
     std::string generateGraph(Session &s);
     std::string runExperiment(Session &s);
     void runDebugMode(Session &s);
+    void analyzeExperiment(Session &s);
 };
 #endif 
