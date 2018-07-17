@@ -1,8 +1,5 @@
 import pandas as pd
 import numpy as np
-import sklearn as sk
-import scipy as sp
-import bokeh as bkh
 import matplotlib.pyplot as plt
 import argparse
 from os import listdir

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['analysis',['analysis',['../namespaceanalysis.html',1,'']]]
+  ['utilitystructs',['UtilityStructs',['../namespace_utility_structs.html',1,'']]]
 ];

@@ -22,7 +22,10 @@
 
 
 using namespace boost;
-
+/**
+ * @brief This class contains the implementations of algorithms from the Nuutila's Paper
+ * 
+ */
 class Nuutila : protected GraphComponent
 {
   public:

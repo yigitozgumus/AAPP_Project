@@ -1,19 +1,38 @@
 # AAPP_Project
 Advanced Algorithms Project for the course Advanced Algorithms and Parallel Programming
 
-### Prerequisites
+## Prerequisites
 
-* Make sure that Boost Libraries are installed in your system
+* Boost Libraries should be installed and should be built with c++11 flag 
+* Required libraries for python scripts
+    * pandas
+    * numpy
+    * matplotlib
+    * argparse
+    * seaborn
+    * contextmanager
+    * networkx
 
-### How to Build
+## How to Build
+
+After cloning the project execute the commands below in the project folder
 
 ```bash
-cmake CMakeList.txt
+cmake .
 make
 ```
 
-### How to run
+## How to run
 
 ```bash
-./out/Project <relative_filename_path>
+./out/Project 
 ```
+## How to generate the documentation
+
+Execute the command below in the project folder
+
+```bash
+doxygen Doxyfile
+```
+
+

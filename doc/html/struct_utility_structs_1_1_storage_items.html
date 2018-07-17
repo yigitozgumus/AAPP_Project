@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('struct_utility_structs_1_1_storage_items.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,11 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespace_utility_structs.html">UtilityStructs</a></li><li class="navelem"><a class="el" href="struct_utility_structs_1_1_storage_items.html">StorageItems</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -71,30 +88,110 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>This struct is used to store all of the output information of algorithms for later use.  
+ <a href="struct_utility_structs_1_1_storage_items.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="utilities_8h_source.html">utilities.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a39cf482db54d8e6ac473b438444c8a1e"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e.html#a39cf482db54d8e6ac473b438444c8a1e">total_bytes</a></td></tr>
+<tr class="memitem:a39cf482db54d8e6ac473b438444c8a1e"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html#a39cf482db54d8e6ac473b438444c8a1e">total_bytes</a></td></tr>
 <tr class="separator:a39cf482db54d8e6ac473b438444c8a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65e7df5611a4e144cc27576bd3041f6c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c.html#a65e7df5611a4e144cc27576bd3041f6c">duration</a></td></tr>
+<tr class="memitem:a65e7df5611a4e144cc27576bd3041f6c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html#a65e7df5611a4e144cc27576bd3041f6c">duration</a></td></tr>
 <tr class="separator:a65e7df5611a4e144cc27576bd3041f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72522be713f23fcfe3ac66780183fda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda.html#af72522be713f23fcfe3ac66780183fda">vertexCount</a></td></tr>
+<tr class="memitem:af72522be713f23fcfe3ac66780183fda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html#af72522be713f23fcfe3ac66780183fda">vertexCount</a></td></tr>
 <tr class="separator:af72522be713f23fcfe3ac66780183fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafcba9bb103108e2c1e1d9254fb75c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5.html#afafcba9bb103108e2c1e1d9254fb75c5">edgeCount</a></td></tr>
+<tr class="memitem:afafcba9bb103108e2c1e1d9254fb75c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html#afafcba9bb103108e2c1e1d9254fb75c5">edgeCount</a></td></tr>
 <tr class="separator:afafcba9bb103108e2c1e1d9254fb75c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb9d346eaacb1c5e7f60f559c45910f2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2.html#afb9d346eaacb1c5e7f60f559c45910f2">auxilary</a></td></tr>
+<tr class="memitem:afb9d346eaacb1c5e7f60f559c45910f2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html#afb9d346eaacb1c5e7f60f559c45910f2">auxilary</a></td></tr>
 <tr class="separator:afb9d346eaacb1c5e7f60f559c45910f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This struct is used to store all of the output information of algorithms for later use. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="afb9d346eaacb1c5e7f60f559c45910f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb9d346eaacb1c5e7f60f559c45910f2">&#9670;&nbsp;</a></span>auxilary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; UtilityStructs::StorageItems::auxilary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65e7df5611a4e144cc27576bd3041f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65e7df5611a4e144cc27576bd3041f6c">&#9670;&nbsp;</a></span>duration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float UtilityStructs::StorageItems::duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afafcba9bb103108e2c1e1d9254fb75c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afafcba9bb103108e2c1e1d9254fb75c5">&#9670;&nbsp;</a></span>edgeCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UtilityStructs::StorageItems::edgeCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a39cf482db54d8e6ac473b438444c8a1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39cf482db54d8e6ac473b438444c8a1e">&#9670;&nbsp;</a></span>total_bytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t UtilityStructs::StorageItems::total_bytes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af72522be713f23fcfe3ac66780183fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72522be713f23fcfe3ac66780183fda">&#9670;&nbsp;</a></span>vertexCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UtilityStructs::StorageItems::vertexCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>header/<a class="el" href="utilities_8h_source.html">utilities.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_utility_structs.html">UtilityStructs</a></li><li class="navelem"><a class="el" href="struct_utility_structs_1_1_storage_items.html">StorageItems</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

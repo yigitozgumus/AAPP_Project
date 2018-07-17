@@ -2,49 +2,56 @@
 \label{class_analyzer}\index{Analyzer@{Analyzer}}
 
 
+This class is mainly responsible for the experiment functionality. It also provides the wrapped experiment methods.  
+
+
+
+
 {\ttfamily \#include $<$analyzer.\+h$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96_a1be2ff17bba265bdef6e1b44748eaf96}{Analyzer} ()
+\hyperlink{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96}{Analyzer} ()
 \item 
-\hyperlink{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42_a2aed8194a48a8385ef271af3bd6fdd42}{Analyzer} (std\+::string \&dirname)
+\hyperlink{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}{Analyzer} (std\+::string \&dirname)
 \item 
-std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a7903ffdba689848dd199139e5dacf1bc_a7903ffdba689848dd199139e5dacf1bc}{get\+Input\+List} (std\+::string \&dir\+Path)
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}{get\+Input\+List} (std\+::string \&dir\+Path)
 \item 
-std\+::string \hyperlink{class_analyzer_a9108681fee1078aed1af2ddee58cc55c_a9108681fee1078aed1af2ddee58cc55c}{current\+Date\+Time} ()
+std\+::string \hyperlink{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}{current\+Date\+Time} ()
 \item 
-void \hyperlink{class_analyzer_a471ed64111b58f49cfee911b5db93ada_a471ed64111b58f49cfee911b5db93ada}{solve\+\_\+with\+\_\+all} (std\+::string \&input\+File)
+void \hyperlink{class_analyzer_a471ed64111b58f49cfee911b5db93ada}{solve\+\_\+with\+\_\+all} (std\+::string \&input\+File)
 \item 
-void \hyperlink{class_analyzer_a8207cd71986d26dc8abda1a807490ab2_a8207cd71986d26dc8abda1a807490ab2}{solve\+\_\+with\+\_\+tarjan} (std\+::string \&input\+File)
+void \hyperlink{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}{solve\+\_\+with\+\_\+tarjan} (std\+::string \&input\+File)
 \item 
-void \hyperlink{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e_a5ac77dbb2bbea6b34af561272705d64e}{solve\+\_\+with\+\_\+nuutila} (std\+::string \&input\+File)
+void \hyperlink{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}{solve\+\_\+with\+\_\+nuutila} (std\+::string \&input\+File)
 \item 
-void \hyperlink{class_analyzer_a6009c58addbb9730b54580a5f01ddce7_a6009c58addbb9730b54580a5f01ddce7}{solve\+\_\+with\+\_\+pearce} (std\+::string \&input\+File)
+void \hyperlink{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}{solve\+\_\+with\+\_\+pearce} (std\+::string \&input\+File)
 \item 
-std\+::string \hyperlink{class_analyzer_ae4637e33a985efefebf2a10502be351c_ae4637e33a985efefebf2a10502be351c}{benchmark\+\_\+comparison} (bool write\+\_\+to\+\_\+file, bool is\+Csv, std\+::string \&input\+Directory)
+std\+::string \hyperlink{class_analyzer_ae4637e33a985efefebf2a10502be351c}{benchmark\+\_\+comparison} (bool write\+\_\+to\+\_\+file, bool is\+Csv, std\+::string \&input\+Directory)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e_a567b5d8b2bbdde28b489834c1644446e}{graph\+List}
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}{graph\+List}
 \item 
-\hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b_ae32079d0816589617a0c76b1d4cf881b}{v}
+\hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This class will test the algorithms with different settings to create a basis for analysis and a comparison baseline 
+This class is mainly responsible for the experiment functionality. It also provides the wrapped experiment methods. 
+
+This class will test the algorithms with different settings to create a basis for analysis and a comparison baseline. It also provides the same settings for different types of algorithms to provide a optimal debug mode experience. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96_a1be2ff17bba265bdef6e1b44748eaf96}\label{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96_a1be2ff17bba265bdef6e1b44748eaf96}} 
+\mbox{\Hypertarget{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96}\label{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96}} 
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{Analyzer()}{Analyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Analyzer\+::\+Analyzer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42_a2aed8194a48a8385ef271af3bd6fdd42}\label{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42_a2aed8194a48a8385ef271af3bd6fdd42}} 
+\mbox{\Hypertarget{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}\label{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}} 
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{Analyzer()}{Analyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -53,43 +60,43 @@ This class will test the algorithms with different settings to create a basis fo
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_analyzer_ae4637e33a985efefebf2a10502be351c_ae4637e33a985efefebf2a10502be351c}\label{class_analyzer_ae4637e33a985efefebf2a10502be351c_ae4637e33a985efefebf2a10502be351c}} 
+\mbox{\Hypertarget{class_analyzer_ae4637e33a985efefebf2a10502be351c}\label{class_analyzer_ae4637e33a985efefebf2a10502be351c}} 
 \index{Analyzer@{Analyzer}!benchmark\+\_\+comparison@{benchmark\+\_\+comparison}}
 \index{benchmark\+\_\+comparison@{benchmark\+\_\+comparison}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{benchmark\+\_\+comparison()}{benchmark\_comparison()}}
 {\footnotesize\ttfamily std\+::string Analyzer\+::benchmark\+\_\+comparison (\begin{DoxyParamCaption}\item[{bool}]{write\+\_\+to\+\_\+file,  }\item[{bool}]{is\+Csv,  }\item[{std\+::string \&}]{input\+Directory }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a9108681fee1078aed1af2ddee58cc55c_a9108681fee1078aed1af2ddee58cc55c}\label{class_analyzer_a9108681fee1078aed1af2ddee58cc55c_a9108681fee1078aed1af2ddee58cc55c}} 
+\mbox{\Hypertarget{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}\label{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}} 
 \index{Analyzer@{Analyzer}!current\+Date\+Time@{current\+Date\+Time}}
 \index{current\+Date\+Time@{current\+Date\+Time}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{current\+Date\+Time()}{currentDateTime()}}
 {\footnotesize\ttfamily std\+::string Analyzer\+::current\+Date\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a7903ffdba689848dd199139e5dacf1bc_a7903ffdba689848dd199139e5dacf1bc}\label{class_analyzer_a7903ffdba689848dd199139e5dacf1bc_a7903ffdba689848dd199139e5dacf1bc}} 
+\mbox{\Hypertarget{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}\label{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}} 
 \index{Analyzer@{Analyzer}!get\+Input\+List@{get\+Input\+List}}
 \index{get\+Input\+List@{get\+Input\+List}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{get\+Input\+List()}{getInputList()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Analyzer\+::get\+Input\+List (\begin{DoxyParamCaption}\item[{std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Analyzer\+::get\+Input\+List (\begin{DoxyParamCaption}\item[{std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a471ed64111b58f49cfee911b5db93ada_a471ed64111b58f49cfee911b5db93ada}\label{class_analyzer_a471ed64111b58f49cfee911b5db93ada_a471ed64111b58f49cfee911b5db93ada}} 
+\mbox{\Hypertarget{class_analyzer_a471ed64111b58f49cfee911b5db93ada}\label{class_analyzer_a471ed64111b58f49cfee911b5db93ada}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+all@{solve\+\_\+with\+\_\+all}}
 \index{solve\+\_\+with\+\_\+all@{solve\+\_\+with\+\_\+all}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+all()}{solve\_with\_all()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+all (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e_a5ac77dbb2bbea6b34af561272705d64e}\label{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e_a5ac77dbb2bbea6b34af561272705d64e}} 
+\mbox{\Hypertarget{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}\label{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+nuutila@{solve\+\_\+with\+\_\+nuutila}}
 \index{solve\+\_\+with\+\_\+nuutila@{solve\+\_\+with\+\_\+nuutila}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+nuutila()}{solve\_with\_nuutila()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+nuutila (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a6009c58addbb9730b54580a5f01ddce7_a6009c58addbb9730b54580a5f01ddce7}\label{class_analyzer_a6009c58addbb9730b54580a5f01ddce7_a6009c58addbb9730b54580a5f01ddce7}} 
+\mbox{\Hypertarget{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}\label{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+pearce@{solve\+\_\+with\+\_\+pearce}}
 \index{solve\+\_\+with\+\_\+pearce@{solve\+\_\+with\+\_\+pearce}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+pearce()}{solve\_with\_pearce()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+pearce (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a8207cd71986d26dc8abda1a807490ab2_a8207cd71986d26dc8abda1a807490ab2}\label{class_analyzer_a8207cd71986d26dc8abda1a807490ab2_a8207cd71986d26dc8abda1a807490ab2}} 
+\mbox{\Hypertarget{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}\label{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+tarjan@{solve\+\_\+with\+\_\+tarjan}}
 \index{solve\+\_\+with\+\_\+tarjan@{solve\+\_\+with\+\_\+tarjan}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+tarjan()}{solve\_with\_tarjan()}}
@@ -98,13 +105,13 @@ This class will test the algorithms with different settings to create a basis fo
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_analyzer_a567b5d8b2bbdde28b489834c1644446e_a567b5d8b2bbdde28b489834c1644446e}\label{class_analyzer_a567b5d8b2bbdde28b489834c1644446e_a567b5d8b2bbdde28b489834c1644446e}} 
+\mbox{\Hypertarget{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}\label{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}} 
 \index{Analyzer@{Analyzer}!graph\+List@{graph\+List}}
 \index{graph\+List@{graph\+List}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{graph\+List}{graphList}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Analyzer\+::graph\+List}
 
-\mbox{\Hypertarget{class_analyzer_ae32079d0816589617a0c76b1d4cf881b_ae32079d0816589617a0c76b1d4cf881b}\label{class_analyzer_ae32079d0816589617a0c76b1d4cf881b_ae32079d0816589617a0c76b1d4cf881b}} 
+\mbox{\Hypertarget{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}\label{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}} 
 \index{Analyzer@{Analyzer}!v@{v}}
 \index{v@{v}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{v}{v}}
@@ -112,7 +119,6 @@ This class will test the algorithms with different settings to create a basis fo
 
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{analyzer_8h}{analyzer.\+h}\item 
-src/\hyperlink{analyzer_8cpp}{analyzer.\+cpp}\end{DoxyCompactItemize}
+header/\hyperlink{analyzer_8h}{analyzer.\+h}\end{DoxyCompactItemize}

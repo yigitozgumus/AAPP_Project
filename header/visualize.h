@@ -8,7 +8,10 @@
 
 #include "./utilities.h"
 
-
+/**
+ * @brief This class is used to visualize the information that are gathered from the algorithms
+ * 
+ */
 class Visualize{
 	
 	public:

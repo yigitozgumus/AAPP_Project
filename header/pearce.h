@@ -21,7 +21,10 @@
 #include <boost/property_map/property_map.hpp>
 
 using namespace boost;
-
+/**
+ * @brief This class contains the implementation of algorithms from the Pearce's paper
+ * 
+ */
 class Pearce : protected GraphComponent
 {
 public:

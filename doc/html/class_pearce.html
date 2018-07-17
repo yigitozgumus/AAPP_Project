@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_pearce.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -68,6 +89,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>This class contains the implementation of algorithms from the <a class="el" href="class_pearce.html" title="This class contains the implementation of algorithms from the Pearce&#39;s paper. ">Pearce</a>'s paper.  
+ <a href="class_pearce.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pearce_8h_source.html">pearce.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Pearce:</div>
@@ -75,95 +99,865 @@ Inheritance diagram for Pearce:</div>
  <div class="center">
   <img src="class_pearce.png" usemap="#Pearce_map" alt=""/>
   <map id="Pearce_map" name="Pearce_map">
-<area href="class_graph_component.html" alt="GraphComponent" shape="rect" coords="0,0,110,24"/>
+<area href="class_graph_component.html" title="This class is used to read graphs from the file and import them to the Boost Graph objects..." alt="GraphComponent" shape="rect" coords="0,0,110,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ad24a40c64e8f3481dd0dbbcb8d2bcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb.html#a4ad24a40c64e8f3481dd0dbbcb8d2bcb">Pearce</a> ()=default</td></tr>
+<tr class="memitem:a4ad24a40c64e8f3481dd0dbbcb8d2bcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a4ad24a40c64e8f3481dd0dbbcb8d2bcb">Pearce</a> ()=default</td></tr>
 <tr class="separator:a4ad24a40c64e8f3481dd0dbbcb8d2bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0851b1b696528448c1a42dbb6b4e6c8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a0851b1b696528448c1a42dbb6b4e6c8f.html#a0851b1b696528448c1a42dbb6b4e6c8f">Pearce</a> (std::string filename)</td></tr>
+<tr class="memitem:a0851b1b696528448c1a42dbb6b4e6c8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a0851b1b696528448c1a42dbb6b4e6c8f">Pearce</a> (std::string filename)</td></tr>
 <tr class="separator:a0851b1b696528448c1a42dbb6b4e6c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c6ea7dde3dc3e127e4fc6ad1892974e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e.html#a7c6ea7dde3dc3e127e4fc6ad1892974e">solve</a> (std::vector&lt; std::string &gt; methods, int graphNum)</td></tr>
+<tr class="memitem:a7c6ea7dde3dc3e127e4fc6ad1892974e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a7c6ea7dde3dc3e127e4fc6ad1892974e">solve</a> (std::vector&lt; std::string &gt; methods, int graphNum)</td></tr>
 <tr class="separator:a7c6ea7dde3dc3e127e4fc6ad1892974e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96ed7e50d992838177699b6133464554"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a96ed7e50d992838177699b6133464554.html#a96ed7e50d992838177699b6133464554">print_graph</a> ()</td></tr>
+<tr class="memitem:a96ed7e50d992838177699b6133464554"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a96ed7e50d992838177699b6133464554">print_graph</a> ()</td></tr>
 <tr class="separator:a96ed7e50d992838177699b6133464554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa906779c670a16948c00a9c031e6986"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_aaa906779c670a16948c00a9c031e6986.html#aaa906779c670a16948c00a9c031e6986">print_result_max</a> (<a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;s)</td></tr>
+<tr class="memitem:aaa906779c670a16948c00a9c031e6986"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#aaa906779c670a16948c00a9c031e6986">print_result_max</a> (<a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;s)</td></tr>
 <tr class="separator:aaa906779c670a16948c00a9c031e6986"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2a6f31643617305794c06b5d2c85ebe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_af2a6f31643617305794c06b5d2c85ebe.html#af2a6f31643617305794c06b5d2c85ebe">print_result_min</a> (<a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;s)</td></tr>
+<tr class="memitem:af2a6f31643617305794c06b5d2c85ebe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#af2a6f31643617305794c06b5d2c85ebe">print_result_min</a> (<a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;s)</td></tr>
 <tr class="separator:af2a6f31643617305794c06b5d2c85ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad50f62a493ed2b5eb7fcb3c0f8e2e079"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079.html#ad50f62a493ed2b5eb7fcb3c0f8e2e079">DFS</a> ()</td></tr>
+<tr class="memitem:ad50f62a493ed2b5eb7fcb3c0f8e2e079"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#ad50f62a493ed2b5eb7fcb3c0f8e2e079">DFS</a> ()</td></tr>
 <tr class="separator:ad50f62a493ed2b5eb7fcb3c0f8e2e079"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5e668d0d21ee0dad33cea171b9e2022"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_ac5e668d0d21ee0dad33cea171b9e2022.html#ac5e668d0d21ee0dad33cea171b9e2022">visit</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; int &gt; &amp;visited, int &amp;index)</td></tr>
+<tr class="memitem:ac5e668d0d21ee0dad33cea171b9e2022"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#ac5e668d0d21ee0dad33cea171b9e2022">visit</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; int &gt; &amp;visited, int &amp;index)</td></tr>
 <tr class="separator:ac5e668d0d21ee0dad33cea171b9e2022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a78c1ec037146537f575fa62b1e0265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a4a78c1ec037146537f575fa62b1e0265.html#a4a78c1ec037146537f575fa62b1e0265">Pea_Find_SCC1</a> ()</td></tr>
+<tr class="memitem:a4a78c1ec037146537f575fa62b1e0265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a4a78c1ec037146537f575fa62b1e0265">Pea_Find_SCC1</a> ()</td></tr>
 <tr class="separator:a4a78c1ec037146537f575fa62b1e0265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4e9364dd0c829564ecfbfe8ccc07b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a.html#ae4e9364dd0c829564ecfbfe8ccc07b6a">visit_scc1</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;visited, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; bool &gt; &amp;inComponent, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;Stack, int &amp;index, int &amp;c, int &amp;stackCount)</td></tr>
+<tr class="memitem:ae4e9364dd0c829564ecfbfe8ccc07b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#ae4e9364dd0c829564ecfbfe8ccc07b6a">visit_scc1</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;visited, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; bool &gt; &amp;inComponent, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;Stack, int &amp;index, int &amp;c, int &amp;stackCount)</td></tr>
 <tr class="separator:ae4e9364dd0c829564ecfbfe8ccc07b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4764238b69ee587134a9009619a4cae5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a4764238b69ee587134a9009619a4cae5.html#a4764238b69ee587134a9009619a4cae5">Pea_Find_SCC2</a> ()</td></tr>
+<tr class="memitem:a4764238b69ee587134a9009619a4cae5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a4764238b69ee587134a9009619a4cae5">Pea_Find_SCC2</a> ()</td></tr>
 <tr class="separator:a4764238b69ee587134a9009619a4cae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12c836f8f0dbd85e20c0f3f4f0c5fb47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47.html#a12c836f8f0dbd85e20c0f3f4f0c5fb47">visit_scc2</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;Stack, int &amp;index, int &amp;c, int &amp;stackCount)</td></tr>
+<tr class="memitem:a12c836f8f0dbd85e20c0f3f4f0c5fb47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a12c836f8f0dbd85e20c0f3f4f0c5fb47">visit_scc2</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;Stack, int &amp;index, int &amp;c, int &amp;stackCount)</td></tr>
 <tr class="separator:a12c836f8f0dbd85e20c0f3f4f0c5fb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d49726ab058f24cc943135458edb4f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a9d49726ab058f24cc943135458edb4f9.html#a9d49726ab058f24cc943135458edb4f9">Pea_Find_SCC3</a> ()</td></tr>
+<tr class="memitem:a9d49726ab058f24cc943135458edb4f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a9d49726ab058f24cc943135458edb4f9">Pea_Find_SCC3</a> ()</td></tr>
 <tr class="separator:a9d49726ab058f24cc943135458edb4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70800d4564b36fb64762d3a78f1f67d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a70800d4564b36fb64762d3a78f1f67d8.html#a70800d4564b36fb64762d3a78f1f67d8">visit_scc3</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
+<tr class="memitem:a70800d4564b36fb64762d3a78f1f67d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a70800d4564b36fb64762d3a78f1f67d8">visit_scc3</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
 <tr class="separator:a70800d4564b36fb64762d3a78f1f67d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a323fc3337d5849680065986d6ef7163c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a323fc3337d5849680065986d6ef7163c.html#a323fc3337d5849680065986d6ef7163c">visitLoop</a> (std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
+<tr class="memitem:a323fc3337d5849680065986d6ef7163c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a323fc3337d5849680065986d6ef7163c">visitLoop</a> (std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
 <tr class="separator:a323fc3337d5849680065986d6ef7163c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9090eeb4466701bc8ba913d8f9f5b50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50.html#ab9090eeb4466701bc8ba913d8f9f5b50">beginVisiting</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
+<tr class="memitem:ab9090eeb4466701bc8ba913d8f9f5b50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#ab9090eeb4466701bc8ba913d8f9f5b50">beginVisiting</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
 <tr class="separator:ab9090eeb4466701bc8ba913d8f9f5b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48afb6ccb75ba9df285c9701daf474b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a48afb6ccb75ba9df285c9701daf474b0.html#a48afb6ccb75ba9df285c9701daf474b0">finishVisiting</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
+<tr class="memitem:a48afb6ccb75ba9df285c9701daf474b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a48afb6ccb75ba9df285c9701daf474b0">finishVisiting</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
 <tr class="separator:a48afb6ccb75ba9df285c9701daf474b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d6c641f1815e11536554077ed18c10e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a6d6c641f1815e11536554077ed18c10e.html#a6d6c641f1815e11536554077ed18c10e">beginEdge</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, int &amp;k, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
+<tr class="memitem:a6d6c641f1815e11536554077ed18c10e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a6d6c641f1815e11536554077ed18c10e">beginEdge</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, int &amp;k, std::vector&lt; bool &gt; &amp;root, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;vStack, std::vector&lt; int &gt; &amp;iStack, int &amp;index, int &amp;c, int &amp;stackCount_i, int &amp;stackCount_v)</td></tr>
 <tr class="separator:a6d6c641f1815e11536554077ed18c10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ed2b91ac3246895ec5d70fe3530690e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a4ed2b91ac3246895ec5d70fe3530690e.html#a4ed2b91ac3246895ec5d70fe3530690e">finishEdge</a> (<a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, int &amp;k, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; bool &gt; &amp;root)</td></tr>
+<tr class="memitem:a4ed2b91ac3246895ec5d70fe3530690e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a4ed2b91ac3246895ec5d70fe3530690e">finishEdge</a> (<a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;v, int &amp;k, std::vector&lt; int &gt; &amp;rindex, std::vector&lt; bool &gt; &amp;root)</td></tr>
 <tr class="separator:a4ed2b91ac3246895ec5d70fe3530690e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2320928312fd97f6bcb1f16684f79a03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_a2320928312fd97f6bcb1f16684f79a03.html#a2320928312fd97f6bcb1f16684f79a03">p</a></td></tr>
+<tr class="memitem:a2320928312fd97f6bcb1f16684f79a03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#a2320928312fd97f6bcb1f16684f79a03">p</a></td></tr>
 <tr class="separator:a2320928312fd97f6bcb1f16684f79a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33eb33876fe817143afb84583934313"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce_ad33eb33876fe817143afb84583934313.html#ad33eb33876fe817143afb84583934313">experiment</a></td></tr>
+<tr class="memitem:ad33eb33876fe817143afb84583934313"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pearce.html#ad33eb33876fe817143afb84583934313">experiment</a></td></tr>
 <tr class="separator:ad33eb33876fe817143afb84583934313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_types_class_graph_component"><td colspan="2" onclick="javascript:toggleInherit('pro_types_class_graph_component')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="class_graph_component.html">GraphComponent</a></td></tr>
-<tr class="memitem:a7c0fcb3f03bf188b7df520e0cdd364b7 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a></td></tr>
+<tr class="memitem:a7c0fcb3f03bf188b7df520e0cdd364b7 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a></td></tr>
 <tr class="separator:a7c0fcb3f03bf188b7df520e0cdd364b7 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2f6ef4a3ac656d8213df42aa3d4c3b3 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a></td></tr>
+<tr class="memitem:ae2f6ef4a3ac656d8213df42aa3d4c3b3 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a></td></tr>
 <tr class="separator:ae2f6ef4a3ac656d8213df42aa3d4c3b3 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a982e0748a6e1b8dc74986f5f8b3dca5c inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::listS, boost::directedS, <a class="el" href="class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a>, <a class="el" href="class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a></td></tr>
+<tr class="memitem:a982e0748a6e1b8dc74986f5f8b3dca5c inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::listS, boost::directedS, <a class="el" href="class_graph_component.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a>, <a class="el" href="class_graph_component.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a></td></tr>
 <tr class="separator:a982e0748a6e1b8dc74986f5f8b3dca5c inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae67114a6ce5a001dc35e1996e1b45aa0 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a></td></tr>
+<tr class="memitem:ae67114a6ce5a001dc35e1996e1b45aa0 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a></td></tr>
 <tr class="separator:ae67114a6ce5a001dc35e1996e1b45aa0 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7517b2af08aa717324076a645c73fe6 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_aa7517b2af08aa717324076a645c73fe6.html#aa7517b2af08aa717324076a645c73fe6">Edge</a></td></tr>
+<tr class="memitem:aa7517b2af08aa717324076a645c73fe6 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#aa7517b2af08aa717324076a645c73fe6">Edge</a></td></tr>
 <tr class="separator:aa7517b2af08aa717324076a645c73fe6 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40772702161324303e24463a63738e9 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>, std::size_t VertexProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_ad40772702161324303e24463a63738e9.html#ad40772702161324303e24463a63738e9">v_p</a></td></tr>
+<tr class="memitem:ad40772702161324303e24463a63738e9 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>, std::size_t VertexProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#ad40772702161324303e24463a63738e9">v_p</a></td></tr>
 <tr class="separator:ad40772702161324303e24463a63738e9 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22292bf7520fb476958c508d66f5d318 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>, std::string EdgeProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a22292bf7520fb476958c508d66f5d318.html#a22292bf7520fb476958c508d66f5d318">e_p</a></td></tr>
+<tr class="memitem:a22292bf7520fb476958c508d66f5d318 inherit pro_types_class_graph_component"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>, std::string EdgeProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a22292bf7520fb476958c508d66f5d318">e_p</a></td></tr>
 <tr class="separator:a22292bf7520fb476958c508d66f5d318 inherit pro_types_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_graph_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_graph_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_graph_component.html">GraphComponent</a></td></tr>
-<tr class="memitem:a35c4a6e5c6f28751b1bd6c451cc07957 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a> ()</td></tr>
+<tr class="memitem:a35c4a6e5c6f28751b1bd6c451cc07957 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a> ()</td></tr>
 <tr class="separator:a35c4a6e5c6f28751b1bd6c451cc07957 inherit pro_methods_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14482fdab4e309677b4a14ab8db13079 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a14482fdab4e309677b4a14ab8db13079.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a> (std::string filename)</td></tr>
+<tr class="memitem:a14482fdab4e309677b4a14ab8db13079 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a> (std::string filename)</td></tr>
 <tr class="separator:a14482fdab4e309677b4a14ab8db13079 inherit pro_methods_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6af293dac3774fde0e2822b5725ecacd inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a6af293dac3774fde0e2822b5725ecacd.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a> (<a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &amp;graph)</td></tr>
+<tr class="memitem:a6af293dac3774fde0e2822b5725ecacd inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a> (<a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &amp;graph)</td></tr>
 <tr class="separator:a6af293dac3774fde0e2822b5725ecacd inherit pro_methods_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a680363eab8b992d739f055bd484bc000 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component_a680363eab8b992d739f055bd484bc000.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a> (std::string filename, <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &amp;g)</td></tr>
+<tr class="memitem:a680363eab8b992d739f055bd484bc000 inherit pro_methods_class_graph_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_component.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a> (std::string filename, <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> &amp;g)</td></tr>
 <tr class="separator:a680363eab8b992d739f055bd484bc000 inherit pro_methods_class_graph_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class contains the implementation of algorithms from the <a class="el" href="class_pearce.html" title="This class contains the implementation of algorithms from the Pearce&#39;s paper. ">Pearce</a>'s paper. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4ad24a40c64e8f3481dd0dbbcb8d2bcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ad24a40c64e8f3481dd0dbbcb8d2bcb">&#9670;&nbsp;</a></span>Pearce() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Pearce::Pearce </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0851b1b696528448c1a42dbb6b4e6c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0851b1b696528448c1a42dbb6b4e6c8f">&#9670;&nbsp;</a></span>Pearce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Pearce::Pearce </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6d6c641f1815e11536554077ed18c10e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6c641f1815e11536554077ed18c10e">&#9670;&nbsp;</a></span>beginEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pearce::beginEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9090eeb4466701bc8ba913d8f9f5b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9090eeb4466701bc8ba913d8f9f5b50">&#9670;&nbsp;</a></span>beginVisiting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::beginVisiting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad50f62a493ed2b5eb7fcb3c0f8e2e079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad50f62a493ed2b5eb7fcb3c0f8e2e079">&#9670;&nbsp;</a></span>DFS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::DFS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ed2b91ac3246895ec5d70fe3530690e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ed2b91ac3246895ec5d70fe3530690e">&#9670;&nbsp;</a></span>finishEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::finishEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48afb6ccb75ba9df285c9701daf474b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48afb6ccb75ba9df285c9701daf474b0">&#9670;&nbsp;</a></span>finishVisiting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::finishVisiting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a78c1ec037146537f575fa62b1e0265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a78c1ec037146537f575fa62b1e0265">&#9670;&nbsp;</a></span>Pea_Find_SCC1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> Pearce::Pea_Find_SCC1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4764238b69ee587134a9009619a4cae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4764238b69ee587134a9009619a4cae5">&#9670;&nbsp;</a></span>Pea_Find_SCC2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> Pearce::Pea_Find_SCC2 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d49726ab058f24cc943135458edb4f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d49726ab058f24cc943135458edb4f9">&#9670;&nbsp;</a></span>Pea_Find_SCC3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> Pearce::Pea_Find_SCC3 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96ed7e50d992838177699b6133464554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ed7e50d992838177699b6133464554">&#9670;&nbsp;</a></span>print_graph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::print_graph </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa906779c670a16948c00a9c031e6986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa906779c670a16948c00a9c031e6986">&#9670;&nbsp;</a></span>print_result_max()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::print_result_max </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2a6f31643617305794c06b5d2c85ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a6f31643617305794c06b5d2c85ebe">&#9670;&nbsp;</a></span>print_result_min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::print_result_min </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c6ea7dde3dc3e127e4fc6ad1892974e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c6ea7dde3dc3e127e4fc6ad1892974e">&#9670;&nbsp;</a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::solve </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>methods</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>graphNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5e668d0d21ee0dad33cea171b9e2022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5e668d0d21ee0dad33cea171b9e2022">&#9670;&nbsp;</a></span>visit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::visit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>visited</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e9364dd0c829564ecfbfe8ccc07b6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e9364dd0c829564ecfbfe8ccc07b6a">&#9670;&nbsp;</a></span>visit_scc1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::visit_scc1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>visited</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>inComponent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Stack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12c836f8f0dbd85e20c0f3f4f0c5fb47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12c836f8f0dbd85e20c0f3f4f0c5fb47">&#9670;&nbsp;</a></span>visit_scc2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::visit_scc2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Stack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70800d4564b36fb64762d3a78f1f67d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70800d4564b36fb64762d3a78f1f67d8">&#9670;&nbsp;</a></span>visit_scc3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::visit_scc3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a323fc3337d5849680065986d6ef7163c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323fc3337d5849680065986d6ef7163c">&#9670;&nbsp;</a></span>visitLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pearce::visitLoop </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iStack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>stackCount_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad33eb33876fe817143afb84583934313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad33eb33876fe817143afb84583934313">&#9670;&nbsp;</a></span>experiment</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a>&gt; Pearce::experiment</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2320928312fd97f6bcb1f16684f79a03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2320928312fd97f6bcb1f16684f79a03">&#9670;&nbsp;</a></span>p</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> Pearce::p</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>header/<a class="el" href="pearce_8h_source.html">pearce.h</a></li>
-<li>src/<a class="el" href="pearce_8cpp.html">pearce.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_pearce.html">Pearce</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

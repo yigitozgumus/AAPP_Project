@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_analyzer.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Analyzer Member List</div>  </div>
@@ -66,23 +87,26 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_analyzer.html">Analyzer</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96.html#a1be2ff17bba265bdef6e1b44748eaf96">Analyzer</a>()</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42.html#a2aed8194a48a8385ef271af3bd6fdd42">Analyzer</a>(std::string &amp;dirname)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_ae4637e33a985efefebf2a10502be351c.html#ae4637e33a985efefebf2a10502be351c">benchmark_comparison</a>(bool write_to_file, bool isCsv, std::string &amp;inputDirectory)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_analyzer_a9108681fee1078aed1af2ddee58cc55c.html#a9108681fee1078aed1af2ddee58cc55c">currentDateTime</a>()</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_a7903ffdba689848dd199139e5dacf1bc.html#a7903ffdba689848dd199139e5dacf1bc">getInputList</a>(std::string &amp;dirPath)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_analyzer_a567b5d8b2bbdde28b489834c1644446e.html#a567b5d8b2bbdde28b489834c1644446e">graphList</a></td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_a471ed64111b58f49cfee911b5db93ada.html#a471ed64111b58f49cfee911b5db93ada">solve_with_all</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_analyzer_a5ac77dbb2bbea6b34af561272705d64e.html#a5ac77dbb2bbea6b34af561272705d64e">solve_with_nuutila</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_a6009c58addbb9730b54580a5f01ddce7.html#a6009c58addbb9730b54580a5f01ddce7">solve_with_pearce</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_analyzer_a8207cd71986d26dc8abda1a807490ab2.html#a8207cd71986d26dc8abda1a807490ab2">solve_with_tarjan</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_analyzer_ae32079d0816589617a0c76b1d4cf881b.html#ae32079d0816589617a0c76b1d4cf881b">v</a></td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#a1be2ff17bba265bdef6e1b44748eaf96">Analyzer</a>()</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_analyzer.html#a2aed8194a48a8385ef271af3bd6fdd42">Analyzer</a>(std::string &amp;dirname)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#ae4637e33a985efefebf2a10502be351c">benchmark_comparison</a>(bool write_to_file, bool isCsv, std::string &amp;inputDirectory)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_analyzer.html#a9108681fee1078aed1af2ddee58cc55c">currentDateTime</a>()</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#a39f511f54a8eb89626e7f0ece08c7d02">getInputList</a>(std::string &amp;dirPath)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_analyzer.html#a567b5d8b2bbdde28b489834c1644446e">graphList</a></td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#a471ed64111b58f49cfee911b5db93ada">solve_with_all</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_analyzer.html#a5ac77dbb2bbea6b34af561272705d64e">solve_with_nuutila</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#a6009c58addbb9730b54580a5f01ddce7">solve_with_pearce</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_analyzer.html#a8207cd71986d26dc8abda1a807490ab2">solve_with_tarjan</a>(std::string &amp;inputFile)</td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_analyzer.html#ae32079d0816589617a0c76b1d4cf881b">v</a></td><td class="entry"><a class="el" href="class_analyzer.html">Analyzer</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

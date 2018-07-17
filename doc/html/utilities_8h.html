@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('utilities_8h.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,11 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -87,14 +104,19 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_session.html">Session</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct is used to contain information about the last generated graph directive and the experiment result for users.  <a href="struct_session.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct contains the edge type info for <a class="el" href="class_tarjan.html" title="This class contains the implementation of algorithms from the Tarjan&#39;s paper. ">Tarjan</a>'s SCC Algorithm.  <a href="struct_utility_structs_1_1_edge_property.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct contains the vertex index info that are used by all of the algorithms.  <a href="struct_utility_structs_1_1_vertex_property.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utility_structs_1_1_storage_items.html">UtilityStructs::StorageItems</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct is used to store all of the output information of algorithms for later use.  <a href="struct_utility_structs_1_1_storage_items.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utility_structs_1_1_timer.html">UtilityStructs::Timer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is used to measure the execution time of a executed function with the same scope.  <a href="class_utility_structs_1_1_timer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -104,34 +126,166 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a5ee336838879920d67d1f9c59217dbe0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_a5ee336838879920d67d1f9c59217dbe0.html#a5ee336838879920d67d1f9c59217dbe0">PROGRAM_WIDTH</a>&#160;&#160;&#160;180</td></tr>
+<tr class="memitem:a5ee336838879920d67d1f9c59217dbe0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#a5ee336838879920d67d1f9c59217dbe0">PROGRAM_WIDTH</a>&#160;&#160;&#160;180</td></tr>
 <tr class="separator:a5ee336838879920d67d1f9c59217dbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a4fda301c7fcca0db1cda24ed568e72a2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a></td></tr>
+<tr class="memitem:a4fda301c7fcca0db1cda24ed568e72a2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a></td></tr>
 <tr class="separator:a4fda301c7fcca0db1cda24ed568e72a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3033bfd11bff70cf37c0715a9dd2bd5"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a></td></tr>
+<tr class="memitem:ad3033bfd11bff70cf37c0715a9dd2bd5"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a></td></tr>
 <tr class="separator:ad3033bfd11bff70cf37c0715a9dd2bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0454e560170658194abd1bd3ef03bf70"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::listS, boost::directedS, <a class="el" href="utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a>, <a class="el" href="utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a></td></tr>
+<tr class="memitem:a0454e560170658194abd1bd3ef03bf70"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::listS, boost::directedS, <a class="el" href="utilities_8h.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a>, <a class="el" href="utilities_8h.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a></td></tr>
 <tr class="separator:a0454e560170658194abd1bd3ef03bf70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344cd987714d06997f0becda3c96d6e2"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_a344cd987714d06997f0becda3c96d6e2.html#a344cd987714d06997f0becda3c96d6e2">Vertex_t</a></td></tr>
+<tr class="memitem:a344cd987714d06997f0becda3c96d6e2"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#a344cd987714d06997f0becda3c96d6e2">Vertex_t</a></td></tr>
 <tr class="separator:a344cd987714d06997f0becda3c96d6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4a84c740ebb77e6a13a00aa289b0018"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_af4a84c740ebb77e6a13a00aa289b0018.html#af4a84c740ebb77e6a13a00aa289b0018">Edge_t</a></td></tr>
+<tr class="memitem:af4a84c740ebb77e6a13a00aa289b0018"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#af4a84c740ebb77e6a13a00aa289b0018">Edge_t</a></td></tr>
 <tr class="separator:af4a84c740ebb77e6a13a00aa289b0018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc70257bbb251602ecdc30866b83f7de"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_abc70257bbb251602ecdc30866b83f7de.html#abc70257bbb251602ecdc30866b83f7de">Edge</a></td></tr>
+<tr class="memitem:abc70257bbb251602ecdc30866b83f7de"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a> &gt;::edge_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#abc70257bbb251602ecdc30866b83f7de">Edge</a></td></tr>
 <tr class="separator:abc70257bbb251602ecdc30866b83f7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f4959b3d837fa6351a9414c79280286"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::size_t VertexProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_a3f4959b3d837fa6351a9414c79280286.html#a3f4959b3d837fa6351a9414c79280286">v_p</a></td></tr>
+<tr class="memitem:a3f4959b3d837fa6351a9414c79280286"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::size_t VertexProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#a3f4959b3d837fa6351a9414c79280286">v_p</a></td></tr>
 <tr class="separator:a3f4959b3d837fa6351a9414c79280286"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdd46ecdd7dd04aa38394e7af744a510"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="utilities_8h_a0454e560170658194abd1bd3ef03bf70.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::string EdgeProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h_afdd46ecdd7dd04aa38394e7af744a510.html#afdd46ecdd7dd04aa38394e7af744a510">e_p</a></td></tr>
+<tr class="memitem:afdd46ecdd7dd04aa38394e7af744a510"><td class="memItemLeft" align="right" valign="top">typedef property_map&lt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::string EdgeProperty::* &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#afdd46ecdd7dd04aa38394e7af744a510">e_p</a></td></tr>
 <tr class="separator:afdd46ecdd7dd04aa38394e7af744a510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5ee336838879920d67d1f9c59217dbe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee336838879920d67d1f9c59217dbe0">&#9670;&nbsp;</a></span>PROGRAM_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROGRAM_WIDTH&#160;&#160;&#160;180</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="afdd46ecdd7dd04aa38394e7af744a510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd46ecdd7dd04aa38394e7af744a510">&#9670;&nbsp;</a></span>e_p</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_map&lt;<a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::string EdgeProperty::*&gt;::type <a class="el" href="utilities_8h.html#afdd46ecdd7dd04aa38394e7af744a510">e_p</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc70257bbb251602ecdc30866b83f7de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc70257bbb251602ecdc30866b83f7de">&#9670;&nbsp;</a></span>Edge</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>&gt;::edge_descriptor <a class="el" href="utilities_8h.html#abc70257bbb251602ecdc30866b83f7de">Edge</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4a84c740ebb77e6a13a00aa289b0018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4a84c740ebb77e6a13a00aa289b0018">&#9670;&nbsp;</a></span>Edge_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>&gt;::edge_descriptor <a class="el" href="utilities_8h.html#af4a84c740ebb77e6a13a00aa289b0018">Edge_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3033bfd11bff70cf37c0715a9dd2bd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3033bfd11bff70cf37c0715a9dd2bd5">&#9670;&nbsp;</a></span>EdgeProperty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="struct_utility_structs_1_1_edge_property.html">UtilityStructs::EdgeProperty</a> <a class="el" href="utilities_8h.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0454e560170658194abd1bd3ef03bf70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0454e560170658194abd1bd3ef03bf70">&#9670;&nbsp;</a></span>theGraph</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::adjacency_list&lt;boost::vecS, boost::listS, boost::directedS, <a class="el" href="utilities_8h.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a>, <a class="el" href="utilities_8h.html#ad3033bfd11bff70cf37c0715a9dd2bd5">EdgeProperty</a>&gt; <a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f4959b3d837fa6351a9414c79280286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4959b3d837fa6351a9414c79280286">&#9670;&nbsp;</a></span>v_p</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_map&lt;<a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>, std::size_t VertexProperty::*&gt;::type <a class="el" href="utilities_8h.html#a3f4959b3d837fa6351a9414c79280286">v_p</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a344cd987714d06997f0becda3c96d6e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344cd987714d06997f0becda3c96d6e2">&#9670;&nbsp;</a></span>Vertex_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="utilities_8h.html#a0454e560170658194abd1bd3ef03bf70">theGraph</a>&gt;::vertex_descriptor <a class="el" href="utilities_8h.html#a344cd987714d06997f0becda3c96d6e2">Vertex_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fda301c7fcca0db1cda24ed568e72a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fda301c7fcca0db1cda24ed568e72a2">&#9670;&nbsp;</a></span>VertexProperty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="struct_utility_structs_1_1_vertex_property.html">UtilityStructs::VertexProperty</a> <a class="el" href="utilities_8h.html#a4fda301c7fcca0db1cda24ed568e72a2">VertexProperty</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li><li class="navelem"><a class="el" href="utilities_8h.html">utilities.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -6,6 +6,12 @@
 #include "./utilities.h"
 
 
+/**
+ * @brief This class will contain the main functionalities of the application.
+ *
+ * This class acts as a wrapper for the whole application. Every functionality is shown to user 
+ * via parameter updates, menus and choices.
+ */
 class Application{
     public:
     Visualize v;

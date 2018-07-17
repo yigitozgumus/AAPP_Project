@@ -20,7 +20,12 @@
 
 using namespace boost;
 
-
+/**
+ * @brief This class is used to read graphs from the file and import them to the Boost Graph objects. 
+ * 
+ * It also contains a graph printing function which can work with small graphs but after some point the screen size 
+ * is not enough
+ */
 class GraphComponent {
 
 public:

@@ -22,7 +22,10 @@
 
 
 using namespace boost;
-
+/**
+ * @brief This class contains the implementation of algorithms from the Tarjan's paper
+ * 
+ */
 class Tarjan : protected GraphComponent
 {
   public:

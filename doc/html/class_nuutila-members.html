@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_nuutila.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Nuutila Member List</div>  </div>
@@ -66,36 +87,39 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_nuutila.html">Nuutila</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_a7d52f96cf25409704bfd7bf176fcc7c5.html#a7d52f96cf25409704bfd7bf176fcc7c5">ApplySCC_Original</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_nuutila_a6c355594f68dad8c28684114a6df6700.html#a6c355594f68dad8c28684114a6df6700">ApplySCC_v1</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_a291d578f760e0f11a5c56c8a5fe02ebd.html#a291d578f760e0f11a5c56c8a5fe02ebd">ApplySCC_v2</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a22292bf7520fb476958c508d66f5d318.html#a22292bf7520fb476958c508d66f5d318">e_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_aa7517b2af08aa717324076a645c73fe6.html#aa7517b2af08aa717324076a645c73fe6">Edge</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_a70e8a910cc4050d246db2540bd1e36c5.html#a70e8a910cc4050d246db2540bd1e36c5">experiment</a></td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>()</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_a14482fdab4e309677b4a14ab8db13079.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a>(std::string filename)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_nuutila_a1409929fa0f38709497f8bdb012af71c.html#a1409929fa0f38709497f8bdb012af71c">n</a></td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_ab1ae0281145f693a922f5122d27cc23b.html#ab1ae0281145f693a922f5122d27cc23b">Nuutila</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_nuutila_a00bb9066a5a1c9fb03e25481f4f47a0c.html#a00bb9066a5a1c9fb03e25481f4f47a0c">Nuutila</a>(std::string filename)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_a0dc1cb3d0711a856a32a3743a85fb5c8.html#a0dc1cb3d0711a856a32a3743a85fb5c8">print_graph</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a6af293dac3774fde0e2822b5725ecacd.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a>(theGraph &amp;graph)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_ae11b94c396dff5b8d9b7f69ae0d0831f.html#ae11b94c396dff5b8d9b7f69ae0d0831f">print_sccs</a>(UtilityStructs::StorageItems &amp;s)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a680363eab8b992d739f055bd484bc000.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a>(std::string filename, theGraph &amp;g)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_ae56bd15d2e57366eef0e044bf3a37d9e.html#ae56bd15d2e57366eef0e044bf3a37d9e">solve</a>(std::vector&lt; std::string &gt; methods, int graphNum)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_ad40772702161324303e24463a63738e9.html#ad40772702161324303e24463a63738e9">v_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_nuutila_a2d43bc514d7375f9d63e60c06f90a60f.html#a2d43bc514d7375f9d63e60c06f90a60f">Visit</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_nuutila_a83b47177cf452e80b3ceaf064ff59840.html#a83b47177cf452e80b3ceaf064ff59840">Visit_v1</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749.html#afc7a8c27d8de17ac2679f839ff8c2749">Visit_v2</a>(Vertex_t &amp;v, std::vector&lt; int &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#a7d52f96cf25409704bfd7bf176fcc7c5">ApplySCC_Original</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_nuutila.html#a6c355594f68dad8c28684114a6df6700">ApplySCC_v1</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#a291d578f760e0f11a5c56c8a5fe02ebd">ApplySCC_v2</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a22292bf7520fb476958c508d66f5d318">e_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#aa7517b2af08aa717324076a645c73fe6">Edge</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#a70e8a910cc4050d246db2540bd1e36c5">experiment</a></td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>()</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a>(std::string filename)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_nuutila.html#a1409929fa0f38709497f8bdb012af71c">n</a></td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#ab1ae0281145f693a922f5122d27cc23b">Nuutila</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_nuutila.html#a00bb9066a5a1c9fb03e25481f4f47a0c">Nuutila</a>(std::string filename)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#a0dc1cb3d0711a856a32a3743a85fb5c8">print_graph</a>()</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a>(theGraph &amp;graph)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#ae11b94c396dff5b8d9b7f69ae0d0831f">print_sccs</a>(UtilityStructs::StorageItems &amp;s)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a>(std::string filename, theGraph &amp;g)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#ae56bd15d2e57366eef0e044bf3a37d9e">solve</a>(std::vector&lt; std::string &gt; methods, int graphNum)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#ad40772702161324303e24463a63738e9">v_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_nuutila.html#a2d43bc514d7375f9d63e60c06f90a60f">Visit</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_nuutila.html#a83b47177cf452e80b3ceaf064ff59840">Visit_v1</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_nuutila.html#afc7a8c27d8de17ac2679f839ff8c2749">Visit_v2</a>(Vertex_t &amp;v, std::vector&lt; int &gt; &amp;Points, std::vector&lt; int &gt; &amp;root, std::vector&lt; int &gt; &amp;visited, std::vector&lt; bool &gt; &amp;isComponent, int &amp;Counter, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_nuutila.html">Nuutila</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

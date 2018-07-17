@@ -2,36 +2,44 @@
 \label{class_utility_structs_1_1_timer}\index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 
 
+This class is used to measure the execution time of a executed function with the same scope.  
+
+
+
+
 {\ttfamily \#include $<$utilities.\+h$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63_a8513b72cae3808920cc5f76c28b34d63}{Timer} ()
+\hyperlink{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63}{Timer} ()
 \item 
-float \hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f_a12f62b57c263d563efd6089cff52355f}{stop} ()
+float \hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop} ()
 \item 
-\hyperlink{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676_a377c1febadb76e78d9a36bd81b3ab676}{$\sim$\+Timer} ()
+\hyperlink{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676}{$\sim$\+Timer} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07_a60bc754cb86990dad0003e8d49048c07}{start}
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}{start}
 \item 
-std\+::chrono\+::duration$<$ float $>$ \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4_aa78ff6477de7008371025bd459a262e4}{duration}
+std\+::chrono\+::duration$<$ float $>$ \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}{duration}
 \item 
-std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5_a9b87226726489b3885d6faf4373c34b5}{finish}
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}{finish}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+This class is used to measure the execution time of a executed function with the same scope. 
+
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63_a8513b72cae3808920cc5f76c28b34d63}\label{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63_a8513b72cae3808920cc5f76c28b34d63}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63}\label{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!Timer@{Timer}}
 \index{Timer@{Timer}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{Timer()}{Timer()}}
 {\footnotesize\ttfamily Utility\+Structs\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676_a377c1febadb76e78d9a36bd81b3ab676}\label{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676_a377c1febadb76e78d9a36bd81b3ab676}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676}\label{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!````~Timer@{$\sim$\+Timer}}
 \index{````~Timer@{$\sim$\+Timer}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{$\sim$\+Timer()}{~Timer()}}
@@ -40,7 +48,7 @@ std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hype
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f_a12f62b57c263d563efd6089cff52355f}\label{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f_a12f62b57c263d563efd6089cff52355f}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}\label{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!stop@{stop}}
 \index{stop@{stop}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{stop()}{stop()}}
@@ -49,19 +57,19 @@ std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hype
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4_aa78ff6477de7008371025bd459a262e4}\label{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4_aa78ff6477de7008371025bd459a262e4}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}\label{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!duration@{duration}}
 \index{duration@{duration}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{duration}{duration}}
 {\footnotesize\ttfamily std\+::chrono\+::duration$<$float$>$ Utility\+Structs\+::\+Timer\+::duration}
 
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5_a9b87226726489b3885d6faf4373c34b5}\label{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5_a9b87226726489b3885d6faf4373c34b5}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}\label{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!finish@{finish}}
 \index{finish@{finish}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{finish}{finish}}
 {\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Utility\+Structs\+::\+Timer\+::finish}
 
-\mbox{\Hypertarget{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07_a60bc754cb86990dad0003e8d49048c07}\label{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07_a60bc754cb86990dad0003e8d49048c07}} 
+\mbox{\Hypertarget{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}\label{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!start@{start}}
 \index{start@{start}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{start}{start}}

@@ -2,6 +2,11 @@
 \label{class_graph_component}\index{Graph\+Component@{Graph\+Component}}
 
 
+This class is used to read graphs from the file and import them to the Boost Graph objects.  
+
+
+
+
 {\ttfamily \#include $<$graphcomponent.\+h$>$}
 
 Inheritance diagram for Graph\+Component\+:\begin{figure}[H]
@@ -13,86 +18,91 @@ Inheritance diagram for Graph\+Component\+:\begin{figure}[H]
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}
+typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}
 \item 
-typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property}
+typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property}
 \item 
-typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}, \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property} $>$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}, \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property} $>$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}
 \item 
-typedef boost\+::graph\+\_\+traits$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$\+::vertex\+\_\+descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t}
+typedef boost\+::graph\+\_\+traits$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$\+::vertex\+\_\+descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t}
 \item 
-typedef boost\+::graph\+\_\+traits$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$\+::edge\+\_\+descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6_aa7517b2af08aa717324076a645c73fe6}{Edge}
+typedef boost\+::graph\+\_\+traits$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$\+::edge\+\_\+descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge}
 \item 
-typedef property\+\_\+map$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$ $>$\+::type \hyperlink{class_graph_component_ad40772702161324303e24463a63738e9_ad40772702161324303e24463a63738e9}{v\+\_\+p}
+typedef property\+\_\+map$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$ $>$\+::type \hyperlink{class_graph_component_ad40772702161324303e24463a63738e9}{v\+\_\+p}
 \item 
-typedef property\+\_\+map$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$ $>$\+::type \hyperlink{class_graph_component_a22292bf7520fb476958c508d66f5d318_a22292bf7520fb476958c508d66f5d318}{e\+\_\+p}
+typedef property\+\_\+map$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$ $>$\+::type \hyperlink{class_graph_component_a22292bf7520fb476958c508d66f5d318}{e\+\_\+p}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957_a35c4a6e5c6f28751b1bd6c451cc07957}{Graph\+Component} ()
+\hyperlink{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}{Graph\+Component} ()
 \item 
-\hyperlink{class_graph_component_a14482fdab4e309677b4a14ab8db13079_a14482fdab4e309677b4a14ab8db13079}{Graph\+Component} (std\+::string filename)
+\hyperlink{class_graph_component_a14482fdab4e309677b4a14ab8db13079}{Graph\+Component} (std\+::string filename)
 \item 
-void \hyperlink{class_graph_component_a6af293dac3774fde0e2822b5725ecacd_a6af293dac3774fde0e2822b5725ecacd}{print\+\_\+graph\+\_\+file} (\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&graph)
+void \hyperlink{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}{print\+\_\+graph\+\_\+file} (\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&graph)
 \item 
-void \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000_a680363eab8b992d739f055bd484bc000}{read\+\_\+graph\+\_\+file} (std\+::string filename, \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&g)
+void \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000}{read\+\_\+graph\+\_\+file} (std\+::string filename, \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&g)
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+This class is used to read graphs from the file and import them to the Boost Graph objects. 
+
+It also contains a graph printing function which can work with small graphs but after some point the screen size is not enough 
+
 \subsection{Member Typedef Documentation}
-\mbox{\Hypertarget{class_graph_component_a22292bf7520fb476958c508d66f5d318_a22292bf7520fb476958c508d66f5d318}\label{class_graph_component_a22292bf7520fb476958c508d66f5d318_a22292bf7520fb476958c508d66f5d318}} 
+\mbox{\Hypertarget{class_graph_component_a22292bf7520fb476958c508d66f5d318}\label{class_graph_component_a22292bf7520fb476958c508d66f5d318}} 
 \index{Graph\+Component@{Graph\+Component}!e\+\_\+p@{e\+\_\+p}}
 \index{e\+\_\+p@{e\+\_\+p}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{e\+\_\+p}{e\_p}}
-{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$$>$\+::type \hyperlink{class_graph_component_a22292bf7520fb476958c508d66f5d318_a22292bf7520fb476958c508d66f5d318}{Graph\+Component\+::e\+\_\+p}}
+{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$$>$\+::type \hyperlink{class_graph_component_a22292bf7520fb476958c508d66f5d318}{Graph\+Component\+::e\+\_\+p}}
 
-\mbox{\Hypertarget{class_graph_component_aa7517b2af08aa717324076a645c73fe6_aa7517b2af08aa717324076a645c73fe6}\label{class_graph_component_aa7517b2af08aa717324076a645c73fe6_aa7517b2af08aa717324076a645c73fe6}} 
+\mbox{\Hypertarget{class_graph_component_aa7517b2af08aa717324076a645c73fe6}\label{class_graph_component_aa7517b2af08aa717324076a645c73fe6}} 
 \index{Graph\+Component@{Graph\+Component}!Edge@{Edge}}
 \index{Edge@{Edge}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Edge}{Edge}}
-{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$\+::edge\+\_\+descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6_aa7517b2af08aa717324076a645c73fe6}{Graph\+Component\+::\+Edge}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$\+::edge\+\_\+descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Graph\+Component\+::\+Edge}}
 
-\mbox{\Hypertarget{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}\label{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}} 
+\mbox{\Hypertarget{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}\label{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}} 
 \index{Graph\+Component@{Graph\+Component}!Edge\+Property@{Edge\+Property}}
 \index{Edge\+Property@{Edge\+Property}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Edge\+Property}{EdgeProperty}}
-{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Graph\+Component\+::\+Edge\+Property}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Graph\+Component\+::\+Edge\+Property}}
 
-\mbox{\Hypertarget{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}\label{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}} 
+\mbox{\Hypertarget{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}\label{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}} 
 \index{Graph\+Component@{Graph\+Component}!the\+Graph@{the\+Graph}}
 \index{the\+Graph@{the\+Graph}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{the\+Graph}{theGraph}}
-{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}, \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property}$>$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{Graph\+Component\+::the\+Graph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}{Vertex\+Property}, \hyperlink{class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3}{Edge\+Property}$>$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{Graph\+Component\+::the\+Graph}}
 
-\mbox{\Hypertarget{class_graph_component_ad40772702161324303e24463a63738e9_ad40772702161324303e24463a63738e9}\label{class_graph_component_ad40772702161324303e24463a63738e9_ad40772702161324303e24463a63738e9}} 
+\mbox{\Hypertarget{class_graph_component_ad40772702161324303e24463a63738e9}\label{class_graph_component_ad40772702161324303e24463a63738e9}} 
 \index{Graph\+Component@{Graph\+Component}!v\+\_\+p@{v\+\_\+p}}
 \index{v\+\_\+p@{v\+\_\+p}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{v\+\_\+p}{v\_p}}
-{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$$>$\+::type \hyperlink{class_graph_component_ad40772702161324303e24463a63738e9_ad40772702161324303e24463a63738e9}{Graph\+Component\+::v\+\_\+p}}
+{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$$>$\+::type \hyperlink{class_graph_component_ad40772702161324303e24463a63738e9}{Graph\+Component\+::v\+\_\+p}}
 
-\mbox{\Hypertarget{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}\label{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}} 
+\mbox{\Hypertarget{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}\label{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}} 
 \index{Graph\+Component@{Graph\+Component}!Vertex\+\_\+t@{Vertex\+\_\+t}}
 \index{Vertex\+\_\+t@{Vertex\+\_\+t}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Vertex\+\_\+t}{Vertex\_t}}
-{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$\+::vertex\+\_\+descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Graph\+Component\+::\+Vertex\+\_\+t}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$\+::vertex\+\_\+descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Graph\+Component\+::\+Vertex\+\_\+t}}
 
-\mbox{\Hypertarget{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}\label{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}} 
+\mbox{\Hypertarget{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}\label{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}} 
 \index{Graph\+Component@{Graph\+Component}!Vertex\+Property@{Vertex\+Property}}
 \index{Vertex\+Property@{Vertex\+Property}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Vertex\+Property}{VertexProperty}}
-{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7_a7c0fcb3f03bf188b7df520e0cdd364b7}{Graph\+Component\+::\+Vertex\+Property}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7}{Graph\+Component\+::\+Vertex\+Property}}
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957_a35c4a6e5c6f28751b1bd6c451cc07957}\label{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957_a35c4a6e5c6f28751b1bd6c451cc07957}} 
+\mbox{\Hypertarget{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}\label{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}} 
 \index{Graph\+Component@{Graph\+Component}!Graph\+Component@{Graph\+Component}}
 \index{Graph\+Component@{Graph\+Component}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Graph\+Component()}{GraphComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Graph\+Component\+::\+Graph\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_graph_component_a14482fdab4e309677b4a14ab8db13079_a14482fdab4e309677b4a14ab8db13079}\label{class_graph_component_a14482fdab4e309677b4a14ab8db13079_a14482fdab4e309677b4a14ab8db13079}} 
+\mbox{\Hypertarget{class_graph_component_a14482fdab4e309677b4a14ab8db13079}\label{class_graph_component_a14482fdab4e309677b4a14ab8db13079}} 
 \index{Graph\+Component@{Graph\+Component}!Graph\+Component@{Graph\+Component}}
 \index{Graph\+Component@{Graph\+Component}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{Graph\+Component()}{GraphComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -101,21 +111,20 @@ void \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000_a680363e
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_graph_component_a6af293dac3774fde0e2822b5725ecacd_a6af293dac3774fde0e2822b5725ecacd}\label{class_graph_component_a6af293dac3774fde0e2822b5725ecacd_a6af293dac3774fde0e2822b5725ecacd}} 
+\mbox{\Hypertarget{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}\label{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}} 
 \index{Graph\+Component@{Graph\+Component}!print\+\_\+graph\+\_\+file@{print\+\_\+graph\+\_\+file}}
 \index{print\+\_\+graph\+\_\+file@{print\+\_\+graph\+\_\+file}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{print\+\_\+graph\+\_\+file()}{print\_graph\_file()}}
-{\footnotesize\ttfamily void Graph\+Component\+::print\+\_\+graph\+\_\+file (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&}]{graph }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+Component\+::print\+\_\+graph\+\_\+file (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&}]{graph }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_graph_component_a680363eab8b992d739f055bd484bc000_a680363eab8b992d739f055bd484bc000}\label{class_graph_component_a680363eab8b992d739f055bd484bc000_a680363eab8b992d739f055bd484bc000}} 
+\mbox{\Hypertarget{class_graph_component_a680363eab8b992d739f055bd484bc000}\label{class_graph_component_a680363eab8b992d739f055bd484bc000}} 
 \index{Graph\+Component@{Graph\+Component}!read\+\_\+graph\+\_\+file@{read\+\_\+graph\+\_\+file}}
 \index{read\+\_\+graph\+\_\+file@{read\+\_\+graph\+\_\+file}!Graph\+Component@{Graph\+Component}}
 \subsubsection{\texorpdfstring{read\+\_\+graph\+\_\+file()}{read\_graph\_file()}}
-{\footnotesize\ttfamily void Graph\+Component\+::read\+\_\+graph\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&}]{g }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+Component\+::read\+\_\+graph\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \&}]{g }\end{DoxyParamCaption})}
 
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{graphcomponent_8h}{graphcomponent.\+h}\item 
-src/\hyperlink{graphcomponent_8cpp}{graphcomponent.\+cpp}\end{DoxyCompactItemize}
+header/\hyperlink{graphcomponent_8h}{graphcomponent.\+h}\end{DoxyCompactItemize}

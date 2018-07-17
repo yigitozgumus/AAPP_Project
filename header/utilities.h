@@ -14,8 +14,13 @@
 
 #include <time.h>
 
-using namespace boost;
 
+using namespace boost;
+/**
+ * @brief This struct is used to contain information about the last generated graph directive and the experiment result
+ * for users
+ * 
+ */
 struct Session{
 	std::string graph_dir;
 	std::string csv;
@@ -23,18 +28,27 @@ struct Session{
 
 namespace UtilityStructs
 {
-
+/**
+ * @brief This struct contains the edge type info for Tarjan's SCC Algorithm
+ * 
+ */
 struct EdgeProperty
 {
 	EdgeProperty(const std::string &n) : name(n) {}
 	std::string name;
 };
-
+/**
+ * @brief This struct contains the vertex index info that are used by all of the algorithms
+ * 
+ */
 struct VertexProperty
 {
 	std::size_t index;
 };
-
+/**
+ * @brief This struct is used to store all of the output information of algorithms for later use
+ * 
+ */
 struct StorageItems
 {
 	std::size_t total_bytes;
@@ -43,7 +57,10 @@ struct StorageItems
 	int edgeCount;
 	std::vector<int> auxilary;
 };
-
+/**
+ * @brief This class is used to measure the execution time of a executed function with the same scope.
+ * 
+ */
 class Timer
 {
   public:

@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -44,6 +51,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_vars.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,70 +82,73 @@ $(function() {
 <div class="contents">
 &#160;<ul>
 <li>auxilary
-: <a class="el" href="struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2.html#afb9d346eaacb1c5e7f60f559c45910f2">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#afb9d346eaacb1c5e7f60f559c45910f2">UtilityStructs::StorageItems</a>
 </li>
 <li>csv
-: <a class="el" href="struct_session_a256b14530b834d61ce85bab451694b8c.html#a256b14530b834d61ce85bab451694b8c">Session</a>
+: <a class="el" href="struct_session.html#a256b14530b834d61ce85bab451694b8c">Session</a>
 </li>
 <li>duration
-: <a class="el" href="struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c.html#a65e7df5611a4e144cc27576bd3041f6c">UtilityStructs::StorageItems</a>
-, <a class="el" href="class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#a65e7df5611a4e144cc27576bd3041f6c">UtilityStructs::StorageItems</a>
+, <a class="el" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer</a>
 </li>
 <li>edgeCount
-: <a class="el" href="struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5.html#afafcba9bb103108e2c1e1d9254fb75c5">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#afafcba9bb103108e2c1e1d9254fb75c5">UtilityStructs::StorageItems</a>
 </li>
 <li>experiment
-: <a class="el" href="class_nuutila_a70e8a910cc4050d246db2540bd1e36c5.html#a70e8a910cc4050d246db2540bd1e36c5">Nuutila</a>
-, <a class="el" href="class_pearce_ad33eb33876fe817143afb84583934313.html#ad33eb33876fe817143afb84583934313">Pearce</a>
-, <a class="el" href="class_tarjan_aaa327f105a07f07648dcc6f62a565986.html#aaa327f105a07f07648dcc6f62a565986">Tarjan</a>
+: <a class="el" href="class_nuutila.html#a70e8a910cc4050d246db2540bd1e36c5">Nuutila</a>
+, <a class="el" href="class_pearce.html#ad33eb33876fe817143afb84583934313">Pearce</a>
+, <a class="el" href="class_tarjan.html#aaa327f105a07f07648dcc6f62a565986">Tarjan</a>
 </li>
 <li>finish
-: <a class="el" href="class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer</a>
 </li>
 <li>graph_dir
-: <a class="el" href="struct_session_aecaa42a56f197e0874041533ccb358a6.html#aecaa42a56f197e0874041533ccb358a6">Session</a>
+: <a class="el" href="struct_session.html#aecaa42a56f197e0874041533ccb358a6">Session</a>
 </li>
 <li>graphList
-: <a class="el" href="class_analyzer_a567b5d8b2bbdde28b489834c1644446e.html#a567b5d8b2bbdde28b489834c1644446e">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a567b5d8b2bbdde28b489834c1644446e">Analyzer</a>
 </li>
 <li>index
-: <a class="el" href="struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641.html#a636cb729438e999aa3d9a17ac39d8641">UtilityStructs::VertexProperty</a>
+: <a class="el" href="struct_utility_structs_1_1_vertex_property.html#a636cb729438e999aa3d9a17ac39d8641">UtilityStructs::VertexProperty</a>
 </li>
 <li>n
-: <a class="el" href="class_nuutila_a1409929fa0f38709497f8bdb012af71c.html#a1409929fa0f38709497f8bdb012af71c">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a1409929fa0f38709497f8bdb012af71c">Nuutila</a>
 </li>
 <li>name
-: <a class="el" href="struct_utility_structs_1_1_edge_property_a0701d898f719b1efbf795d80f503de81.html#a0701d898f719b1efbf795d80f503de81">UtilityStructs::EdgeProperty</a>
+: <a class="el" href="struct_utility_structs_1_1_edge_property.html#a0701d898f719b1efbf795d80f503de81">UtilityStructs::EdgeProperty</a>
 </li>
 <li>p
-: <a class="el" href="class_pearce_a2320928312fd97f6bcb1f16684f79a03.html#a2320928312fd97f6bcb1f16684f79a03">Pearce</a>
+: <a class="el" href="class_pearce.html#a2320928312fd97f6bcb1f16684f79a03">Pearce</a>
 </li>
 <li>start
-: <a class="el" href="class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer</a>
 </li>
 <li>t
-: <a class="el" href="class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad.html#a54b0703f885a3514ea0bf4cdbc7fdaad">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a54b0703f885a3514ea0bf4cdbc7fdaad">Tarjan</a>
 </li>
 <li>total_bytes
-: <a class="el" href="struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e.html#a39cf482db54d8e6ac473b438444c8a1e">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#a39cf482db54d8e6ac473b438444c8a1e">UtilityStructs::StorageItems</a>
 </li>
 <li>v
-: <a class="el" href="class_analyzer_ae32079d0816589617a0c76b1d4cf881b.html#ae32079d0816589617a0c76b1d4cf881b">Analyzer</a>
-, <a class="el" href="class_application_a96cff2295a95d7e6de06638bb7e61243.html#a96cff2295a95d7e6de06638bb7e61243">Application</a>
+: <a class="el" href="class_analyzer.html#ae32079d0816589617a0c76b1d4cf881b">Analyzer</a>
+, <a class="el" href="class_application.html#a96cff2295a95d7e6de06638bb7e61243">Application</a>
 </li>
 <li>vertexCount
-: <a class="el" href="struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda.html#af72522be713f23fcfe3ac66780183fda">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#af72522be713f23fcfe3ac66780183fda">UtilityStructs::StorageItems</a>
 </li>
 <li>width
-: <a class="el" href="class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7.html#af5ac723ad5f8fe8c4a8378bf1299cda7">Visualize</a>
+: <a class="el" href="class_visualize.html#af5ac723ad5f8fe8c4a8378bf1299cda7">Visualize</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

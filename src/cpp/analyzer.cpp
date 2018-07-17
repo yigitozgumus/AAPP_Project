@@ -27,7 +27,11 @@ namespace filesys = boost::filesystem;
 #ifndef USING_BOOST
 #define USING_BOOST
 #endif
-
+/**
+ * @brief This function gives the current date and time for the experiments and the logs
+ * 
+ * @return std::string 
+ */
 std::string Analyzer::currentDateTime()
 {
 	time_t now = time(0);
@@ -40,7 +44,12 @@ std::string Analyzer::currentDateTime()
 
 	return buf;
 }
-
+/**
+ * @brief gets all of the graph files from the directory and returns them in a vector
+ * 
+ * @param dirPath 
+ * @return std::vector<std::string> 
+ */
 std::vector<std::string> Analyzer::getInputList(std::string &dirPath)
 {
 	std::vector<std::string> inputGraphs;

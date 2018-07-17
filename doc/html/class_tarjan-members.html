@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_tarjan.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Tarjan Member List</div>  </div>
@@ -66,36 +87,39 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_tarjan.html">Tarjan</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_a4be3dec188e347b54a90cd5f37abc268.html#a4be3dec188e347b54a90cd5f37abc268">applyBiconnectivity</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_a674767d7e49ada6a738ab69187e4836d.html#a674767d7e49ada6a738ab69187e4836d">ApplyDFS</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_a58ad9fcfd599a608fa1671e4607db378.html#a58ad9fcfd599a608fa1671e4607db378">ApplySCC</a>(bool debugMode)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_a52573be5a4930ad84f3807bc49f42026.html#a52573be5a4930ad84f3807bc49f42026">biconnect</a>(Vertex_t &amp;v, std::vector&lt; Edge_t &gt; &amp;edges, int &amp;Counter, std::vector&lt; std::vector&lt; Edge_t &gt; &gt; &amp;components, std::vector&lt; int &gt; &amp;visited, std::vector&lt; int &gt; &amp;lowPt, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1.html#a277c58dc6f712a6ae1ef2e59c9ad58e1">DepthFirstSearch</a>(Vertex_t &amp;v, int &amp;Counter, std::vector&lt; int &gt; &amp;visited)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a22292bf7520fb476958c508d66f5d318.html#a22292bf7520fb476958c508d66f5d318">e_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_aa7517b2af08aa717324076a645c73fe6.html#aa7517b2af08aa717324076a645c73fe6">Edge</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_aaa327f105a07f07648dcc6f62a565986.html#aaa327f105a07f07648dcc6f62a565986">experiment</a></td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>()</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_a14482fdab4e309677b4a14ab8db13079.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a>(std::string filename)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8.html#a74f69dfaa1d4cf3bac06aef7a704c0b8">isReachable</a>(Vertex_t &amp;source, Vertex_t &amp;target)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_a0ef20e22407703c87c880898c8ad5745.html#a0ef20e22407703c87c880898c8ad5745">print_graph</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a6af293dac3774fde0e2822b5725ecacd.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a>(theGraph &amp;graph)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_a680363eab8b992d739f055bd484bc000.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a>(std::string filename, theGraph &amp;g)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_af94d48b6e78c292bd1aa465d37d89769.html#af94d48b6e78c292bd1aa465d37d89769">solve</a>(int graphNum)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2.html#ac76fd1419a2de2dbf34c6ff1d4cc55e2">StrongConnect</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, int &amp;Counter, std::vector&lt; int &gt; &amp;visited, std::vector&lt; int &gt; &amp;lowPt, std::vector&lt; int &gt; &amp;lowVine, int &amp;stackCount, bool debugMode)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad.html#a54b0703f885a3514ea0bf4cdbc7fdaad">t</a></td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91.html#a24a7fa59ed2fcff4a520e012e30acb91">Tarjan</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tarjan_a7e9845c51e1e905df76b267370c6dc00.html#a7e9845c51e1e905df76b267370c6dc00">Tarjan</a>(std::string filename)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_ad40772702161324303e24463a63738e9.html#ad40772702161324303e24463a63738e9">v_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#a4be3dec188e347b54a90cd5f37abc268">applyBiconnectivity</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#a674767d7e49ada6a738ab69187e4836d">ApplyDFS</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#a58ad9fcfd599a608fa1671e4607db378">ApplySCC</a>(bool debugMode)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#a52573be5a4930ad84f3807bc49f42026">biconnect</a>(Vertex_t &amp;v, std::vector&lt; Edge_t &gt; &amp;edges, int &amp;Counter, std::vector&lt; std::vector&lt; Edge_t &gt; &gt; &amp;components, std::vector&lt; int &gt; &amp;visited, std::vector&lt; int &gt; &amp;lowPt, int &amp;stackCount)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#a277c58dc6f712a6ae1ef2e59c9ad58e1">DepthFirstSearch</a>(Vertex_t &amp;v, int &amp;Counter, std::vector&lt; int &gt; &amp;visited)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a22292bf7520fb476958c508d66f5d318">e_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#aa7517b2af08aa717324076a645c73fe6">Edge</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">EdgeProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#aaa327f105a07f07648dcc6f62a565986">experiment</a></td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>()</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#a14482fdab4e309677b4a14ab8db13079">GraphComponent</a>(std::string filename)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#a74f69dfaa1d4cf3bac06aef7a704c0b8">isReachable</a>(Vertex_t &amp;source, Vertex_t &amp;target)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#a0ef20e22407703c87c880898c8ad5745">print_graph</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a6af293dac3774fde0e2822b5725ecacd">print_graph_file</a>(theGraph &amp;graph)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#a680363eab8b992d739f055bd484bc000">read_graph_file</a>(std::string filename, theGraph &amp;g)</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#af94d48b6e78c292bd1aa465d37d89769">solve</a>(int graphNum)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#ac76fd1419a2de2dbf34c6ff1d4cc55e2">StrongConnect</a>(Vertex_t &amp;v, std::vector&lt; Vertex_t &gt; &amp;Points, int &amp;Counter, std::vector&lt; int &gt; &amp;visited, std::vector&lt; int &gt; &amp;lowPt, std::vector&lt; int &gt; &amp;lowVine, int &amp;stackCount, bool debugMode)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#a54b0703f885a3514ea0bf4cdbc7fdaad">t</a></td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tarjan.html#a24a7fa59ed2fcff4a520e012e30acb91">Tarjan</a>()</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tarjan.html#a7e9845c51e1e905df76b267370c6dc00">Tarjan</a>(std::string filename)</td><td class="entry"><a class="el" href="class_tarjan.html">Tarjan</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">theGraph</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#ad40772702161324303e24463a63738e9">v_p</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">Vertex_t</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_graph_component.html#a7c0fcb3f03bf188b7df520e0cdd364b7">VertexProperty</a> typedef</td><td class="entry"><a class="el" href="class_graph_component.html">GraphComponent</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

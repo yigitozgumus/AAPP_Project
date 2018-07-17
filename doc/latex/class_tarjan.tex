@@ -2,6 +2,11 @@
 \label{class_tarjan}\index{Tarjan@{Tarjan}}
 
 
+This class contains the implementation of algorithms from the \hyperlink{class_tarjan}{Tarjan}\textquotesingle{}s paper.  
+
+
+
+
 {\ttfamily \#include $<$tarjan.\+h$>$}
 
 Inheritance diagram for Tarjan\+:\begin{figure}[H]
@@ -13,46 +18,49 @@ Inheritance diagram for Tarjan\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91_a24a7fa59ed2fcff4a520e012e30acb91}{Tarjan} ()
+\hyperlink{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91}{Tarjan} ()
 \item 
-\hyperlink{class_tarjan_a7e9845c51e1e905df76b267370c6dc00_a7e9845c51e1e905df76b267370c6dc00}{Tarjan} (std\+::string filename)
+\hyperlink{class_tarjan_a7e9845c51e1e905df76b267370c6dc00}{Tarjan} (std\+::string filename)
 \item 
-void \hyperlink{class_tarjan_af94d48b6e78c292bd1aa465d37d89769_af94d48b6e78c292bd1aa465d37d89769}{solve} (int graph\+Num)
+void \hyperlink{class_tarjan_af94d48b6e78c292bd1aa465d37d89769}{solve} (int graph\+Num)
 \item 
-void \hyperlink{class_tarjan_a0ef20e22407703c87c880898c8ad5745_a0ef20e22407703c87c880898c8ad5745}{print\+\_\+graph} ()
+void \hyperlink{class_tarjan_a0ef20e22407703c87c880898c8ad5745}{print\+\_\+graph} ()
 \item 
-void \hyperlink{class_tarjan_a674767d7e49ada6a738ab69187e4836d_a674767d7e49ada6a738ab69187e4836d}{Apply\+D\+FS} ()
+void \hyperlink{class_tarjan_a674767d7e49ada6a738ab69187e4836d}{Apply\+D\+FS} ()
 \item 
-void \hyperlink{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1_a277c58dc6f712a6ae1ef2e59c9ad58e1}{Depth\+First\+Search} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, int \&Counter, std\+::vector$<$ int $>$ \&visited)
+void \hyperlink{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}{Depth\+First\+Search} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, int \&Counter, std\+::vector$<$ int $>$ \&visited)
 \item 
-bool \hyperlink{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8_a74f69dfaa1d4cf3bac06aef7a704c0b8}{is\+Reachable} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&source, \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&target)
+bool \hyperlink{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}{is\+Reachable} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&source, \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&target)
 \item 
-\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_tarjan_a4be3dec188e347b54a90cd5f37abc268_a4be3dec188e347b54a90cd5f37abc268}{apply\+Biconnectivity} ()
+\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_tarjan_a4be3dec188e347b54a90cd5f37abc268}{apply\+Biconnectivity} ()
 \item 
-void \hyperlink{class_tarjan_a52573be5a4930ad84f3807bc49f42026_a52573be5a4930ad84f3807bc49f42026}{biconnect} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ \&edges, int \&Counter, std\+::vector$<$ std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ $>$ \&components, std\+::vector$<$ int $>$ \&visited, std\+::vector$<$ int $>$ \&low\+Pt, int \&stack\+Count)
+void \hyperlink{class_tarjan_a52573be5a4930ad84f3807bc49f42026}{biconnect} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ \&edges, int \&Counter, std\+::vector$<$ std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ $>$ \&components, std\+::vector$<$ int $>$ \&visited, std\+::vector$<$ int $>$ \&low\+Pt, int \&stack\+Count)
 \item 
-\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_tarjan_a58ad9fcfd599a608fa1671e4607db378_a58ad9fcfd599a608fa1671e4607db378}{Apply\+S\+CC} (bool debug\+Mode)
+\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_tarjan_a58ad9fcfd599a608fa1671e4607db378}{Apply\+S\+CC} (bool debug\+Mode)
 \item 
-void \hyperlink{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2_ac76fd1419a2de2dbf34c6ff1d4cc55e2}{Strong\+Connect} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&Points, int \&Counter, std\+::vector$<$ int $>$ \&visited, std\+::vector$<$ int $>$ \&low\+Pt, std\+::vector$<$ int $>$ \&low\+Vine, int \&stack\+Count, bool debug\+Mode)
+void \hyperlink{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2}{Strong\+Connect} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&Points, int \&Counter, std\+::vector$<$ int $>$ \&visited, std\+::vector$<$ int $>$ \&low\+Pt, std\+::vector$<$ int $>$ \&low\+Vine, int \&stack\+Count, bool debug\+Mode)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}
+\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}
 \item 
-std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$ \hyperlink{class_tarjan_aaa327f105a07f07648dcc6f62a565986_aaa327f105a07f07648dcc6f62a565986}{experiment}
+std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$ \hyperlink{class_tarjan_aaa327f105a07f07648dcc6f62a565986}{experiment}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+This class contains the implementation of algorithms from the \hyperlink{class_tarjan}{Tarjan}\textquotesingle{}s paper. 
+
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91_a24a7fa59ed2fcff4a520e012e30acb91}\label{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91_a24a7fa59ed2fcff4a520e012e30acb91}} 
+\mbox{\Hypertarget{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91}\label{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91}} 
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Tarjan()}{Tarjan()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Tarjan\+::\+Tarjan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_tarjan_a7e9845c51e1e905df76b267370c6dc00_a7e9845c51e1e905df76b267370c6dc00}\label{class_tarjan_a7e9845c51e1e905df76b267370c6dc00_a7e9845c51e1e905df76b267370c6dc00}} 
+\mbox{\Hypertarget{class_tarjan_a7e9845c51e1e905df76b267370c6dc00}\label{class_tarjan_a7e9845c51e1e905df76b267370c6dc00}} 
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Tarjan()}{Tarjan()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -61,78 +69,77 @@ std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dc
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_tarjan_a4be3dec188e347b54a90cd5f37abc268_a4be3dec188e347b54a90cd5f37abc268}\label{class_tarjan_a4be3dec188e347b54a90cd5f37abc268_a4be3dec188e347b54a90cd5f37abc268}} 
+\mbox{\Hypertarget{class_tarjan_a4be3dec188e347b54a90cd5f37abc268}\label{class_tarjan_a4be3dec188e347b54a90cd5f37abc268}} 
 \index{Tarjan@{Tarjan}!apply\+Biconnectivity@{apply\+Biconnectivity}}
 \index{apply\+Biconnectivity@{apply\+Biconnectivity}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{apply\+Biconnectivity()}{applyBiconnectivity()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Tarjan\+::apply\+Biconnectivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a674767d7e49ada6a738ab69187e4836d_a674767d7e49ada6a738ab69187e4836d}\label{class_tarjan_a674767d7e49ada6a738ab69187e4836d_a674767d7e49ada6a738ab69187e4836d}} 
+\mbox{\Hypertarget{class_tarjan_a674767d7e49ada6a738ab69187e4836d}\label{class_tarjan_a674767d7e49ada6a738ab69187e4836d}} 
 \index{Tarjan@{Tarjan}!Apply\+D\+FS@{Apply\+D\+FS}}
 \index{Apply\+D\+FS@{Apply\+D\+FS}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Apply\+D\+F\+S()}{ApplyDFS()}}
 {\footnotesize\ttfamily void Tarjan\+::\+Apply\+D\+FS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a58ad9fcfd599a608fa1671e4607db378_a58ad9fcfd599a608fa1671e4607db378}\label{class_tarjan_a58ad9fcfd599a608fa1671e4607db378_a58ad9fcfd599a608fa1671e4607db378}} 
+\mbox{\Hypertarget{class_tarjan_a58ad9fcfd599a608fa1671e4607db378}\label{class_tarjan_a58ad9fcfd599a608fa1671e4607db378}} 
 \index{Tarjan@{Tarjan}!Apply\+S\+CC@{Apply\+S\+CC}}
 \index{Apply\+S\+CC@{Apply\+S\+CC}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Apply\+S\+C\+C()}{ApplySCC()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Tarjan\+::\+Apply\+S\+CC (\begin{DoxyParamCaption}\item[{bool}]{debug\+Mode }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a52573be5a4930ad84f3807bc49f42026_a52573be5a4930ad84f3807bc49f42026}\label{class_tarjan_a52573be5a4930ad84f3807bc49f42026_a52573be5a4930ad84f3807bc49f42026}} 
+\mbox{\Hypertarget{class_tarjan_a52573be5a4930ad84f3807bc49f42026}\label{class_tarjan_a52573be5a4930ad84f3807bc49f42026}} 
 \index{Tarjan@{Tarjan}!biconnect@{biconnect}}
 \index{biconnect@{biconnect}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{biconnect()}{biconnect()}}
-{\footnotesize\ttfamily void Tarjan\+::biconnect (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ \&}]{edges,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ $>$ \&}]{components,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Pt,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Tarjan\+::biconnect (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ \&}]{edges,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ $>$ \&}]{components,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Pt,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1_a277c58dc6f712a6ae1ef2e59c9ad58e1}\label{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1_a277c58dc6f712a6ae1ef2e59c9ad58e1}} 
+\mbox{\Hypertarget{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}\label{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}} 
 \index{Tarjan@{Tarjan}!Depth\+First\+Search@{Depth\+First\+Search}}
 \index{Depth\+First\+Search@{Depth\+First\+Search}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Depth\+First\+Search()}{DepthFirstSearch()}}
-{\footnotesize\ttfamily void Tarjan\+::\+Depth\+First\+Search (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ int $>$ \&}]{visited }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Tarjan\+::\+Depth\+First\+Search (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ int $>$ \&}]{visited }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8_a74f69dfaa1d4cf3bac06aef7a704c0b8}\label{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8_a74f69dfaa1d4cf3bac06aef7a704c0b8}} 
+\mbox{\Hypertarget{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}\label{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}} 
 \index{Tarjan@{Tarjan}!is\+Reachable@{is\+Reachable}}
 \index{is\+Reachable@{is\+Reachable}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{is\+Reachable()}{isReachable()}}
-{\footnotesize\ttfamily bool Tarjan\+::is\+Reachable (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{source,  }\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{target }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Tarjan\+::is\+Reachable (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{source,  }\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{target }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_a0ef20e22407703c87c880898c8ad5745_a0ef20e22407703c87c880898c8ad5745}\label{class_tarjan_a0ef20e22407703c87c880898c8ad5745_a0ef20e22407703c87c880898c8ad5745}} 
+\mbox{\Hypertarget{class_tarjan_a0ef20e22407703c87c880898c8ad5745}\label{class_tarjan_a0ef20e22407703c87c880898c8ad5745}} 
 \index{Tarjan@{Tarjan}!print\+\_\+graph@{print\+\_\+graph}}
 \index{print\+\_\+graph@{print\+\_\+graph}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{print\+\_\+graph()}{print\_graph()}}
 {\footnotesize\ttfamily void Tarjan\+::print\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_af94d48b6e78c292bd1aa465d37d89769_af94d48b6e78c292bd1aa465d37d89769}\label{class_tarjan_af94d48b6e78c292bd1aa465d37d89769_af94d48b6e78c292bd1aa465d37d89769}} 
+\mbox{\Hypertarget{class_tarjan_af94d48b6e78c292bd1aa465d37d89769}\label{class_tarjan_af94d48b6e78c292bd1aa465d37d89769}} 
 \index{Tarjan@{Tarjan}!solve@{solve}}
 \index{solve@{solve}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{solve()}{solve()}}
 {\footnotesize\ttfamily void Tarjan\+::solve (\begin{DoxyParamCaption}\item[{int}]{graph\+Num }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2_ac76fd1419a2de2dbf34c6ff1d4cc55e2}\label{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2_ac76fd1419a2de2dbf34c6ff1d4cc55e2}} 
+\mbox{\Hypertarget{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2}\label{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2}} 
 \index{Tarjan@{Tarjan}!Strong\+Connect@{Strong\+Connect}}
 \index{Strong\+Connect@{Strong\+Connect}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Strong\+Connect()}{StrongConnect()}}
-{\footnotesize\ttfamily void Tarjan\+::\+Strong\+Connect (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Points,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Pt,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Vine,  }\item[{int \&}]{stack\+Count,  }\item[{bool}]{debug\+Mode }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Tarjan\+::\+Strong\+Connect (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Points,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Pt,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Vine,  }\item[{int \&}]{stack\+Count,  }\item[{bool}]{debug\+Mode }\end{DoxyParamCaption})}
 
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_tarjan_aaa327f105a07f07648dcc6f62a565986_aaa327f105a07f07648dcc6f62a565986}\label{class_tarjan_aaa327f105a07f07648dcc6f62a565986_aaa327f105a07f07648dcc6f62a565986}} 
+\mbox{\Hypertarget{class_tarjan_aaa327f105a07f07648dcc6f62a565986}\label{class_tarjan_aaa327f105a07f07648dcc6f62a565986}} 
 \index{Tarjan@{Tarjan}!experiment@{experiment}}
 \index{experiment@{experiment}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{experiment}{experiment}}
-{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Tarjan\+::experiment}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Tarjan\+::experiment}
 
-\mbox{\Hypertarget{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad_a54b0703f885a3514ea0bf4cdbc7fdaad}\label{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad_a54b0703f885a3514ea0bf4cdbc7fdaad}} 
+\mbox{\Hypertarget{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}\label{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}} 
 \index{Tarjan@{Tarjan}!t@{t}}
 \index{t@{t}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{t}{t}}
-{\footnotesize\ttfamily \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} Tarjan\+::t}
+{\footnotesize\ttfamily \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} Tarjan\+::t}
 
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{tarjan_8h}{tarjan.\+h}\item 
-src/\hyperlink{tarjan_8cpp}{tarjan.\+cpp}\end{DoxyCompactItemize}
+header/\hyperlink{tarjan_8h}{tarjan.\+h}\end{DoxyCompactItemize}

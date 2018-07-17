@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -44,6 +51,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -63,363 +84,366 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>analyzeExperiment()
-: <a class="el" href="class_application_ae0d3919fe03bae0b3ce31ef4be49374d.html#ae0d3919fe03bae0b3ce31ef4be49374d">Application</a>
+: <a class="el" href="class_application.html#ae0d3919fe03bae0b3ce31ef4be49374d">Application</a>
 </li>
 <li>Analyzer()
-: <a class="el" href="class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96.html#a1be2ff17bba265bdef6e1b44748eaf96">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a1be2ff17bba265bdef6e1b44748eaf96">Analyzer</a>
 </li>
 <li>Application()
-: <a class="el" href="class_application_afa8cc05ce6b6092be5ecdfdae44e05f8.html#afa8cc05ce6b6092be5ecdfdae44e05f8">Application</a>
+: <a class="el" href="class_application.html#afa8cc05ce6b6092be5ecdfdae44e05f8">Application</a>
 </li>
 <li>applyBiconnectivity()
-: <a class="el" href="class_tarjan_a4be3dec188e347b54a90cd5f37abc268.html#a4be3dec188e347b54a90cd5f37abc268">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a4be3dec188e347b54a90cd5f37abc268">Tarjan</a>
 </li>
 <li>ApplyDFS()
-: <a class="el" href="class_tarjan_a674767d7e49ada6a738ab69187e4836d.html#a674767d7e49ada6a738ab69187e4836d">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a674767d7e49ada6a738ab69187e4836d">Tarjan</a>
 </li>
 <li>ApplySCC()
-: <a class="el" href="class_tarjan_a58ad9fcfd599a608fa1671e4607db378.html#a58ad9fcfd599a608fa1671e4607db378">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a58ad9fcfd599a608fa1671e4607db378">Tarjan</a>
 </li>
 <li>ApplySCC_Original()
-: <a class="el" href="class_nuutila_a7d52f96cf25409704bfd7bf176fcc7c5.html#a7d52f96cf25409704bfd7bf176fcc7c5">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a7d52f96cf25409704bfd7bf176fcc7c5">Nuutila</a>
 </li>
 <li>ApplySCC_v1()
-: <a class="el" href="class_nuutila_a6c355594f68dad8c28684114a6df6700.html#a6c355594f68dad8c28684114a6df6700">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a6c355594f68dad8c28684114a6df6700">Nuutila</a>
 </li>
 <li>ApplySCC_v2()
-: <a class="el" href="class_nuutila_a291d578f760e0f11a5c56c8a5fe02ebd.html#a291d578f760e0f11a5c56c8a5fe02ebd">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a291d578f760e0f11a5c56c8a5fe02ebd">Nuutila</a>
 </li>
 <li>auxilary
-: <a class="el" href="struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2.html#afb9d346eaacb1c5e7f60f559c45910f2">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#afb9d346eaacb1c5e7f60f559c45910f2">UtilityStructs::StorageItems</a>
 </li>
 </ul>
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>beginEdge()
-: <a class="el" href="class_pearce_a6d6c641f1815e11536554077ed18c10e.html#a6d6c641f1815e11536554077ed18c10e">Pearce</a>
+: <a class="el" href="class_pearce.html#a6d6c641f1815e11536554077ed18c10e">Pearce</a>
 </li>
 <li>beginVisiting()
-: <a class="el" href="class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50.html#ab9090eeb4466701bc8ba913d8f9f5b50">Pearce</a>
+: <a class="el" href="class_pearce.html#ab9090eeb4466701bc8ba913d8f9f5b50">Pearce</a>
 </li>
 <li>benchmark_comparison()
-: <a class="el" href="class_analyzer_ae4637e33a985efefebf2a10502be351c.html#ae4637e33a985efefebf2a10502be351c">Analyzer</a>
+: <a class="el" href="class_analyzer.html#ae4637e33a985efefebf2a10502be351c">Analyzer</a>
 </li>
 <li>biconnect()
-: <a class="el" href="class_tarjan_a52573be5a4930ad84f3807bc49f42026.html#a52573be5a4930ad84f3807bc49f42026">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a52573be5a4930ad84f3807bc49f42026">Tarjan</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>centered()
-: <a class="el" href="class_visualize_a9d34d81d684587b8b2b8bf70031f1670.html#a9d34d81d684587b8b2b8bf70031f1670">Visualize</a>
+: <a class="el" href="class_visualize.html#a9d34d81d684587b8b2b8bf70031f1670">Visualize</a>
 </li>
 <li>csv
-: <a class="el" href="struct_session_a256b14530b834d61ce85bab451694b8c.html#a256b14530b834d61ce85bab451694b8c">Session</a>
+: <a class="el" href="struct_session.html#a256b14530b834d61ce85bab451694b8c">Session</a>
 </li>
 <li>currentDateTime()
-: <a class="el" href="class_analyzer_a9108681fee1078aed1af2ddee58cc55c.html#a9108681fee1078aed1af2ddee58cc55c">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a9108681fee1078aed1af2ddee58cc55c">Analyzer</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>DepthFirstSearch()
-: <a class="el" href="class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1.html#a277c58dc6f712a6ae1ef2e59c9ad58e1">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a277c58dc6f712a6ae1ef2e59c9ad58e1">Tarjan</a>
 </li>
 <li>DFS()
-: <a class="el" href="class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079.html#ad50f62a493ed2b5eb7fcb3c0f8e2e079">Pearce</a>
+: <a class="el" href="class_pearce.html#ad50f62a493ed2b5eb7fcb3c0f8e2e079">Pearce</a>
 </li>
 <li>duration
-: <a class="el" href="struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c.html#a65e7df5611a4e144cc27576bd3041f6c">UtilityStructs::StorageItems</a>
-, <a class="el" href="class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#a65e7df5611a4e144cc27576bd3041f6c">UtilityStructs::StorageItems</a>
+, <a class="el" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>e_p
-: <a class="el" href="class_graph_component_a22292bf7520fb476958c508d66f5d318.html#a22292bf7520fb476958c508d66f5d318">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a22292bf7520fb476958c508d66f5d318">GraphComponent</a>
 </li>
 <li>Edge
-: <a class="el" href="class_graph_component_aa7517b2af08aa717324076a645c73fe6.html#aa7517b2af08aa717324076a645c73fe6">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#aa7517b2af08aa717324076a645c73fe6">GraphComponent</a>
 </li>
 <li>edgeCount
-: <a class="el" href="struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5.html#afafcba9bb103108e2c1e1d9254fb75c5">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#afafcba9bb103108e2c1e1d9254fb75c5">UtilityStructs::StorageItems</a>
 </li>
 <li>EdgeProperty
-: <a class="el" href="class_graph_component_ae2f6ef4a3ac656d8213df42aa3d4c3b3.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">GraphComponent</a>
-, <a class="el" href="struct_utility_structs_1_1_edge_property_a823e9fa8af1aba8278c8c06f67e70073.html#a823e9fa8af1aba8278c8c06f67e70073">UtilityStructs::EdgeProperty</a>
+: <a class="el" href="class_graph_component.html#ae2f6ef4a3ac656d8213df42aa3d4c3b3">GraphComponent</a>
+, <a class="el" href="struct_utility_structs_1_1_edge_property.html#a823e9fa8af1aba8278c8c06f67e70073">UtilityStructs::EdgeProperty</a>
 </li>
 <li>experiment
-: <a class="el" href="class_nuutila_a70e8a910cc4050d246db2540bd1e36c5.html#a70e8a910cc4050d246db2540bd1e36c5">Nuutila</a>
-, <a class="el" href="class_pearce_ad33eb33876fe817143afb84583934313.html#ad33eb33876fe817143afb84583934313">Pearce</a>
-, <a class="el" href="class_tarjan_aaa327f105a07f07648dcc6f62a565986.html#aaa327f105a07f07648dcc6f62a565986">Tarjan</a>
+: <a class="el" href="class_nuutila.html#a70e8a910cc4050d246db2540bd1e36c5">Nuutila</a>
+, <a class="el" href="class_pearce.html#ad33eb33876fe817143afb84583934313">Pearce</a>
+, <a class="el" href="class_tarjan.html#aaa327f105a07f07648dcc6f62a565986">Tarjan</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>finish
-: <a class="el" href="class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer</a>
 </li>
 <li>finishEdge()
-: <a class="el" href="class_pearce_a4ed2b91ac3246895ec5d70fe3530690e.html#a4ed2b91ac3246895ec5d70fe3530690e">Pearce</a>
+: <a class="el" href="class_pearce.html#a4ed2b91ac3246895ec5d70fe3530690e">Pearce</a>
 </li>
 <li>finishVisiting()
-: <a class="el" href="class_pearce_a48afb6ccb75ba9df285c9701daf474b0.html#a48afb6ccb75ba9df285c9701daf474b0">Pearce</a>
+: <a class="el" href="class_pearce.html#a48afb6ccb75ba9df285c9701daf474b0">Pearce</a>
 </li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>generateGraph()
-: <a class="el" href="class_application_a169c37596e9a7a9e0546700876adcbe7.html#a169c37596e9a7a9e0546700876adcbe7">Application</a>
+: <a class="el" href="class_application.html#a169c37596e9a7a9e0546700876adcbe7">Application</a>
 </li>
 <li>getInputList()
-: <a class="el" href="class_analyzer_a7903ffdba689848dd199139e5dacf1bc.html#a7903ffdba689848dd199139e5dacf1bc">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a39f511f54a8eb89626e7f0ece08c7d02">Analyzer</a>
 </li>
 <li>graph_dir
-: <a class="el" href="struct_session_aecaa42a56f197e0874041533ccb358a6.html#aecaa42a56f197e0874041533ccb358a6">Session</a>
+: <a class="el" href="struct_session.html#aecaa42a56f197e0874041533ccb358a6">Session</a>
 </li>
 <li>GraphComponent()
-: <a class="el" href="class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a35c4a6e5c6f28751b1bd6c451cc07957">GraphComponent</a>
 </li>
 <li>graphList
-: <a class="el" href="class_analyzer_a567b5d8b2bbdde28b489834c1644446e.html#a567b5d8b2bbdde28b489834c1644446e">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a567b5d8b2bbdde28b489834c1644446e">Analyzer</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>index
-: <a class="el" href="struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641.html#a636cb729438e999aa3d9a17ac39d8641">UtilityStructs::VertexProperty</a>
+: <a class="el" href="struct_utility_structs_1_1_vertex_property.html#a636cb729438e999aa3d9a17ac39d8641">UtilityStructs::VertexProperty</a>
 </li>
 <li>isReachable()
-: <a class="el" href="class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8.html#a74f69dfaa1d4cf3bac06aef7a704c0b8">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a74f69dfaa1d4cf3bac06aef7a704c0b8">Tarjan</a>
 </li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>n
-: <a class="el" href="class_nuutila_a1409929fa0f38709497f8bdb012af71c.html#a1409929fa0f38709497f8bdb012af71c">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a1409929fa0f38709497f8bdb012af71c">Nuutila</a>
 </li>
 <li>name
-: <a class="el" href="struct_utility_structs_1_1_edge_property_a0701d898f719b1efbf795d80f503de81.html#a0701d898f719b1efbf795d80f503de81">UtilityStructs::EdgeProperty</a>
+: <a class="el" href="struct_utility_structs_1_1_edge_property.html#a0701d898f719b1efbf795d80f503de81">UtilityStructs::EdgeProperty</a>
 </li>
 <li>Nuutila()
-: <a class="el" href="class_nuutila_ab1ae0281145f693a922f5122d27cc23b.html#ab1ae0281145f693a922f5122d27cc23b">Nuutila</a>
+: <a class="el" href="class_nuutila.html#ab1ae0281145f693a922f5122d27cc23b">Nuutila</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>p
-: <a class="el" href="class_pearce_a2320928312fd97f6bcb1f16684f79a03.html#a2320928312fd97f6bcb1f16684f79a03">Pearce</a>
+: <a class="el" href="class_pearce.html#a2320928312fd97f6bcb1f16684f79a03">Pearce</a>
 </li>
 <li>Pea_Find_SCC1()
-: <a class="el" href="class_pearce_a4a78c1ec037146537f575fa62b1e0265.html#a4a78c1ec037146537f575fa62b1e0265">Pearce</a>
+: <a class="el" href="class_pearce.html#a4a78c1ec037146537f575fa62b1e0265">Pearce</a>
 </li>
 <li>Pea_Find_SCC2()
-: <a class="el" href="class_pearce_a4764238b69ee587134a9009619a4cae5.html#a4764238b69ee587134a9009619a4cae5">Pearce</a>
+: <a class="el" href="class_pearce.html#a4764238b69ee587134a9009619a4cae5">Pearce</a>
 </li>
 <li>Pea_Find_SCC3()
-: <a class="el" href="class_pearce_a9d49726ab058f24cc943135458edb4f9.html#a9d49726ab058f24cc943135458edb4f9">Pearce</a>
+: <a class="el" href="class_pearce.html#a9d49726ab058f24cc943135458edb4f9">Pearce</a>
 </li>
 <li>Pearce()
-: <a class="el" href="class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb.html#a4ad24a40c64e8f3481dd0dbbcb8d2bcb">Pearce</a>
+: <a class="el" href="class_pearce.html#a4ad24a40c64e8f3481dd0dbbcb8d2bcb">Pearce</a>
 </li>
 <li>print_graph()
-: <a class="el" href="class_nuutila_a0dc1cb3d0711a856a32a3743a85fb5c8.html#a0dc1cb3d0711a856a32a3743a85fb5c8">Nuutila</a>
-, <a class="el" href="class_pearce_a96ed7e50d992838177699b6133464554.html#a96ed7e50d992838177699b6133464554">Pearce</a>
-, <a class="el" href="class_tarjan_a0ef20e22407703c87c880898c8ad5745.html#a0ef20e22407703c87c880898c8ad5745">Tarjan</a>
+: <a class="el" href="class_nuutila.html#a0dc1cb3d0711a856a32a3743a85fb5c8">Nuutila</a>
+, <a class="el" href="class_pearce.html#a96ed7e50d992838177699b6133464554">Pearce</a>
+, <a class="el" href="class_tarjan.html#a0ef20e22407703c87c880898c8ad5745">Tarjan</a>
 </li>
 <li>print_graph_file()
-: <a class="el" href="class_graph_component_a6af293dac3774fde0e2822b5725ecacd.html#a6af293dac3774fde0e2822b5725ecacd">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a6af293dac3774fde0e2822b5725ecacd">GraphComponent</a>
 </li>
 <li>print_result_max()
-: <a class="el" href="class_pearce_aaa906779c670a16948c00a9c031e6986.html#aaa906779c670a16948c00a9c031e6986">Pearce</a>
+: <a class="el" href="class_pearce.html#aaa906779c670a16948c00a9c031e6986">Pearce</a>
 </li>
 <li>print_result_min()
-: <a class="el" href="class_pearce_af2a6f31643617305794c06b5d2c85ebe.html#af2a6f31643617305794c06b5d2c85ebe">Pearce</a>
+: <a class="el" href="class_pearce.html#af2a6f31643617305794c06b5d2c85ebe">Pearce</a>
 </li>
 <li>print_sccs()
-: <a class="el" href="class_nuutila_ae11b94c396dff5b8d9b7f69ae0d0831f.html#ae11b94c396dff5b8d9b7f69ae0d0831f">Nuutila</a>
+: <a class="el" href="class_nuutila.html#ae11b94c396dff5b8d9b7f69ae0d0831f">Nuutila</a>
 </li>
 <li>printExperimentRow()
-: <a class="el" href="class_visualize_a52a0dfaf625bd3ac294a00e3161094cf.html#a52a0dfaf625bd3ac294a00e3161094cf">Visualize</a>
+: <a class="el" href="class_visualize.html#a52a0dfaf625bd3ac294a00e3161094cf">Visualize</a>
 </li>
 <li>printLine()
-: <a class="el" href="class_visualize_abce6cd538dc0715b21851e0bf0377d85.html#abce6cd538dc0715b21851e0bf0377d85">Visualize</a>
+: <a class="el" href="class_visualize.html#abce6cd538dc0715b21851e0bf0377d85">Visualize</a>
 </li>
 <li>printProgramBottom()
-: <a class="el" href="class_visualize_ac0be9ece2d80a7d1e34724fb87424216.html#ac0be9ece2d80a7d1e34724fb87424216">Visualize</a>
+: <a class="el" href="class_visualize.html#ac0be9ece2d80a7d1e34724fb87424216">Visualize</a>
 </li>
 <li>printProgramEntry()
-: <a class="el" href="class_visualize_a29f27ff8c5e59163eea2be42ff372405.html#a29f27ff8c5e59163eea2be42ff372405">Visualize</a>
+: <a class="el" href="class_visualize.html#a29f27ff8c5e59163eea2be42ff372405">Visualize</a>
 </li>
 <li>printTableBanner()
-: <a class="el" href="class_visualize_a3e1aa31f14abdf3cf53662cddc536c6a.html#a3e1aa31f14abdf3cf53662cddc536c6a">Visualize</a>
+: <a class="el" href="class_visualize.html#a3e1aa31f14abdf3cf53662cddc536c6a">Visualize</a>
 </li>
 <li>printTableSeperator()
-: <a class="el" href="class_visualize_a2d38641cb335d7bbf7e11567b07e2d85.html#a2d38641cb335d7bbf7e11567b07e2d85">Visualize</a>
+: <a class="el" href="class_visualize.html#a2d38641cb335d7bbf7e11567b07e2d85">Visualize</a>
 </li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>read_graph_file()
-: <a class="el" href="class_graph_component_a680363eab8b992d739f055bd484bc000.html#a680363eab8b992d739f055bd484bc000">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a680363eab8b992d739f055bd484bc000">GraphComponent</a>
 </li>
 <li>run()
-: <a class="el" href="class_application_adecc88549e44815bd94985ea043b733f.html#adecc88549e44815bd94985ea043b733f">Application</a>
+: <a class="el" href="class_application.html#adecc88549e44815bd94985ea043b733f">Application</a>
 </li>
 <li>runDebugMode()
-: <a class="el" href="class_application_adb639e3593f8f6f4dcb3d89d690eb538.html#adb639e3593f8f6f4dcb3d89d690eb538">Application</a>
+: <a class="el" href="class_application.html#adb639e3593f8f6f4dcb3d89d690eb538">Application</a>
 </li>
 <li>runExperiment()
-: <a class="el" href="class_application_a1d9cfbea705655427e7d1847de2567c1.html#a1d9cfbea705655427e7d1847de2567c1">Application</a>
+: <a class="el" href="class_application.html#a1d9cfbea705655427e7d1847de2567c1">Application</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>solve()
-: <a class="el" href="class_nuutila_ae56bd15d2e57366eef0e044bf3a37d9e.html#ae56bd15d2e57366eef0e044bf3a37d9e">Nuutila</a>
-, <a class="el" href="class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e.html#a7c6ea7dde3dc3e127e4fc6ad1892974e">Pearce</a>
-, <a class="el" href="class_tarjan_af94d48b6e78c292bd1aa465d37d89769.html#af94d48b6e78c292bd1aa465d37d89769">Tarjan</a>
+: <a class="el" href="class_nuutila.html#ae56bd15d2e57366eef0e044bf3a37d9e">Nuutila</a>
+, <a class="el" href="class_pearce.html#a7c6ea7dde3dc3e127e4fc6ad1892974e">Pearce</a>
+, <a class="el" href="class_tarjan.html#af94d48b6e78c292bd1aa465d37d89769">Tarjan</a>
 </li>
 <li>solve_with_all()
-: <a class="el" href="class_analyzer_a471ed64111b58f49cfee911b5db93ada.html#a471ed64111b58f49cfee911b5db93ada">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a471ed64111b58f49cfee911b5db93ada">Analyzer</a>
 </li>
 <li>solve_with_nuutila()
-: <a class="el" href="class_analyzer_a5ac77dbb2bbea6b34af561272705d64e.html#a5ac77dbb2bbea6b34af561272705d64e">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a5ac77dbb2bbea6b34af561272705d64e">Analyzer</a>
 </li>
 <li>solve_with_pearce()
-: <a class="el" href="class_analyzer_a6009c58addbb9730b54580a5f01ddce7.html#a6009c58addbb9730b54580a5f01ddce7">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a6009c58addbb9730b54580a5f01ddce7">Analyzer</a>
 </li>
 <li>solve_with_tarjan()
-: <a class="el" href="class_analyzer_a8207cd71986d26dc8abda1a807490ab2.html#a8207cd71986d26dc8abda1a807490ab2">Analyzer</a>
+: <a class="el" href="class_analyzer.html#a8207cd71986d26dc8abda1a807490ab2">Analyzer</a>
 </li>
 <li>start
-: <a class="el" href="class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer</a>
 </li>
 <li>stop()
-: <a class="el" href="class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f.html#a12f62b57c263d563efd6089cff52355f">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a12f62b57c263d563efd6089cff52355f">UtilityStructs::Timer</a>
 </li>
 <li>StrongConnect()
-: <a class="el" href="class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2.html#ac76fd1419a2de2dbf34c6ff1d4cc55e2">Tarjan</a>
+: <a class="el" href="class_tarjan.html#ac76fd1419a2de2dbf34c6ff1d4cc55e2">Tarjan</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>t
-: <a class="el" href="class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad.html#a54b0703f885a3514ea0bf4cdbc7fdaad">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a54b0703f885a3514ea0bf4cdbc7fdaad">Tarjan</a>
 </li>
 <li>Tarjan()
-: <a class="el" href="class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91.html#a24a7fa59ed2fcff4a520e012e30acb91">Tarjan</a>
+: <a class="el" href="class_tarjan.html#a24a7fa59ed2fcff4a520e012e30acb91">Tarjan</a>
 </li>
 <li>theGraph
-: <a class="el" href="class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c.html#a982e0748a6e1b8dc74986f5f8b3dca5c">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a982e0748a6e1b8dc74986f5f8b3dca5c">GraphComponent</a>
 </li>
 <li>Timer()
-: <a class="el" href="class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63.html#a8513b72cae3808920cc5f76c28b34d63">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a8513b72cae3808920cc5f76c28b34d63">UtilityStructs::Timer</a>
 </li>
 <li>total_bytes
-: <a class="el" href="struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e.html#a39cf482db54d8e6ac473b438444c8a1e">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#a39cf482db54d8e6ac473b438444c8a1e">UtilityStructs::StorageItems</a>
 </li>
 </ul>
 
 
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>v
-: <a class="el" href="class_analyzer_ae32079d0816589617a0c76b1d4cf881b.html#ae32079d0816589617a0c76b1d4cf881b">Analyzer</a>
-, <a class="el" href="class_application_a96cff2295a95d7e6de06638bb7e61243.html#a96cff2295a95d7e6de06638bb7e61243">Application</a>
+: <a class="el" href="class_analyzer.html#ae32079d0816589617a0c76b1d4cf881b">Analyzer</a>
+, <a class="el" href="class_application.html#a96cff2295a95d7e6de06638bb7e61243">Application</a>
 </li>
 <li>v_p
-: <a class="el" href="class_graph_component_ad40772702161324303e24463a63738e9.html#ad40772702161324303e24463a63738e9">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#ad40772702161324303e24463a63738e9">GraphComponent</a>
 </li>
 <li>Vertex_t
-: <a class="el" href="class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0.html#ae67114a6ce5a001dc35e1996e1b45aa0">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#ae67114a6ce5a001dc35e1996e1b45aa0">GraphComponent</a>
 </li>
 <li>vertexCount
-: <a class="el" href="struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda.html#af72522be713f23fcfe3ac66780183fda">UtilityStructs::StorageItems</a>
+: <a class="el" href="struct_utility_structs_1_1_storage_items.html#af72522be713f23fcfe3ac66780183fda">UtilityStructs::StorageItems</a>
 </li>
 <li>VertexProperty
-: <a class="el" href="class_graph_component_a7c0fcb3f03bf188b7df520e0cdd364b7.html#a7c0fcb3f03bf188b7df520e0cdd364b7">GraphComponent</a>
+: <a class="el" href="class_graph_component.html#a7c0fcb3f03bf188b7df520e0cdd364b7">GraphComponent</a>
 </li>
 <li>Visit()
-: <a class="el" href="class_nuutila_a2d43bc514d7375f9d63e60c06f90a60f.html#a2d43bc514d7375f9d63e60c06f90a60f">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a2d43bc514d7375f9d63e60c06f90a60f">Nuutila</a>
 </li>
 <li>visit()
-: <a class="el" href="class_pearce_ac5e668d0d21ee0dad33cea171b9e2022.html#ac5e668d0d21ee0dad33cea171b9e2022">Pearce</a>
+: <a class="el" href="class_pearce.html#ac5e668d0d21ee0dad33cea171b9e2022">Pearce</a>
 </li>
 <li>visit_scc1()
-: <a class="el" href="class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a.html#ae4e9364dd0c829564ecfbfe8ccc07b6a">Pearce</a>
+: <a class="el" href="class_pearce.html#ae4e9364dd0c829564ecfbfe8ccc07b6a">Pearce</a>
 </li>
 <li>visit_scc2()
-: <a class="el" href="class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47.html#a12c836f8f0dbd85e20c0f3f4f0c5fb47">Pearce</a>
+: <a class="el" href="class_pearce.html#a12c836f8f0dbd85e20c0f3f4f0c5fb47">Pearce</a>
 </li>
 <li>visit_scc3()
-: <a class="el" href="class_pearce_a70800d4564b36fb64762d3a78f1f67d8.html#a70800d4564b36fb64762d3a78f1f67d8">Pearce</a>
+: <a class="el" href="class_pearce.html#a70800d4564b36fb64762d3a78f1f67d8">Pearce</a>
 </li>
 <li>Visit_v1()
-: <a class="el" href="class_nuutila_a83b47177cf452e80b3ceaf064ff59840.html#a83b47177cf452e80b3ceaf064ff59840">Nuutila</a>
+: <a class="el" href="class_nuutila.html#a83b47177cf452e80b3ceaf064ff59840">Nuutila</a>
 </li>
 <li>Visit_v2()
-: <a class="el" href="class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749.html#afc7a8c27d8de17ac2679f839ff8c2749">Nuutila</a>
+: <a class="el" href="class_nuutila.html#afc7a8c27d8de17ac2679f839ff8c2749">Nuutila</a>
 </li>
 <li>visitLoop()
-: <a class="el" href="class_pearce_a323fc3337d5849680065986d6ef7163c.html#a323fc3337d5849680065986d6ef7163c">Pearce</a>
+: <a class="el" href="class_pearce.html#a323fc3337d5849680065986d6ef7163c">Pearce</a>
 </li>
 <li>Visualize()
-: <a class="el" href="class_visualize_a8d4163ad53518ec0c8a3eaec2bf2fe7b.html#a8d4163ad53518ec0c8a3eaec2bf2fe7b">Visualize</a>
+: <a class="el" href="class_visualize.html#a8d4163ad53518ec0c8a3eaec2bf2fe7b">Visualize</a>
 </li>
 </ul>
 
 
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>welcomeScreen()
-: <a class="el" href="class_application_abf73a60a6a2e4b83a675de777273d12c.html#abf73a60a6a2e4b83a675de777273d12c">Application</a>
+: <a class="el" href="class_application.html#abf73a60a6a2e4b83a675de777273d12c">Application</a>
 </li>
 <li>width
-: <a class="el" href="class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7.html#af5ac723ad5f8fe8c4a8378bf1299cda7">Visualize</a>
+: <a class="el" href="class_visualize.html#af5ac723ad5f8fe8c4a8378bf1299cda7">Visualize</a>
 </li>
 <li>writeExperimentRow()
-: <a class="el" href="class_visualize_a8aefacec622221533485db6701d1119e.html#a8aefacec622221533485db6701d1119e">Visualize</a>
+: <a class="el" href="class_visualize.html#a8aefacec622221533485db6701d1119e">Visualize</a>
 </li>
 <li>writeExperimentRow_CSV()
-: <a class="el" href="class_visualize_a8677a063c82af1b37b94c7d3a3ca3746.html#a8677a063c82af1b37b94c7d3a3ca3746">Visualize</a>
+: <a class="el" href="class_visualize.html#a8677a063c82af1b37b94c7d3a3ca3746">Visualize</a>
 </li>
 <li>writeLine()
-: <a class="el" href="class_visualize_a9ccde29aab876a829335775898373e96.html#a9ccde29aab876a829335775898373e96">Visualize</a>
+: <a class="el" href="class_visualize.html#a9ccde29aab876a829335775898373e96">Visualize</a>
 </li>
 <li>writeProgramEntry()
-: <a class="el" href="class_visualize_a6e27b451c2662681cb3119e9ff1c22da.html#a6e27b451c2662681cb3119e9ff1c22da">Visualize</a>
+: <a class="el" href="class_visualize.html#a6e27b451c2662681cb3119e9ff1c22da">Visualize</a>
 </li>
 <li>writeTableBanner()
-: <a class="el" href="class_visualize_a14c9e9721eeaca0afde25da0138b43b8.html#a14c9e9721eeaca0afde25da0138b43b8">Visualize</a>
+: <a class="el" href="class_visualize.html#a14c9e9721eeaca0afde25da0138b43b8">Visualize</a>
 </li>
 <li>writeTableSeperator()
-: <a class="el" href="class_visualize_ac5530b8e917c748163e621cf5677eeb5.html#ac5530b8e917c748163e621cf5677eeb5">Visualize</a>
+: <a class="el" href="class_visualize.html#ac5530b8e917c748163e621cf5677eeb5">Visualize</a>
 </li>
 </ul>
 
 
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
 <li>~Timer()
-: <a class="el" href="class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676.html#a377c1febadb76e78d9a36bd81b3ab676">UtilityStructs::Timer</a>
+: <a class="el" href="class_utility_structs_1_1_timer.html#a377c1febadb76e78d9a36bd81b3ab676">UtilityStructs::Timer</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>
