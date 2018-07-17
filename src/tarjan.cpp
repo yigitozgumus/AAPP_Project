@@ -89,6 +89,84 @@ bool Tarjan::isReachable(Vertex_t &source, Vertex_t &Target) {
     }
     return false;
 }
+UtilityStructs::StorageItems Tarjan::applyBiconnectivity(){
+    float ms_duration = 0;
+    v_p id = get(&VertexProperty::index, t);
+    typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
+    typedef boost::graph_traits<theGraph>::edge_descriptor Edge_t;
+    typedef boost::graph_traits<theGraph>::vertex_iterator vertex_iter;
+    std::pair<vertex_iter, vertex_iter> vp;
+    std::vector<Edge_t> edges;
+    std::vector<std::vector<Edge_t> > components;
+    int Counter = 0;
+    int sizeOfGraph = num_vertices(t);
+    std::vector<int> visited(sizeOfGraph,999999);
+    std::vector<int> lowPt(sizeOfGraph,999999);
+    int stackCount = 0;
+    {
+        UtilityStructs::Timer timer;
+        for(vp = vertices(t); vp.first != vp.second; vp.first++){
+            Vertex_t v = *vp.first;
+            if(visited[id[v]] == 999999) {
+                biconnect(v, edges, Counter,components, visited, lowPt, stackCount);
+            }
+        }
+        ms_duration = timer.stop();
+    }
+    size_t total_bytes = 0;
+    total_bytes += sizeof(visited[0]) * visited.size();
+    total_bytes += sizeof(lowPt[0]) * lowPt.size();
+    total_bytes +=sizeof(edges[0]) * stackCount;
+    UtilityStructs::StorageItems s;
+    s.vertexCount = num_vertices(t);
+    s.edgeCount = num_edges(t);
+    s.duration = ms_duration;
+    s.total_bytes = total_bytes;
+    
+    return s;
+}
+
+void Tarjan::biconnect(Vertex_t &v,
+                  std::vector<Edge_t> &edges, 
+                  int &Counter,
+                  std::vector<std::vector<Edge_t> > &components,
+                  std::vector<int> &visited,
+                  std::vector<int> &lowPt,
+                  int &stackCount){
+    v_p id = get(&VertexProperty::index,t);
+    Counter++;
+    visited[id[v]] = Counter;
+    lowPt[id[v]] = Counter;
+    typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
+    boost::graph_traits<theGraph>::out_edge_iterator out_i, out_end;
+    for( boost::tie(out_i,out_end) = out_edges(v,t); out_i != out_end; ++out_i){
+        Edge e = *out_i;
+        Vertex_t w = target(e,t);
+        if(visited[id[w]] == 999999){
+            edges.push_back(e);
+            biconnect(w,edges,Counter,components, visited,lowPt,stackCount);
+            lowPt[id[v]] = lowPt[id[v]] < lowPt[id[w]]?lowPt[id[v]]:lowPt[id[w]];
+            if(lowPt[id[w]] > lowPt[id[v]]){
+                std::vector<Edge_t> temp;
+                std::vector<Edge_t>::iterator it;
+                for(it = edges.begin();it != edges.end(); it++){
+                    Edge e2 = *it;
+                    Vertex_t w2 = target(e2,t);
+                    if(visited[id[w2]] > visited[id[v]]){
+                        temp.push_back(e2);
+                        edges.erase(std::remove(edges.begin(), edges.end(), e2), edges.end());
+                    }
+                }
+                temp.push_back(e);
+                edges.erase(std::remove(edges.begin(), edges.end(), e), edges.end());
+                components.push_back(temp);
+            }
+        }else if(visited[id[w]] < visited[id[v]] & w != v){
+            edges.push_back(e);
+            lowPt[id[v]] = lowPt[id[v]] < lowPt[id[w]]?lowPt[id[v]]:visited[id[w]];
+        }
+    }
+}
 
 
 UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
@@ -100,9 +178,9 @@ UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
     std::vector<Vertex_t> Points;
     int Counter = 0;
     int SizeOfGraph = num_vertices(t);
-    std::vector<int> visited(SizeOfGraph,666);
-    std::vector<int> lowPt(SizeOfGraph,666);
-    std::vector<int> lowVine(SizeOfGraph,666);
+    std::vector<int> visited(SizeOfGraph,999999);
+    std::vector<int> lowPt(SizeOfGraph,999999);
+    std::vector<int> lowVine(SizeOfGraph,999999);
     int stackCount = 0;
    // std::cout << "\nTarjan version of the SCC Algorithm has processed the graph" << std::endl;
     //TIMER
@@ -110,7 +188,7 @@ UtilityStructs::StorageItems Tarjan::ApplySCC(bool debugMode) {
         UtilityStructs::Timer timer;
     for (vp = vertices(t); vp.first != vp.second; vp.first++) {
         Vertex_t v = *vp.first;
-        if (visited[id[v]] == 666) {
+        if (visited[id[v]] == 999999) {
             StrongConnect(v,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
         }
     }
@@ -165,7 +243,7 @@ void Tarjan::StrongConnect(Vertex_t &v,
     for (boost::tie(out_i, out_end) = out_edges(v, t); out_i != out_end; ++out_i) {
         Edge e = *out_i;
         Vertex_t w = target(e, t);
-        if (visited[id[w]] == 666) {
+        if (visited[id[w]] == 999999) {
             arch_type[e] = "tree"; // like in tarjan's algorithm
             StrongConnect(w,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
             lowPt[id[v]] = lowPt[id[v]]< lowPt[id[w]]?lowPt[id[v]]:lowPt[id[w]];
@@ -177,7 +255,7 @@ void Tarjan::StrongConnect(Vertex_t &v,
                     lowVine[id[v]] = lowVine[id[v]] < visited[id[w]] ? lowVine[id[v]] : visited[id[w]];
                 }
             }
-        } else {// TODO Ancestor problem
+        } else {
             arch_type[e] = "frond";
             lowPt[id[v]] = lowPt[id[v]] < visited[id[w]] ? lowPt[id[v]] : visited[id[w]];
         }

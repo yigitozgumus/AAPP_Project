@@ -42,9 +42,20 @@ class Tarjan : protected GraphComponent
 
     void DepthFirstSearch(Vertex_t &v, int &Counter,std::vector<int> &visited);
 
+    bool isReachable( Vertex_t &source, Vertex_t &target);
+
+    UtilityStructs::StorageItems applyBiconnectivity();
+
+    void biconnect(Vertex_t &v,
+                  std::vector<Edge_t> &edges, 
+                  int &Counter,
+                  std::vector<std::vector<Edge_t> > &components,
+                  std::vector<int> &visited,
+                  std::vector<int> &lowPt,
+                  int &stackCount);
+
     UtilityStructs::StorageItems ApplySCC(bool debugMode);
 
-    bool isReachable( Vertex_t &source, Vertex_t &target);
 
     void StrongConnect( Vertex_t &v, 
                       std::vector<Vertex_t> &Points,

@@ -81,6 +81,7 @@ typedef boost::adjacency_list<boost::vecS, boost::listS, boost::directedS,
 	theGraph;
 
 typedef boost::graph_traits<theGraph>::vertex_descriptor Vertex_t;
+typedef boost::graph_traits<theGraph>::edge_descriptor Edge_t;
 typedef boost::graph_traits<theGraph>::edge_descriptor Edge;
 typedef property_map<theGraph, std::size_t VertexProperty::*>::type v_p;
 typedef property_map<theGraph, std::string EdgeProperty::*>::type e_p;
