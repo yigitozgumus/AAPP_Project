@@ -1,0 +1,113 @@
+\hypertarget{utilities_8h}{}\section{header/utilities.h File Reference}
+\label{utilities_8h}\index{header/utilities.\+h@{header/utilities.\+h}}
+{\ttfamily \#include $<$boost/config.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list\+\_\+io.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/property\+\_\+iter\+\_\+range.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/copy.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/property\+\_\+map/property\+\_\+map.\+hpp$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_session}{Session}
+\item 
+struct \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property}
+\item 
+struct \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property}
+\item 
+struct \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items}
+\item 
+class \hyperlink{class_utility_structs_1_1_timer}{Utility\+Structs\+::\+Timer}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_utility_structs}{Utility\+Structs}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utilities_8h_a5ee336838879920d67d1f9c59217dbe0_a5ee336838879920d67d1f9c59217dbe0}{P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH}~180
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}{Vertex\+Property}
+\item 
+typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}{Edge\+Property}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}{Vertex\+Property}, \hyperlink{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}{Edge\+Property} $>$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph} $>$\+::vertex\+\_\+descriptor \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2_a344cd987714d06997f0becda3c96d6e2}{Vertex\+\_\+t}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph} $>$\+::edge\+\_\+descriptor \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph} $>$\+::edge\+\_\+descriptor \hyperlink{utilities_8h_abc70257bbb251602ecdc30866b83f7de_abc70257bbb251602ecdc30866b83f7de}{Edge}
+\item 
+typedef property\+\_\+map$<$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$ $>$\+::type \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286_a3f4959b3d837fa6351a9414c79280286}{v\+\_\+p}
+\item 
+typedef property\+\_\+map$<$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$ $>$\+::type \hyperlink{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510_afdd46ecdd7dd04aa38394e7af744a510}{e\+\_\+p}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{utilities_8h_a5ee336838879920d67d1f9c59217dbe0_a5ee336838879920d67d1f9c59217dbe0}\label{utilities_8h_a5ee336838879920d67d1f9c59217dbe0_a5ee336838879920d67d1f9c59217dbe0}} 
+\index{utilities.\+h@{utilities.\+h}!P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH@{P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH}}
+\index{P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH@{P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH}{PROGRAM\_WIDTH}}
+{\footnotesize\ttfamily \#define P\+R\+O\+G\+R\+A\+M\+\_\+\+W\+I\+D\+TH~180}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510_afdd46ecdd7dd04aa38394e7af744a510}\label{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510_afdd46ecdd7dd04aa38394e7af744a510}} 
+\index{utilities.\+h@{utilities.\+h}!e\+\_\+p@{e\+\_\+p}}
+\index{e\+\_\+p@{e\+\_\+p}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{e\+\_\+p}{e\_p}}
+{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}, std\+::string Edge\+Property\+::$\ast$$>$\+::type \hyperlink{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510_afdd46ecdd7dd04aa38394e7af744a510}{e\+\_\+p}}
+
+\mbox{\Hypertarget{utilities_8h_abc70257bbb251602ecdc30866b83f7de_abc70257bbb251602ecdc30866b83f7de}\label{utilities_8h_abc70257bbb251602ecdc30866b83f7de_abc70257bbb251602ecdc30866b83f7de}} 
+\index{utilities.\+h@{utilities.\+h}!Edge@{Edge}}
+\index{Edge@{Edge}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{Edge}{Edge}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}$>$\+::edge\+\_\+descriptor \hyperlink{utilities_8h_abc70257bbb251602ecdc30866b83f7de_abc70257bbb251602ecdc30866b83f7de}{Edge}}
+
+\mbox{\Hypertarget{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}\label{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}} 
+\index{utilities.\+h@{utilities.\+h}!Edge\+\_\+t@{Edge\+\_\+t}}
+\index{Edge\+\_\+t@{Edge\+\_\+t}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{Edge\+\_\+t}{Edge\_t}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}$>$\+::edge\+\_\+descriptor \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t}}
+
+\mbox{\Hypertarget{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}\label{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}} 
+\index{utilities.\+h@{utilities.\+h}!Edge\+Property@{Edge\+Property}}
+\index{Edge\+Property@{Edge\+Property}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{Edge\+Property}{EdgeProperty}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_edge_property}{Utility\+Structs\+::\+Edge\+Property} \hyperlink{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}{Edge\+Property}}
+
+\mbox{\Hypertarget{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}\label{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}} 
+\index{utilities.\+h@{utilities.\+h}!the\+Graph@{the\+Graph}}
+\index{the\+Graph@{the\+Graph}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{the\+Graph}{theGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::listS, boost\+::directedS, \hyperlink{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}{Vertex\+Property}, \hyperlink{utilities_8h_ad3033bfd11bff70cf37c0715a9dd2bd5_ad3033bfd11bff70cf37c0715a9dd2bd5}{Edge\+Property}$>$ \hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}}
+
+\mbox{\Hypertarget{utilities_8h_a3f4959b3d837fa6351a9414c79280286_a3f4959b3d837fa6351a9414c79280286}\label{utilities_8h_a3f4959b3d837fa6351a9414c79280286_a3f4959b3d837fa6351a9414c79280286}} 
+\index{utilities.\+h@{utilities.\+h}!v\+\_\+p@{v\+\_\+p}}
+\index{v\+\_\+p@{v\+\_\+p}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{v\+\_\+p}{v\_p}}
+{\footnotesize\ttfamily typedef property\+\_\+map$<$\hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}, std\+::size\+\_\+t Vertex\+Property\+::$\ast$$>$\+::type \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286_a3f4959b3d837fa6351a9414c79280286}{v\+\_\+p}}
+
+\mbox{\Hypertarget{utilities_8h_a344cd987714d06997f0becda3c96d6e2_a344cd987714d06997f0becda3c96d6e2}\label{utilities_8h_a344cd987714d06997f0becda3c96d6e2_a344cd987714d06997f0becda3c96d6e2}} 
+\index{utilities.\+h@{utilities.\+h}!Vertex\+\_\+t@{Vertex\+\_\+t}}
+\index{Vertex\+\_\+t@{Vertex\+\_\+t}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{Vertex\+\_\+t}{Vertex\_t}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\hyperlink{utilities_8h_a0454e560170658194abd1bd3ef03bf70_a0454e560170658194abd1bd3ef03bf70}{the\+Graph}$>$\+::vertex\+\_\+descriptor \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2_a344cd987714d06997f0becda3c96d6e2}{Vertex\+\_\+t}}
+
+\mbox{\Hypertarget{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}\label{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}} 
+\index{utilities.\+h@{utilities.\+h}!Vertex\+Property@{Vertex\+Property}}
+\index{Vertex\+Property@{Vertex\+Property}!utilities.\+h@{utilities.\+h}}
+\subsubsection{\texorpdfstring{Vertex\+Property}{VertexProperty}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_utility_structs_1_1_vertex_property}{Utility\+Structs\+::\+Vertex\+Property} \hyperlink{utilities_8h_a4fda301c7fcca0db1cda24ed568e72a2_a4fda301c7fcca0db1cda24ed568e72a2}{Vertex\+Property}}
+

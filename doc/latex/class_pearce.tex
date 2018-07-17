@@ -1,0 +1,202 @@
+\hypertarget{class_pearce}{}\section{Pearce Class Reference}
+\label{class_pearce}\index{Pearce@{Pearce}}
+
+
+{\ttfamily \#include $<$pearce.\+h$>$}
+
+Inheritance diagram for Pearce\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pearce}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb_a4ad24a40c64e8f3481dd0dbbcb8d2bcb}{Pearce} ()=default
+\item 
+\hyperlink{class_pearce_a0851b1b696528448c1a42dbb6b4e6c8f_a0851b1b696528448c1a42dbb6b4e6c8f}{Pearce} (std\+::string filename)
+\item 
+void \hyperlink{class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e_a7c6ea7dde3dc3e127e4fc6ad1892974e}{solve} (std\+::vector$<$ std\+::string $>$ methods, int graph\+Num)
+\item 
+void \hyperlink{class_pearce_a96ed7e50d992838177699b6133464554_a96ed7e50d992838177699b6133464554}{print\+\_\+graph} ()
+\item 
+void \hyperlink{class_pearce_aaa906779c670a16948c00a9c031e6986_aaa906779c670a16948c00a9c031e6986}{print\+\_\+result\+\_\+max} (\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&s)
+\item 
+void \hyperlink{class_pearce_af2a6f31643617305794c06b5d2c85ebe_af2a6f31643617305794c06b5d2c85ebe}{print\+\_\+result\+\_\+min} (\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&s)
+\item 
+void \hyperlink{class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079_ad50f62a493ed2b5eb7fcb3c0f8e2e079}{D\+FS} ()
+\item 
+void \hyperlink{class_pearce_ac5e668d0d21ee0dad33cea171b9e2022_ac5e668d0d21ee0dad33cea171b9e2022}{visit} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ int $>$ \&visited, int \&index)
+\item 
+\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_pearce_a4a78c1ec037146537f575fa62b1e0265_a4a78c1ec037146537f575fa62b1e0265}{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1} ()
+\item 
+void \hyperlink{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a_ae4e9364dd0c829564ecfbfe8ccc07b6a}{visit\+\_\+scc1} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ bool $>$ \&visited, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ bool $>$ \&in\+Component, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&Stack, int \&index, int \&c, int \&stack\+Count)
+\item 
+\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_pearce_a4764238b69ee587134a9009619a4cae5_a4764238b69ee587134a9009619a4cae5}{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2} ()
+\item 
+void \hyperlink{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47_a12c836f8f0dbd85e20c0f3f4f0c5fb47}{visit\+\_\+scc2} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&Stack, int \&index, int \&c, int \&stack\+Count)
+\item 
+\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \hyperlink{class_pearce_a9d49726ab058f24cc943135458edb4f9_a9d49726ab058f24cc943135458edb4f9}{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3} ()
+\item 
+void \hyperlink{class_pearce_a70800d4564b36fb64762d3a78f1f67d8_a70800d4564b36fb64762d3a78f1f67d8}{visit\+\_\+scc3} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ bool $>$ \&root, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&v\+Stack, std\+::vector$<$ int $>$ \&i\+Stack, int \&index, int \&c, int \&stack\+Count\+\_\+i, int \&stack\+Count\+\_\+v)
+\item 
+void \hyperlink{class_pearce_a323fc3337d5849680065986d6ef7163c_a323fc3337d5849680065986d6ef7163c}{visit\+Loop} (std\+::vector$<$ bool $>$ \&root, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&v\+Stack, std\+::vector$<$ int $>$ \&i\+Stack, int \&index, int \&c, int \&stack\+Count\+\_\+i, int \&stack\+Count\+\_\+v)
+\item 
+void \hyperlink{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50_ab9090eeb4466701bc8ba913d8f9f5b50}{begin\+Visiting} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ bool $>$ \&root, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&v\+Stack, std\+::vector$<$ int $>$ \&i\+Stack, int \&index, int \&stack\+Count\+\_\+i, int \&stack\+Count\+\_\+v)
+\item 
+void \hyperlink{class_pearce_a48afb6ccb75ba9df285c9701daf474b0_a48afb6ccb75ba9df285c9701daf474b0}{finish\+Visiting} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, std\+::vector$<$ bool $>$ \&root, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&v\+Stack, std\+::vector$<$ int $>$ \&i\+Stack, int \&index, int \&c, int \&stack\+Count\+\_\+i, int \&stack\+Count\+\_\+v)
+\item 
+bool \hyperlink{class_pearce_a6d6c641f1815e11536554077ed18c10e_a6d6c641f1815e11536554077ed18c10e}{begin\+Edge} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, int \&k, std\+::vector$<$ bool $>$ \&root, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&v\+Stack, std\+::vector$<$ int $>$ \&i\+Stack, int \&index, int \&c, int \&stack\+Count\+\_\+i, int \&stack\+Count\+\_\+v)
+\item 
+void \hyperlink{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e_a4ed2b91ac3246895ec5d70fe3530690e}{finish\+Edge} (\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&v, int \&k, std\+::vector$<$ int $>$ \&rindex, std\+::vector$<$ bool $>$ \&root)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03_a2320928312fd97f6bcb1f16684f79a03}{p}
+\item 
+std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} $>$ \hyperlink{class_pearce_ad33eb33876fe817143afb84583934313_ad33eb33876fe817143afb84583934313}{experiment}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb_a4ad24a40c64e8f3481dd0dbbcb8d2bcb}\label{class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb_a4ad24a40c64e8f3481dd0dbbcb8d2bcb}} 
+\index{Pearce@{Pearce}!Pearce@{Pearce}}
+\index{Pearce@{Pearce}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{Pearce()}{Pearce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pearce\+::\+Pearce (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{class_pearce_a0851b1b696528448c1a42dbb6b4e6c8f_a0851b1b696528448c1a42dbb6b4e6c8f}\label{class_pearce_a0851b1b696528448c1a42dbb6b4e6c8f_a0851b1b696528448c1a42dbb6b4e6c8f}} 
+\index{Pearce@{Pearce}!Pearce@{Pearce}}
+\index{Pearce@{Pearce}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{Pearce()}{Pearce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pearce\+::\+Pearce (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pearce_a6d6c641f1815e11536554077ed18c10e_a6d6c641f1815e11536554077ed18c10e}\label{class_pearce_a6d6c641f1815e11536554077ed18c10e_a6d6c641f1815e11536554077ed18c10e}} 
+\index{Pearce@{Pearce}!begin\+Edge@{begin\+Edge}}
+\index{begin\+Edge@{begin\+Edge}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{begin\+Edge()}{beginEdge()}}
+{\footnotesize\ttfamily bool Pearce\+::begin\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{k,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50_ab9090eeb4466701bc8ba913d8f9f5b50}\label{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50_ab9090eeb4466701bc8ba913d8f9f5b50}} 
+\index{Pearce@{Pearce}!begin\+Visiting@{begin\+Visiting}}
+\index{begin\+Visiting@{begin\+Visiting}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{begin\+Visiting()}{beginVisiting()}}
+{\footnotesize\ttfamily void Pearce\+::begin\+Visiting (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079_ad50f62a493ed2b5eb7fcb3c0f8e2e079}\label{class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079_ad50f62a493ed2b5eb7fcb3c0f8e2e079}} 
+\index{Pearce@{Pearce}!D\+FS@{D\+FS}}
+\index{D\+FS@{D\+FS}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{D\+F\+S()}{DFS()}}
+{\footnotesize\ttfamily void Pearce\+::\+D\+FS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e_a4ed2b91ac3246895ec5d70fe3530690e}\label{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e_a4ed2b91ac3246895ec5d70fe3530690e}} 
+\index{Pearce@{Pearce}!finish\+Edge@{finish\+Edge}}
+\index{finish\+Edge@{finish\+Edge}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{finish\+Edge()}{finishEdge()}}
+{\footnotesize\ttfamily void Pearce\+::finish\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{k,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ bool $>$ \&}]{root }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a48afb6ccb75ba9df285c9701daf474b0_a48afb6ccb75ba9df285c9701daf474b0}\label{class_pearce_a48afb6ccb75ba9df285c9701daf474b0_a48afb6ccb75ba9df285c9701daf474b0}} 
+\index{Pearce@{Pearce}!finish\+Visiting@{finish\+Visiting}}
+\index{finish\+Visiting@{finish\+Visiting}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{finish\+Visiting()}{finishVisiting()}}
+{\footnotesize\ttfamily void Pearce\+::finish\+Visiting (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a4a78c1ec037146537f575fa62b1e0265_a4a78c1ec037146537f575fa62b1e0265}\label{class_pearce_a4a78c1ec037146537f575fa62b1e0265_a4a78c1ec037146537f575fa62b1e0265}} 
+\index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C1@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1}}
+\index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1()}{Pea\_Find\_SCC1()}}
+{\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a4764238b69ee587134a9009619a4cae5_a4764238b69ee587134a9009619a4cae5}\label{class_pearce_a4764238b69ee587134a9009619a4cae5_a4764238b69ee587134a9009619a4cae5}} 
+\index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C2@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2}}
+\index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2()}{Pea\_Find\_SCC2()}}
+{\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a9d49726ab058f24cc943135458edb4f9_a9d49726ab058f24cc943135458edb4f9}\label{class_pearce_a9d49726ab058f24cc943135458edb4f9_a9d49726ab058f24cc943135458edb4f9}} 
+\index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C3@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3}}
+\index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3()}{Pea\_Find\_SCC3()}}
+{\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a96ed7e50d992838177699b6133464554_a96ed7e50d992838177699b6133464554}\label{class_pearce_a96ed7e50d992838177699b6133464554_a96ed7e50d992838177699b6133464554}} 
+\index{Pearce@{Pearce}!print\+\_\+graph@{print\+\_\+graph}}
+\index{print\+\_\+graph@{print\+\_\+graph}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{print\+\_\+graph()}{print\_graph()}}
+{\footnotesize\ttfamily void Pearce\+::print\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_aaa906779c670a16948c00a9c031e6986_aaa906779c670a16948c00a9c031e6986}\label{class_pearce_aaa906779c670a16948c00a9c031e6986_aaa906779c670a16948c00a9c031e6986}} 
+\index{Pearce@{Pearce}!print\+\_\+result\+\_\+max@{print\+\_\+result\+\_\+max}}
+\index{print\+\_\+result\+\_\+max@{print\+\_\+result\+\_\+max}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{print\+\_\+result\+\_\+max()}{print\_result\_max()}}
+{\footnotesize\ttfamily void Pearce\+::print\+\_\+result\+\_\+max (\begin{DoxyParamCaption}\item[{\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_af2a6f31643617305794c06b5d2c85ebe_af2a6f31643617305794c06b5d2c85ebe}\label{class_pearce_af2a6f31643617305794c06b5d2c85ebe_af2a6f31643617305794c06b5d2c85ebe}} 
+\index{Pearce@{Pearce}!print\+\_\+result\+\_\+min@{print\+\_\+result\+\_\+min}}
+\index{print\+\_\+result\+\_\+min@{print\+\_\+result\+\_\+min}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{print\+\_\+result\+\_\+min()}{print\_result\_min()}}
+{\footnotesize\ttfamily void Pearce\+::print\+\_\+result\+\_\+min (\begin{DoxyParamCaption}\item[{\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e_a7c6ea7dde3dc3e127e4fc6ad1892974e}\label{class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e_a7c6ea7dde3dc3e127e4fc6ad1892974e}} 
+\index{Pearce@{Pearce}!solve@{solve}}
+\index{solve@{solve}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily void Pearce\+::solve (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{methods,  }\item[{int}]{graph\+Num }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_ac5e668d0d21ee0dad33cea171b9e2022_ac5e668d0d21ee0dad33cea171b9e2022}\label{class_pearce_ac5e668d0d21ee0dad33cea171b9e2022_ac5e668d0d21ee0dad33cea171b9e2022}} 
+\index{Pearce@{Pearce}!visit@{visit}}
+\index{visit@{visit}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{visit()}{visit()}}
+{\footnotesize\ttfamily void Pearce\+::visit (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{int \&}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a_ae4e9364dd0c829564ecfbfe8ccc07b6a}\label{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a_ae4e9364dd0c829564ecfbfe8ccc07b6a}} 
+\index{Pearce@{Pearce}!visit\+\_\+scc1@{visit\+\_\+scc1}}
+\index{visit\+\_\+scc1@{visit\+\_\+scc1}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{visit\+\_\+scc1()}{visit\_scc1()}}
+{\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc1 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ bool $>$ \&}]{in\+Component,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47_a12c836f8f0dbd85e20c0f3f4f0c5fb47}\label{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47_a12c836f8f0dbd85e20c0f3f4f0c5fb47}} 
+\index{Pearce@{Pearce}!visit\+\_\+scc2@{visit\+\_\+scc2}}
+\index{visit\+\_\+scc2@{visit\+\_\+scc2}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{visit\+\_\+scc2()}{visit\_scc2()}}
+{\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc2 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a70800d4564b36fb64762d3a78f1f67d8_a70800d4564b36fb64762d3a78f1f67d8}\label{class_pearce_a70800d4564b36fb64762d3a78f1f67d8_a70800d4564b36fb64762d3a78f1f67d8}} 
+\index{Pearce@{Pearce}!visit\+\_\+scc3@{visit\+\_\+scc3}}
+\index{visit\+\_\+scc3@{visit\+\_\+scc3}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{visit\+\_\+scc3()}{visit\_scc3()}}
+{\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc3 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pearce_a323fc3337d5849680065986d6ef7163c_a323fc3337d5849680065986d6ef7163c}\label{class_pearce_a323fc3337d5849680065986d6ef7163c_a323fc3337d5849680065986d6ef7163c}} 
+\index{Pearce@{Pearce}!visit\+Loop@{visit\+Loop}}
+\index{visit\+Loop@{visit\+Loop}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{visit\+Loop()}{visitLoop()}}
+{\footnotesize\ttfamily void Pearce\+::visit\+Loop (\begin{DoxyParamCaption}\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pearce_ad33eb33876fe817143afb84583934313_ad33eb33876fe817143afb84583934313}\label{class_pearce_ad33eb33876fe817143afb84583934313_ad33eb33876fe817143afb84583934313}} 
+\index{Pearce@{Pearce}!experiment@{experiment}}
+\index{experiment@{experiment}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{experiment}{experiment}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Pearce\+::experiment}
+
+\mbox{\Hypertarget{class_pearce_a2320928312fd97f6bcb1f16684f79a03_a2320928312fd97f6bcb1f16684f79a03}\label{class_pearce_a2320928312fd97f6bcb1f16684f79a03_a2320928312fd97f6bcb1f16684f79a03}} 
+\index{Pearce@{Pearce}!p@{p}}
+\index{p@{p}!Pearce@{Pearce}}
+\subsubsection{\texorpdfstring{p}{p}}
+{\footnotesize\ttfamily \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph} Pearce\+::p}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+header/\hyperlink{pearce_8h}{pearce.\+h}\item 
+src/\hyperlink{pearce_8cpp}{pearce.\+cpp}\end{DoxyCompactItemize}
