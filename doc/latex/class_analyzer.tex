@@ -16,8 +16,8 @@ This class is mainly responsible for the experiment functionality. It also provi
 \item 
 \hyperlink{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}{Analyzer} (std\+::string \&dirname)
 \item 
-std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}{get\+Input\+List} (std\+::string \&dir\+Path)
-\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_analyzer_a7903ffdba689848dd199139e5dacf1bc}{get\+Input\+List} (std\+::string \&dir\+Path)
+\begin{DoxyCompactList}\small\item\em gets all of the graph files from the directory and returns them in a vector \end{DoxyCompactList}\item 
 std\+::string \hyperlink{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}{current\+Date\+Time} ()
 \item 
 void \hyperlink{class_analyzer_a471ed64111b58f49cfee911b5db93ada}{solve\+\_\+with\+\_\+all} (std\+::string \&input\+File)
@@ -44,6 +44,10 @@ This class is mainly responsible for the experiment functionality. It also provi
 
 This class will test the algorithms with different settings to create a basis for analysis and a comparison baseline. It also provides the same settings for different types of algorithms to provide a optimal debug mode experience. 
 
+Definition at line 40 of file analyzer.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96}\label{class_analyzer_a1be2ff17bba265bdef6e1b44748eaf96}} 
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
@@ -51,12 +55,33 @@ This class will test the algorithms with different settings to create a basis fo
 \subsubsection{\texorpdfstring{Analyzer()}{Analyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Analyzer\+::\+Analyzer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 45 of file analyzer.\+h.
+
+
+\begin{DoxyCode}
+45 \{\};
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}\label{class_analyzer_a2aed8194a48a8385ef271af3bd6fdd42}} 
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{Analyzer()}{Analyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Analyzer\+::\+Analyzer (\begin{DoxyParamCaption}\item[{std\+::string \&}]{dirname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 46 of file analyzer.\+h.
+
+
+\begin{DoxyCode}
+46                                     \{
+47             \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}{graphList} = \hyperlink{class_analyzer_a7903ffdba689848dd199139e5dacf1bc}{getInputList}(dirname);
+48             \textcolor{comment}{//v.printTableSeperator();}
+49             \textcolor{comment}{//std::string message = "All the graph files are imported";}
+50             \textcolor{comment}{//v.printLine(message);}
+51         \}
+\end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
@@ -66,42 +91,336 @@ This class will test the algorithms with different settings to create a basis fo
 \subsubsection{\texorpdfstring{benchmark\+\_\+comparison()}{benchmark\_comparison()}}
 {\footnotesize\ttfamily std\+::string Analyzer\+::benchmark\+\_\+comparison (\begin{DoxyParamCaption}\item[{bool}]{write\+\_\+to\+\_\+file,  }\item[{bool}]{is\+Csv,  }\item[{std\+::string \&}]{input\+Directory }\end{DoxyParamCaption})}
 
+
+
+Definition at line 89 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+90 \{
+91     \hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v};
+92     std::string csv\_name = \textcolor{stringliteral}{"None"};
+93     boost::filesystem::path full\_path(boost::filesystem::current\_path());
+94     std::string dateTime = \hyperlink{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}{currentDateTime}();
+95     std::string file\_location\_csv ;
+96     std::string file\_location ;
+97     \textcolor{keywordflow}{if}(write\_to\_file)\{
+98         file\_location = full\_path.string() + \textcolor{stringliteral}{"/logs/experiment-"} + dateTime + \textcolor{stringliteral}{".log"};
+99         std::ofstream logFile;
+100         logFile.open(file\_location, std::ios::app);
+101         logFile << \textcolor{stringliteral}{"This log is created with the "} + inputDirectory + \textcolor{stringliteral}{" directory"} << std::endl;
+102         logFile.close();
+103         \textcolor{keywordflow}{if}(isCsv)\{
+104             file\_location\_csv = full\_path.string() + \textcolor{stringliteral}{"/data/experiment\_"} + dateTime + \textcolor{stringliteral}{".csv"};
+105             csv\_name = \textcolor{stringliteral}{"experiment\_"} + dateTime + \textcolor{stringliteral}{".csv"};
+106         \}
+107     \}
+108     \textcolor{keywordflow}{if} (write\_to\_file)
+109     \{
+110         v.\hyperlink{class_visualize_a14c9e9721eeaca0afde25da0138b43b8}{writeTableBanner}( file\_location);
+111     \}
+112     v.\hyperlink{class_visualize_a3e1aa31f14abdf3cf53662cddc536c6a}{printTableBanner}();
+113 
+114     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} r\_t;
+115 
+116     \textcolor{keywordflow}{for} (std::vector<std::string>::iterator it = \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}{graphList}.begin(); it != 
+      \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}{graphList}.end(); it++)
+117     \{
+118         std::vector<UtilityStructs::StorageItems> results;
+119         \hyperlink{class_tarjan}{Tarjan} t(*it);
+120         r\_t = t.ApplySCC(\textcolor{keyword}{false});
+121         \textcolor{keywordtype}{int} vertex = r\_t.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount};
+122         \textcolor{keywordtype}{int} edges = r\_t.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount};
+123         \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = it - \hyperlink{class_analyzer_a567b5d8b2bbdde28b489834c1644446e}{graphList}.begin();
+124         results.push\_back(r\_t);
+125         \hyperlink{class_nuutila}{Nuutila} n(*it);
+126         r\_t = n.ApplySCC\_Original();
+127         results.push\_back(r\_t);
+128         r\_t = n.ApplySCC\_v1();
+129         results.push\_back(r\_t);
+130         r\_t = n.ApplySCC\_v2();
+131         results.push\_back(r\_t);
+132         \hyperlink{class_pearce}{Pearce} p(*it);
+133         r\_t = p.Pea\_Find\_SCC1();
+134         results.push\_back(r\_t);
+135         r\_t = p.Pea\_Find\_SCC2();
+136         results.push\_back(r\_t);
+137         r\_t = p.Pea\_Find\_SCC3();
+138         results.push\_back(r\_t);
+139         \textcolor{keywordflow}{if} (write\_to\_file)
+140         \{
+141             \textcolor{keywordflow}{if} (isCsv)
+142             \{
+143                 v.\hyperlink{class_visualize_a8677a063c82af1b37b94c7d3a3ca3746}{writeExperimentRow\_CSV}( \textcolor{keywordtype}{id}, vertex, edges, results, 
+      file\_location\_csv);
+144             \}
+145             v.\hyperlink{class_visualize_a8aefacec622221533485db6701d1119e}{writeExperimentRow}( \textcolor{keywordtype}{id}, vertex, edges, results, file\_location);
+146         \}
+147         
+148         v.\hyperlink{class_visualize_a52a0dfaf625bd3ac294a00e3161094cf}{printExperimentRow}( \textcolor{keywordtype}{id}, vertex, edges, results);
+149         
+150     \}
+151     \textcolor{keywordflow}{if}(isCsv)\{
+152         v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The CSV file is saved into "} + file\_location\_csv);
+153     \}
+154     \textcolor{keywordflow}{if}(write\_to\_file)\{
+155         v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Log file is saved into "} + file\_location);
+156     \}
+157     \textcolor{keywordflow}{return} csv\_name;
+158 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}\label{class_analyzer_a9108681fee1078aed1af2ddee58cc55c}} 
 \index{Analyzer@{Analyzer}!current\+Date\+Time@{current\+Date\+Time}}
 \index{current\+Date\+Time@{current\+Date\+Time}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{current\+Date\+Time()}{currentDateTime()}}
 {\footnotesize\ttfamily std\+::string Analyzer\+::current\+Date\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}\label{class_analyzer_a39f511f54a8eb89626e7f0ece08c7d02}} 
+
+
+Definition at line 36 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+37 \{
+38     time\_t now = time(0);
+39     \textcolor{keyword}{struct }tm tstruct;
+40     \textcolor{keywordtype}{char} buf[80];
+41     tstruct = *localtime(&now);
+42     \textcolor{comment}{// Visit http://en.cppreference.com/w/cpp/chrono/c/strftime}
+43     \textcolor{comment}{// for more information about date/time format}
+44     strftime(buf, \textcolor{keyword}{sizeof}(buf), \textcolor{stringliteral}{"%Y-%m-%d.%X"}, &tstruct);
+45 
+46     \textcolor{keywordflow}{return} buf;
+47 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_analyzer_a7903ffdba689848dd199139e5dacf1bc}\label{class_analyzer_a7903ffdba689848dd199139e5dacf1bc}} 
 \index{Analyzer@{Analyzer}!get\+Input\+List@{get\+Input\+List}}
 \index{get\+Input\+List@{get\+Input\+List}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{get\+Input\+List()}{getInputList()}}
-{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Analyzer\+::get\+Input\+List (\begin{DoxyParamCaption}\item[{std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Analyzer\+::get\+Input\+List (\begin{DoxyParamCaption}\item[{std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
 
+
+
+gets all of the graph files from the directory and returns them in a vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+Path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+55 \{
+56     std::vector<std::string> inputGraphs;
+57     \textcolor{keywordflow}{try}
+58     \{
+59         \textcolor{keywordflow}{if} (filesys::exists(dirPath) && filesys::is\_directory(dirPath))
+60         \{
+61             filesys::recursive\_directory\_iterator iter(dirPath);
+62             filesys::recursive\_directory\_iterator end;
+63 
+64             \textcolor{comment}{// Iterate till end}
+65             \textcolor{keywordflow}{while} (iter != end)
+66             \{
+67                 \textcolor{keywordflow}{if} (!filesys::is\_directory(iter->path().string()))
+68                 \{
+69                     inputGraphs.push\_back(iter->path().string());
+70                 \}
+71 
+72                 error\_code ec;
+73                 \textcolor{comment}{// Increment the iterator to point to next entry in recursive iteration}
+74                 iter.increment(ec);
+75                 \textcolor{keywordflow}{if} (ec)
+76                 \{
+77                     std::cerr << \textcolor{stringliteral}{"Error While Accessing : "} << iter->path().string() << \textcolor{stringliteral}{" :: "} << ec.
+      message() << \textcolor{charliteral}{'\(\backslash\)n'};
+78                 \}
+79             \}
+80         \}
+81     \}
+82     \textcolor{keywordflow}{catch} (std::system\_error &e)
+83     \{
+84         std::cerr << \textcolor{stringliteral}{"Exception :: "} << e.what();
+85     \}
+86     \textcolor{keywordflow}{return} inputGraphs;
+87 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a471ed64111b58f49cfee911b5db93ada}\label{class_analyzer_a471ed64111b58f49cfee911b5db93ada}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+all@{solve\+\_\+with\+\_\+all}}
 \index{solve\+\_\+with\+\_\+all@{solve\+\_\+with\+\_\+all}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+all()}{solve\_with\_all()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+all (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
+
+
+Definition at line 222 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+222                                                  \{
+223     \hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v};
+224     \hyperlink{class_tarjan}{Tarjan} t(inputFile);
+225     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+226     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+227     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"Tarjan implementation is processing the graph"});
+228     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+229     s = t.ApplySCC(\textcolor{keyword}{true});
+230     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+231     std::cout << std::endl;
+232     \hyperlink{class_pearce}{Pearce} p(inputFile);
+233     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+234     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"Pearce SCC implementation mark 1 is processing the graph"});
+235     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+236     s = p.Pea\_Find\_SCC1();
+237     p.print\_result\_max(s);
+238     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+239     std::cout <<std::endl;
+240     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+241     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Pearce SCC implementation mark 2 is processing the graph"});
+242     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+243     s = p.Pea\_Find\_SCC2();
+244     p.print\_result\_min(s);
+245     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+246     std::cout <<std::endl;
+247     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+248     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Pearce SCC implementation mark 3 is processing the graph"});
+249     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+250     s = p.Pea\_Find\_SCC3();
+251     p.print\_result\_min(s);
+252     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+253     \hyperlink{class_nuutila}{Nuutila} n(inputFile);
+254     std::cout <<std::endl;
+255     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+256     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"The Nuutila Version of the SCC Algorithms is processing the graph"});
+257     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+258     s = n.ApplySCC\_Original();
+259     n.print\_sccs(s);
+260     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+261     std::cout <<std::endl;
+262     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+263     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Nuutila First Modified Version of the SCC Algorithms is processing the graph"}
+      );
+264     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+265     s = n.ApplySCC\_v1();
+266     n.print\_sccs(s);
+267     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+268     std::cout <<std::endl;
+269     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+270     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Nuutila Second Modified Version of the SCC Algorithms is processing the graph
+      "});
+271     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+272     s = n.ApplySCC\_v2();
+273     n.print\_sccs(s);
+274     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+275 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}\label{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+nuutila@{solve\+\_\+with\+\_\+nuutila}}
 \index{solve\+\_\+with\+\_\+nuutila@{solve\+\_\+with\+\_\+nuutila}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+nuutila()}{solve\_with\_nuutila()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+nuutila (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
+
+
+Definition at line 196 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+196                                                      \{
+197     \hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v};
+198     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+199     \hyperlink{class_nuutila}{Nuutila} p(inputFile);
+200     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+201     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"The Nuutila Version of the SCC Algorithms is processing the graph"});
+202     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+203     s = p.ApplySCC\_Original();
+204     p.print\_sccs(s);
+205     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+206     std::cout <<std::endl;
+207     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+208     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Nuutila First Modified Version of the SCC Algorithms is processing the graph"}
+      );
+209     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+210     s = p.ApplySCC\_v1();
+211     p.print\_sccs(s);
+212     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+213     std::cout <<std::endl;
+214     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+215     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Nuutila Second Modified Version of the SCC Algorithms is processing the graph
+      "});
+216     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+217     s = p.ApplySCC\_v2();
+218     p.print\_sccs(s);
+219     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+220 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}\label{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+pearce@{solve\+\_\+with\+\_\+pearce}}
 \index{solve\+\_\+with\+\_\+pearce@{solve\+\_\+with\+\_\+pearce}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+pearce()}{solve\_with\_pearce()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+pearce (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
+
+
+Definition at line 171 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+171                                                     \{
+172     \hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v};
+173     \hyperlink{class_pearce}{Pearce} p(inputFile);
+174     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+175     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"Pearce SCC implementation mark 1 is processing the graph"});
+176     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+177     s = p.Pea\_Find\_SCC1();
+178     p.print\_result\_max(s);
+179     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+180     std::cout <<std::endl;
+181     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+182     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Pearce SCC implementation mark 2 is processing the graph"});
+183     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+184     s = p.Pea\_Find\_SCC2();
+185     p.print\_result\_min(s);
+186     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+187     std::cout <<std::endl;
+188     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+189     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Pearce SCC implementation mark 3 is processing the graph"});
+190     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+191     s = p.Pea\_Find\_SCC3();
+192     p.print\_result\_min(s);
+193     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+194 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}\label{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}} 
 \index{Analyzer@{Analyzer}!solve\+\_\+with\+\_\+tarjan@{solve\+\_\+with\+\_\+tarjan}}
 \index{solve\+\_\+with\+\_\+tarjan@{solve\+\_\+with\+\_\+tarjan}!Analyzer@{Analyzer}}
 \subsubsection{\texorpdfstring{solve\+\_\+with\+\_\+tarjan()}{solve\_with\_tarjan()}}
 {\footnotesize\ttfamily void Analyzer\+::solve\+\_\+with\+\_\+tarjan (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
 
+
+
+Definition at line 160 of file analyzer.\+cpp.
+
+
+\begin{DoxyCode}
+160                                                     \{
+161     \hyperlink{class_visualize}{Visualize} \hyperlink{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}{v};
+162     \hyperlink{class_tarjan}{Tarjan} t(inputFile);
+163     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+164     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+165     v.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"Tarjan implementation is processing the graph"});
+166     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+167     s = t.ApplySCC(\textcolor{keyword}{true});
+168     v.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+169 \}
+\end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -111,6 +430,10 @@ This class will test the algorithms with different settings to create a basis fo
 \subsubsection{\texorpdfstring{graph\+List}{graphList}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Analyzer\+::graph\+List}
 
+
+
+Definition at line 43 of file analyzer.\+h.
+
 \mbox{\Hypertarget{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}\label{class_analyzer_ae32079d0816589617a0c76b1d4cf881b}} 
 \index{Analyzer@{Analyzer}!v@{v}}
 \index{v@{v}!Analyzer@{Analyzer}}
@@ -119,6 +442,11 @@ This class will test the algorithms with different settings to create a basis fo
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 44 of file analyzer.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{analyzer_8h}{analyzer.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{analyzer_8h}{analyzer.\+h}\item 
+src/cpp/\hyperlink{analyzer_8cpp}{analyzer.\+cpp}\end{DoxyCompactItemize}

@@ -69,6 +69,10 @@ std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dc
 \subsection{Detailed Description}
 This class contains the implementation of algorithms from the \hyperlink{class_pearce}{Pearce}\textquotesingle{}s paper. 
 
+Definition at line 28 of file pearce.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb}\label{class_pearce_a4ad24a40c64e8f3481dd0dbbcb8d2bcb}} 
 \index{Pearce@{Pearce}!Pearce@{Pearce}}
@@ -84,6 +88,17 @@ This class contains the implementation of algorithms from the \hyperlink{class_p
 
 
 
+Definition at line 34 of file pearce.\+h.
+
+
+\begin{DoxyCode}
+34                              : \hyperlink{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}{GraphComponent}(filename)
+35   \{
+36     \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000}{read\_graph\_file}(filename, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+37   \}
+\end{DoxyCode}
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_pearce_a6d6c641f1815e11536554077ed18c10e}\label{class_pearce_a6d6c641f1815e11536554077ed18c10e}} 
 \index{Pearce@{Pearce}!begin\+Edge@{begin\+Edge}}
@@ -91,66 +106,432 @@ This class contains the implementation of algorithms from the \hyperlink{class_p
 \subsubsection{\texorpdfstring{begin\+Edge()}{beginEdge()}}
 {\footnotesize\ttfamily bool Pearce\+::begin\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{k,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
 
+
+
+Definition at line 452 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+461                                            \{
+462 
+463     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+464     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+465     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+466     boost::tie(out\_i,out\_end) = out\_edges(v,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+467     out\_i += k;
+468     Edge e = *out\_i;
+469     \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+470     \textcolor{keywordflow}{if}(rindex[\textcolor{keywordtype}{id}[w]] == 0)\{
+471         iStack.erase(iStack.begin());
+472         iStack.insert(iStack.begin(),k+1);
+473         \hyperlink{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50}{beginVisiting}(w,root,rindex,vStack,iStack,index,stackCount\_i,stackCount\_v);
+474         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+475     \}\textcolor{keywordflow}{else}\{
+476         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+477     \}
+478 
+479 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50}\label{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50}} 
 \index{Pearce@{Pearce}!begin\+Visiting@{begin\+Visiting}}
 \index{begin\+Visiting@{begin\+Visiting}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{begin\+Visiting()}{beginVisiting()}}
 {\footnotesize\ttfamily void Pearce\+::begin\+Visiting (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
 
+
+
+Definition at line 404 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+411                                              \{
+412     
+413     vStack.insert(vStack.begin(),v);
+414     iStack.insert(iStack.begin(),0);
+415     stackCount\_i ++;
+416     stackCount\_v ++;
+417     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+418     root[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{true};
+419     rindex[\textcolor{keywordtype}{id}[v]] = index;
+420     index = index+1;
+421 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079}\label{class_pearce_ad50f62a493ed2b5eb7fcb3c0f8e2e079}} 
 \index{Pearce@{Pearce}!D\+FS@{D\+FS}}
 \index{D\+FS@{D\+FS}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{D\+F\+S()}{DFS()}}
 {\footnotesize\ttfamily void Pearce\+::\+D\+FS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 111 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+111                  \{
+112     \textcolor{keywordtype}{int} index = 0;
+113     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index} ,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+114     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+115     std::pair<vertex\_iter, vertex\_iter> vp;
+116     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+117     std::vector<int> visited(sizeOfGraph,\textcolor{keyword}{false});
+118     \textcolor{keywordflow}{for}(vp = vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+119         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+120         \textcolor{keywordflow}{if}(!visited[\textcolor{keywordtype}{id}[v]])\{
+121             \hyperlink{class_pearce_ac5e668d0d21ee0dad33cea171b9e2022}{visit}(v,visited,index);
+122         \}
+123     \}
+124     std::cout << \textcolor{stringliteral}{"\(\backslash\)nPearce DFS implementation exited succesfully"} << std::endl;
+125     std::cout << \textcolor{stringliteral}{"Discovery Order is: "} << std::endl;
+126     \textcolor{keywordflow}{for}(vp=vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+127         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+128         std::cout << \textcolor{stringliteral}{"Node("} << \textcolor{keywordtype}{id}[v] << \textcolor{stringliteral}{") --> "} << visited[\textcolor{keywordtype}{id}[v]] << std::endl;
+129     \}
+130 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e}\label{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e}} 
 \index{Pearce@{Pearce}!finish\+Edge@{finish\+Edge}}
 \index{finish\+Edge@{finish\+Edge}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{finish\+Edge()}{finishEdge()}}
 {\footnotesize\ttfamily void Pearce\+::finish\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{k,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ bool $>$ \&}]{root }\end{DoxyParamCaption})}
 
+
+
+Definition at line 481 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+484                                                \{
+485     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+486     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+487     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+488     boost::tie(out\_i,out\_end) = out\_edges(v,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+489     out\_i += k;
+490     Edge e = *out\_i;
+491     \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+492     \textcolor{keywordflow}{if}(rindex[\textcolor{keywordtype}{id}[w]] < rindex[\textcolor{keywordtype}{id}[v]])\{
+493         rindex[\textcolor{keywordtype}{id}[v]] = rindex[\textcolor{keywordtype}{id}[w]];
+494         root[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{false};
+495     \}
+496 
+497 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a48afb6ccb75ba9df285c9701daf474b0}\label{class_pearce_a48afb6ccb75ba9df285c9701daf474b0}} 
 \index{Pearce@{Pearce}!finish\+Visiting@{finish\+Visiting}}
 \index{finish\+Visiting@{finish\+Visiting}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{finish\+Visiting()}{finishVisiting()}}
 {\footnotesize\ttfamily void Pearce\+::finish\+Visiting (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
 
+
+
+Definition at line 423 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+431                                                \{
+432     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+433     vStack.erase(vStack.begin());
+434     iStack.erase(iStack.begin());
+435     \textcolor{keywordflow}{if}(root[\textcolor{keywordtype}{id}[v]])\{
+436         index--;
+437         \textcolor{keywordflow}{while}(!vStack.empty() && (rindex[\textcolor{keywordtype}{id}[v]] <= rindex[\textcolor{keywordtype}{id}[vStack.back()]]))\{
+438             \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = vStack.back();
+439             vStack.pop\_back();
+440             rindex[\textcolor{keywordtype}{id}[w]] = c;
+441             index--;
+442         \}
+443         rindex[\textcolor{keywordtype}{id}[v]] = c;
+444         c = c-1;
+445     \}\textcolor{keywordflow}{else}\{
+446         vStack.push\_back(v);
+447         stackCount\_v++;
+448     \}
+449 
+450 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a4a78c1ec037146537f575fa62b1e0265}\label{class_pearce_a4a78c1ec037146537f575fa62b1e0265}} 
 \index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C1@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1}}
 \index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C1()}{Pea\_Find\_SCC1()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 147 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+147                                                  \{
+148     \textcolor{keywordtype}{float} ms\_duration =0;
+149     \textcolor{keywordtype}{int} index = 0;
+150     \textcolor{keywordtype}{int} c= 0;
+151     \textcolor{keywordtype}{int} stackCount = 0;
+152     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+153     std::vector<bool> visited(sizeOfGraph,\textcolor{keyword}{false});
+154     std::vector<int> rindex (sizeOfGraph,0);
+155     std::vector<bool> inComponent(sizeOfGraph,\textcolor{keyword}{false});
+156     std::vector<Vertex\_t> Stack;
+157     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+158     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+159     std::pair<vertex\_iter, vertex\_iter> vp;
+160 \textcolor{comment}{//    std::cout << "\(\backslash\)nPearce SCC implementation mark 1 exited succesfully" << std::endl;}
+161     \textcolor{comment}{//Create the Timer object}
+162     \{
+163         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+164     \textcolor{keywordflow}{for}(vp=vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+165         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+166         \textcolor{keywordflow}{if}(!visited[\textcolor{keywordtype}{id}[v]])\{
+167             \hyperlink{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a}{visit\_scc1}(v,visited,rindex,inComponent,Stack,index,c,stackCount);
+168         \}
+169     \}
+170     ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+171     \}
+172     \textcolor{comment}{//Storage info collection}
+173     \textcolor{comment}{//print\_result\_max(rindex);}
+174     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+175     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+176     total\_bytes += \textcolor{keyword}{sizeof}(rindex[0]) * rindex.size();
+177     total\_bytes += \textcolor{keyword}{sizeof}(rindex[0]) * inComponent.size();
+178     total\_bytes += \textcolor{keyword}{sizeof}(Stack[0]) * stackCount;
+179     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+180     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+181     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+182     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+183     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+184     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = rindex;
+185     \textcolor{keywordflow}{return} s;
+186 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a4764238b69ee587134a9009619a4cae5}\label{class_pearce_a4764238b69ee587134a9009619a4cae5}} 
 \index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C2@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2}}
 \index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C2()}{Pea\_Find\_SCC2()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 236 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+236                                                 \{
+237     \textcolor{keywordtype}{float} ms\_duration;
+238     \textcolor{keywordtype}{int} index = 1;
+239     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+240     \textcolor{keywordtype}{int} c = sizeOfGraph -1;
+241     \textcolor{keywordtype}{int} stackCount = 0;
+242     std::vector<int> rindex(sizeOfGraph, 0);
+243     std::vector<Vertex\_t> Stack;
+244     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+245     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+246     std::pair<vertex\_iter, vertex\_iter> vp;
+247     \textcolor{comment}{//Create the Timer object}
+248     \textcolor{comment}{//TODO}
+249 \textcolor{comment}{//    std::cout << "\(\backslash\)nPearce SCC implementation mark 2 exited succesfully" << std::endl;}
+250     \{
+251         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+252         \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+253         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+254         \textcolor{keywordflow}{if} (rindex[\textcolor{keywordtype}{id}[v]] == 0)\{
+255             \hyperlink{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47}{visit\_scc2}(v,rindex, Stack, index, c,stackCount);
+256         \}
+257         \}
+258     ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+259     \}
+260     \textcolor{comment}{//Storage info collection}
+261     \textcolor{comment}{//print\_result\_min(rindex);}
+262     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+263     total\_bytes += \textcolor{keyword}{sizeof}(c);
+264     total\_bytes += \textcolor{keyword}{sizeof}(rindex[0]) * rindex.size();
+265     total\_bytes += \textcolor{keyword}{sizeof}(Stack[0]) * stackCount;
+266     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+267     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+268     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+269     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+270     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+271     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = rindex;
+272     \textcolor{keywordflow}{return} s;
+273 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a9d49726ab058f24cc943135458edb4f9}\label{class_pearce_a9d49726ab058f24cc943135458edb4f9}} 
 \index{Pearce@{Pearce}!Pea\+\_\+\+Find\+\_\+\+S\+C\+C3@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3}}
 \index{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3@{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{Pea\+\_\+\+Find\+\_\+\+S\+C\+C3()}{Pea\_Find\_SCC3()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Pearce\+::\+Pea\+\_\+\+Find\+\_\+\+S\+C\+C3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 319 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+319                                                  \{
+320     \textcolor{keywordtype}{float} ms\_duration;
+321     \textcolor{keywordtype}{int} index = 1;
+322     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+323     \textcolor{keywordtype}{int} c = sizeOfGraph -1;
+324     \textcolor{keywordtype}{int} stackCount\_i = 0;
+325     \textcolor{keywordtype}{int} stackCount\_v = 0;
+326     std::vector<bool> root(sizeOfGraph,\textcolor{keyword}{false});
+327     std::vector<int> rindex(sizeOfGraph,0);
+328     std::vector<Vertex\_t> vStack;
+329     std::vector<int> iStack;
+330     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index},\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+331     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+332     std::pair<vertex\_iter, vertex\_iter> vp;
+333     \textcolor{comment}{//Create the Timer Object }
+334     \{
+335         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+336         \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+337         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+338         \textcolor{keywordflow}{if} (rindex[\textcolor{keywordtype}{id}[v]] == 0)\{
+339             \hyperlink{class_pearce_a70800d4564b36fb64762d3a78f1f67d8}{visit\_scc3}(v, root,rindex,vStack,iStack,index,c,stackCount\_i,stackCount\_v);
+340         \}
+341     \}
+342         ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+343     \}
+344     \textcolor{comment}{//print\_result\_min(rindex);  }
+345     \textcolor{comment}{//Storage info collection}
+346     \textcolor{keywordtype}{size\_t} total\_bytes= 0;
+347     total\_bytes += \textcolor{keyword}{sizeof}(root[0]) * root.size();
+348     total\_bytes += \textcolor{keyword}{sizeof}(rindex[0]) * rindex.size();
+349     total\_bytes += \textcolor{keyword}{sizeof}(iStack[0] )* stackCount\_i;
+350     total\_bytes += \textcolor{keyword}{sizeof}(vStack[0]) * stackCount\_v;
+351     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+352     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+353     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+354     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+355     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+356     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = rindex;
+357     \textcolor{keywordflow}{return} s;
+358       
+359     
+360 
+361 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a96ed7e50d992838177699b6133464554}\label{class_pearce_a96ed7e50d992838177699b6133464554}} 
 \index{Pearce@{Pearce}!print\+\_\+graph@{print\+\_\+graph}}
 \index{print\+\_\+graph@{print\+\_\+graph}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{print\+\_\+graph()}{print\_graph()}}
 {\footnotesize\ttfamily void Pearce\+::print\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 25 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+25                         \{
+26     \hyperlink{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}{GraphComponent::print\_graph\_file}(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+27 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_aaa906779c670a16948c00a9c031e6986}\label{class_pearce_aaa906779c670a16948c00a9c031e6986}} 
 \index{Pearce@{Pearce}!print\+\_\+result\+\_\+max@{print\+\_\+result\+\_\+max}}
 \index{print\+\_\+result\+\_\+max@{print\+\_\+result\+\_\+max}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{print\+\_\+result\+\_\+max()}{print\_result\_max()}}
 {\footnotesize\ttfamily void Pearce\+::print\+\_\+result\+\_\+max (\begin{DoxyParamCaption}\item[{\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 29 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+29                                                           \{
+30     std::vector<int> rindex = s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary};
+31     \hyperlink{class_visualize}{Visualize} vis;
+32     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+33     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+34     std::pair<vertex\_iter, vertex\_iter> vp;
+35     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index} ,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+36     
+37     \textcolor{keywordtype}{int} max = *max\_element(std::begin(rindex), std::end(rindex));
+38     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i <= max; i++)\{
+39          \textcolor{keywordtype}{int} count\_component = 0;
+40           vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+41             std::stringstream buffer ;
+42             buffer << std::setw(40) << std::left << \textcolor{stringliteral}{"The Strongly Connected Component is"} ;
+43             buffer << \textcolor{stringliteral}{": "};
+44           \textcolor{keywordflow}{for}(vp=vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+45                  \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+46                 \textcolor{keywordflow}{if}(rindex[\textcolor{keywordtype}{id}[v]] == i)\{
+47                     count\_component++;
+48                     buffer << \textcolor{keywordtype}{id}[v]+1 <<  \textcolor{stringliteral}{" "} ;
+49                 \}
+50          \}
+51         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer.str());
+52             std::stringstream buffer2;
+53            \textcolor{comment}{// vis.printLine("");}
+54             buffer2 << std::setw(40) << std::left << \textcolor{stringliteral}{"Number of elements in the component is"} ;
+55             buffer2 << \textcolor{stringliteral}{": "}<< count\_component ;
+56             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer2.str());
+57             
+58     \}
+59     vis.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+60     std::stringstream buffer3;
+61             buffer3 << std::setw(40) << std::left <<\textcolor{stringliteral}{"Completion Time"} ;
+62             buffer3 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} << \textcolor{stringliteral}{" miliseconds"} ;
+63             std::stringstream buffer4;
+64             buffer4 << std::setw(40)<< std::left << \textcolor{stringliteral}{"Total Execution Size"};
+65             buffer4 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} / 1000.f << \textcolor{stringliteral}{" KBs"};
+66             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer3.str());
+67             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer4.str());
+68 
+69 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_af2a6f31643617305794c06b5d2c85ebe}\label{class_pearce_af2a6f31643617305794c06b5d2c85ebe}} 
 \index{Pearce@{Pearce}!print\+\_\+result\+\_\+min@{print\+\_\+result\+\_\+min}}
 \index{print\+\_\+result\+\_\+min@{print\+\_\+result\+\_\+min}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{print\+\_\+result\+\_\+min()}{print\_result\_min()}}
 {\footnotesize\ttfamily void Pearce\+::print\+\_\+result\+\_\+min (\begin{DoxyParamCaption}\item[{\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 71 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+71                                                           \{
+72     std::vector<int> rindex = s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary};
+73     \hyperlink{class_visualize}{Visualize} vis;
+74     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); 
+75     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+76     std::pair<vertex\_iter, vertex\_iter> vp;
+77     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index} ,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+78      \textcolor{keywordtype}{int} min = *min\_element(std::begin(rindex), std::end(rindex));
+79     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = sizeOfGraph-1; i >= min; i--)\{
+80          \textcolor{keywordtype}{int} count\_component = 0;
+81           vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+82             std::stringstream buffer ;
+83             buffer << std::setw(40) << std::left << \textcolor{stringliteral}{"The Strongly Connected Component is"} ;
+84             buffer << \textcolor{stringliteral}{": "};
+85           \textcolor{keywordflow}{for}(vp=vertices(\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); vp.first != vp.second; vp.first++)\{
+86                  \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+87                 \textcolor{keywordflow}{if}(rindex[\textcolor{keywordtype}{id}[v]] == i)\{
+88                     buffer << \textcolor{keywordtype}{id}[v]+1 <<  \textcolor{stringliteral}{" "} ;
+89                     count\_component++;
+90                 \}
+91          \}
+92         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer.str());
+93             std::stringstream buffer2;
+94            \textcolor{comment}{// vis.printLine("");}
+95             buffer2 << std::setw(40) << std::left << \textcolor{stringliteral}{"Number of elements in the component is"} ;
+96             buffer2 << \textcolor{stringliteral}{": "}<< count\_component ;
+97             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer2.str());
+98             
+99     \}
+100     vis.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+101     std::stringstream buffer3;
+102             buffer3 << std::setw(40) << std::left <<\textcolor{stringliteral}{"Completion Time"} ;
+103             buffer3 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} << \textcolor{stringliteral}{" miliseconds"} ;
+104             std::stringstream buffer4;
+105             buffer4 << std::setw(40)<< std::left << \textcolor{stringliteral}{"Total Execution Size"};
+106             buffer4 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} / 1000.f << \textcolor{stringliteral}{" KBs"};
+107             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer3.str());
+108             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer4.str());
+109 
+110 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e}\label{class_pearce_a7c6ea7dde3dc3e127e4fc6ad1892974e}} 
 \index{Pearce@{Pearce}!solve@{solve}}
 \index{solve@{solve}!Pearce@{Pearce}}
@@ -163,30 +544,182 @@ This class contains the implementation of algorithms from the \hyperlink{class_p
 \subsubsection{\texorpdfstring{visit()}{visit()}}
 {\footnotesize\ttfamily void Pearce\+::visit (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{int \&}]{index }\end{DoxyParamCaption})}
 
+
+
+Definition at line 132 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+132                                                                  \{
+133     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+134     visited[\textcolor{keywordtype}{id}[v]] = index++;
+135     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+136     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+137     \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); out\_i != out\_end; ++out\_i)\{
+138         Edge e = *out\_i;
+139         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+140         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == \textcolor{keyword}{false})\{
+141             \hyperlink{class_pearce_ac5e668d0d21ee0dad33cea171b9e2022}{visit}(w, visited,index);
+142         \}
+143     \}
+144 
+145 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a}\label{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a}} 
 \index{Pearce@{Pearce}!visit\+\_\+scc1@{visit\+\_\+scc1}}
 \index{visit\+\_\+scc1@{visit\+\_\+scc1}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{visit\+\_\+scc1()}{visit\_scc1()}}
 {\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc1 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ bool $>$ \&}]{in\+Component,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 188 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+195                                         \{
+196 
+197     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+198     \textcolor{keywordtype}{bool} root= \textcolor{keyword}{true};
+199     visited[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{true};
+200     rindex[\textcolor{keywordtype}{id}[v]] = index++;
+201     inComponent[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{false};
+202 
+203     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+204     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+205 
+206     \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); out\_i != out\_end; ++out\_i)\{
+207         Edge e = *out\_i;
+208         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+209         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == \textcolor{keyword}{false})\{
+210             \hyperlink{class_pearce_ae4e9364dd0c829564ecfbfe8ccc07b6a}{visit\_scc1}(w, visited,rindex,inComponent,Stack, index,c,stackCount);
+211         \}
+212         \textcolor{keywordflow}{if}(! inComponent[\textcolor{keywordtype}{id}[w]] && (rindex[\textcolor{keywordtype}{id}[w]] < rindex[\textcolor{keywordtype}{id}[v]]))\{
+213             rindex[\textcolor{keywordtype}{id}[v]] = rindex[\textcolor{keywordtype}{id}[w]]; 
+214             root = \textcolor{keyword}{false};
+215         \}
+216     \}
+217     \textcolor{keywordflow}{if}(root)\{
+218         inComponent[\textcolor{keywordtype}{id}[v]] = true ;
+219         \textcolor{keywordflow}{if}(!Stack.empty())\{
+220             \textcolor{keywordflow}{while}(!Stack.empty() && (rindex[\textcolor{keywordtype}{id}[v]] <= rindex[\textcolor{keywordtype}{id}[Stack.back()]]))\{
+221                 \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = Stack.back();
+222                 Stack.pop\_back();
+223                 rindex[\textcolor{keywordtype}{id}[w]] = c;
+224                 inComponent[\textcolor{keywordtype}{id}[w]] = \textcolor{keyword}{true};
+225             \}
+226                  
+227         \}
+228         rindex[\textcolor{keywordtype}{id}[v]] = c;
+229         c = c+1;
+230     \}\textcolor{keywordflow}{else}\{
+231         Stack.push\_back(v);
+232         stackCount++;
+233     \}
+234 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47}\label{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47}} 
 \index{Pearce@{Pearce}!visit\+\_\+scc2@{visit\+\_\+scc2}}
 \index{visit\+\_\+scc2@{visit\+\_\+scc2}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{visit\+\_\+scc2()}{visit\_scc2()}}
 {\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc2 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 275 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+280                                          \{
+281 
+282     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+283     \textcolor{keywordtype}{bool}  root = \textcolor{keyword}{true};
+284     rindex[\textcolor{keywordtype}{id}[v]] = index++;
+285 
+286     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+287     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+288 
+289     \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p}); out\_i != out\_end; ++out\_i)\{
+290         Edge e = *out\_i;
+291         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+292         \textcolor{keywordflow}{if} (rindex[\textcolor{keywordtype}{id}[w]] == 0)\{
+293             \hyperlink{class_pearce_a12c836f8f0dbd85e20c0f3f4f0c5fb47}{visit\_scc2}(w, rindex, Stack, index, c,stackCount);
+294         \}
+295         \textcolor{keywordflow}{if}(rindex[\textcolor{keywordtype}{id}[w]] < rindex[\textcolor{keywordtype}{id}[v]])\{
+296             rindex[\textcolor{keywordtype}{id}[v]] = rindex[\textcolor{keywordtype}{id}[w]] ;
+297             root = \textcolor{keyword}{false};
+298         \}
+299     \}
+300 
+301     \textcolor{keywordflow}{if}(root)\{
+302         index--;
+303         \textcolor{keywordflow}{if}(!Stack.empty())\{
+304             \textcolor{keywordflow}{while}(! Stack.empty() && (rindex[\textcolor{keywordtype}{id}[v]] <= rindex[\textcolor{keywordtype}{id}[Stack.back()]]))\{
+305                 \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = Stack.back();
+306                 Stack.pop\_back();
+307                 rindex[\textcolor{keywordtype}{id}[w]] = c;
+308                 index--; 
+309             \}
+310         \}
+311         rindex[\textcolor{keywordtype}{id}[v]] = c;
+312         c=c-1;
+313     \}\textcolor{keywordflow}{else}\{
+314         Stack.push\_back(v);
+315         stackCount++;
+316     \}
+317 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a70800d4564b36fb64762d3a78f1f67d8}\label{class_pearce_a70800d4564b36fb64762d3a78f1f67d8}} 
 \index{Pearce@{Pearce}!visit\+\_\+scc3@{visit\+\_\+scc3}}
 \index{visit\+\_\+scc3@{visit\+\_\+scc3}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{visit\+\_\+scc3()}{visit\_scc3()}}
 {\footnotesize\ttfamily void Pearce\+::visit\+\_\+scc3 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
 
+
+
+Definition at line 363 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+371                                            \{
+372     \hyperlink{class_pearce_ab9090eeb4466701bc8ba913d8f9f5b50}{beginVisiting}(v,root,rindex,vStack,iStack,index,stackCount\_i,stackCount\_v);
+373     \textcolor{keywordflow}{while}(!vStack.empty())\{
+374         \hyperlink{class_pearce_a323fc3337d5849680065986d6ef7163c}{visitLoop}(root,rindex,vStack,iStack,index,c,stackCount\_i,stackCount\_v);
+375     \}
+376 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_pearce_a323fc3337d5849680065986d6ef7163c}\label{class_pearce_a323fc3337d5849680065986d6ef7163c}} 
 \index{Pearce@{Pearce}!visit\+Loop@{visit\+Loop}}
 \index{visit\+Loop@{visit\+Loop}!Pearce@{Pearce}}
 \subsubsection{\texorpdfstring{visit\+Loop()}{visitLoop()}}
 {\footnotesize\ttfamily void Pearce\+::visit\+Loop (\begin{DoxyParamCaption}\item[{std\+::vector$<$ bool $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{rindex,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{v\+Stack,  }\item[{std\+::vector$<$ int $>$ \&}]{i\+Stack,  }\item[{int \&}]{index,  }\item[{int \&}]{c,  }\item[{int \&}]{stack\+Count\+\_\+i,  }\item[{int \&}]{stack\+Count\+\_\+v }\end{DoxyParamCaption})}
 
+
+
+Definition at line 378 of file pearce.\+cpp.
+
+
+\begin{DoxyCode}
+385                                            \{
+386     \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = vStack[0];
+387     \textcolor{keywordtype}{int} i = iStack[0];
+388     
+389     \textcolor{keywordtype}{int} out\_edges = out\_degree(v,\hyperlink{class_pearce_a2320928312fd97f6bcb1f16684f79a03}{p});
+390     
+391     \textcolor{keywordflow}{while}(i <= out\_edges)\{
+392         \textcolor{keywordflow}{if} (i > 0)\{
+393             \textcolor{keywordtype}{int} k = i-1;
+394             \hyperlink{class_pearce_a4ed2b91ac3246895ec5d70fe3530690e}{finishEdge}(v,k,rindex,root);
+395         \}
+396         \textcolor{keywordflow}{if} ( i < out\_edges && \hyperlink{class_pearce_a6d6c641f1815e11536554077ed18c10e}{beginEdge}(v,i,root,rindex,vStack,iStack,index,c,stackCount\_i,
+      stackCount\_v))\{
+397             \textcolor{keywordflow}{return};
+398         \}
+399         i = i+1;
+400     \}
+401     \hyperlink{class_pearce_a48afb6ccb75ba9df285c9701daf474b0}{finishVisiting}(v,root,rindex,vStack,iStack,index,c,stackCount\_i,stackCount\_v);
+402 \}
+\end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -196,6 +729,10 @@ This class contains the implementation of algorithms from the \hyperlink{class_p
 \subsubsection{\texorpdfstring{experiment}{experiment}}
 {\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Pearce\+::experiment}
 
+
+
+Definition at line 32 of file pearce.\+h.
+
 \mbox{\Hypertarget{class_pearce_a2320928312fd97f6bcb1f16684f79a03}\label{class_pearce_a2320928312fd97f6bcb1f16684f79a03}} 
 \index{Pearce@{Pearce}!p@{p}}
 \index{p@{p}!Pearce@{Pearce}}
@@ -204,6 +741,11 @@ This class contains the implementation of algorithms from the \hyperlink{class_p
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 31 of file pearce.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{pearce_8h}{pearce.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{pearce_8h}{pearce.\+h}\item 
+src/cpp/\hyperlink{pearce_8cpp}{pearce.\+cpp}\end{DoxyCompactItemize}

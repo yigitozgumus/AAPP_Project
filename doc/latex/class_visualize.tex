@@ -50,6 +50,10 @@ int \hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}
 \subsection{Detailed Description}
 This class is used to visualize the information that are gathered from the algorithms. 
 
+Definition at line 15 of file visualize.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_visualize_a8d4163ad53518ec0c8a3eaec2bf2fe7b}\label{class_visualize_a8d4163ad53518ec0c8a3eaec2bf2fe7b}} 
 \index{Visualize@{Visualize}!Visualize@{Visualize}}
@@ -59,6 +63,16 @@ This class is used to visualize the information that are gathered from the algor
 
 
 
+Definition at line 19 of file visualize.\+h.
+
+
+\begin{DoxyCode}
+19                    \{
+20             \hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} = \hyperlink{utilities_8h_a5ee336838879920d67d1f9c59217dbe0}{PROGRAM\_WIDTH};
+21         \};
+\end{DoxyCode}
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_visualize_a9d34d81d684587b8b2b8bf70031f1670}\label{class_visualize_a9d34d81d684587b8b2b8bf70031f1670}} 
 \index{Visualize@{Visualize}!centered@{centered}}
@@ -66,54 +80,261 @@ This class is used to visualize the information that are gathered from the algor
 \subsubsection{\texorpdfstring{centered()}{centered()}}
 {\footnotesize\ttfamily std\+::string Visualize\+::centered (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
 
+
+
+Definition at line 11 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+12 \{
+13     \textcolor{keywordtype}{int} len = str.length();
+14     \textcolor{keywordflow}{if} (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} < len)
+15     \{
+16         \textcolor{keywordflow}{return} str;
+17     \}
+18 
+19     \textcolor{keywordtype}{int} diff = \hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - len;
+20     \textcolor{keywordtype}{int} pad1 = diff / 2;
+21     \textcolor{keywordtype}{int} pad2 = diff - pad1;
+22     \textcolor{keywordflow}{return} std::string(pad1, \textcolor{charliteral}{' '}) + str + std::string(pad2, \textcolor{charliteral}{' '});
+23 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a52a0dfaf625bd3ac294a00e3161094cf}\label{class_visualize_a52a0dfaf625bd3ac294a00e3161094cf}} 
 \index{Visualize@{Visualize}!print\+Experiment\+Row@{print\+Experiment\+Row}}
 \index{print\+Experiment\+Row@{print\+Experiment\+Row}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Experiment\+Row()}{printExperimentRow()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Experiment\+Row (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{vertex,  }\item[{int}]{edge,  }\item[{std\+::vector$<$ \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} $>$}]{row\+Info }\end{DoxyParamCaption})}
 
+
+
+Definition at line 25 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+29 \{
+30     \textcolor{keywordtype}{int} cell = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) / 17;
+31     \textcolor{keywordtype}{int} remainder = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) % 17;
+32     std::stringstream buffer;
+33     buffer << \textcolor{stringliteral}{"|"}
+34            <<std::setw(cell) << std::left << \textcolor{keywordtype}{id} << \textcolor{stringliteral}{"|"}
+35            <<std::setw(cell) << std::left << vertex << \textcolor{stringliteral}{"|"}
+36            <<std::setw(cell) << std::left << edge << \textcolor{stringliteral}{"|"};
+37     \textcolor{keywordflow}{for} (std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end() - 1;
+       it++)
+38     \{
+39         buffer <<std::setw(cell) << std::left << (*it).duration << \textcolor{stringliteral}{"|"}
+40                <<std::setw(cell) << std::left << (float)(*it).total\_bytes / 1024 << \textcolor{stringliteral}{"|"};
+41     \}
+42     buffer << std::setw(cell) << std::left << rowInfo[6].duration << \textcolor{stringliteral}{"|"}
+43            << std::setw(cell) << std::left << (float)rowInfo[6].total\_bytes / 2014
+44            << std::string(remainder, \textcolor{charliteral}{' '}) + \textcolor{stringliteral}{"|\(\backslash\)n|"}
+45            << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"|"};
+46     std::cout << buffer.str() << std::endl;
+47 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_abce6cd538dc0715b21851e0bf0377d85}\label{class_visualize_abce6cd538dc0715b21851e0bf0377d85}} 
 \index{Visualize@{Visualize}!print\+Line@{print\+Line}}
 \index{print\+Line@{print\+Line}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Line()}{printLine()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Line (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
 
+
+
+Definition at line 222 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+223 \{
+224     std::cout << \textcolor{stringliteral}{"|"} <<std::setw(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2) << std::left << message << \textcolor{stringliteral}{"|\(\backslash\)n"};
+225 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}\label{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}} 
 \index{Visualize@{Visualize}!print\+Program\+Bottom@{print\+Program\+Bottom}}
 \index{print\+Program\+Bottom@{print\+Program\+Bottom}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Program\+Bottom()}{printProgramBottom()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Program\+Bottom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 199 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+200 \{   
+201     std::cout << \textcolor{stringliteral}{"|"}<< std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}-2, \textcolor{charliteral}{'-'}) << \textcolor{stringliteral}{"|"} << \textcolor{stringliteral}{"\(\backslash\)n"};
+202 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a29f27ff8c5e59163eea2be42ff372405}\label{class_visualize_a29f27ff8c5e59163eea2be42ff372405}} 
 \index{Visualize@{Visualize}!print\+Program\+Entry@{print\+Program\+Entry}}
 \index{print\+Program\+Entry@{print\+Program\+Entry}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Program\+Entry()}{printProgramEntry()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Program\+Entry (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 203 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+204 \{
+205     std::system(\textcolor{stringliteral}{"clear"});
+206     std::cout << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'='}) + \textcolor{stringliteral}{"\(\backslash\)n="}
+207               << \hyperlink{class_visualize_a9d34d81d684587b8b2b8bf70031f1670}{centered}(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2, \textcolor{stringliteral}{"Advanced Algorithms and Parallel Programming Project"}) <
+      < \textcolor{stringliteral}{"=\(\backslash\)n"}
+208               << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'='}) + \textcolor{stringliteral}{"\(\backslash\)n"};
+209     std::stringstream buffer\_dir;
+210     std::stringstream buffer\_csv;
+211     buffer\_dir << std::setw(50) << std::left << \textcolor{stringliteral}{"The last graph directory created in this session"};
+212     buffer\_dir << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_session_aecaa42a56f197e0874041533ccb358a6}{graph\_dir} ;
+213     buffer\_csv << std::setw(50) << std::left << \textcolor{stringliteral}{"The last experiment ran in this session"};
+214     buffer\_csv << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_session_a256b14530b834d61ce85bab451694b8c}{csv};
+215     \hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+216     \hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer\_dir.str());
+217     \hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer\_csv.str());
+218     \hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+219 
+220 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a3e1aa31f14abdf3cf53662cddc536c6a}\label{class_visualize_a3e1aa31f14abdf3cf53662cddc536c6a}} 
 \index{Visualize@{Visualize}!print\+Table\+Banner@{print\+Table\+Banner}}
 \index{print\+Table\+Banner@{print\+Table\+Banner}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Table\+Banner()}{printTableBanner()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Table\+Banner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 149 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+150 \{
+151     std::system(\textcolor{stringliteral}{"clear"});
+152     \textcolor{keywordtype}{int} cell = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) / 17;
+153     \textcolor{keywordtype}{int} remainder = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) % 17;
+154     std::cout << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"\(\backslash\)n|"}
+155               <<std::setw(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2) << std::left << \textcolor{stringliteral}{"Result Table"}
+156               << \textcolor{stringliteral}{"|\(\backslash\)n"}
+157               << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"\(\backslash\)n|"}
+158               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"id"}
+159               << \textcolor{stringliteral}{"|"}
+160               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Vertex"}
+161               << \textcolor{stringliteral}{"|"}
+162               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Edge"}
+163               << \textcolor{stringliteral}{"|"}
+164               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Tj T"}
+165               << \textcolor{stringliteral}{"|"}
+166               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Tj S"}
+167               << \textcolor{stringliteral}{"|"}
+168               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_0 T"}
+169               << \textcolor{stringliteral}{"|"}
+170               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_0 S"}
+171               << \textcolor{stringliteral}{"|"}
+172               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_1 T"}
+173               << \textcolor{stringliteral}{"|"}
+174               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_1 S"}
+175               << \textcolor{stringliteral}{"|"}
+176               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_2 T"}
+177               << \textcolor{stringliteral}{"|"}
+178               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_2 S"}
+179               << \textcolor{stringliteral}{"|"}
+180               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_0 T"}
+181               << \textcolor{stringliteral}{"|"}
+182               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_0 S"}
+183               << \textcolor{stringliteral}{"|"}
+184               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_1 T"}
+185               << \textcolor{stringliteral}{"|"}
+186               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_1 S"}
+187               << \textcolor{stringliteral}{"|"}
+188               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_2 T"}
+189               << \textcolor{stringliteral}{"|"}
+190               <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_2 S"}
+191               << std::string(remainder, \textcolor{charliteral}{' '}) << \textcolor{stringliteral}{"|\(\backslash\)n"}
+192               << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) << std::endl;
+193 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a2d38641cb335d7bbf7e11567b07e2d85}\label{class_visualize_a2d38641cb335d7bbf7e11567b07e2d85}} 
 \index{Visualize@{Visualize}!print\+Table\+Seperator@{print\+Table\+Seperator}}
 \index{print\+Table\+Seperator@{print\+Table\+Seperator}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{print\+Table\+Seperator()}{printTableSeperator()}}
 {\footnotesize\ttfamily void Visualize\+::print\+Table\+Seperator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 195 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+196 \{
+197     std::cout << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"\(\backslash\)n"};
+198 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a8aefacec622221533485db6701d1119e}\label{class_visualize_a8aefacec622221533485db6701d1119e}} 
 \index{Visualize@{Visualize}!write\+Experiment\+Row@{write\+Experiment\+Row}}
 \index{write\+Experiment\+Row@{write\+Experiment\+Row}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{write\+Experiment\+Row()}{writeExperimentRow()}}
 {\footnotesize\ttfamily void Visualize\+::write\+Experiment\+Row (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{vertex,  }\item[{int}]{edge,  }\item[{std\+::vector$<$ \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} $>$}]{row\+Info,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
 
+
+
+Definition at line 48 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+53 \{
+54     \textcolor{keywordtype}{int} cell = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) / 17;
+55     \textcolor{keywordtype}{int} remainder = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) % 17;
+56     std::stringstream buffer;
+57     buffer << \textcolor{stringliteral}{"|"}
+58            <<std::setw(cell) << std::left << \textcolor{keywordtype}{id} << \textcolor{stringliteral}{"|"}
+59            <<std::setw(cell) << std::left << vertex << \textcolor{stringliteral}{"|"}
+60            <<std::setw(cell) << std::left << edge << \textcolor{stringliteral}{"|"};
+61     \textcolor{keywordflow}{for} (std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end() - 1;
+       it++)
+62     \{
+63         buffer <<std::setw(cell) << std::left << (*it).duration << \textcolor{stringliteral}{"|"}
+64                <<std::setw(cell) << std::left << (float)(*it).total\_bytes / 1024 << \textcolor{stringliteral}{"|"};
+65     \}
+66     buffer <<std::setw(cell) << std::left << rowInfo[6].duration << \textcolor{stringliteral}{"|"}
+67            <<std::setw(cell) << std::left << (float)rowInfo[6].total\_bytes / 1024
+68            << std::string(remainder, \textcolor{charliteral}{' '}) + \textcolor{stringliteral}{"|\(\backslash\)n|"}
+69            << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"|\(\backslash\)n"};
+70     std::ofstream logFile;
+71     logFile.open(filename, std::ios::app);
+72     logFile << buffer.str();
+73     logFile.close();
+74 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a8677a063c82af1b37b94c7d3a3ca3746}\label{class_visualize_a8677a063c82af1b37b94c7d3a3ca3746}} 
 \index{Visualize@{Visualize}!write\+Experiment\+Row\+\_\+\+C\+SV@{write\+Experiment\+Row\+\_\+\+C\+SV}}
 \index{write\+Experiment\+Row\+\_\+\+C\+SV@{write\+Experiment\+Row\+\_\+\+C\+SV}!Visualize@{Visualize}}
 \subsubsection{\texorpdfstring{write\+Experiment\+Row\+\_\+\+C\+S\+V()}{writeExperimentRow\_CSV()}}
 {\footnotesize\ttfamily void Visualize\+::write\+Experiment\+Row\+\_\+\+C\+SV (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{vertex,  }\item[{int}]{edge,  }\item[{std\+::vector$<$ \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} $>$}]{row\+Info,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
 
+
+
+Definition at line 75 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+80 \{
+81     \textcolor{keywordtype}{int} cell = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) / 17;
+82     \textcolor{keywordtype}{int} remainder = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) % 17;
+83     std::stringstream buffer;
+84     buffer << \textcolor{keywordtype}{id} << \textcolor{stringliteral}{","} << vertex << \textcolor{stringliteral}{","} << edge << \textcolor{stringliteral}{","};
+85     \textcolor{keywordflow}{for} (std::vector<UtilityStructs::StorageItems>::iterator it = rowInfo.begin(); it != rowInfo.end() - 1;
+       it++)
+86     \{
+87         buffer << (*it).duration << \textcolor{stringliteral}{","}
+88                << (float)(*it).total\_bytes / 1024 << \textcolor{stringliteral}{","};
+89     \}
+90     buffer << rowInfo[6].duration << \textcolor{stringliteral}{","}
+91            << (float)rowInfo[6].total\_bytes / 1024 << \textcolor{stringliteral}{"\(\backslash\)n"};
+92     std::ofstream logFile;
+93     logFile.open(filename, std::ios::app);
+94     logFile << buffer.str();
+95     logFile.close();
+96 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_a9ccde29aab876a829335775898373e96}\label{class_visualize_a9ccde29aab876a829335775898373e96}} 
 \index{Visualize@{Visualize}!write\+Line@{write\+Line}}
 \index{write\+Line@{write\+Line}!Visualize@{Visualize}}
@@ -132,6 +353,62 @@ This class is used to visualize the information that are gathered from the algor
 \subsubsection{\texorpdfstring{write\+Table\+Banner()}{writeTableBanner()}}
 {\footnotesize\ttfamily void Visualize\+::write\+Table\+Banner (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
 
+
+
+Definition at line 98 of file visualize.\+cpp.
+
+
+\begin{DoxyCode}
+99 \{
+100     std::system(\textcolor{stringliteral}{"clear"});
+101     \textcolor{keywordtype}{int} cell = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) / 17;
+102     \textcolor{keywordtype}{int} remainder = (\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 18) % 17;
+103     std::stringstream buffer;
+104     buffer << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"\(\backslash\)n|"}
+105            <<std::setw(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width} - 2) << std::left << \textcolor{stringliteral}{"Result Table"}
+106            << \textcolor{stringliteral}{"|\(\backslash\)n"}
+107            << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) + \textcolor{stringliteral}{"\(\backslash\)n|"}
+108            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"id"}
+109            << \textcolor{stringliteral}{"|"}
+110            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Vertex"}
+111            << \textcolor{stringliteral}{"|"}
+112            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Edge"}
+113            << \textcolor{stringliteral}{"|"}
+114            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Tj T"}
+115            << \textcolor{stringliteral}{"|"}
+116            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"Tj S"}
+117            << \textcolor{stringliteral}{"|"}
+118            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_0 T"}
+119            << \textcolor{stringliteral}{"|"}
+120            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_0 S"}
+121            << \textcolor{stringliteral}{"|"}
+122            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_1 T"}
+123            << \textcolor{stringliteral}{"|"}
+124            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_1 S"}
+125            << \textcolor{stringliteral}{"|"}
+126            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_2 T"}
+127            << \textcolor{stringliteral}{"|"}
+128            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"N\_2 S"}
+129            << \textcolor{stringliteral}{"|"}
+130            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_0 T"}
+131            << \textcolor{stringliteral}{"|"}
+132            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_0 S"}
+133            << \textcolor{stringliteral}{"|"}
+134            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_1 T"}
+135            << \textcolor{stringliteral}{"|"}
+136            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_1 S"}
+137            << \textcolor{stringliteral}{"|"}
+138            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_2 T"}
+139            << \textcolor{stringliteral}{"|"}
+140            <<std::setw(cell) << std::left << \textcolor{stringliteral}{"P\_2 S"}
+141            << std::string(remainder, \textcolor{charliteral}{' '}) << \textcolor{stringliteral}{"|\(\backslash\)n"}
+142            << std::string(\hyperlink{class_visualize_af5ac723ad5f8fe8c4a8378bf1299cda7}{width}, \textcolor{charliteral}{'-'}) << \textcolor{stringliteral}{"\(\backslash\)n"};
+143     std::ofstream logFile;
+144     logFile.open(filename, std::ios::app);
+145     logFile << buffer.str();
+146     logFile.close();
+147 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_visualize_ac5530b8e917c748163e621cf5677eeb5}\label{class_visualize_ac5530b8e917c748163e621cf5677eeb5}} 
 \index{Visualize@{Visualize}!write\+Table\+Seperator@{write\+Table\+Seperator}}
 \index{write\+Table\+Seperator@{write\+Table\+Seperator}!Visualize@{Visualize}}
@@ -149,6 +426,11 @@ This class is used to visualize the information that are gathered from the algor
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 18 of file visualize.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{visualize_8h}{visualize.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{visualize_8h}{visualize.\+h}\item 
+src/cpp/\hyperlink{visualize_8cpp}{visualize.\+cpp}\end{DoxyCompactItemize}

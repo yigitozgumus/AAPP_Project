@@ -38,6 +38,10 @@ This class will contain the main functionalities of the application.
 
 This class acts as a wrapper for the whole application. Every functionality is shown to user via parameter updates, menus and choices. 
 
+Definition at line 15 of file application.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_application_afa8cc05ce6b6092be5ecdfdae44e05f8}\label{class_application_afa8cc05ce6b6092be5ecdfdae44e05f8}} 
 \index{Application@{Application}!Application@{Application}}
@@ -47,6 +51,15 @@ This class acts as a wrapper for the whole application. Every functionality is s
 
 
 
+Definition at line 18 of file application.\+h.
+
+
+\begin{DoxyCode}
+18                  \{
+19     \};
+\end{DoxyCode}
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_application_ae0d3919fe03bae0b3ce31ef4be49374d}\label{class_application_ae0d3919fe03bae0b3ce31ef4be49374d}} 
 \index{Application@{Application}!analyze\+Experiment@{analyze\+Experiment}}
@@ -54,36 +67,322 @@ This class acts as a wrapper for the whole application. Every functionality is s
 \subsubsection{\texorpdfstring{analyze\+Experiment()}{analyzeExperiment()}}
 {\footnotesize\ttfamily void Application\+::analyze\+Experiment (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 73 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+73                                              \{
+74     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+75     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+76     std::string Program = \textcolor{stringliteral}{"python src/python/analysis.py"};
+77     std::string filename = s.\hyperlink{struct_session_a256b14530b834d61ce85bab451694b8c}{csv};
+78     \textcolor{keywordtype}{char} choice ;
+79     \textcolor{keywordflow}{if}(filename == \textcolor{stringliteral}{"None"})\{
+80         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the name of the experiment csv file:"});
+81         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+82         std::cout << \textcolor{stringliteral}{"|>> "};
+83         std::cin >> filename;
+84     \}\textcolor{keywordflow}{else}\{
+85         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Do you want to provide a different csv file ? (y/n)"});
+86         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+87         std::cout << \textcolor{stringliteral}{"|>>"};
+88         std::cin >> choice;
+89         \textcolor{keywordflow}{switch}(choice)\{
+90             \textcolor{keywordflow}{case} \textcolor{charliteral}{'y'}:
+91                 \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+92                 \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+93                 \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the name of the experiment csv file:"});
+94                 \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+95                 std::cout << \textcolor{stringliteral}{"|>> "};
+96                 std::cin >> filename;
+97                 \textcolor{keywordflow}{break};
+98             \textcolor{keywordflow}{case} \textcolor{charliteral}{'n'}:
+99                 \textcolor{keywordflow}{break};
+100         \}
+101 
+102     \}
+103     Program += (\textcolor{stringliteral}{" "} + filename);
+104     std::system(Program.c\_str());
+105     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Press c to Continue, q to quit"});
+106         std::cout << \textcolor{stringliteral}{"|>> "};
+107         std::string branch;
+108         std::cin >> branch;
+109         \textcolor{keywordflow}{if}(branch == \textcolor{stringliteral}{"c"})\{
+110             \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+111             \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+112         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (branch == \textcolor{stringliteral}{"q"})\{
+113             \textcolor{keywordflow}{return};
+114         \}
+115 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_application_a169c37596e9a7a9e0546700876adcbe7}\label{class_application_a169c37596e9a7a9e0546700876adcbe7}} 
 \index{Application@{Application}!generate\+Graph@{generate\+Graph}}
 \index{generate\+Graph@{generate\+Graph}!Application@{Application}}
 \subsubsection{\texorpdfstring{generate\+Graph()}{generateGraph()}}
 {\footnotesize\ttfamily std\+::string Application\+::generate\+Graph (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 120 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+121 \{
+122     
+123     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+124     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+125     std::string Program = \textcolor{stringliteral}{"python src/python/generate\_graph\_directories.py"};
+126     std::string dir\_name;
+127     std::string numOfGraph;
+128     std::string single\_class;
+129     \textcolor{keywordtype}{int} singleC = 0;
+130     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the name of the output folder:"});
+131     std::cout << \textcolor{stringliteral}{"|>> "};
+132     std::cin >> dir\_name;
+133     s.\hyperlink{struct_session_aecaa42a56f197e0874041533ccb358a6}{graph\_dir} = dir\_name;
+134     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the number of graph instances for each node class:"});
+135     std::cout << \textcolor{stringliteral}{"|>> "};
+136     std::cin >> numOfGraph;
+137     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Would you like to choose the node classes specifically ?:( y or n )"});
+138     std::cout << \textcolor{stringliteral}{"|>> "};
+139     std::cin >> single\_class;
+140     \textcolor{keywordflow}{if}(single\_class == \textcolor{stringliteral}{"n"})
+141     \{   
+142         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The output folder is: "} + dir\_name);
+143         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The number of graphs per each class is "} + numOfGraph);
+144         std::string command;
+145         command = Program + \textcolor{stringliteral}{" "} + numOfGraph + \textcolor{stringliteral}{" "} + dir\_name;
+146         std::system(command.c\_str());
+147          \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Press c to Continue, q to quit"});
+148         std::cout << \textcolor{stringliteral}{"|>> "};
+149         std::string branch;
+150         std::cin >> branch;
+151         \textcolor{keywordflow}{if}(branch == \textcolor{stringliteral}{"c"})\{
+152             \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+153             \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+154         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (branch == \textcolor{stringliteral}{"q"})\{
+155             \textcolor{keywordflow}{return} dir\_name;
+156         \}
+157     \}\textcolor{keywordflow}{else}\{
+158         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+159         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+160         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The Graph Classes are below:"});
+161         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"1-) 5-50 Nodes"});
+162         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"2-) 50-100 Nodes"});
+163         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"3-) 100-500 Nodes"});
+164         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"4-) 500-1000 Nodes"});
+165         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please type the required classes with their index seperated by spaces:"});
+166         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Additionally, If you want to create a graph with an exact number of nodes,
+       type the number of nodes with '#' prefix : #56"});
+167         std::cout << \textcolor{stringliteral}{"|>>"};
+168         std::string classes = \textcolor{stringliteral}{""};
+169         std::cin.ignore();
+170         std::getline(std::cin,classes);
+171         std::string command;
+172         \textcolor{keywordflow}{if}(classes.compare(0,1,\textcolor{stringliteral}{"#"})==0)\{
+173              command = Program + \textcolor{stringliteral}{" "} + numOfGraph + \textcolor{stringliteral}{" "} + dir\_name + \textcolor{stringliteral}{" --node "} + classes.substr(1) ;
+174         \}\textcolor{keywordflow}{else}\{
+175              command = Program + \textcolor{stringliteral}{" "} + numOfGraph + \textcolor{stringliteral}{" "} + dir\_name + \textcolor{stringliteral}{" --single "} + classes ;
+176         \}
+177         
+178         std::system(command.c\_str());
+179         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Press c to Continue, q to quit"});
+180         std::cout << \textcolor{stringliteral}{"|>> "};
+181         std::string branch;
+182         std::cin >> branch;
+183         \textcolor{keywordflow}{if}(branch == \textcolor{stringliteral}{"c"})\{
+184             \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+185             \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+186         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (branch == \textcolor{stringliteral}{"q"})\{
+187             \textcolor{keywordflow}{return} dir\_name;
+188         \}
+189     \}
+190     \textcolor{keywordflow}{return} dir\_name;
+191 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_application_adecc88549e44815bd94985ea043b733f}\label{class_application_adecc88549e44815bd94985ea043b733f}} 
 \index{Application@{Application}!run@{run}}
 \index{run@{run}!Application@{Application}}
 \subsubsection{\texorpdfstring{run()}{run()}}
 {\footnotesize\ttfamily void Application\+::run (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 30 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+31 \{  
+32     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+33     \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+34 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_application_adb639e3593f8f6f4dcb3d89d690eb538}\label{class_application_adb639e3593f8f6f4dcb3d89d690eb538}} 
 \index{Application@{Application}!run\+Debug\+Mode@{run\+Debug\+Mode}}
 \index{run\+Debug\+Mode@{run\+Debug\+Mode}!Application@{Application}}
 \subsubsection{\texorpdfstring{run\+Debug\+Mode()}{runDebugMode()}}
 {\footnotesize\ttfamily void Application\+::run\+Debug\+Mode (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 246 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+246                                         \{
+247     
+248     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+249     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+250     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the name (path) of the graph file you want to debug (Relative) "});
+251     std::string fl;
+252     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+253     std::cout << \textcolor{stringliteral}{"|>> "};
+254     std::cin >> fl;
+255     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+256     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+257     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+258     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Which method do you want to use ?"});
+259     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"1-) Tarjan's Algorithm"});
+260     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"2-) Nuutila's Algorithms"});
+261     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"3-) Pearce's Algorithms"});
+262     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"4-) All of them"});
+263     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+264     std::cout << \textcolor{stringliteral}{"|>> "};
+265     \textcolor{keywordtype}{int} choice = 1;
+266     std::cin >> choice;
+267     \hyperlink{class_analyzer}{Analyzer} a;
+268     \textcolor{keywordflow}{if}(choice == 1)\{
+269         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+270         a.\hyperlink{class_analyzer_a8207cd71986d26dc8abda1a807490ab2}{solve\_with\_tarjan}(fl);
+271     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(choice == 2)\{
+272         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+273         a.\hyperlink{class_analyzer_a5ac77dbb2bbea6b34af561272705d64e}{solve\_with\_nuutila}(fl);
+274     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(choice == 3)\{
+275         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+276         a.\hyperlink{class_analyzer_a6009c58addbb9730b54580a5f01ddce7}{solve\_with\_pearce}(fl);
+277     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(choice == 4)\{
+278         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+279         a.\hyperlink{class_analyzer_a471ed64111b58f49cfee911b5db93ada}{solve\_with\_all}(fl);
+280     \}
+281     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Press c to Continue, q to quit"});
+282     std::cout << \textcolor{stringliteral}{"|>> "};
+283     std::string branch;
+284     std::cin >> branch;
+285     \textcolor{keywordflow}{if}(branch == \textcolor{stringliteral}{"c"})\{
+286         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+287         \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+288     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (branch == \textcolor{stringliteral}{"q"})\{
+289         return ;
+290     \}
+291 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_application_a1d9cfbea705655427e7d1847de2567c1}\label{class_application_a1d9cfbea705655427e7d1847de2567c1}} 
 \index{Application@{Application}!run\+Experiment@{run\+Experiment}}
 \index{run\+Experiment@{run\+Experiment}!Application@{Application}}
 \subsubsection{\texorpdfstring{run\+Experiment()}{runExperiment()}}
 {\footnotesize\ttfamily std\+::string Application\+::run\+Experiment (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 196 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+196                                               \{
+197     
+198     std::string dir;
+199     std::string csv;
+200     csv = \textcolor{stringliteral}{"None"};
+201     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+202     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+203     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please enter the name of the graph directory: (Relative)"});
+204     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+205     std::cout << \textcolor{stringliteral}{"|>> "};
+206     std::cin >> dir;
+207     boost::filesystem::path full\_path(boost::filesystem::current\_path());
+208     std::string full\_p\_dir = full\_path.string() + \textcolor{stringliteral}{"/"} + dir;
+209     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+210     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+211     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"The "} + full\_p\_dir + \textcolor{stringliteral}{" directory will be used"});
+212     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+213     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Please choose the option you want to execute:"});
+214     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"1-) Run the Experiment (default option, only terminal table)"});
+215     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"2-) Run the Experiment, save the result to the logs directory"});
+216     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"3-) Run the Experiment, save the result as log and csv file to the data
+       directory"});
+217     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+218     std::cout << \textcolor{stringliteral}{"|>> "};
+219     \textcolor{keywordtype}{int} choice = 1;
+220     std::cin >> choice;
+221     \hyperlink{class_analyzer}{Analyzer} a(full\_p\_dir);
+222     \textcolor{keywordflow}{if}(choice == 1)\{
+223         a.benchmark\_comparison(\textcolor{keyword}{false},\textcolor{keyword}{false},full\_p\_dir);
+224     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(choice == 2)\{
+225         a.benchmark\_comparison(\textcolor{keyword}{true}, \textcolor{keyword}{false}, full\_p\_dir);
+226     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(choice == 3)\{
+227       csv =  a.benchmark\_comparison(\textcolor{keyword}{true}, \textcolor{keyword}{true}, full\_p\_dir);
+228       s.\hyperlink{struct_session_a256b14530b834d61ce85bab451694b8c}{csv} = csv;
+229     \}
+230     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{"Press c to Continue, q to quit"});
+231     std::cout << \textcolor{stringliteral}{"|>> "};
+232     std::string branch;
+233     std::cin >> branch;
+234     \textcolor{keywordflow}{if}(branch == \textcolor{stringliteral}{"c"})\{
+235         \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_a29f27ff8c5e59163eea2be42ff372405}{printProgramEntry}(s);
+236         \hyperlink{class_application_abf73a60a6a2e4b83a675de777273d12c}{welcomeScreen}(s);
+237     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (branch == \textcolor{stringliteral}{"q"})\{
+238         \textcolor{keywordflow}{return} csv;
+239     \}
+240     \textcolor{keywordflow}{return} csv;
+241 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_application_abf73a60a6a2e4b83a675de777273d12c}\label{class_application_abf73a60a6a2e4b83a675de777273d12c}} 
 \index{Application@{Application}!welcome\+Screen@{welcome\+Screen}}
 \index{welcome\+Screen@{welcome\+Screen}!Application@{Application}}
 \subsubsection{\texorpdfstring{welcome\+Screen()}{welcomeScreen()}}
 {\footnotesize\ttfamily void Application\+::welcome\+Screen (\begin{DoxyParamCaption}\item[{\hyperlink{struct_session}{Session} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 39 of file application.\+cpp.
+
+
+\begin{DoxyCode}
+40 \{
+41     
+42     \textcolor{keywordtype}{int} choice = 0;
+43     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{"Please choose the operation you want to perform:"});
+44     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{" 1-) Generate a Graph set"});
+45     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{" 2-) Run an Experiment"});
+46     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{" 3-) Run Debug Mode"});
+47     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{" 4-) Analyze the Results"});
+48     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}( \textcolor{stringliteral}{" 0-) Exit the Application"});
+49     \hyperlink{class_application_a96cff2295a95d7e6de06638bb7e61243}{v}.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+50     std::cout << \textcolor{stringliteral}{"|>> "};
+51     std::cin >> choice;
+52     \textcolor{keywordflow}{switch} (choice)
+53     \{
+54     \textcolor{keywordflow}{case} 1:
+55         \hyperlink{class_application_a169c37596e9a7a9e0546700876adcbe7}{generateGraph}(s);
+56         \textcolor{keywordflow}{break};
+57     \textcolor{keywordflow}{case} 2: 
+58         \hyperlink{class_application_a1d9cfbea705655427e7d1847de2567c1}{runExperiment}(s);
+59         \textcolor{keywordflow}{break};
+60     \textcolor{keywordflow}{case} 3:
+61         \hyperlink{class_application_adb639e3593f8f6f4dcb3d89d690eb538}{runDebugMode}(s);
+62         \textcolor{keywordflow}{break};
+63     \textcolor{keywordflow}{case} 4:
+64         \hyperlink{class_application_ae0d3919fe03bae0b3ce31ef4be49374d}{analyzeExperiment}(s);
+65         \textcolor{keywordflow}{break};
+66     \textcolor{keywordflow}{case} 0:
+67         \textcolor{keywordflow}{break};
+68     \textcolor{keywordflow}{default}:
+69         \textcolor{keywordflow}{break};
+70     \}
+71 \}
+\end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -95,6 +394,11 @@ This class acts as a wrapper for the whole application. Every functionality is s
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 17 of file application.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{application_8h}{application.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{application_8h}{application.\+h}\item 
+src/cpp/\hyperlink{application_8cpp}{application.\+cpp}\end{DoxyCompactItemize}

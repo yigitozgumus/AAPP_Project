@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "Advanced Algorithms and Parallel Programming Project", "index.html", [
+    [ "AAPP_Project", "index.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
     ] ],
@@ -19,6 +20,7 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -28,7 +30,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"analyzer_8h.html"
+"analyzer_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

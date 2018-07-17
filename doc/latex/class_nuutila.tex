@@ -53,6 +53,10 @@ std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dc
 \subsection{Detailed Description}
 This class contains the implementations of algorithms from the \hyperlink{class_nuutila}{Nuutila}\textquotesingle{}s Paper. 
 
+Definition at line 29 of file nuutila.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_nuutila_ab1ae0281145f693a922f5122d27cc23b}\label{class_nuutila_ab1ae0281145f693a922f5122d27cc23b}} 
 \index{Nuutila@{Nuutila}!Nuutila@{Nuutila}}
@@ -60,12 +64,30 @@ This class contains the implementations of algorithms from the \hyperlink{class_
 \subsubsection{\texorpdfstring{Nuutila()}{Nuutila()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Nuutila\+::\+Nuutila (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 34 of file nuutila.\+h.
+
+
+\begin{DoxyCode}
+34 \{\}; 
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_a00bb9066a5a1c9fb03e25481f4f47a0c}\label{class_nuutila_a00bb9066a5a1c9fb03e25481f4f47a0c}} 
 \index{Nuutila@{Nuutila}!Nuutila@{Nuutila}}
 \index{Nuutila@{Nuutila}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{Nuutila()}{Nuutila()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Nuutila\+::\+Nuutila (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 35 of file nuutila.\+h.
+
+
+\begin{DoxyCode}
+35                                : \hyperlink{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}{GraphComponent}(filename)\{
+36         \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000}{read\_graph\_file}(filename, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+37     \}
+\end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
@@ -75,30 +97,241 @@ This class contains the implementations of algorithms from the \hyperlink{class_
 \subsubsection{\texorpdfstring{Apply\+S\+C\+C\+\_\+\+Original()}{ApplySCC\_Original()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Nuutila\+::\+Apply\+S\+C\+C\+\_\+\+Original (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 73 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+74 \{
+75     \textcolor{keywordtype}{float} ms\_duration;
+76     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+77     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+78     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+79     std::pair<vertex\_iter, vertex\_iter> vp;
+80     std::vector<Vertex\_t> Points;
+81     \textcolor{keywordtype}{int} Counter = 0;
+82     \textcolor{keywordtype}{int} stackCount = 0;
+83     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+84     std::vector<bool> isComponent(sizeOfGraph, \textcolor{keyword}{false});
+85     std::vector<int> visited(sizeOfGraph, 999999);
+86     std::vector<int> root(sizeOfGraph, 666);
+87     \textcolor{comment}{//Timer}
+88     \textcolor{comment}{//   std::cout << "\(\backslash\)nThe Nuutila Version of the SCC Algorithms is processing the graph" << std::endl;}
+89     \{
+90         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+91         \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); vp.first != vp.second; vp.first++)
+92         \{
+93             Vertex\_t v = *vp.first;
+94             \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[v]] == 999999)
+95             \{
+96                 \hyperlink{class_nuutila_a2d43bc514d7375f9d63e60c06f90a60f}{Visit}(v, Points, root, visited, isComponent, Counter,stackCount);
+97             \}
+98         \}
+99         ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+100     \}
+101     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+102     total\_bytes += \textcolor{keyword}{sizeof}(root[0]) * root.size();
+103     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+104     total\_bytes += \textcolor{keyword}{sizeof}(isComponent[0]) * isComponent.size();
+105     total\_bytes += \textcolor{keyword}{sizeof}(Points[0]) * stackCount;
+106     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+107     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+108     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+109     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+110     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+111     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = root;
+112     \textcolor{keywordflow}{return} s;
+113 
+114     
+115 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_a6c355594f68dad8c28684114a6df6700}\label{class_nuutila_a6c355594f68dad8c28684114a6df6700}} 
 \index{Nuutila@{Nuutila}!Apply\+S\+C\+C\+\_\+v1@{Apply\+S\+C\+C\+\_\+v1}}
 \index{Apply\+S\+C\+C\+\_\+v1@{Apply\+S\+C\+C\+\_\+v1}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{Apply\+S\+C\+C\+\_\+v1()}{ApplySCC\_v1()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Nuutila\+::\+Apply\+S\+C\+C\+\_\+v1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 158 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+159 \{
+160     \textcolor{keywordtype}{float} ms\_duration;
+161     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+162     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+163     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+164     std::pair<vertex\_iter, vertex\_iter> vp;
+165     std::vector<Vertex\_t> Points;
+166     \textcolor{keywordtype}{int} Counter = 0;
+167     \textcolor{keywordtype}{int} stackCount = 0;
+168     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+169     std::vector<bool> isComponent(sizeOfGraph, \textcolor{keyword}{false});
+170     std::vector<int> visited(sizeOfGraph, 999999);
+171     std::vector<int> root(sizeOfGraph, -1);
+172     \textcolor{comment}{//    std::cout << "\(\backslash\)nThe Nuutila First Modified Version of the SCC Algorithms is processing the graph"
+       << std::endl;}
+173     \{
+174         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+175         \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); vp.first != vp.second; vp.first++)
+176         \{
+177             Vertex\_t v = *vp.first;
+178             \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[v]] == 999999)
+179             \{
+180                 \hyperlink{class_nuutila_a83b47177cf452e80b3ceaf064ff59840}{Visit\_v1}(v, Points, root, visited, isComponent, Counter,stackCount);
+181             \}
+182         \}
+183         ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+184     \}
+185     \textcolor{comment}{//Storage info collection}
+186     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+187     total\_bytes += \textcolor{keyword}{sizeof}(root[0]) * root.size();
+188     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+189     total\_bytes += \textcolor{keyword}{sizeof}(isComponent[0]) * isComponent.size();
+190     total\_bytes += \textcolor{keyword}{sizeof}(Points[0]) * stackCount;
+191     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+192     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+193     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+194     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+195     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+196     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = root;
+197     \textcolor{keywordflow}{return} s;
+198 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_a291d578f760e0f11a5c56c8a5fe02ebd}\label{class_nuutila_a291d578f760e0f11a5c56c8a5fe02ebd}} 
 \index{Nuutila@{Nuutila}!Apply\+S\+C\+C\+\_\+v2@{Apply\+S\+C\+C\+\_\+v2}}
 \index{Apply\+S\+C\+C\+\_\+v2@{Apply\+S\+C\+C\+\_\+v2}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{Apply\+S\+C\+C\+\_\+v2()}{ApplySCC\_v2()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Nuutila\+::\+Apply\+S\+C\+C\+\_\+v2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 200 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+201 \{
+202     \textcolor{keywordtype}{float} ms\_duration;
+203     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+204     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+205     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+206     std::pair<vertex\_iter, vertex\_iter> vp;
+207     std::vector<int> Points;
+208     Points.push\_back(0);
+209     \textcolor{keywordtype}{int} Counter = 0;
+210     \textcolor{keywordtype}{int} stackCount = 0;
+211     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+212     std::vector<bool> isComponent(sizeOfGraph + 1, \textcolor{keyword}{false});
+213     std::vector<int> visited(sizeOfGraph + 1, 999999);
+214     std::vector<int> root(sizeOfGraph, -1);
+215     visited[0] = -999;
+216     \textcolor{comment}{//   std::cout << "\(\backslash\)nThe Nuutila Second Modified Version of the SCC Algorithms is processing the graph"
+       << std::endl;}
+217     \{
+218         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+219         \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); vp.first != vp.second; vp.first++)
+220         \{
+221             Vertex\_t v = *vp.first;
+222             \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[v] + 1] == 999999)
+223             \{
+224                 \hyperlink{class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749}{Visit\_v2}(v, Points, root, visited, isComponent, Counter,stackCount);
+225             \}
+226         \}
+227         ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+228         \textcolor{comment}{//Storage info collection}
+229     \}
+230     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+231     total\_bytes += \textcolor{keyword}{sizeof}(root[0]) * root.size();
+232     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+233     total\_bytes += \textcolor{keyword}{sizeof}(isComponent[0]) * isComponent.size();
+234     total\_bytes += \textcolor{keyword}{sizeof}(Points[0]) * stackCount;
+235     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+236     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+237     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+238     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+239     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+240     s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary} = root;
+241     \textcolor{keywordflow}{return} s;
+242 
+243     \textcolor{comment}{// print\_sccs(root);}
+244 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_a0dc1cb3d0711a856a32a3743a85fb5c8}\label{class_nuutila_a0dc1cb3d0711a856a32a3743a85fb5c8}} 
 \index{Nuutila@{Nuutila}!print\+\_\+graph@{print\+\_\+graph}}
 \index{print\+\_\+graph@{print\+\_\+graph}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{print\+\_\+graph()}{print\_graph()}}
 {\footnotesize\ttfamily void Nuutila\+::print\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 22 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+23 \{
+24     \hyperlink{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}{GraphComponent::print\_graph\_file}(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+25 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_ae11b94c396dff5b8d9b7f69ae0d0831f}\label{class_nuutila_ae11b94c396dff5b8d9b7f69ae0d0831f}} 
 \index{Nuutila@{Nuutila}!print\+\_\+sccs@{print\+\_\+sccs}}
 \index{print\+\_\+sccs@{print\+\_\+sccs}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{print\+\_\+sccs()}{print\_sccs()}}
 {\footnotesize\ttfamily void Nuutila\+::print\+\_\+sccs (\begin{DoxyParamCaption}\item[{\hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} \&}]{s }\end{DoxyParamCaption})}
 
+
+
+Definition at line 27 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+28 \{
+29     std::vector<int> root = s.\hyperlink{struct_utility_structs_1_1_storage_items_afb9d346eaacb1c5e7f60f559c45910f2}{auxilary}; 
+30     \hyperlink{class_visualize}{Visualize} vis;
+31     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+32     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+33     std::pair<vertex\_iter, vertex\_iter> vp1;
+34     std::pair<vertex\_iter, vertex\_iter> vp\_inner;
+35     \textcolor{keywordflow}{for} (vp1 = vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); vp1.first != vp1.second; ++vp1.first)
+36     \{
+37         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp1.first;
+38         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{id}[v] == root[\textcolor{keywordtype}{id}[v]])
+39         \{   
+40             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+41             std::stringstream buffer ;
+42             buffer << std::setw(40) << std::left << \textcolor{stringliteral}{"The Strongly Connected Component is"} ;
+43             buffer << \textcolor{stringliteral}{": "};
+44             
+45             \textcolor{keywordtype}{int} count\_component = 0;
+46             \textcolor{keywordflow}{for} (vp\_inner = vertices(\hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); vp\_inner.first != vp\_inner.second; ++vp\_inner.first)
+47             \{
+48                 \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = *vp\_inner.first;
+49                 \textcolor{keywordflow}{if} (root[\textcolor{keywordtype}{id}[w]] == \textcolor{keywordtype}{id}[v])
+50                 \{
+51                     buffer << \textcolor{keywordtype}{id}[w]+1 << \textcolor{stringliteral}{" "} ;
+52                     count\_component++;
+53                 \}
+54             \}
+55             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer.str());
+56             std::stringstream buffer2;
+57            \textcolor{comment}{// vis.printLine("");}
+58             buffer2 << std::setw(40) << std::left << \textcolor{stringliteral}{"Number of elements in the component is"} ;
+59             buffer2 << \textcolor{stringliteral}{": "}<< count\_component ;
+60             vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer2.str());
+61         \}
+62     \}
+63             std::stringstream buffer3;
+64         vis.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+65         buffer3 << std::setw(40) << std::left <<\textcolor{stringliteral}{"Completion Time"} ;
+66         buffer3 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} << \textcolor{stringliteral}{" miliseconds"} ;
+67         std::stringstream buffer4;
+68         buffer4 << std::setw(40)<< std::left << \textcolor{stringliteral}{"Total Execution Size"};
+69         buffer4 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} / 1000.f << \textcolor{stringliteral}{" KBs"};
+70         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer3.str());
+71         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer4.str());
+72 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_ae56bd15d2e57366eef0e044bf3a37d9e}\label{class_nuutila_ae56bd15d2e57366eef0e044bf3a37d9e}} 
 \index{Nuutila@{Nuutila}!solve@{solve}}
 \index{solve@{solve}!Nuutila@{Nuutila}}
@@ -111,18 +344,183 @@ This class contains the implementations of algorithms from the \hyperlink{class_
 \subsubsection{\texorpdfstring{Visit()}{Visit()}}
 {\footnotesize\ttfamily void Nuutila\+::\+Visit (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Points,  }\item[{std\+::vector$<$ int $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ bool $>$ \&}]{is\+Component,  }\item[{int \&}]{Counter,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 117 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+118 \{
+119     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+120     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+121     visited[\textcolor{keywordtype}{id}[v]] = Counter;
+122     Counter++;
+123     root[\textcolor{keywordtype}{id}[v]] = \textcolor{keywordtype}{id}[v];
+124     isComponent[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{false};
+125     Points.push\_back(v);
+126     stackCount++;
+127     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+128     boost::graph\_traits<theGraph>::out\_edge\_iterator o\_i, o\_o;
+129     \textcolor{keywordflow}{for} (boost::tie(o\_i, o\_o) = out\_edges(v, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); o\_i != o\_o; ++o\_i)
+130     \{
+131         Edge e = *o\_i;
+132         Vertex\_t w = target(e, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+133         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == 999999)
+134         \{
+135             \hyperlink{class_nuutila_a2d43bc514d7375f9d63e60c06f90a60f}{Visit}(w, Points, root, visited, isComponent, Counter,stackCount);
+136         \}
+137         \textcolor{keywordflow}{if} (!isComponent[\textcolor{keywordtype}{id}[w]])
+138         \{
+139             \textcolor{keywordflow}{if} (visited[root[\textcolor{keywordtype}{id}[v]]] > visited[root[\textcolor{keywordtype}{id}[w]]])
+140             \{
+141                 root[\textcolor{keywordtype}{id}[v]] = root[\textcolor{keywordtype}{id}[w]];
+142             \}
+143         \}
+144     \}
+145     \textcolor{keywordflow}{if} (root[\textcolor{keywordtype}{id}[v]] == \textcolor{keywordtype}{id}[v])
+146     \{
+147         Vertex\_t w;
+148         \textcolor{keywordflow}{do}
+149         \{
+150             w = Points.back();
+151             Points.pop\_back();
+152             isComponent[\textcolor{keywordtype}{id}[w]] = \textcolor{keyword}{true};
+153 
+154         \} \textcolor{keywordflow}{while} (v != w);
+155     \}
+156 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_a83b47177cf452e80b3ceaf064ff59840}\label{class_nuutila_a83b47177cf452e80b3ceaf064ff59840}} 
 \index{Nuutila@{Nuutila}!Visit\+\_\+v1@{Visit\+\_\+v1}}
 \index{Visit\+\_\+v1@{Visit\+\_\+v1}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{Visit\+\_\+v1()}{Visit\_v1()}}
 {\footnotesize\ttfamily void Nuutila\+::\+Visit\+\_\+v1 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} $>$ \&}]{Points,  }\item[{std\+::vector$<$ int $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ bool $>$ \&}]{is\+Component,  }\item[{int \&}]{Counter,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 246 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+247 \{
+248 
+249     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+250     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+251     visited[\textcolor{keywordtype}{id}[v]] = Counter;
+252     Counter++;
+253     root[\textcolor{keywordtype}{id}[v]] = \textcolor{keywordtype}{id}[v];
+254     isComponent[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{false};
+255     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+256     boost::graph\_traits<theGraph>::out\_edge\_iterator hoho, haha;
+257     \textcolor{keywordflow}{for} (boost::tie(hoho, haha) = out\_edges(v, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); hoho != haha; ++hoho)
+258     \{
+259         Edge e = *hoho;
+260         Vertex\_t w = target(e, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+261         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == 999999)
+262         \{
+263             \hyperlink{class_nuutila_a83b47177cf452e80b3ceaf064ff59840}{Visit\_v1}(w, Points, root, visited, isComponent, Counter,stackCount);
+264         \}
+265         \textcolor{keywordflow}{if} (!isComponent[\textcolor{keywordtype}{id}[w]])
+266         \{
+267             \textcolor{keywordflow}{if} (visited[root[\textcolor{keywordtype}{id}[v]]] > visited[root[\textcolor{keywordtype}{id}[w]]])
+268             \{
+269                 root[\textcolor{keywordtype}{id}[v]] = root[\textcolor{keywordtype}{id}[w]];
+270             \}
+271             \textcolor{keywordflow}{else}
+272             \{
+273                 root[\textcolor{keywordtype}{id}[w]] = root[\textcolor{keywordtype}{id}[v]];
+274             \}
+275         \}
+276     \}
+277     \textcolor{keywordflow}{if} (root[\textcolor{keywordtype}{id}[v]] == \textcolor{keywordtype}{id}[v])
+278     \{
+279         isComponent[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{true};
+280         \textcolor{keywordflow}{if} (!Points.empty())
+281         \{
+282             Vertex\_t w = Points.back();
+283             \textcolor{keywordflow}{while} (visited[\textcolor{keywordtype}{id}[w]] > visited[\textcolor{keywordtype}{id}[v]])
+284             \{
+285                 Points.pop\_back();
+286                 isComponent[\textcolor{keywordtype}{id}[w]] = \textcolor{keyword}{true};
+287                 \textcolor{keywordflow}{if} (Points.empty())
+288                 \{
+289                     \textcolor{keywordflow}{break};
+290                 \}
+291                 \textcolor{keywordflow}{else}
+292                 \{
+293                     w = Points.back();
+294                 \}
+295             \}
+296         \}
+297     \}
+298     \textcolor{keywordflow}{else}
+299     \{
+300         Points.push\_back(v);
+301         stackCount++;
+302     \}
+303 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749}\label{class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749}} 
 \index{Nuutila@{Nuutila}!Visit\+\_\+v2@{Visit\+\_\+v2}}
 \index{Visit\+\_\+v2@{Visit\+\_\+v2}!Nuutila@{Nuutila}}
 \subsubsection{\texorpdfstring{Visit\+\_\+v2()}{Visit\_v2()}}
 {\footnotesize\ttfamily void Nuutila\+::\+Visit\+\_\+v2 (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ int $>$ \&}]{Points,  }\item[{std\+::vector$<$ int $>$ \&}]{root,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ bool $>$ \&}]{is\+Component,  }\item[{int \&}]{Counter,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 305 of file nuutila.\+cpp.
+
+
+\begin{DoxyCode}
+306 \{
+307     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+308     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+309     visited[\textcolor{keywordtype}{id}[v] + 1] = Counter;
+310     Counter++;
+311     root[\textcolor{keywordtype}{id}[v]] = \textcolor{keywordtype}{id}[v];
+312     isComponent[\textcolor{keywordtype}{id}[v] + 1] = \textcolor{keyword}{false};
+313     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+314     boost::graph\_traits<theGraph>::out\_edge\_iterator hoho, haha;
+315     \textcolor{keywordflow}{for} (boost::tie(hoho, haha) = out\_edges(v, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n}); hoho != haha; ++hoho)
+316     \{
+317         Edge e = *hoho;
+318         Vertex\_t w = target(e, \hyperlink{class_nuutila_a1409929fa0f38709497f8bdb012af71c}{n});
+319         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w] + 1] == 999999)
+320         \{
+321             \hyperlink{class_nuutila_afc7a8c27d8de17ac2679f839ff8c2749}{Visit\_v2}(w, Points, root, visited, isComponent, Counter,stackCount);
+322         \}
+323         \textcolor{keywordflow}{if} (!isComponent[root[\textcolor{keywordtype}{id}[w]] + 1])
+324         \{
+325             \textcolor{keywordflow}{if} (visited[root[\textcolor{keywordtype}{id}[v]] + 1] > visited[root[\textcolor{keywordtype}{id}[w]] + 1])
+326             \{
+327                 root[\textcolor{keywordtype}{id}[v]] = root[\textcolor{keywordtype}{id}[w]];
+328             \}
+329         \}
+330     \}
+331     \textcolor{keywordflow}{if} (root[\textcolor{keywordtype}{id}[v]] == \textcolor{keywordtype}{id}[v])
+332     \{
+333         \textcolor{keywordtype}{int} w = Points.back();
+334         \textcolor{keywordflow}{if} (visited[w] >= visited[\textcolor{keywordtype}{id}[v] + 1])
+335         \{
+336             \textcolor{keywordflow}{do}
+337             \{
+338                 Points.pop\_back();
+339                 isComponent[w] = \textcolor{keyword}{true};
+340                 w = Points.back();
+341             \} \textcolor{keywordflow}{while} (visited[w] >= visited[\textcolor{keywordtype}{id}[v] + 1]);
+342         \}
+343         \textcolor{keywordflow}{else}
+344         \{
+345             isComponent[\textcolor{keywordtype}{id}[v] + 1] = \textcolor{keyword}{true};
+346         \}
+347     \}
+348     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (std::find(Points.begin(), Points.end(), root[\textcolor{keywordtype}{id}[v]]) == Points.end())
+349     \{
+350         Points.push\_back(root[\textcolor{keywordtype}{id}[v]]);
+351         stackCount++;
+352     \}
+353 \}
+\end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -132,6 +530,10 @@ This class contains the implementations of algorithms from the \hyperlink{class_
 \subsubsection{\texorpdfstring{experiment}{experiment}}
 {\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Nuutila\+::experiment}
 
+
+
+Definition at line 33 of file nuutila.\+h.
+
 \mbox{\Hypertarget{class_nuutila_a1409929fa0f38709497f8bdb012af71c}\label{class_nuutila_a1409929fa0f38709497f8bdb012af71c}} 
 \index{Nuutila@{Nuutila}!n@{n}}
 \index{n@{n}!Nuutila@{Nuutila}}
@@ -140,6 +542,11 @@ This class contains the implementations of algorithms from the \hyperlink{class_
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 32 of file nuutila.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{nuutila_8h}{nuutila.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{nuutila_8h}{nuutila.\+h}\item 
+src/cpp/\hyperlink{nuutila_8cpp}{nuutila.\+cpp}\end{DoxyCompactItemize}

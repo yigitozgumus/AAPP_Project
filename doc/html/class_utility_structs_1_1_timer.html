@@ -114,6 +114,8 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is used to measure the execution time of a executed function with the same scope. </p>
+
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00064">64</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8513b72cae3808920cc5f76c28b34d63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8513b72cae3808920cc5f76c28b34d63">&#9670;&nbsp;</a></span>Timer()</h2>
@@ -138,6 +140,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00071">71</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">start</a> = std::chrono::high_resolution_clock::now();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div><div class="ttc" id="class_utility_structs_1_1_timer_html_a60bc754cb86990dad0003e8d49048c07"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer::start</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::steady_clock &gt; start</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00067">utilities.h:67</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a377c1febadb76e78d9a36bd81b3ab676"></a>
@@ -163,6 +168,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00083">83</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">finish</a> = std::chrono::high_resolution_clock::now();</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">duration</a> = <a class="code" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">finish</a> - <a class="code" href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">start</a>;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">float</span> ms = <a class="code" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">duration</a>.count() * 1000.000f;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div><div class="ttc" id="class_utility_structs_1_1_timer_html_aa78ff6477de7008371025bd459a262e4"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer::duration</a></div><div class="ttdeci">std::chrono::duration&lt; float &gt; duration</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00068">utilities.h:68</a></div></div>
+<div class="ttc" id="class_utility_structs_1_1_timer_html_a60bc754cb86990dad0003e8d49048c07"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer::start</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::steady_clock &gt; start</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00067">utilities.h:67</a></div></div>
+<div class="ttc" id="class_utility_structs_1_1_timer_html_a9b87226726489b3885d6faf4373c34b5"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer::finish</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::steady_clock &gt; finish</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00069">utilities.h:69</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -189,6 +199,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00075">75</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">finish</a> = std::chrono::high_resolution_clock::now();</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">duration</a> = <a class="code" href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">finish</a> - <a class="code" href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">start</a>;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">float</span> ms = <a class="code" href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">duration</a>.count() * 1000.0f;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> ms;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div><div class="ttc" id="class_utility_structs_1_1_timer_html_aa78ff6477de7008371025bd459a262e4"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#aa78ff6477de7008371025bd459a262e4">UtilityStructs::Timer::duration</a></div><div class="ttdeci">std::chrono::duration&lt; float &gt; duration</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00068">utilities.h:68</a></div></div>
+<div class="ttc" id="class_utility_structs_1_1_timer_html_a60bc754cb86990dad0003e8d49048c07"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#a60bc754cb86990dad0003e8d49048c07">UtilityStructs::Timer::start</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::steady_clock &gt; start</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00067">utilities.h:67</a></div></div>
+<div class="ttc" id="class_utility_structs_1_1_timer_html_a9b87226726489b3885d6faf4373c34b5"><div class="ttname"><a href="class_utility_structs_1_1_timer.html#a9b87226726489b3885d6faf4373c34b5">UtilityStructs::Timer::finish</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::steady_clock &gt; finish</div><div class="ttdef"><b>Definition:</b> <a href="utilities_8h_source.html#l00069">utilities.h:69</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -204,6 +219,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00068">68</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
+
 </div>
 </div>
 <a id="a9b87226726489b3885d6faf4373c34b5"></a>
@@ -218,6 +235,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00069">69</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
+
 </div>
 </div>
 <a id="a60bc754cb86990dad0003e8d49048c07"></a>
@@ -231,6 +250,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utilities_8h_source.html#l00067">67</a> of file <a class="el" href="utilities_8h_source.html">utilities.h</a>.</p>
 
 </div>
 </div>

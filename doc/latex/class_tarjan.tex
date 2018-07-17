@@ -53,6 +53,10 @@ std\+::vector$<$ \hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dc
 \subsection{Detailed Description}
 This class contains the implementation of algorithms from the \hyperlink{class_tarjan}{Tarjan}\textquotesingle{}s paper. 
 
+Definition at line 29 of file tarjan.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91}\label{class_tarjan_a24a7fa59ed2fcff4a520e012e30acb91}} 
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
@@ -60,12 +64,30 @@ This class contains the implementation of algorithms from the \hyperlink{class_t
 \subsubsection{\texorpdfstring{Tarjan()}{Tarjan()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Tarjan\+::\+Tarjan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 35 of file tarjan.\+h.
+
+
+\begin{DoxyCode}
+35 \{\};
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a7e9845c51e1e905df76b267370c6dc00}\label{class_tarjan_a7e9845c51e1e905df76b267370c6dc00}} 
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \index{Tarjan@{Tarjan}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Tarjan()}{Tarjan()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Tarjan\+::\+Tarjan (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 36 of file tarjan.\+h.
+
+
+\begin{DoxyCode}
+36                               : \hyperlink{class_graph_component_a35c4a6e5c6f28751b1bd6c451cc07957}{GraphComponent}(filename)\{
+37         \hyperlink{class_graph_component_a680363eab8b992d739f055bd484bc000}{read\_graph\_file}(filename,\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+38     \}
+\end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
@@ -75,42 +97,279 @@ This class contains the implementation of algorithms from the \hyperlink{class_t
 \subsubsection{\texorpdfstring{apply\+Biconnectivity()}{applyBiconnectivity()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Tarjan\+::apply\+Biconnectivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 92 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+92                                                       \{
+93     \textcolor{keywordtype}{float} ms\_duration = 0;
+94     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+95     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+96     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\_t};
+97     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+98     std::pair<vertex\_iter, vertex\_iter> vp;
+99     std::vector<Edge\_t> edges;
+100     std::vector<std::vector<Edge\_t> > components;
+101     \textcolor{keywordtype}{int} Counter = 0;
+102     \textcolor{keywordtype}{int} sizeOfGraph = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+103     std::vector<int> visited(sizeOfGraph,999999);
+104     std::vector<int> lowPt(sizeOfGraph,999999);
+105     \textcolor{keywordtype}{int} stackCount = 0;
+106     \{
+107         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+108         \textcolor{keywordflow}{for}(vp = vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); vp.first != vp.second; vp.first++)\{
+109             Vertex\_t v = *vp.first;
+110             \textcolor{keywordflow}{if}(visited[\textcolor{keywordtype}{id}[v]] == 999999) \{
+111                 \hyperlink{class_tarjan_a52573be5a4930ad84f3807bc49f42026}{biconnect}(v, edges, Counter,components, visited, lowPt, stackCount);
+112             \}
+113         \}
+114         ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+115     \}
+116     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+117     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+118     total\_bytes += \textcolor{keyword}{sizeof}(lowPt[0]) * lowPt.size();
+119     total\_bytes +=\textcolor{keyword}{sizeof}(edges[0]) * stackCount;
+120     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+121     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+122     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+123     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+124     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+125     
+126     \textcolor{keywordflow}{return} s;
+127 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a674767d7e49ada6a738ab69187e4836d}\label{class_tarjan_a674767d7e49ada6a738ab69187e4836d}} 
 \index{Tarjan@{Tarjan}!Apply\+D\+FS@{Apply\+D\+FS}}
 \index{Apply\+D\+FS@{Apply\+D\+FS}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Apply\+D\+F\+S()}{ApplyDFS()}}
 {\footnotesize\ttfamily void Tarjan\+::\+Apply\+D\+FS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 27 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+27                       \{
+28     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor Vertex;
+29     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+30     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+31     std::pair<vertex\_iter, vertex\_iter> vp;
+32     \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} theFirst = *(vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}).first);
+33     \textcolor{keywordtype}{int} Counter = 0;
+34     \textcolor{keywordtype}{int} SizeOfGraph = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+35     std::vector<int> visited(SizeOfGraph,666);
+36     \hyperlink{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}{DepthFirstSearch}(theFirst, Counter, visited);
+37     std::cout << \textcolor{stringliteral}{"\(\backslash\)nTarjan Depth First Search Exited Successfully."} << std::endl;
+38     std::cout << \textcolor{stringliteral}{"Discovery Order is: "} << std::endl;
+39      \textcolor{keywordflow}{for}(vp=vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); vp.first != vp.second; vp.first++)\{
+40         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = *vp.first;
+41         std::cout << \textcolor{stringliteral}{"Node("} << \textcolor{keywordtype}{id}[v] << \textcolor{stringliteral}{") --> "} << visited[\textcolor{keywordtype}{id}[v]] << std::endl;
+42     \}
+43 
+44 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a58ad9fcfd599a608fa1671e4607db378}\label{class_tarjan_a58ad9fcfd599a608fa1671e4607db378}} 
 \index{Tarjan@{Tarjan}!Apply\+S\+CC@{Apply\+S\+CC}}
 \index{Apply\+S\+CC@{Apply\+S\+CC}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Apply\+S\+C\+C()}{ApplySCC()}}
 {\footnotesize\ttfamily \hyperlink{struct_utility_structs_1_1_storage_items}{Utility\+Structs\+::\+Storage\+Items} Tarjan\+::\+Apply\+S\+CC (\begin{DoxyParamCaption}\item[{bool}]{debug\+Mode }\end{DoxyParamCaption})}
 
+
+
+Definition at line 172 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+172                                                           \{
+173     \textcolor{keywordtype}{float} ms\_duration = 0;
+174     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+175     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_descriptor \hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\_t};
+176     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::vertex\_iterator vertex\_iter;
+177     std::pair<vertex\_iter, vertex\_iter> vp;
+178     std::vector<Vertex\_t> Points;
+179     \textcolor{keywordtype}{int} Counter = 0;
+180     \textcolor{keywordtype}{int} SizeOfGraph = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+181     std::vector<int> visited(SizeOfGraph,999999);
+182     std::vector<int> lowPt(SizeOfGraph,999999);
+183     std::vector<int> lowVine(SizeOfGraph,999999);
+184     \textcolor{keywordtype}{int} stackCount = 0;
+185    \textcolor{comment}{// std::cout << "\(\backslash\)nTarjan version of the SCC Algorithm has processed the graph" << std::endl;}
+186     \textcolor{comment}{//TIMER}
+187     \{
+188         \hyperlink{class_utility_structs_1_1_timer}{UtilityStructs::Timer} timer;
+189     \textcolor{keywordflow}{for} (vp = vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); vp.first != vp.second; vp.first++) \{
+190         Vertex\_t v = *vp.first;
+191         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[v]] == 999999) \{
+192             \hyperlink{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2}{StrongConnect}(v,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
+193         \}
+194     \}
+195     ms\_duration = timer.\hyperlink{class_utility_structs_1_1_timer_a12f62b57c263d563efd6089cff52355f}{stop}();
+196     \}
+197     \textcolor{comment}{//TIMER end}
+198     \textcolor{comment}{//Storage info collection}
+199     \textcolor{keywordtype}{size\_t} total\_bytes = 0;
+200     total\_bytes += \textcolor{keyword}{sizeof}(visited[0]) * visited.size();
+201     total\_bytes += \textcolor{keyword}{sizeof}(lowPt[0]) * lowPt.size();
+202     total\_bytes += \textcolor{keyword}{sizeof}(lowVine[0]) * lowVine.size();
+203     total\_bytes +=\textcolor{keyword}{sizeof}(Points[0]) * stackCount;
+204     \hyperlink{struct_utility_structs_1_1_storage_items}{UtilityStructs::StorageItems} s;
+205     s.\hyperlink{struct_utility_structs_1_1_storage_items_af72522be713f23fcfe3ac66780183fda}{vertexCount} = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+206     s.\hyperlink{struct_utility_structs_1_1_storage_items_afafcba9bb103108e2c1e1d9254fb75c5}{edgeCount} = num\_edges(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+207     s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} = ms\_duration;
+208     s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} = total\_bytes;
+209     \hyperlink{class_visualize}{Visualize} vis;
+210     \textcolor{keywordflow}{if}(debugMode)\{
+211         vis.\hyperlink{class_visualize_ac0be9ece2d80a7d1e34724fb87424216}{printProgramBottom}();
+212          std::stringstream buffer3;
+213         buffer3 << std::setw(40) << std::left <<\textcolor{stringliteral}{"Completion Time"} ;
+214         buffer3 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a65e7df5611a4e144cc27576bd3041f6c}{duration} << \textcolor{stringliteral}{" miliseconds"} ;
+215         std::stringstream buffer4;
+216         buffer4 << std::setw(40)<< std::left << \textcolor{stringliteral}{"Total Execution Size"};
+217         buffer4 << \textcolor{stringliteral}{": "} << s.\hyperlink{struct_utility_structs_1_1_storage_items_a39cf482db54d8e6ac473b438444c8a1e}{total\_bytes} / 1024.f << \textcolor{stringliteral}{" KBs"};
+218         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer3.str());
+219         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer4.str());
+220 \}
+221     \textcolor{keywordflow}{return} s;
+222 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a52573be5a4930ad84f3807bc49f42026}\label{class_tarjan_a52573be5a4930ad84f3807bc49f42026}} 
 \index{Tarjan@{Tarjan}!biconnect@{biconnect}}
 \index{biconnect@{biconnect}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{biconnect()}{biconnect()}}
 {\footnotesize\ttfamily void Tarjan\+::biconnect (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ \&}]{edges,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ std\+::vector$<$ \hyperlink{utilities_8h_af4a84c740ebb77e6a13a00aa289b0018}{Edge\+\_\+t} $>$ $>$ \&}]{components,  }\item[{std\+::vector$<$ int $>$ \&}]{visited,  }\item[{std\+::vector$<$ int $>$ \&}]{low\+Pt,  }\item[{int \&}]{stack\+Count }\end{DoxyParamCaption})}
 
+
+
+Definition at line 129 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+135                                   \{
+136     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index},\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+137     Counter++;
+138     visited[\textcolor{keywordtype}{id}[v]] = Counter;
+139     lowPt[\textcolor{keywordtype}{id}[v]] = Counter;
+140     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+141     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+142     \textcolor{keywordflow}{for}( boost::tie(out\_i,out\_end) = out\_edges(v,\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); out\_i != out\_end; ++out\_i)\{
+143         Edge e = *out\_i;
+144         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e,\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+145         \textcolor{keywordflow}{if}(visited[\textcolor{keywordtype}{id}[w]] == 999999)\{
+146             edges.push\_back(e);
+147             \hyperlink{class_tarjan_a52573be5a4930ad84f3807bc49f42026}{biconnect}(w,edges,Counter,components, visited,lowPt,stackCount);
+148             lowPt[\textcolor{keywordtype}{id}[v]] = lowPt[\textcolor{keywordtype}{id}[v]] < lowPt[\textcolor{keywordtype}{id}[w]]?lowPt[\textcolor{keywordtype}{id}[v]]:lowPt[\textcolor{keywordtype}{id}[w]];
+149             \textcolor{keywordflow}{if}(lowPt[\textcolor{keywordtype}{id}[w]] > lowPt[\textcolor{keywordtype}{id}[v]])\{
+150                 std::vector<Edge\_t> temp;
+151                 std::vector<Edge\_t>::iterator it;
+152                 \textcolor{keywordflow}{for}(it = edges.begin();it != edges.end(); it++)\{
+153                     Edge e2 = *it;
+154                     \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w2 = target(e2,\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+155                     \textcolor{keywordflow}{if}(visited[\textcolor{keywordtype}{id}[w2]] > visited[\textcolor{keywordtype}{id}[v]])\{
+156                         temp.push\_back(e2);
+157                         edges.erase(std::remove(edges.begin(), edges.end(), e2), edges.end());
+158                     \}
+159                 \}
+160                 temp.push\_back(e);
+161                 edges.erase(std::remove(edges.begin(), edges.end(), e), edges.end());
+162                 components.push\_back(temp);
+163             \}
+164         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(visited[\textcolor{keywordtype}{id}[w]] < visited[\textcolor{keywordtype}{id}[v]] & w != v)\{
+165             edges.push\_back(e);
+166             lowPt[\textcolor{keywordtype}{id}[v]] = lowPt[\textcolor{keywordtype}{id}[v]] < lowPt[\textcolor{keywordtype}{id}[w]]?lowPt[\textcolor{keywordtype}{id}[v]]:visited[\textcolor{keywordtype}{id}[w]];
+167         \}
+168     \}
+169 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}\label{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}} 
 \index{Tarjan@{Tarjan}!Depth\+First\+Search@{Depth\+First\+Search}}
 \index{Depth\+First\+Search@{Depth\+First\+Search}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{Depth\+First\+Search()}{DepthFirstSearch()}}
 {\footnotesize\ttfamily void Tarjan\+::\+Depth\+First\+Search (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{v,  }\item[{int \&}]{Counter,  }\item[{std\+::vector$<$ int $>$ \&}]{visited }\end{DoxyParamCaption})}
 
+
+
+Definition at line 46 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+46                                                                                 \{
+47     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+48     \hyperlink{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510}{e\_p} arch\_type =\textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_edge_property_a0701d898f719b1efbf795d80f503de81}{EdgeProperty::name}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+49     Counter++;
+50     visited[\textcolor{keywordtype}{id}[v]] = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}\textcolor{keyword}{>}(Counter);
+51  \textcolor{comment}{//   std::cout << "Node(" << id[v] << ") --> " << visited[id[v]] << std::endl;}
+52     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+53     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+54     \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); out\_i != out\_end; ++out\_i) \{
+55         Edge e = *out\_i;
+56         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+57         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == 666) \{
+58             arch\_type[e] = \textcolor{stringliteral}{"forward"};
+59             \textcolor{comment}{//std::cout << "Node(" <<id[w] << ") --> " << visited[w] << std::endl;}
+60             \hyperlink{class_tarjan_a277c58dc6f712a6ae1ef2e59c9ad58e1}{DepthFirstSearch}(w, Counter,visited);
+61         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] < visited[\textcolor{keywordtype}{id}[v]]) \{
+62             arch\_type[e] = \textcolor{stringliteral}{"backward"};
+63         \}
+64     \}
+65 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}\label{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}} 
 \index{Tarjan@{Tarjan}!is\+Reachable@{is\+Reachable}}
 \index{is\+Reachable@{is\+Reachable}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{is\+Reachable()}{isReachable()}}
 {\footnotesize\ttfamily bool Tarjan\+::is\+Reachable (\begin{DoxyParamCaption}\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{source,  }\item[{\hyperlink{class_graph_component_ae67114a6ce5a001dc35e1996e1b45aa0}{Vertex\+\_\+t} \&}]{target }\end{DoxyParamCaption})}
 
+
+
+Definition at line 67 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+67                                                            \{
+68     \textcolor{keyword}{typedef} graph\_traits<theGraph>::vertices\_size\_type size\_type;
+69     size\_type n\_vertices;
+70     n\_vertices = num\_vertices(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+71     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+72     std::vector<bool> Visited(n\_vertices, \textcolor{keyword}{false});
+73     std::deque<Vertex\_t> Checks;
+74     Visited[\textcolor{keywordtype}{id}[source]] = \textcolor{keyword}{true};
+75     Checks.push\_back(source);
+76     \textcolor{keywordflow}{while} (!Checks.empty()) \{
+77         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} v = Checks.front();
+78         Checks.pop\_front();
+79         boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+80         \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); out\_i != out\_end; ++out\_i) \{
+81             \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(*out\_i, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+82             \textcolor{keywordflow}{if} (\textcolor{keywordtype}{id}[w] == \textcolor{keywordtype}{id}[Target]) \{
+83                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+84             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!Visited[\textcolor{keywordtype}{id}[w]]) \{
+85                 Visited[\textcolor{keywordtype}{id}[w]] = \textcolor{keyword}{true};
+86                 Checks.push\_back(w);
+87             \}
+88         \}
+89     \}
+90     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+91 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_a0ef20e22407703c87c880898c8ad5745}\label{class_tarjan_a0ef20e22407703c87c880898c8ad5745}} 
 \index{Tarjan@{Tarjan}!print\+\_\+graph@{print\+\_\+graph}}
 \index{print\+\_\+graph@{print\+\_\+graph}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{print\+\_\+graph()}{print\_graph()}}
 {\footnotesize\ttfamily void Tarjan\+::print\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 23 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+23                         \{
+24     \hyperlink{class_graph_component_a6af293dac3774fde0e2822b5725ecacd}{GraphComponent::print\_graph\_file}(\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+25 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_tarjan_af94d48b6e78c292bd1aa465d37d89769}\label{class_tarjan_af94d48b6e78c292bd1aa465d37d89769}} 
 \index{Tarjan@{Tarjan}!solve@{solve}}
 \index{solve@{solve}!Tarjan@{Tarjan}}
@@ -125,12 +384,80 @@ This class contains the implementation of algorithms from the \hyperlink{class_t
 
 
 
+Definition at line 224 of file tarjan.\+cpp.
+
+
+\begin{DoxyCode}
+231                                             \{
+232     \hyperlink{utilities_8h_afdd46ecdd7dd04aa38394e7af744a510}{e\_p} arch\_type = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_edge_property_a0701d898f719b1efbf795d80f503de81}{EdgeProperty::name}, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+233     \hyperlink{utilities_8h_a3f4959b3d837fa6351a9414c79280286}{v\_p} \textcolor{keywordtype}{id} = \textcolor{keyword}{get}(&\hyperlink{struct_utility_structs_1_1_vertex_property_a636cb729438e999aa3d9a17ac39d8641}{VertexProperty::index},\hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+234     \hyperlink{class_visualize}{Visualize} vis;
+235     Counter++;
+236     visited[\textcolor{keywordtype}{id}[v]]= Counter;
+237     lowPt[\textcolor{keywordtype}{id}[v]]= Counter;
+238     lowVine[\textcolor{keywordtype}{id}[v]] = Counter;
+239     Points.push\_back(v);
+240     stackCount++;
+241     \textcolor{keyword}{typedef} boost::graph\_traits<theGraph>::edge\_descriptor \hyperlink{class_graph_component_aa7517b2af08aa717324076a645c73fe6}{Edge};
+242     boost::graph\_traits<theGraph>::out\_edge\_iterator out\_i, out\_end;
+243     \textcolor{keywordflow}{for} (boost::tie(out\_i, out\_end) = out\_edges(v, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t}); out\_i != out\_end; ++out\_i) \{
+244         Edge e = *out\_i;
+245         \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} w = target(e, \hyperlink{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}{t});
+246         \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] == 999999) \{
+247             arch\_type[e] = \textcolor{stringliteral}{"tree"}; \textcolor{comment}{// like in tarjan's algorithm}
+248             \hyperlink{class_tarjan_ac76fd1419a2de2dbf34c6ff1d4cc55e2}{StrongConnect}(w,Points, Counter,visited,lowPt,lowVine,stackCount,debugMode);
+249             lowPt[\textcolor{keywordtype}{id}[v]] = lowPt[\textcolor{keywordtype}{id}[v]]< lowPt[\textcolor{keywordtype}{id}[w]]?lowPt[\textcolor{keywordtype}{id}[v]]:lowPt[\textcolor{keywordtype}{id}[w]];
+250             lowVine[\textcolor{keywordtype}{id}[v]] = lowVine[\textcolor{keywordtype}{id}[v]]< lowVine[\textcolor{keywordtype}{id}[w]]?lowVine[\textcolor{keywordtype}{id}[v]]:lowVine[\textcolor{keywordtype}{id}[w]];
+251         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_tarjan_a74f69dfaa1d4cf3bac06aef7a704c0b8}{isReachable}( w, v)) \{
+252             \textcolor{keywordflow}{if} (visited[\textcolor{keywordtype}{id}[w]] < visited[\textcolor{keywordtype}{id}[v]]) \{
+253                 arch\_type[e] = \textcolor{stringliteral}{"vine"};
+254                 \textcolor{keywordflow}{if} (std::find(Points.begin(), Points.end(), w) != Points.end()) \{
+255                     lowVine[\textcolor{keywordtype}{id}[v]] = lowVine[\textcolor{keywordtype}{id}[v]] < visited[\textcolor{keywordtype}{id}[w]] ? lowVine[\textcolor{keywordtype}{id}[v]] : visited[\textcolor{keywordtype}{id}[w]];
+256                 \}
+257             \}
+258         \} \textcolor{keywordflow}{else} \{
+259             arch\_type[e] = \textcolor{stringliteral}{"frond"};
+260             lowPt[\textcolor{keywordtype}{id}[v]] = lowPt[\textcolor{keywordtype}{id}[v]] < visited[\textcolor{keywordtype}{id}[w]] ? lowPt[\textcolor{keywordtype}{id}[v]] : visited[\textcolor{keywordtype}{id}[w]];
+261         \}
+262     \}
+263     \textcolor{keywordflow}{if} (lowPt[\textcolor{keywordtype}{id}[v]] == visited[\textcolor{keywordtype}{id}[v]] && lowVine[\textcolor{keywordtype}{id}[v]] == visited[\textcolor{keywordtype}{id}[v]]) \{
+264             \textcolor{keywordtype}{int} count\_component = 0;
+265             std::stringstream buffer ;
+266             \textcolor{keywordflow}{if}(debugMode)\{
+267                 vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(\textcolor{stringliteral}{""});
+268                 buffer << std::setw(40) << std::left << \textcolor{stringliteral}{"The Strongly Connected Component is"} ;
+269                  buffer << \textcolor{stringliteral}{": "};
+270                  count\_component++;
+271             \}
+272             
+273         \textcolor{keywordflow}{while}(!Points.empty() && visited[\textcolor{keywordtype}{id}[Points.back()]] >= visited[\textcolor{keywordtype}{id}[v]])\{
+274             \hyperlink{utilities_8h_a344cd987714d06997f0becda3c96d6e2}{Vertex\_t} x = Points.back();
+275             Points.pop\_back();
+276             buffer << \textcolor{keywordtype}{id}[x]+1 <<  \textcolor{stringliteral}{" "} ;
+277         \}
+278        \textcolor{keywordflow}{if}(debugMode)\{
+279         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer.str());
+280         std::stringstream buffer2;
+281         buffer2 << std::setw(40) << std::left << \textcolor{stringliteral}{"Number of elements in the component is"} ;
+282         buffer2 << \textcolor{stringliteral}{": "}<< count\_component ;
+283         vis.\hyperlink{class_visualize_abce6cd538dc0715b21851e0bf0377d85}{printLine}(buffer2.str());
+284        \}
+285     \}
+286 
+287 \}
+\end{DoxyCode}
+
+
 \subsection{Member Data Documentation}
 \mbox{\Hypertarget{class_tarjan_aaa327f105a07f07648dcc6f62a565986}\label{class_tarjan_aaa327f105a07f07648dcc6f62a565986}} 
 \index{Tarjan@{Tarjan}!experiment@{experiment}}
 \index{experiment@{experiment}!Tarjan@{Tarjan}}
 \subsubsection{\texorpdfstring{experiment}{experiment}}
 {\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_graph_component_a982e0748a6e1b8dc74986f5f8b3dca5c}{the\+Graph}$>$ Tarjan\+::experiment}
+
+
+
+Definition at line 33 of file tarjan.\+h.
 
 \mbox{\Hypertarget{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}\label{class_tarjan_a54b0703f885a3514ea0bf4cdbc7fdaad}} 
 \index{Tarjan@{Tarjan}!t@{t}}
@@ -140,6 +467,11 @@ This class contains the implementation of algorithms from the \hyperlink{class_t
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Definition at line 32 of file tarjan.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/\hyperlink{tarjan_8h}{tarjan.\+h}\end{DoxyCompactItemize}
+header/\hyperlink{tarjan_8h}{tarjan.\+h}\item 
+src/cpp/\hyperlink{tarjan_8cpp}{tarjan.\+cpp}\end{DoxyCompactItemize}

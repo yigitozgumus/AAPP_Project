@@ -1,16 +1,16 @@
-\hypertarget{main_8cpp}{}\section{src/main.cpp File Reference}
-\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
-{\ttfamily \#include \char`\"{}./../header/application.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}./../header/utilities.\+h\char`\"{}}\newline
+\hypertarget{main_8cpp}{}\section{src/cpp/main.cpp File Reference}
+\label{main_8cpp}\index{src/cpp/main.\+cpp@{src/cpp/main.\+cpp}}
+{\ttfamily \#include \char`\"{}./../../header/application.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./../../header/utilities.\+h\char`\"{}}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24_a97b0fa62b7b0972875f5f589322c4c24}{main} (int, char $\ast$argv\mbox{[}$\,$\mbox{]})
+int \hyperlink{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24}{main} (int, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em This is the main function of the application. Its only functionality is to execute the actual application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24_a97b0fa62b7b0972875f5f589322c4c24}\label{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24_a97b0fa62b7b0972875f5f589322c4c24}} 
+\mbox{\Hypertarget{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24}\label{main_8cpp_a97b0fa62b7b0972875f5f589322c4c24}} 
 \index{main.\+cpp@{main.\+cpp}!main@{main}}
 \index{main@{main}!main.\+cpp@{main.\+cpp}}
 \subsubsection{\texorpdfstring{main()}{main()}}
@@ -28,3 +28,18 @@ This is the main function of the application. Its only functionality is to execu
 \begin{DoxyReturn}{Returns}
 int 
 \end{DoxyReturn}
+
+
+Definition at line 12 of file main.\+cpp.
+
+
+\begin{DoxyCode}
+13 \{
+14     \hyperlink{struct_session}{Session} s;
+15     s.\hyperlink{struct_session_aecaa42a56f197e0874041533ccb358a6}{graph\_dir} = \textcolor{stringliteral}{"None"};
+16     s.\hyperlink{struct_session_a256b14530b834d61ce85bab451694b8c}{csv} = \textcolor{stringliteral}{"None"};
+17     \hyperlink{class_application}{Application} a;
+18     a.\hyperlink{class_application_adecc88549e44815bd94985ea043b733f}{run}(s);
+19     \textcolor{keywordflow}{return} 0;
+20 \}
+\end{DoxyCode}

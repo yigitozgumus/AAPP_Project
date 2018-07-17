@@ -32,6 +32,10 @@ std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hype
 \subsection{Detailed Description}
 This class is used to measure the execution time of a executed function with the same scope. 
 
+Definition at line 64 of file utilities.\+h.
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63}\label{class_utility_structs_1_1_timer_a8513b72cae3808920cc5f76c28b34d63}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!Timer@{Timer}}
@@ -39,12 +43,34 @@ This class is used to measure the execution time of a executed function with the
 \subsubsection{\texorpdfstring{Timer()}{Timer()}}
 {\footnotesize\ttfamily Utility\+Structs\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 71 of file utilities.\+h.
+
+
+\begin{DoxyCode}
+72     \{
+73         \hyperlink{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}{start} = std::chrono::high\_resolution\_clock::now();
+74     \}
+\end{DoxyCode}
 \mbox{\Hypertarget{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676}\label{class_utility_structs_1_1_timer_a377c1febadb76e78d9a36bd81b3ab676}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!````~Timer@{$\sim$\+Timer}}
 \index{````~Timer@{$\sim$\+Timer}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{$\sim$\+Timer()}{~Timer()}}
 {\footnotesize\ttfamily Utility\+Structs\+::\+Timer\+::$\sim$\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line 83 of file utilities.\+h.
+
+
+\begin{DoxyCode}
+84     \{
+85         \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}{finish} = std::chrono::high\_resolution\_clock::now();
+86         \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}{duration} = \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}{finish} - \hyperlink{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}{start};
+87         \textcolor{keywordtype}{float} ms = \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}{duration}.count() * 1000.000f;
+88     \}
+\end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
@@ -56,6 +82,20 @@ This class is used to measure the execution time of a executed function with the
 
 
 
+Definition at line 75 of file utilities.\+h.
+
+
+\begin{DoxyCode}
+76     \{
+77         \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}{finish} = std::chrono::high\_resolution\_clock::now();
+78         \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}{duration} = \hyperlink{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}{finish} - \hyperlink{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}{start};
+79         \textcolor{keywordtype}{float} ms = \hyperlink{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}{duration}.count() * 1000.0f;
+80 
+81         \textcolor{keywordflow}{return} ms;
+82     \}
+\end{DoxyCode}
+
+
 \subsection{Member Data Documentation}
 \mbox{\Hypertarget{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}\label{class_utility_structs_1_1_timer_aa78ff6477de7008371025bd459a262e4}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!duration@{duration}}
@@ -63,17 +103,29 @@ This class is used to measure the execution time of a executed function with the
 \subsubsection{\texorpdfstring{duration}{duration}}
 {\footnotesize\ttfamily std\+::chrono\+::duration$<$float$>$ Utility\+Structs\+::\+Timer\+::duration}
 
+
+
+Definition at line 68 of file utilities.\+h.
+
 \mbox{\Hypertarget{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}\label{class_utility_structs_1_1_timer_a9b87226726489b3885d6faf4373c34b5}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!finish@{finish}}
 \index{finish@{finish}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{finish}{finish}}
 {\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Utility\+Structs\+::\+Timer\+::finish}
 
+
+
+Definition at line 69 of file utilities.\+h.
+
 \mbox{\Hypertarget{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}\label{class_utility_structs_1_1_timer_a60bc754cb86990dad0003e8d49048c07}} 
 \index{Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}!start@{start}}
 \index{start@{start}!Utility\+Structs\+::\+Timer@{Utility\+Structs\+::\+Timer}}
 \subsubsection{\texorpdfstring{start}{start}}
 {\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Utility\+Structs\+::\+Timer\+::start}
+
+
+
+Definition at line 67 of file utilities.\+h.
 
 
 
