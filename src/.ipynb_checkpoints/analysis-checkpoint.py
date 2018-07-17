@@ -23,12 +23,12 @@ def main():
     
    # df = get_data(4)
     df = get_data_from_file(file_name)
-    new_dfs = seperate_dataframes(df)
+    new_dfs = seperate_dataframes(df,df.shape[0])
     plot_comparisons(new_dfs)
 
 def print_available_cvs():
     data = "data"
-    experiment_csvs = [("/data/" + f) for f in listdir(data) if isfile(join(data, f))]
+    experiment_csvs = [("data/" + f) for f in listdir(data) if (isfile(join(data, f)) and f[-3:] == 'csv')]
     print("The current experiment list is:")
     for f in range(1,len(experiment_csvs)):
         print(str(f) + "-) " + experiment_csvs[f] )
@@ -61,7 +61,7 @@ def get_data(index):
     df = pd.read_csv(experiment_csvs[index][1:],sep=',',names=names)
     return df
 
-def seperate_dataframes(df):
+def seperate_dataframes(df,maxIndex):
     df_storage_all = df[['Vertex','S-Tarjan',
                  'S-Nuutila Original', 
                  'S-Nuutila Version1',
@@ -70,7 +70,9 @@ def seperate_dataframes(df):
                  'S-Pearson Version2',
                 'S-Pearson Version3']]
     df_storage_all = df_storage_all.sort_values(by=['Vertex']);
-
+    
+    df_edges = df[['Vertex','Edge']].sort_values(by=['Vertex'])
+    
     df_s_t = df_storage_all[['Vertex','S-Tarjan']]
     df_s_n = df_storage_all[['Vertex',
                                      'S-Nuutila Original', 
@@ -80,22 +82,31 @@ def seperate_dataframes(df):
                                    'S-Pearson Version1',
                                     'S-Pearson Version2',
                                     'S-Pearson Version3']]
-    bundle = [df_s_t,df_s_n,df_s_p,df_storage_all]
+    bundle = [df_edges[:maxIndex],df_s_n[:maxIndex],df_s_p[:maxIndex],df_storage_all[:maxIndex]]
     return bundle
 
-def plot_storage(df,axe):
+def plot_storage(df,axe,title):
    # plt.figure(figsize = (10,8))
     for i in range(1,len(df.columns)):
         axe.plot(df['Vertex'],df[df.columns[i]])
+    if("Edge" in df.columns):
+        axe.set_ylabel('Edge Count')
+    else:
+        axe.set_ylabel('Kilobytes')
     axe.legend(loc='best')  
-    axe.set_xlabel('Vertex')
-    axe.set_ylabel('Kilobytes')
+    axe.set_xlabel('Vertex Count')
+    axe.set_title(title)
+    
     
 def plot_comparisons(bundle):
     f, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2,figsize=(20,20))
+    titles = ["Edge Count With Respect to Vertices",
+             "Storage Performance of Nuutila Implementations",
+             "Storage Performance of Pearce Implementations",
+             "Storage Performance of All Algorithms"]
     axs = [ax1,ax2,ax3, ax4]
     for i in range(len(bundle)):
-        plot_storage(bundle[i],axs[i])
+        plot_storage(bundle[i],axs[i],titles[i])
     plt.show()
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
-#include "./../header/application.h"
-#include "./../header/visualize.h"
-#include "./../header/analyzer.h"
-#include "./../header/utilities.h"
+#include "./../../header/application.h"
+#include "./../../header/visualize.h"
+#include "./../../header/analyzer.h"
+#include "./../../header/utilities.h"
 
 //STL
 #include <iostream>
@@ -44,9 +44,7 @@ void Application::welcomeScreen(Session &s)
     v.printLine( " 1-) Generate a Graph set");
     v.printLine( " 2-) Run an Experiment");
     v.printLine( " 3-) Run Debug Mode");
-    if(s.csv != "None"){
-        v.printLine(" 4-) Analyze the Last Experiment");
-    }
+    v.printLine(" 4-) Analyze the Results");
     v.printLine( " 0-) Exit the Application");
     v.printProgramBottom();
     std::cout << "|>> ";
@@ -75,8 +73,33 @@ void Application::welcomeScreen(Session &s)
 void Application::analyzeExperiment(Session &s){
     v.printProgramEntry(s);
     v.printLine("");
-    std::string Program = "python analysis.py";
+    std::string Program = "python src/python/analysis.py";
     std::string filename = s.csv;
+    char choice ;
+    if(filename == "None"){
+        v.printLine("Please enter the name of the experiment csv file:");
+        v.printProgramBottom();
+        std::cout << "|>> ";
+        std::cin >> filename;
+    }else{
+        v.printLine("Do you want to provide a different csv file ? (y/n)");
+        v.printProgramBottom();
+        std::cout << "|>>";
+        std::cin >> choice;
+        switch(choice){
+            case 'y':
+                v.printProgramEntry(s);
+                v.printLine("");
+                v.printLine("Please enter the name of the experiment csv file:");
+                v.printProgramBottom();
+                std::cout << "|>> ";
+                std::cin >> filename;
+                break;
+            case 'n':
+                break;
+        }
+
+    }
     Program += (" " + filename);
     std::system(Program.c_str());
     v.printLine("Press c to Continue, q to quit");
@@ -99,7 +122,7 @@ std::string Application::generateGraph(Session &s)
     
     v.printProgramEntry(s);
     v.printLine("");
-    std::string Program = "python src/generate_graph_directories.py";
+    std::string Program = "python src/python/generate_graph_directories.py";
     std::string dir_name;
     std::string numOfGraph;
     std::string single_class;

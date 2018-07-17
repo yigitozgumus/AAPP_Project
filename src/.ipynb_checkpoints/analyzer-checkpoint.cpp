@@ -135,7 +135,7 @@ std::string Analyzer::benchmark_comparison(bool write_to_file, bool isCsv, std::
 			v.writeExperimentRow( id, vertex, edges, results, file_location);
 		}
 		
-		v.printExperimentRow( id, vertex, edges, results);
+		//v.printExperimentRow( id, vertex, edges, results);
 		
 	}
 	if(isCsv){

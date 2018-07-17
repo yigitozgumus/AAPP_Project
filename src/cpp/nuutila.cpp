@@ -1,5 +1,5 @@
- #include "./../header/nuutila.h"
-#include "./../header/visualize.h"
+ #include "./../../header/nuutila.h"
+#include "./../../header/visualize.h"
 //STL
 #include <iostream>
 #include <vector>

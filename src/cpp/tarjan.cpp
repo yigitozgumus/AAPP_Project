@@ -1,4 +1,4 @@
-#include "./../header/tarjan.h"
+#include "./../../header/tarjan.h"
 
 //STL
 #include <iostream>

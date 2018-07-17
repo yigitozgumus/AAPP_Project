@@ -1,4 +1,4 @@
-#include "./../header/visualize.h"
+#include "./../../header/visualize.h"
 
 #include <cstdio>
 #include <iostream>

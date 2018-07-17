@@ -1,6 +1,6 @@
-#include "./../header/pearce.h"
-#include "./../header/analyzer.h"
-#include "./../header/visualize.h"
+#include "./../../header/pearce.h"
+#include "./../../header/analyzer.h"
+#include "./../../header/visualize.h"
 
 //STL
 #include <iostream>

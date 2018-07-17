@@ -3,7 +3,8 @@
 
 /**
  * This class will test the algorithms with different settings to create a basis for analysis
- * and a comparison baseline
+ * and a comparison baseline. It also provides the same settings for different types of algorithms
+ * to provide a optimal debug mode experience.
  * 
  */
 
@@ -31,7 +32,11 @@
 #include <boost/property_map/property_map.hpp>
 
 
-
+/**
+ * @brief This class is mainly responsible for the experiment functionality. It also provides the wrapped 
+ * experiment methods. 
+ * 
+ */
 class Analyzer{
 
 	public:

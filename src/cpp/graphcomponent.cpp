@@ -1,4 +1,4 @@
-#include "./../header/graphcomponent.h"
+#include "./../../header/graphcomponent.h"
 //STL
 #include <iostream>
 #include <vector>
