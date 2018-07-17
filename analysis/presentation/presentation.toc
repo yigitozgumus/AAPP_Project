@@ -1,5 +1,7 @@
 \select@language {english}
 \beamer@sectionintoc {1}{Introduction of the Problem}{3}{0}{1}
 \beamer@sectionintoc {2}{Implementation of the Project}{16}{0}{2}
-\beamer@sectionintoc {3}{Analysis of Results}{31}{0}{3}
-\beamer@subsectionintoc {3}{1}{Analysis Methods}{32}{0}{3}
+\beamer@subsectionintoc {2}{1}{Python}{25}{0}{2}
+\beamer@subsectionintoc {2}{2}{C++}{30}{0}{2}
+\beamer@sectionintoc {3}{Analysis of Results}{36}{0}{3}
+\beamer@subsectionintoc {3}{1}{Results with respect to Storage Usage}{37}{0}{3}

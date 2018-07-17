@@ -12,6 +12,7 @@ from os.path import isfile, join
 import seaborn as sns
 sns.set( color_codes=True)
 sns.set_context(rc={"font.family":'sans',"font.size":24,"axes.titlesize":18,"axes.labelsize":14}) 
+sns.set_palette("husl")
 
 def main():
     parser = argparse.ArgumentParser(description='Visualize the experiment results')
@@ -89,7 +90,7 @@ def seperate_dataframes(df, maxIndex):
                              'S-Pearson Version2',
                              'S-Pearson Version3']]
     bundle = [df_edges[:maxIndex], df_s_n[:maxIndex],
-              df_s_p[:maxIndex], df_storage_all[:maxIndex]]
+              df_s_p[:maxIndex], df_storage_all[:maxIndex],]
     return bundle
 
 

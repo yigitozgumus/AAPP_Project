@@ -75,8 +75,8 @@
 				\item <1-> In terms of functionality the project has 4 different functions.
 				\begin{enumerate}
 					\item <2-> Generate a Random Directed Graph with options (Python)
-					\item <3-> Run Experiement with algoritmhs while keeping track of completion time and storage consumption (tarjan vs. Nuutila vs. Pearce)
-					\item <4-> Debug mode for testing a singular graph with algorithms provided.
+					\item <3-> Run Experiement with algoritmhs while keeping track of completion time and storage consumption (tarjan vs. Nuutila vs. Pearce)(C++)
+					\item <4-> Debug mode for testing a singular graph with algorithms provided(C++).
 					\item <5-> Visualization of the experiments, can only be done with cvs files (Python).
 				\end{enumerate}
 			\end{itemize}
@@ -89,17 +89,37 @@
 				\item <3-> Visualization of the experiment is done with python, csv files can be further explored using the provided jupyter notebook.
 			\end{itemize}
 		\end{frame}
+		\subsection{Python}
 		\begin{frame}
 			\frametitle{Python Part}
 			\begin{itemize}
 				\item <1-> There are 2 scripts that are embedded into the project.
 				\begin{enumerate}
-					\item <1-> generate_graph_directories.py
+					\item <1-> generate\_graph\_directories.py
+					\item <2-> analysis.py
 				\end{enumerate} 
+				\item <3-> They can be used outside of application
 			\end{itemize}
 		\end{frame}
 		\begin{frame}
-			\frametitle{Project Structure}
+			\frametitle{Python Part}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=1\textwidth]{analysis}
+				\caption{Analysis script help command result}
+			\end{figure}		
+		\end{frame}
+		\begin{frame}
+			\frametitle{Python Part}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=1\textwidth]{generate}
+				\caption{generate graph directories script help command result}
+			\end{figure}
+		\end{frame}
+		\subsection{C++}
+		\begin{frame}
+			\frametitle{C++ Part}
 			\begin{itemize}
 				\item <1-6> Application Class uses:
 				\begin{itemize}
@@ -120,10 +140,66 @@
 		}
 		\end{frame}
 	\section{Analysis of Results}
-		\begin{frame}
-			\frametitle{title}
+			\subsection{Results with respect to Storage Usage}
+			\begin{frame}
+				\frametitle{Analysis result of the first 5000 Graphs}
+					\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S5000}
+					\end{figure}
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Analysis result of the first 10000 Graphs}
+					\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S10000}
+				\end{figure}
+			\end{frame}
+			\begin{frame}
+				\frametitle{Analysis result of the first 15000 Graphs}
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S15000}	
+				\end{figure}
+			\end{frame}
+			\begin{frame}
+				\frametitle{Analysis result of the first 25000 Graphs}
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S25000}
+				\end{figure}
+			\end{frame}
+			\begin{frame}
+				\frametitle{Analysis result of the first 50000 Graphs}
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S50000}
+				\end{figure}
+			\end{frame}
+			\begin{frame}
+				\frametitle{Analysis result of the first 75000 Graphs}
+					\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{S75000}
+					\end{figure}
+			\end{frame}
+			\begin{frame}
+				\frametitle{Analysis result of all of the Graphs}
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\textwidth]{SALL}
+				\end{figure}
 		\end{frame}
 	\begin{frame}
-		test
+		\frametitle{Analysis Results}
+		\begin{itemize}
+			\item <1-> For Nuutila algorithms, Version 2 uses the least amount of storage. 
+			\item <2-> For Pearce algorithms, Version 2 Uses the least amount of storage.
+			\item <3-> Among all the algorithms, Pearce Version 2 uses the least amount of storage .
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		Demo ?
 	\end{frame}
 \end{document}
