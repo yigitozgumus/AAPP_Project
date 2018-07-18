@@ -20,13 +20,13 @@ header/pearce.h
 header/analyzer.h
 header/visualize.h
 header/application.h
-src/application.cpp
-src/visualize.cpp
-src/tarjan.cpp
-src/pearce.cpp
-src/nuutila.cpp
-src/analyzer.cpp
-src/graphcomponent.cpp
-src/main.cpp)
+src/cpp/application.cpp
+src/cpp/visualize.cpp
+src/cpp/tarjan.cpp
+src/cpp/pearce.cpp
+src/cpp/nuutila.cpp
+src/cpp/analyzer.cpp
+src/cpp/graphcomponent.cpp
+src/cpp/main.cpp)
 target_link_libraries(Project ${Boost_LIBRARIES})
 endif()
